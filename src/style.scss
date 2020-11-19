@@ -64,6 +64,7 @@ header {
 	z-index: 60;
 	display: flex;
 	pointer-events: none;
+	display: none;
 	body:not(.full) {
 		display: none;
 	}
