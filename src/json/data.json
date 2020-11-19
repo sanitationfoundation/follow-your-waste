@@ -1,0 +1,388 @@
+{
+  "items": [
+    {
+      "slug": "aluminum-foil",
+      "stream": "metal"
+    },
+    {
+      "slug": "broken-glass",
+      "stream": "glass"
+    },
+    {
+      "slug": "cardboard",
+      "stream": "paper"
+    },
+    {
+      "slug": "chip-bag",
+      "stream": "landfill"
+    },
+    {
+      "slug": "detergent-bottle",
+      "stream": "plastic"
+    },
+    {
+      "slug": "food-can",
+      "stream": "metal"
+    },
+    {
+      "slug": "glass-bottles",
+      "stream": "glass"
+    },
+    {
+      "slug": "glass-jar",
+      "stream": "glass"
+    },
+    {
+      "slug": "milk-carton",
+      "stream": "plastic"
+    },
+    {
+      "slug": "newspaper",
+      "stream": "paper"
+    },
+    {
+      "slug": "plastic-bag",
+      "stream": "landfill"
+    },
+    {
+      "slug": "plastic-bottle",
+      "stream": "plastic"
+    },
+    {
+      "slug": "soda-can",
+      "stream": "metal"
+    },
+    {
+      "slug": "toothpaste",
+      "stream": "landfill"
+    }
+  ],
+  "paper": [
+    {
+      "slug": "garage-paper",
+      "media": "svg",
+      "format": "width",
+      "color": "yellow"
+    },
+    {
+      "slug": "curbside-paper",
+      "media": "svg",
+      "format": "height",
+      "color": "black"
+    },
+    {
+      "slug": "mts",
+      "media": "svg",
+      "format": "width",
+      "color": "yellow"
+    },
+    {
+      "slug": "weighing",
+      "media": "svg",
+      "format": "width",
+      "color": "blue"
+    },
+    {
+      "slug": "fish-bowl",
+      "media": "png",
+      "format": "height",
+      "color": "green"
+    },
+    {
+      "slug": "tipping-paper",
+      "media": "png",
+      "format": "height",
+      "color": "orange"
+    },
+    {
+      "slug": "barge-paper",
+      "media": "svg",
+      "format": "height",
+      "color": "blue"
+    },
+    {
+      "slug": "pratt",
+      "media": "svg",
+      "format": "height",
+      "color": "black"
+    },
+    {
+      "slug": "pulper",
+      "media": "png",
+      "format": "height",
+      "color": "yellow"
+    },
+    {
+      "slug": "press",
+      "media": "png",
+      "format": "width",
+      "color": "pink"
+    },
+    {
+      "slug": "winder",
+      "media": "png",
+      "format": "height",
+      "color": "teal"
+    },
+    {
+      "slug": "storage",
+      "media": "png",
+      "format": "width",
+      "color": "green"
+    },
+    {
+      "slug": "corrugator",
+      "media": "png",
+      "format": "width",
+      "color": "yellow"
+    },
+    {
+      "slug": "quality-paper",
+      "media": "png",
+      "format": "width",
+      "color": "yellow"
+    },
+    {
+      "slug": "end-paper",
+      "media": "png",
+      "format": "height",
+      "color": "pink"
+    }
+  ],
+  "landfill": [
+    {
+      "slug": "garage",
+      "media": "svg",
+      "format": "width",
+      "color": "blue"
+    },
+    {
+      "slug": "curbside-landfill",
+      "media": "svg",
+      "format": "height",
+      "color": "black"
+    },
+    {
+      "slug": "weighing",
+      "media": "svg",
+      "format": "width",
+      "color": "blue"
+    },
+    {
+      "slug": "tipping-landfill",
+      "media": "png",
+      "format": "height",
+      "color": "orange"
+    },
+    {
+      "slug": "loading",
+      "media": "png",
+      "format": "height",
+      "color": "lime"
+    },
+    {
+      "slug": "lidding",
+      "media": "svg",
+      "format": "height",
+      "color": "pink"
+    },
+    {
+      "slug": "crane-landfill",
+      "media": "svg",
+      "format": "height",
+      "color": "yellow"
+    },
+    {
+      "slug": "barge-landfill",
+      "media": "svg",
+      "format": "height",
+      "color": "blue"
+    },
+    {
+      "slug": "end-landfill",
+      "media": "png",
+      "format": "width",
+      "color": "yellow"
+    }
+  ],
+  "metal": [
+    {
+      "slug": "garage",
+      "media": null,
+      "format": null,
+      "color": "blue"
+    },
+    {
+      "slug": "curbside-metal",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "mts",
+      "media": null,
+      "format": null,
+      "color": "yellow"
+    },
+    {
+      "slug": "sims",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "claw",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "tipping",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "sorting",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "liberator",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "magnets",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "trommel",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "quality-metal",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "railcar",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "end-metal",
+      "media": null,
+      "format": null,
+      "color": "black"
+    }
+  ],
+  "glass": [
+    {
+      "slug": "garage",
+      "media": null,
+      "format": null,
+      "color": "blue"
+    },
+    {
+      "slug": "curbside-glass",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "sims",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "sorting",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "liberator",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "screens",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "barge-glass",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "end-glass",
+      "media": null,
+      "format": null,
+      "color": "black"
+    }
+  ],
+  "plastic": [
+    {
+      "slug": "garage",
+      "media": null,
+      "format": null,
+      "color": "blue"
+    },
+    {
+      "slug": "curbside-plastic",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "sims",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "sorting",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "liberator",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "screens",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "quality-plastic",
+      "media": null,
+      "format": null,
+      "color": "black"
+    },
+    {
+      "slug": "end-plastic",
+      "media": null,
+      "format": null,
+      "color": "black"
+    }
+  ]
+}

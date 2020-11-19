@@ -1,0 +1,641 @@
+{
+  "micro": [
+    {
+      "title": "Follow Your Waste",
+      "tagline": "La historia cotidiana de sus residuos, contada por Strongest de Nueva York.",
+      "description": null,
+      "loading": "Cargando",
+      "get_started": "¡Empezar!",
+      "try_again": "Inténtalo de nuevo",
+      "lets_go": "¡Vamonos!"
+    }
+  ],
+  "dialog": [
+    {
+      "not_trash": "¡Oh no!, este artículo es reciclable. Échelo en otro cubo, por favor.",
+      "wrong_recycle": "Ha colocado mal este artículo reciclable, un error muy fácil de cometer. Pruebe echarlo en otro cubo.",
+      "not_recycle": "Este artículo de basura actualmente no se recicla en la ciudad de Nueva York. Échelo en otro cubo.",
+      "correct_bin": "¡Lo ha echado en el cubo correcto! Ahora, conozca lo que sucede a continuación de un trabajador de saneamiento de la ciudad de Nueva York."
+    }
+  ],
+  "workers": [
+    {
+      "name": "Renee",
+      "garage": "Headquarters",
+      "years": "8 years",
+      "city": "Take a trip to Governor’s Island and lay in the hammocks",
+      "job": "Some of us work in an office. My team uses computer technology to map out the best routes that Sanitation Workers should take when clearing the snow.",
+      "stream": null,
+      "image": "renee"
+    },
+    {
+      "name": "Tuhina",
+      "garage": "Queens West 14",
+      "years": "5 years",
+      "city": "Have a picnic in Astoria Park with my friends",
+      "job": "I enjoy driving the mechanical broom. This helps keep the street clear from litter. I am doing my part to keep the city clean.",
+      "stream": "Landfill",
+      "image": "landfill"
+    },
+    {
+      "name": "Stephen",
+      "garage": "Staten Island 3",
+      "years": "15 years",
+      "city": "Take a walk through Snug Harbor on my days off",
+      "job": "At my garage, I help with operations. I get to tow collection trucks if they break down and be the hero!",
+      "stream": "Glass",
+      "image": "glass"
+    },
+    {
+      "name": "Katia",
+      "garage": "Brooklyn North 1",
+      "years": "1st year!",
+      "city": "Ride the cyclone in Coney Island",
+      "job": "I like picking up corner litter baskets. Each litter basket weighs about 30 lbs. -- they don't call us New York’s Strongest for nothing!",
+      "stream": "Plastic",
+      "image": "plastic"
+    },
+    {
+      "name": "Tom",
+      "garage": "Manhattan 2",
+      "years": "12 years",
+      "city": "Get lost in the cloisters up in Washington Heights",
+      "job": "I enjoy spreading salt on the roads during the winter. This helps the snow melt and allows first responders to do their jobs.",
+      "stream": "Paper",
+      "image": "paper"
+    },
+    {
+      "name": "Julian",
+      "garage": "Bronx 2",
+      "years": "20 years",
+      "city": "Get italian ices in Morris Park",
+      "job": "I play the drums in our department’s “Pipes and Drums” band! We march in various parades throughout the year including the Thanksgiving Day Parade.",
+      "stream": "Metal",
+      "image": "metal"
+    }
+  ],
+  "items": [
+    {
+      "slug": "aluminum-foil",
+      "label": "Papel de aluminio",
+      "tooltip": "Plantéese almacenar la comida en envases reusables en vez de papel de aluminio."
+    },
+    {
+      "slug": "broken-glass",
+      "label": "Vidrio roto",
+      "tooltip": "Échelos en bolsa doble, protéjase usted y al empleado de saneamiento de cualquier herida."
+    },
+    {
+      "slug": "cardboard",
+      "label": "Caja de cartón",
+      "tooltip": "Aplane las cajas de cartón de manera que se puedan atar o meter con facilidad en una bolsa. ¡No olvide los artículos pequeños como las cajas de pasta y las de jabón!"
+    },
+    {
+      "slug": "chip-bag",
+      "label": "Bolsa de papas fritas",
+      "tooltip": "Este tipo de bolsa suele estar hecha de diferentes capas de materiales, por lo que son difíciles de reciclar."
+    },
+    {
+      "slug": "detergent-bottle",
+      "label": "Detergente para lavar ropa",
+      "tooltip": "No tenga en cuenta el número de la botella, pues la ciudad trata todo plástico rígido de la misma manera."
+    },
+    {
+      "slug": "food-can",
+      "label": "Lata de comida",
+      "tooltip": "Están hechas de acero o de hojalata y no de aluminio."
+    },
+    {
+      "slug": "glass-bottles",
+      "label": "Botella de vidrio",
+      "tooltip": "El vidrio es pesado y aumenta el peso de los envíos, por lo que los diseñadores de productos utilizan otras opciones para el envasado de alimentos."
+    },
+    {
+      "slug": "glass-jar",
+      "label": "Tarro de salsa en vidrio",
+      "tooltip": "Plantéese reusar los frascos de vidrio para meriendas, artesanías y artículos pequeños."
+    },
+    {
+      "slug": "milk-carton",
+      "label": "Cartón de leche",
+      "tooltip": "Los cartones son los artículos que más se se colocan mal porque contienen capas tanto de papel como de plástico."
+    },
+    {
+      "slug": "newspaper",
+      "label": "Periódico",
+      "tooltip": "¿Aún recibe las noticias a la antigua? Digitalícese ya y ¡reduzca la basura!"
+    },
+    {
+      "slug": "plastic-bag",
+      "label": "Bolsa de plástico",
+      "tooltip": "En 2020, el estado de Nueva York prohibió en los comercios la mayoría de las bolsas de plástico de un solo uso."
+    },
+    {
+      "slug": "plastic-bottle",
+      "label": "Botella de agua",
+      "tooltip": "Cada minuto se venden casi un millón de bebidas en botellas de plástico en el mundo. ¡Cámbielas por las reusables!"
+    },
+    {
+      "slug": "soda-can",
+      "label": "Lata de refresco",
+      "tooltip": "Una lata de aluminio usada se recicla y vuelve a la estantería del supermercado en sólo 60 días."
+    },
+    {
+      "slug": "toothpaste",
+      "label": "Pasta de dientes",
+      "tooltip": "No todos los artículos de baño son reciclables: ¡Conózcalos antes de botarlos!"
+    }
+  ],
+  "paper": [
+    {
+      "slug": "garage-paper",
+      "label": "Garaje",
+      "caption": "Hola, soy Tom, empleado de saneamiento de Manhattan. Comenzamos nuestro turno al marcar la entrada en nuestro taller local y luego salimos a recoger la basura o los materiales reciclables de su casa.",
+      "popup": "Nuestro taller de la calle Spring en el oeste del bajo Manhattan cuenta con la certificación LEED GOLD por sus características de diseño sostenible, tales como un techo con vegetación, el uso de materiales reciclados, el recogido de agua de lluvia, la eficiencia energética e hídrica, y materiales de poca toxicidad."
+    },
+    {
+      "slug": "curbside-paper",
+      "label": "Recogida en la acera",
+      "caption": "Al salir del taller de la calle Spring en Manhattan, nuestros empleados de saneamiento recogen de la acera su reciclaje de cartón y papel y lo arrojan en un camión de basura de DSNY.",
+      "popup": null
+    },
+    {
+      "slug": "mts",
+      "label": "Estación de transferencia marina",
+      "caption": "Al terminar la ruta de recogido, nuestros empleados de saneamiento se dirigen a la estación de traslado de la calle 59 en Manhattan.",
+      "popup": "Nuestro logotipo no siempre ha tenido el aspecto que tiene hoy en día. No fue hasta 1929 que nos convertimos en el Departamento de Saneamiento que conocemos hoy, y que nuestro logotipo pasó a ser el caduceo más actual: un bastón alado con dos serpientes envueltas a su alrededor que representa la buena salud."
+    },
+    {
+      "slug": "weighing",
+      "label": "Pesando",
+      "caption": "El camión de basura se pesa antes de entrar y así determinar el tonelaje de la carga. También se analiza en busca de radiación. Si da positivo, se retira para asegurar la protección de los empleados de saneamiento.",
+      "popup": "Cuando hablamos de seguridad, servicio y sostenibilidad, ¡lo decimos en serio! El DSNY emplea combustible biodiésel de aceite de soja para alimentar nuestra flota desde el 2005. ¡Nos enorgullece tener la flota más limpia de los Estados Unidos!"
+    },
+    {
+      "slug": "fish-bowl",
+      "label": "Pecera",
+      "caption": "Ya en la estación, el empleado de saneamiento se dirige al muelle de descarga que esté libre.",
+      "popup": null
+    },
+    {
+      "slug": "tipping",
+      "label": "Piso basculante",
+      "caption": "Luego se le indica que arroje la carga de papel y cartón sobre una barcaza.",
+      "popup": null
+    },
+    {
+      "slug": "barge-paper",
+      "label": "Barcaza",
+      "caption": "Un remolcador guía la barcaza, repleta del papel y cartón reciclable de la ciudad, desde la Bahía Superior por de Kill Van Kill, pasando por Arthur Kill Narrows hasta la fábrica de papel Pratt Paper Mill en Staten Island.",
+      "popup": null
+    },
+    {
+      "slug": "pratt",
+      "label": "Fábrica de papel",
+      "caption": "Al llegar la barcaza a la fábrica de papel Pratt Industries Mill, un operario dirige una garra de grúa gigante que recoge el reciclaje de papel.",
+      "popup": null
+    },
+    {
+      "slug": "pulper",
+      "label": "El pulper",
+      "caption": "Ya en la fábrica de papel Pratt Paper Mill, el reciclado de papel y cartón se vierte primero en un pozo y luego se alimenta en una despulpadora, donde se mezcla con agua para conseguir pulpa, la cual pasa a través de mallas que eliminan los contaminantes.",
+      "popup": null
+    },
+    {
+      "slug": "press",
+      "label": "La prensa",
+      "caption": "Luego se prensa y, tras secarse, se envuelve en un gran rollo de papel reciclado.",
+      "popup": null
+    },
+    {
+      "slug": "winder",
+      "label": "El enrollador",
+      "caption": "Estos enormes rollos de papel reciclado, que pesan 25 toneladas cada uno, se transportan hasta la \"bobinadora\" por un sistema mecanizado que opera un obrero.",
+      "popup": null
+    },
+    {
+      "slug": "storage",
+      "label": "Almacenamiento",
+      "caption": "Allí, el papel reciclado se corta en rollos más pequeños, que luego transportan un conductor de montacargas a la zona de almacenamiento.",
+      "popup": null
+    },
+    {
+      "slug": "corrugator",
+      "label": "Corrugador",
+      "caption": "El papel reciclado está listo para ser distribuido a una corrugadora, donde los rollos de papel se convierten en hojas de cartón que luego se cortan y se doblan en cajas.",
+      "popup": null
+    },
+    {
+      "slug": "quality-paper",
+      "label": "Control de calidad",
+      "caption": "Los obreros examinan los paquetes de cajas de cartón en la línea de montaje a efectos de control de calidad, y si están satisfechos con la calidad, el cartón reciclado se distribuye para su uso por toda la ciudad de Nueva York.",
+      "popup": null
+    },
+    {
+      "slug": "end-paper",
+      "label": "Cajas de pizza",
+      "caption": "Las pizzerías de la ciudad son uno de los destinatarios principales del cartón reciclado. La próxima vez que estés a punto de degustar una sabrosa pizza, recuerda que esa caja pudo haber sido reciclada con el papel de Nueva York.",
+      "popup": null
+    }
+  ],
+  "landfill": [
+    {
+      "slug": "garage",
+      "label": "Garage",
+      "caption": "Hola, soy Tuhina, empleada de saneamiento de Queens. Comenzamos nuestro turno al marcar la entrada en nuestro taller local y luego salimos a recoger la basura o los materiales reciclables de su casa.",
+      "popup_caption": "Nuestro taller actual Queens West 1 ¡era un establo antiguo!"
+    },
+    {
+      "slug": "curbside-landfill",
+      "label": "Curbside Pickup",
+      "caption": "Después de haber recogido la basura de la acera, los empleados de saneamiento se dirigen a la Estación Marítima de Traslado en North Shore.",
+      "popup_caption": "Nuestro Plan de Gestión de Residuos Sólidos de 2006 redujo notablemente el número de viajes en camión al eliminar 60 millones de millas de recorrido al año."
+    },
+    {
+      "slug": "weighing",
+      "label": "Weighing In",
+      "caption": "El camión de basura se pesa antes de entrar y así determinar el tonelaje de la carga. También se analiza en busca de radiación. Si da positivo, se retira para asegurar la protección de los empleados de saneamiento.",
+      "popup_caption": null
+    },
+    {
+      "slug": "tipping",
+      "label": "Tipping Floor",
+      "caption": "Luego del pesaje, un empleado de DSNY dirige a los camioneros de la zona de descarga a los muelles de descarga que estén libres.",
+      "popup_caption": null
+    },
+    {
+      "slug": "loading",
+      "label": "Loading Floor",
+      "caption": "La basura del camión de DSNY se deposita en el piso de carga ubicado debajo del muelle de descarga elevado. Dos cargadores frontales empujan la basura al cubo que esté libre en el que una excavadora la comprime.",
+      "popup_caption": null
+    },
+    {
+      "slug": "lidding",
+      "label": "Lidding Floor",
+      "caption": "En cuanto se llene el cubo, los empleados de saneamiento lo sellan en la zona de envase.",
+      "popup_caption": null
+    },
+    {
+      "slug": "crane",
+      "label": "Loading the Barge",
+      "caption": "A partir de aquí, un contratista privado es responsable de cargar el envase con una grúa sobre una barcaza.",
+      "popup_caption": null
+    },
+    {
+      "slug": "barge",
+      "label": "Barge-to-rail",
+      "caption": "La barcaza con los cubos llenos de basura la guía un remolcador hasta el terminal de contenedores, donde se descargan y se colocan en un tren.",
+      "popup_caption": null
+    },
+    {
+      "slug": "end-landfill",
+      "label": "Landfill",
+      "caption": "Por último, el tren lleva los contenedores a la instalación de conversión de residuos en energía eléctrica o los vierte en un vertedero.",
+      "popup_caption": "Los vertederos son el tercer mayor contribuyente de gas metano en los Estados Unidos, lo que supone 34 veces el efecto invernadero del dióxido de carbono. ¿Desea contribuir a combatir el efecto del cambio climático? Ahórrese el cubo de basura y ¡procure reducir, reutilizar y reciclar!"
+    }
+  ],
+  "metal": [
+    {
+      "slug": "garage",
+      "label": "The Garage",
+      "caption": "Hola, soy Julian, empleado de saneamiento de El Bronx. Comenzamos nuestro turno al marcar la entrada en nuestro taller local y luego salimos a recoger la basura o los materiales reciclables de su casa.",
+      "popup": "Muchos de nuestros talleres son incineradores. Los del Bronx 9/10/11 en la avenida Zerega fueron incineradores que funcionaron alguna vez."
+    },
+    {
+      "slug": "curbside-metal",
+      "label": "Curbside Pickup",
+      "caption": "Sus artículos de metal, vidrio, plástico (MVP) y cartón reciclables los recogen mis compañeros de saneamiento y los vierten en un camión de basura del Departamento de Saneamiento de la Ciudad de Nueva York (New York City Department of Sanitation, DSNY).",
+      "popup": "Nuestro logotipo no siempre ha tenido el aspecto que tiene hoy en día. No fue hasta 1929 que nos convertimos en el Departamento de Saneamiento que conocemos hoy, y que nuestro logotipo pasó a ser el caduceo más actual: un bastón alado con dos serpientes envueltas a su alrededor que representa la buena salud."
+    },
+    {
+      "slug": "mts",
+      "label": "Marine Transfer Station",
+      "caption": "Al terminar la ruta de recogido, los empleados de saneamiento se dirigen a Sims Hunts Point donde se colocan los materiales reciclables en una barcaza.",
+      "popup": null
+    },
+    {
+      "slug": "sims",
+      "label": "Sims",
+      "caption": "Un remolcador guía la barcaza hasta el Centro de Recuperación de Material de Sims Sunset Park (Sims Sunset Park Material Recovery Facility, MRF).",
+      "popup": null
+    },
+    {
+      "slug": "claw",
+      "label": "The Claw",
+      "caption": "Al atracar la barcaza en el Centro de Recuperación de Material de los Sims en Sunset Park, en Brooklyn, un operario dirige una garra de grúa gigante, recoge los materiales reciclables MVP de la barcaza y los deposita en el suelo del vertedero.",
+      "popup": "La zona de vertido es una habitación gigante donde los materiales reciclables se descargan en pilas enormes."
+    },
+    {
+      "slug": "tipping",
+      "label": "The Tipping Floor",
+      "caption": "Además de la barcaza que transporta los reciclables, llega un camión de basura de DSNY que también descarga pilas enormes de reciclaje de la ciudad en la zona de vertido.",
+      "popup": null
+    },
+    {
+      "slug": "sorting",
+      "label": "Sorting",
+      "caption": "Un cargador frontal empuja el reciclaje de la zona de vertido al sistema de clasificación. Como alternativa, una grúa gigante que llaman excavadora recoge los materiales reciclables y los deposita en el sistema de clasificación, o según el equipo a disposición.",
+      "popup": null
+    },
+    {
+      "slug": "liberator",
+      "label": "The Liberator",
+      "caption": "A continuación, los reciclables entran en el sistema de clasificación y pasan primero por una trituradora de baja velocidad que abre las bolsas de reciclaje y se le conoce como Liberator.",
+      "popup": null
+    },
+    {
+      "slug": "magnets",
+      "label": "Magnets",
+      "caption": "Los reciclables pasan por debajo de un gran imán giratorio que recoge metales férricos o materiales magnéticos. Luego, una corriente en remolino (un imán invertido) repele cualquier metal que no sea férrico, como el aluminio.",
+      "popup": null
+    },
+    {
+      "slug": "trommel",
+      "label": "Trommel Screen",
+      "caption": "Los metales férricos y materiales magnéticos atraviesan un tambor tamizador. Al girar el tambor, los artículos más pequeños, como las latas, caen por agujeros y se transportan a su propia empacadora. Esta máquina comprime los materiales en fardos cuadrados. A diferencia de los artículos metálicos más pequeños, los voluminosos no se embalan, sino que se montan en una barcaza que va a una instalación de chatarra.",
+      "popup": "El tambor tamizador es como una lavadora cilíndrica gigante con agujeros de ocho pulgadas."
+    },
+    {
+      "slug": "quality-metal",
+      "label": "Quality Control",
+      "caption": "En la etapa de control de calidad se da una mirada final a los artículos clasificados. El equipo de control de calidad no separa los residuos, sino que limpia lo que ya está clasificado o elimina cualquier rastro de basura de entre los materiales reciclables.",
+      "popup": null
+    },
+    {
+      "slug": "railcar",
+      "label": "Railcar",
+      "caption": "Los materiales ya están separados. Pilas de fardos rectangulares de metal no férrico triturado salen de las instalaciones en camiones, mientras una garra de grúa gigante coloca los fardos de metales magnéticos en vagones de ferrocarril.",
+      "popup": null
+    },
+    {
+      "slug": "end-metal",
+      "label": "Finished product",
+      "caption": "Por último, los vagones con metales magnéticos y férricos flotan a lo largo de Upper Bay, partiendo de la zona cercana a la planta de tratamiento de aguas residuales Owl's Head Wastewater para encontrarse con una línea de ferrocarril en Nueva Jersey que los lleva a una planta de tratamiento.",
+      "popup": "La lata de aluminio que arrojó en el cubo de reciclaje se puede convertir en otra lata, papel de aluminio, o incluso en piezas de coche. Qué chévere, ¿verdad?"
+    }
+  ],
+  "glass": [
+    {
+      "slug": "garage",
+      "label": "The Garage",
+      "caption": "Hola, soy Renee, empleada de saneamiento de Staten Island. Comenzamos nuestro turno al marcar la entrada en nuestro taller local y luego salimos a recoger la basura o los materiales reciclables de su casa.",
+      "color": "blue",
+      "popup_caption": "Nuestro taller de Staten Island 1 ¡es una antigua estación de tranvía!",
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "curbside-glass",
+      "label": "Curbside Pickup",
+      "caption": "Sus artículos de metal, vidrio, plástico (MVP) y cartón reciclables los recogen mis compañeros de saneamiento y los vierten en un camión de basura del Departamento de Saneamiento de la Ciudad de Nueva York (New York City Department of Sanitation, DSNY).",
+      "color": "black",
+      "popup_caption": "Ventana emergente: La próxima vez que camine por la acera, recuerde que el vidrio que arrojó en el cubo de reciclaje ¡podría ser parte de la acera por la que está caminando!",
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "sims",
+      "label": "Sims",
+      "caption": "Al terminar la ruta de recogido, nos dirigimos a Sims Material Recovery Facility en Jersey City para descargar. El camión de basura de DSNY descarga MVP reciclables en la zona de vertido, un cuarto gigante donde se descargan materiales reciclables en pilas enormes.",
+      "color": "black",
+      "popup_caption": null,
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "sorting",
+      "label": "Sorting System",
+      "caption": "Un cargador frontal empuja el reciclaje de la zona de vertido al sistema de clasificación. Como alternativa, una grúa gigante que llaman excavadora recoge los materiales reciclables y los deposita en el sistema de clasificación, o según el equipo a disposición.",
+      "color": "black",
+      "popup_caption": null,
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "liberator",
+      "label": "The Liberator",
+      "caption": "A continuación, los reciclables entran en el sistema de clasificación y pasan primero por una trituradora de baja velocidad que abre las bolsas de reciclaje y se le conoce como Liberator",
+      "color": "black",
+      "popup_caption": null,
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "screens",
+      "label": "Disc Screens",
+      "caption": "Luego de que el Liberator abra las bolsas de reciclaje, los reciclables pasan sobre filas de barras de metal giratorias que se les conoce como cribas de disco. Mientras el metal y el plástico reciclables pasan por encima de las pantallas de disco giratorio, el vidrio golpea las barras de metal y se rompe en pedazos pequeños, los cuales caen a través de las aberturas entre las cribas de disco y los atrapa otra cinta transportadora.",
+      "color": "black",
+      "popup_caption": null,
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "barge-glass",
+      "label": "Glass Plant",
+      "caption": "El vidrio separado pasa de las cribas de disco a una barcaza que lo transporta a una planta donde se clasifica por tamaño y color.",
+      "color": "black",
+      "popup_caption": null,
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "end-glass",
+      "label": "RGA",
+      "caption": "Por último, los trozos de vidrio transparente, marrón y verde más grandes se clasifican a ojo y se utilizan para fabricar botellas nuevas. Los más pequeños y los que no son transparente, marrón o verde se transforman en conglomerado de vidrio reciclado (CVR) para uso en proyectos de construcción.",
+      "color": "black",
+      "popup_caption": "Ventana emergente: La próxima vez que camine por la acera, recuerde que el vidrio que arrojó en el cubo de reciclaje ¡podría ser parte de la acera por la que está caminando!",
+      "popup_left": null,
+      "popup_top": null
+    }
+  ],
+  "plastic": [
+    {
+      "slug": "garage",
+      "label": "The Garage",
+      "caption": "Hola, soy Katia, empleada de saneamiento de Brooklyn. Comenzamos nuestro turno al marcar la entrada en nuestro taller local y luego salimos a recoger la basura o los materiales reciclables de su casa.",
+      "color": "blue",
+      "popup_caption": "En nuestro taller Brooklyn 15 Annex, hay un mural pintado que pintó un empleado de saneamiento en homenaje a la historia estadounidense, con ilustraciones detalladas de la bandera americana y un águila calva.",
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "curbside-plastic",
+      "label": "Curbside Pickup",
+      "caption": "Sus artículos de metal, vidrio, plástico (MVP) y cartón reciclables los recogen mis compañeros de saneamiento y los vierten en un camión de basura del Departamento de Saneamiento de la Ciudad de Nueva York (New York City Department of Sanitation, DSNY).",
+      "color": "black",
+      "popup_caption": "Nuestro logotipo no siempre ha tenido el aspecto que el de hoy en día. No fue hasta 1929 que nos convertimos en el Departamento de Saneamiento que conocemos hoy, y que nuestro logotipo pasó a ser el caduceo más actual: un bastón alado con dos serpientes envueltas a su alrededor que representa la buena salud.",
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "sims",
+      "label": "Sims",
+      "caption": "Al terminar la ruta de recogido, nos dirigimos a Sims Sunset Park Material Recovery Facility. El camión de basura de DSNY descarga MVP reciclables en la zona de vertido, un cuarto gigante donde se descargan materiales reciclables en pilas enormes.",
+      "color": "black",
+      "popup_caption": null,
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "sorting",
+      "label": "Sorting System",
+      "caption": "Un cargador frontal empuja el reciclaje de la zona de vertido al sistema de clasificación. Como alternativa, una grúa gigante que llaman excavadora recoge los materiales reciclables y los deposita en el sistema de clasificación, o según el equipo a disposición.",
+      "color": "black",
+      "popup_caption": null,
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "liberator",
+      "label": "The Liberator",
+      "caption": "A continuación, los reciclables entran en el sistema de clasificación y pasan primero por una trituradora de baja velocidad que abre las bolsas de reciclaje y se le conoce como Liberator.",
+      "color": "black",
+      "popup_caption": null,
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "screens",
+      "label": "Optical Scanners",
+      "caption": "Los plásticos se mueven a lo largo de cintas transportadoras que pasan por debajo de lectores ópticos. A medida que el lector filtra los plásticos que no se pueden reciclar, lanza un chorro de aire al final de la cinta transportadora que dispara el artículo a otra cinta.",
+      "color": "black",
+      "popup_caption": "Los lectores ópticos son cámaras de tecnología punta que analizan materiales reciclables mediante radiación infrarroja cercana (RIC), la cual identifica tipos de plásticos distintos y demás materiales.",
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "quality-plastic",
+      "label": "Quality Control",
+      "caption": "El equipo de control de calidad limpia lo que ya ha sido clasificado al eliminar cualquier rastro de basura de los materiales reciclables.",
+      "color": "black",
+      "popup_caption": null,
+      "popup_left": null,
+      "popup_top": null
+    },
+    {
+      "slug": "end-plastic",
+      "label": "New Products",
+      "caption": "Luego de embalados, los plásticos se cargan en camiones y se dirigen a la fabricación de nuevos productos para la venta.",
+      "color": "black",
+      "popup_caption": "Su botella de plástico reciclado se puede transformar en botellas, textiles y alfombras nuevas. Quién sabe: ¡su botella, vestimenta o sendero podrían estar hechos con la botella que acaba de reciclar!",
+      "popup_left": null,
+      "popup_top": null
+    }
+  ],
+  "hotspots": [
+    {
+      "stream": "metal",
+      "scene": "garage",
+      "slug": "garage",
+      "text": "Many of our garages are former incinerators! Our Bronx 9/10/11 garages on Zerega Avenue were all once working incinerators."
+    },
+    {
+      "stream": "metal",
+      "scene": "curbside",
+      "slug": "logo",
+      "text": "Our logo hasn’t always looked the way it does today. It wasn’t until 1929 we became the Department of Sanitation we know today, and our logo became the most current caduceus: a winged staff with two serpents wrapped around it which represents good health."
+    },
+    {
+      "stream": "metal",
+      "scene": "claw",
+      "slug": "floor",
+      "text": "The tipping floor is a giant room where recyclables are unloaded into massive piles."
+    },
+    {
+      "stream": "metal",
+      "scene": "trommel",
+      "slug": "trommel",
+      "text": "The trommel is like a giant cylindrical washing machine with eight inch holes in it."
+    },
+    {
+      "stream": "metal",
+      "scene": "metal-end",
+      "slug": "can",
+      "text": "The aluminum can that you tossed in the recycling bin can be made into another can, foil, or even car parts - pretty cool, right?"
+    },
+    {
+      "stream": "glass",
+      "scene": "garage",
+      "slug": "garage",
+      "text": "Our Staten Island 1 garage is a former trolley station!"
+    },
+    {
+      "stream": "glass",
+      "scene": "curbside",
+      "slug": "logo",
+      "text": "Our logo hasn’t always looked the way it does today. It wasn’t until 1929 we became the Department of Sanitation we know today, and our logo became the most current caduceus: a winged staff with two serpents wrapped around it which represents good health."
+    },
+    {
+      "stream": "glass",
+      "scene": "glass-end",
+      "slug": "rga",
+      "text": "Next time you’re walking along the sidewalk, remember that glass you tossed in the recycling bin - it could potentially be part of the sidewalk you are walking on!"
+    },
+    {
+      "stream": "plastic",
+      "scene": "garage",
+      "slug": "garage",
+      "text": "In our Brooklyn 15 Annex garage, there is a mural painted by a Sanitation Worker which pays homage to American History, with detailed illustrations of the American Flag and a Bald Eagle!"
+    },
+    {
+      "stream": "plastic",
+      "scene": "curbsude",
+      "slug": "logo",
+      "text": "Our logo hasn’t always looked the way it does today. It wasn’t until 1929 we became the Department of Sanitation we know today, and our logo became the most current caduceus: a winged staff with two serpents wrapped around it which represents good health."
+    },
+    {
+      "stream": "plastic",
+      "scene": "scanner",
+      "slug": "scanner",
+      "text": "Optical Scanners are high tech cameras that use Near Infrared Light (NIR) technology to scan recyclables. NIR technology can identify different types of plastics and other materials."
+    },
+    {
+      "stream": "plastic",
+      "scene": "plastic-end",
+      "slug": "product",
+      "text": "Your recycled plastic bottle can be made into new bottles, textiles, and carpeting. Who knows, you could be drinking from, wearing, or walking upon the bottle you recycled!"
+    },
+    {
+      "stream": "paper",
+      "scene": "garage",
+      "slug": "garage",
+      "text": "Our Manhattan Spring Street garage located in western lower Manhattan is LEED-certified GOLD for its sustainable design features such as a green vegetated roof, use of recycled materials, harvesting of rainwater, energy and water efficiency, and low toxicity materials."
+    },
+    {
+      "stream": "paper",
+      "scene": "curbside",
+      "slug": "logo",
+      "text": "Our logo hasn’t always looked the way it does today. It wasn’t until 1929 we became the Department of Sanitation we know today, and our logo became the most current caduceus: a winged staff with two serpents wrapped around it which represents good health."
+    },
+    {
+      "stream": "paper",
+      "scene": "weighing",
+      "slug": "truck",
+      "text": "When we say safety, service and sustainability, we really mean it! Since 2005, DSNY has used biodiesel fuel from soybean oil to fuel our fleet - DSNY boasts the cleanest fleet in the United States!"
+    },
+    {
+      "stream": "paper",
+      "scene": "paper-end",
+      "slug": "pizza",
+      "text": "One big recipient of our recycled cardboard is our City’s pizzerias. Next time you’re about to bite into some tasty pizza, remember that pizza box could have been recycled from NY’s paper."
+    },
+    {
+      "stream": "landfill",
+      "scene": "garage",
+      "slug": "garage",
+      "text": "Our current Queens West 1 garage was a former horse barn!"
+    },
+    {
+      "stream": "landfill",
+      "scene": "curbside",
+      "slug": "truck",
+      "text": "Our 2006 Solid Waste Management Plan eliminated 60 million miles of truck travel per year by dramatically reducing the number of truck trips."
+    },
+    {
+      "stream": "landfill",
+      "scene": "landfill-end",
+      "slug": "landfill",
+      "text": "In the United States, landfills are the third largest contributor of methane gas which is 34 times the greenhouse effect of carbon dioxide. Want to help combat the effect of climate change? Avoid the trash bin and try to reduce, reuse, or recycle!"
+    }
+  ]
+}

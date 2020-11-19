@@ -1,0 +1,142 @@
+// //GARAGE
+// .scene[data-scene="garage"] {
+
+// }
+// #truck {
+// 	// transform: translateX(100%);
+// 	// @include animate {
+// 	// 	animation: garage 2000ms ease-out 0ms 1 forwards;
+// 	// }
+// }
+
+// //CURBSIDE PAPER
+// .scene[data-scene="curbside-paper"] {
+// 	svg {
+// 		margin-top: 0;
+// 	}
+// }
+// // #hand {
+// // 	transform: translateY(-100%);
+// // 	@include animate {
+// // 		animation: hand 2000ms ease-out 0ms 1 forwards;
+// // 	}
+// // }
+
+// //MTS
+// .scene[data-scene="mts"] {
+// 	.svg-wrap {
+// 		flex-direction: column;
+// 		svg {
+// 			width: 100%;
+// 			margin-top: 100px;
+// 		}
+// 		&::after {
+// 			content: "";
+// 			width: 100vw;
+// 			display: block;
+// 			flex: 1;
+// 			background: $blue;
+// 			@include lg-over {
+// 				display: none;
+// 			}
+// 		}
+// 	}
+// }
+
+// //WEIGHING
+// .scene[data-scene="weighing"] {
+// 	.svg-wrap {
+// 		flex-direction: column;
+// 		svg {
+// 			width: 100%;
+// 			height: unset;
+// 			margin-top: 100px;
+// 		}
+// 		&::after {
+// 			content: "";
+// 			width: 100vw;
+// 			display: block;
+// 			flex: 1;
+// 			background: $black;
+// 			@include lg-over {
+// 				display: none;
+// 			}
+// 		}
+// 	}
+// }
+
+// //FISH BOWL
+// .scene[data-scene="fish-bowl"] {
+// 	.svg-wrap {
+// 		flex-direction: column;
+// 		svg {
+// 			width: 100%;
+// 			margin-top: 0;
+// 		}
+// 		&::after {
+// 			content: "";
+// 			width: 100vw;
+// 			display: block;
+// 			flex: 1;
+// 			background: $green;
+// 			@include lg-over {
+// 				display: none;
+// 			}
+// 		}
+// 	}
+// 	#fish-bowl {
+// 		&::after {
+// 			content: '';
+// 			width: 100vw;
+// 			height: 10vh;
+// 			background: black;
+// 			position: absolute;
+// 			left: 0;
+// 			bottom: 0;
+// 			@include animate {
+
+// 			}
+// 		}
+// 	}
+// }
+
+// //BARGE
+// .scene[data-scene="barge-paper"] {
+// 	svg {
+// 		margin-top: 0px;
+// 	}
+// }
+
+// //PRATT
+// .scene[data-scene="pratt"] {
+// 	svg {
+// 		margin-top: 0px;
+// 	}
+// }
+
+
+// //PULPER
+// .scene[data-scene="pulper"] {
+// 	svg {
+// 		margin-bottom: 0;
+//     height: unset;
+// 	}
+// }
+
+// //WINDER
+// .scene[data-scene="winder"] {
+// 	svg {
+// 		margin-top: 0;
+// 	}
+// }
+
+// //STORAGE
+// .scene[data-scene="storage"] {
+// 	.svg-wrap {
+// 		flex-direction: column;
+// 	}
+// 	svg {
+// 		height: 100%;
+//     width: auto;
+// 	}
+// }

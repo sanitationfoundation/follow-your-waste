@@ -1,0 +1,133 @@
+$blue: #043FAB;
+$teal: #028FBF;
+$yellow: #F2B621;
+$orange: #FC652C;
+$pink: #CD718A;
+$lime: #ADF940;
+$green: #024A32;
+$lightgreen: #00AA64;
+
+
+$blue-dark: #012E7F;
+$green-dark: #025237;
+$yellow-dark: #AC8118;
+$orange-dark: #BE4216;
+$pink-dark: #9E465F;
+$red-dark: #861C11;
+
+$black: #000;
+$darken: rgba(#2E2E2E, .9);
+
+[data-color="blue"] {
+	background-color: $blue;
+}
+[data-color="teal"] {
+	background-color: $teal;
+}
+[data-color="yellow"] {
+	background-color: $yellow;
+}
+[data-color="orange"] {
+	background-color: $orange;
+}
+[data-color="pink"] {
+	background-color: $pink;
+}
+[data-color="black"] {
+	background-color: $black;
+}
+[data-color="green"] {
+	background-color: $green;
+}
+[data-color="lime"] {
+	background-color: $lime;
+}
+
+
+@mixin xs-text {
+	font-size: 12.8px;
+	line-height: 16px;
+}
+
+@mixin sm-text {
+	font-size: 16px;
+	line-height: 22px;
+}
+
+@mixin md-text {
+	font-size: 20px;
+	line-height: 22px;
+}
+
+
+@mixin lg-text {
+	font-size: 25px;
+	line-height: 30px;
+}
+
+@mixin xl-text {
+	font-size: 50px;
+	line-height: 55px;
+}
+
+@mixin xxl-text {
+	font-size: 150px;
+  line-height: 160px;
+}
+
+
+$portrait-width: 160px;
+
+$sm-width: 640px;
+$md-width: 900px;
+$lg-width: 1020px;
+$xl-width: 1440px;
+
+
+@mixin sm-under {
+	@media(max-width: $sm-width) {
+		@content;
+	}
+}
+
+@mixin sm-over {
+	@media(min-width: $sm-width) {
+		@content;
+	}
+}
+
+@mixin md-under {
+	@media(max-width: $md-width) {
+		@content;
+	}
+}
+
+@mixin md-over {
+	@media(min-width: $md-width) {
+		@content;
+	}
+}
+
+@mixin lg-under {
+	@media(max-width: $lg-width) {
+		@content;
+	}
+}
+
+@mixin lg-over {
+	@media(min-width: $lg-width) {
+		@content;
+	}
+}
+
+@mixin xl-under {
+	@media(max-width: $xl-width) {
+		@content;
+	}
+}
+
+@mixin xl-over {
+	@media(min-width: $xl-width) {
+		@content;
+	}
+}

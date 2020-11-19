@@ -1,0 +1,157 @@
+-
+	var data = htmlWebpackPlugin.options.data
+	var text = htmlWebpackPlugin.options.text
+	var dialog = text.dialog[0]
+	var micro = text.micro[0]
+	var lang = htmlWebpackPlugin.options.lang
+	var rootPath = htmlWebpackPlugin.options.rootPath
+	// var streams = ['landfill','metal','glass','plastic','paper']
+	var streams = ['paper','landfill']
+
+//- include mixins.pug
+
+doctype html
+html(lang=lang dir="ltr" data-root-path=rootPath)
+	head
+		include head.pug
+			
+	body#intro.mute
+		include header.pug
+
+		#intro-view.view.loading
+			#intro-selection-wrap
+				#intro-selection
+					#intro-title
+						img(src=rootPath+"assets/images/title.svg" alt=micro.title)
+					#intro-tagline
+						| #{micro.tagline}
+					#intro-bottom
+						button.button#intro-button #{micro.get_started}
+						#loading #{micro.loading}
+
+		#select-view.view
+			.view-inner
+
+				#items-wrap
+					#stamp
+					each itemData, index in data.items
+						- var itemText = text.items[index];
+						.item(data-item=itemData.slug data-stream=itemData.stream)
+							img(src=rootPath+"assets/images/items/"+itemData.slug+".png" alt=itemText.label+": "+itemText.tooltip)
+							.tooltip
+								.tooltip-arrow
+								.tooltip-inner
+									strong= itemText.label
+									p= itemText.tooltip
+						-;
+
+				
+				#bins.bins-wrap
+					.bin(data-stream="paper" data-title="Paper")
+						img.bin-front(src=rootPath+"assets/images/bin-paper-front.png")
+						img.bin-lid(src=rootPath+"assets/images/bin-paper-lid.png")
+					.bin(data-stream="metal-glass-plastic" data-title="Metal, Glass, Plastic, Cartons")
+						img.bin-front(src=rootPath+"assets/images/bin-mgp-front.png")
+						img.bin-lid(src=rootPath+"assets/images/bin-mgp-lid.png")
+					.bin(data-stream="landfill" data-title="Landfill")
+						img.bin-front(src=rootPath+"assets/images/bin-landfill-front.png")
+						img.bin-lid(src=rootPath+"assets/images/bin-landfill-lid.png")
+
+				#bin-backs.bins-wrap
+					.bin(data-stream="paper")
+						img.bin-back(src=rootPath+"assets/images/bin-paper-back.png")
+					.bin(data-stream="metal-glass-plastic")
+						img.bin-back(src=rootPath+"assets/images/bin-mgp-back.png")
+					.bin(data-stream="landfill")
+						img.bin-back(src=rootPath+"assets/images/bin-landfill-back.png")
+		
+		#streams-view.view
+			.view-inner
+				each streamSlug in streams
+					- var streamData = data[streamSlug]
+					- var streamText = text[streamSlug];
+					.stream(data-slug=streamSlug)
+						.scenes-wrap
+							each sceneData, index in streamData
+								- var sceneText = streamText[index];
+								.scene(class=sceneData.slug data-scene=sceneData.slug data-color=sceneData.color data-media=sceneData.media)
+									if(streamSlug == 'paper' || streamSlug == 'landfill')
+										if(sceneData.media == 'svg')
+											.svg-wrap(class=sceneData.format)
+										else
+											.img-wrap(class=sceneData.format)
+												img(src=rootPath+"assets/scenes/"+sceneData.slug+".png")
+
+
+									.tooltip
+										.tooltip-arrow
+										.tooltip-inner
+											p= sceneText.popup
+							-;
+						.chyron-wrap-wrap
+							.chyron-wrap
+								.chyron
+									.chyron-inner
+										.portrait
+											img(src=rootPath+"assets/images/workers/"+streamSlug+".png")
+										.captions
+											each sceneData, index in streamData
+												- var sceneText = streamText[index]
+												.caption(data-scene=sceneData.slug)
+													.text= sceneText.caption
+													audio(controls="false" preload="none")
+														source(src=rootPath+"assets/audio/"+streamSlug+"/"+sceneData.slug+".wav" type="audio/wav")
+											-;
+										button.icon-button.toggle
+										button.icon-button.replay
+										button.icon-button.volume
+									
+						.progress
+							each sceneData, index in streamData
+								- var sceneText = streamText[index]
+								.tick(data-scene=sceneData.slug)
+									.label= sceneText.label
+							-;
+
+						.arrow(data-dir="prev")
+							.arrow-shape
+						.arrow(data-dir="next")
+							.arrow-shape
+
+		#alerts-view.view
+			.view-inner
+				.alert(data-alert="select")
+					.portrait
+						img(src=rootPath+"assets/images/workers/renee.png")
+					.message
+						| Hi there, and welcome to Disposal Journey! I’m Renee, and I work at DSNY. Do you ever wonder what happens to your waste after you toss it in a bin? My team and I are here to teach you.
+					button.button
+						| Okay
+				.alert(data-alert="not-trash")
+					.message
+						| #{dialog.not_trash}
+					button.button
+						| #{micro.try_again}
+				.alert(data-alert="wrong-recycle")
+					.message
+						| #{dialog.wrong_recycle}
+					button.button
+						| #{micro.try_again}
+				.alert(data-alert="not-recycle")
+					.message
+						| #{dialog.not_recycle}
+					button.button
+						| #{micro.try_again}
+				.alert(data-alert="correct-bin")
+					.message
+						| #{dialog.correct_bin}
+					button.button
+						| #{micro.lets_go}
+
+		#lang-select
+			span.lang-option(title="English")
+				a(lang="es" href=rootPath+"index.html") English
+			span.lang-option(title="Español")
+				a(lang="es" href=rootPath+"es/index.html") Español
+			span.lang-option(title="简体")
+				a(lang="es" href=rootPath+"zh/index.html") 简体

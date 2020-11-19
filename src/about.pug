@@ -1,0 +1,53 @@
+-
+	var data = htmlWebpackPlugin.options.data
+	var text = htmlWebpackPlugin.options.text
+	var dialog = text.dialog[0]
+	var micro = text.micro[0]
+	var lang = htmlWebpackPlugin.options.lang
+	var rootPath = htmlWebpackPlugin.options.rootPath
+
+doctype html
+html(lang=lang data-root-path=rootPath)
+	head
+		include head.pug
+			
+	body.page#about
+		include header.pug
+
+		#page-content
+			section#about-site
+				.col.narrow(style="background-image:url("+rootPath+"assets/images/about-curbside.png)")
+					//- img#about-curbside(src=rootPath+"assets/images/about-curbside.png")
+
+				.col.wide
+					h2 What is this?
+
+					p After we toss our waste in the bin, we don’t often think about where it goes next. Whether we repurpose our waste through recycling, or “get rid” by burying or burning these by-products, our choices can have a big impact on the environment.  In the United States, landfills are the third largest source of methane gas. Methane is 34 times more effective than carbon dioxide at trapping heat in the atmosphere - it's a really potent greenhouse gas. If you want to help combat the effect of climate change, then one easy step is to avoid the trash bin and try to reduce, reuse, or recycle. 		 	 	 		
+			
+					p Although we should reduce how much waste we generate and reuse products whenever possible, sometimes this isn’t an option. Already, New Yorkers are producing less waste at home than ever before— and 68% of what we do throw away can be composted or belongs in curbside recycling. More than 40% of MGP––your metal, glass, plastic and carton recycling––collections consist of unwanted materials such as organic residues, paper, foam plastics, and film plastics like bags and wraps. If we are more careful about where we toss our waste, then we can ensure that more items are recycled and don’t end up buried or burned. 
+
+					p Don’t forget how large this process is: before your waste is recycled, buried, or burned, it is transported, sorted, and processed by many human hands. The men and women of our Department are on the front lines every day working tirelessly to keep our city healthy, safe and clean. Following Your Waste on its journey from curbside pickup and through the inner workings of our city gives you a glimpse into the varied work that keeps New York City alive. 
+
+
+			section#about-resources
+				.col.narrow
+					h2 Are you an educator?
+
+					p We’ve created a collection of supplementary materials and lesson plans to help bring the story of New York’s sanitation system to the classroom, no matter what age.
+
+					a.button(href=rootPath+"resources") Teaching Resources
+
+				.col.wide(style="background-image:url("+rootPath+"assets/images/about-resources.png)")
+
+
+			section#about-foundation
+				.col.wide
+					h2 About sanitation foundation
+
+					p The Sanitation Foundation, formerly known as the Foundation for New York’s Strongest, is the official nonprofit organization of the New York City Department of Sanitation. Supported by private funding and in-kind donations, the Foundation leverages non-traditional strategies to promote sustainability and advance the essential services of Sanitation employees.
+
+					a.button.dark(href="https://www.sanitationfoundation.org/donate" target="_blank") Donate
+
+		include footer.pug
+
+		
