@@ -21397,7 +21397,7 @@ class Scene {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/coreytegeler/Sites/followyourwaste/src/script.js */"./src/script.js");
+module.exports = __webpack_require__(/*! /Users/coreytegeler/Sites/follow-your-waste/src/script.js */"./src/script.js");
 
 
 /***/ })

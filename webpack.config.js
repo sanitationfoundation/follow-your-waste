@@ -8,7 +8,7 @@ const webpack = require('webpack'),
 			MiniCssExtractPlugin = require('mini-css-extract-plugin'),
 			OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
 			HtmlWebpackPlugin = require('html-webpack-plugin'),
-			url = "https://coreytegeler.com/followyourwaste/";
+			url = "https://coreytegeler.com/follow-your-waste/";
 let mode, outputJS;
 
 if(env === 'build') {
