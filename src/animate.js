@@ -183,12 +183,12 @@ const pratt = function() {
 }
 
 export var animations = {
-	'garage': garage,
-	'garage-paper': garagePaper,
+	// 'garage': garage,
+	// 'garage-paper': garagePaper,
 	'curbside-paper': curbsidePaper,
 	'curbside-landfill': curbsideLandfill,
 	'mts': mts,
-	'weighing': weighing,
+	// 'weighing': weighing,
 	'barge-paper': barge,
 	'barge-landfill': barge,
 	'crane-landfill': craneLandfill,

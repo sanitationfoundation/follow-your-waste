@@ -1,5 +1,5 @@
 import { animations } from "animate.js";
-import { lottie } from "lottie-web";
+// import { lottie } from "lottie-web";
 import { gsap } from "gsap";
 require("./style.scss");
 
@@ -13,13 +13,14 @@ const CLIENT_ID = "913312390321-6pahjln9b949e3rssp5gcm9p25205cno.apps.googleuser
 			html = document.querySelector("html"),
 			lang = html.attributes.lang,
 			rootPath = html.dataset.rootPath,
+			docElem = document.documentElement,
+			fullToggle = document.querySelector("#full-toggle"),
 			introView = document.querySelector("#intro-view"),
 			startButtn = document.querySelector("#intro-button"),
 			selectView = document.querySelector("#select-view"),
 			streamsView = document.querySelector("#streams-view"),
 			streamElems = document.querySelectorAll(".stream"),
 			itemsWrap = document.querySelector("#items-wrap"),
-			stamp = document.querySelector("#stamp"),
 			itemElems = document.querySelectorAll(".item"),
 			itemsArr = [],
 			binsArr = [],
@@ -40,9 +41,11 @@ window.streamSlug = "";
 window.onload = () => {
 	setUpStreamSelect();
 
-	if(isIframe()) {
-		body.classList.add("full");
-	}
+	fullToggle.onclick = toggleFullscreen;
+
+	// if(isIframe()) {
+	// 	body.classList.add("full");
+	// }
 };
 
 
@@ -60,23 +63,60 @@ window.onresize = () => {
 document.onkeydown = (e) => {
 	e = e || window.event;
 	const keyCode = e.keyCode ? e.keyCode : e.which;
-	if(keyCode == 37) {
-		currStream.goToPrevScene();
-	} else if(keyCode == 39) {
-		currStream.goToNextScene();
-	} else if(keyCode == 77) {
-		const currAudioElem = currStream.elem.querySelector(".caption.show audio");
-		body.classList.toggle("mute");
-		if(body.classList.contains("mute")) {
-			currAudioElem.pause();
-		} else {
-			currAudioElem.play();
-		}
+
+	switch(keyCode) {
+		case 27:
+			body.classList.remove("full");
+			closeFullscreen();
+			break;
+		case 37:
+			currStream.goToPrevScene();
+			break;
+		case 39:
+			currStream.goToNextScene();
+			break;
+		case 77:
+			const currAudioElem = currStream.elem.querySelector(".caption.show audio");
+			body.classList.toggle("mute");
+			if(body.classList.contains("mute")) {
+				currAudioElem.pause();
+			} else {
+				currAudioElem.play();
+			}
+			break;
 	}
 };
 
+document.onfullscreenchange = (e) => {
+	if(document.fullscreenElement) {
+		body.classList.add("full");
+	} else {
+		body.classList.remove("full");
+	}
+}
 
-const isIframe = () => {
+const toggleFullscreen = (e) => {
+	body.classList.toggle("full");
+	if(body.classList.contains("full")) {
+		openFullscreen();
+	} else {
+	  closeFullscreen();
+	}
+}
+
+const openFullscreen = (e) => {
+	if(docElem.requestFullscreen && !document.fullscreenElement) {
+    docElem.requestFullscreen();
+  }
+}
+
+const closeFullscreen = (e) => {
+	if(document.exitFullscreen && document.fullscreenElement) {
+    document.exitFullscreen();
+  }
+}
+
+const isIframe = (e) => {
 	try {
 		return window.self !== window.top;
 	} catch (e) {
@@ -202,34 +242,15 @@ class Item {
 					binElem = bin.elem,
 					binBounds = binElem.getBoundingClientRect(),
 					binBackElem = bin.backElem;
-					// newItemLeft = binBounds.left + binBounds.width/2 - itemBounds.width + "px",
-					// newItemTop  = "100%";
 
 		binBackElem.classList.add("open");
 		binElem.classList.add("open");
 		itemElem.classList.remove("dropping");
-		// itemElem.style.left = newItemLeft;
-		// itemElem.style.top = newItemTop;
 		itemElem.classList.add("returning");
 		setTimeout(function() {
 			itemElem.classList.remove("returning");
-		}, 300);
+		}, 600);
 
-		// const returnItemTimeline = gsap.timeline({});
-
-		// returnItemTimeline.to(itemElem, {
-		// 	duration: .5,
-		// 	ease: "expo.out",
-		// 	top: "50%",
-		// });
-		// itemsWrapPackery.layout();
-		// returnItemTimeline.to(itemElem, {
-		// 	duration: .5,
-		// 	ease: "expo.out",
-		// 	top: "50%"
-		// });
-		// bin.backElem.classList.remove("open");
-		// itemElem.classList.remove("returning");
 	
 	}
 
@@ -258,15 +279,6 @@ class Item {
 			}
 		}
 		tooltipInner.style.left = newLeft+"px";
-
-
-		const itemHeight = imageBounds.height + tooltipBounds.height;
-		// console.log(imageBounds.top + itemHeight, itemsWrap.getBoundingClientRect().bottom);
-		// if(imageBounds.top + itemHeight >= itemsWrap.getBoundingClientRect().bottom - 50) {
-		// 	elem.classList.add("top");
-		// } else {
-		// 	elem.classList.remove("top");
-		// }
 	}
 }
 
@@ -444,6 +456,7 @@ class Stream {
 	setUpScenes() {
 		const self = this,
 					sceneElems = this.elem.querySelectorAll(".scene:not(.setup)"),
+					animatedScenes = ["garage-paper", "weighing"],
 					svgReqs = [];
 
 		sceneElems.forEach(function(sceneElem, i) {
@@ -451,7 +464,9 @@ class Stream {
 						sceneObj = new Scene(sceneElem, self.elem);
 			scenesArr[slug] = sceneObj
 			self.scenes[slug] = sceneObj;
-			svgReqs.push(sceneObj.req);
+			if(sceneObj.req) {
+				svgReqs.push(sceneObj.req);
+			}
 		});
 
 		Promise.all(svgReqs)
@@ -461,8 +476,6 @@ class Stream {
 					handleStreamSelect();
 					showAlert("select", () => {
 						body.id = "select";
-						// itemsWrapPackery.unstamp(stamp);
-						// itemsWrapPackery.layout();
 					});
 				}
 				introView.classList.remove("loading");
@@ -533,6 +546,11 @@ class Stream {
 			playingAudioElem.currentTime = 0;
 			playingAudioElem.pause();
 		}
+
+		if(nextSceneObj.animation) {
+			nextSceneObj.animation.goToAndPlay(0);
+		}
+
 		nextSceneElem.classList.add("show");
 		if(!nextSceneElem)
 			return body.id = "";
@@ -541,7 +559,9 @@ class Stream {
 		this.prepareScene(nextSceneSlug);
 
 		if(nextAudioElem && !body.classList.contains("mute")) {
-			nextAudioElem.play();
+			setTimeout(function() {
+				nextAudioElem.play();
+			}, 500);
 		}
 	}
 
@@ -593,11 +613,31 @@ class Scene {
 		this.tooltip = sceneElem.querySelector(".tooltip");
 
 		if(sceneElem.dataset.media === "svg") {
-			this.getSvg();
+			if(this.isAnimated()) {
+				this.getAnimation();
+			} else {
+				this.getSvg();
+			}
 		} else {
 			sceneElem.classList.add("setup");
 			this.setUpScene(sceneElem);
 		}
+	}
+
+	isAnimated() {
+		const animated = ["garage-paper", "weighing"];
+		return animated.includes(this.slug);
+	}
+
+	getAnimation() {
+		const animation = lottie.loadAnimation({
+			container: this.elem.querySelector(".svg-wrap"),
+			renderer: 'svg',
+			loop: false,
+			autoplay: false,
+			path: "assets/animate/"+this.slug+"/"+this.slug+".json"
+		});
+		this.animation = animation;
 	}
 
 	getSvg() {
@@ -636,12 +676,12 @@ class Scene {
 					captionElem = this.caption,
 					audioElem = this.audio,
 					tooltipElem = this.tooltip,
-					markerElem = sceneElem.querySelector(".marker"),
-					stream = streamsArr[this.stream];
+					markerElem = sceneElem.querySelector(".marker");
 		this.marker = markerElem;
 
 		if(tickElem) {
 			tickElem.onclick = () => {
+				const stream = streamsArr[self.stream];
 				stream.goToScene(slug);
 			};
 		}
