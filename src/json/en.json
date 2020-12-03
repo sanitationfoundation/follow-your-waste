@@ -4,10 +4,20 @@
       "title": "Follow Your Waste",
       "tagline": "The everyday story of your waste, as told by New York’s Strongest.",
       "description": null,
-      "loading": "Loading",
+      "loading": "Loading...",
       "get_started": "Get started!",
       "try_again": "Try Again",
-      "lets_go": "Let's Go!"
+      "lets_go": "Let's Go!",
+      "teach_resources": null,
+      "donate": "Donate"
+    }
+  ],
+  "dialog": [
+    {
+      "not_trash": "Oh no! This item can be recycled! Please drop the item into a different bin.",
+      "wrong_recycle": "You have misplaced this recyclable item - an easy mistake to make. Try dropping the item into a different bin.",
+      "not_recycle": "This piece of trash is not currently recyclable in NYC. Drop the item into a different bin.",
+      "correct_bin": "You have placed this item in the correct bin! Now, learn from a NYC Sanitation Worker what happens next."
     }
   ],
   "workers": [
@@ -66,12 +76,15 @@
       "image": "metal"
     }
   ],
-  "dialog": [
+  "page": [
     {
-      "not_trash": "Oh no! This item can be recycled! Please drop the item into a different bin.",
-      "wrong_recycle": "You have misplaced this recyclable item - an easy mistake to make. Try dropping the item into a different bin.",
-      "not_recycle": "This piece of trash is not currently recyclable in NYC. Drop the item into a different bin.",
-      "correct_bin": "You have placed this item in the correct bin! Now, learn from a NYC Sanitation Worker what happens next."
+      "worker_title": "Meet the workers",
+      "worker_about": "The men and women of our Department are on the front lines every day working tirelessly to keep our city healthy, safe and clean. They told you the story of your waste - now get to know the person behind the collection truck. From laying in the hammocks at Governor’s Island, to playing in our department’s “Pipes and Drums” band, there is so much more to New York’s Strongest than this short story - find out more below!",
+      "about_site_title": "What is this?",
+      "about_site_body": "After we toss our waste in the bin, we don’t often think about where it goes next. Whether we repurpose our waste through recycling, or “get rid” by burying or burning these by-products, our choices can have a big impact on the environment. In the United States, landfills are the third largest source of methane gas. Methane is 34 times more effective than carbon dioxide at trapping heat in the atmosphere - it's a really potent greenhouse gas. If you want to help combat the effect of climate change, then one easy step is to avoid the trash bin and try to reduce, reuse, or recycle.\n\nAlthough we should reduce how much waste we generate and reuse products whenever possible, sometimes this isn’t an option. Already, New Yorkers are producing less waste at home than ever before— and 68% of what we do throw away can be composted or belongs in curbside recycling. More than 40% of MGP––your metal, glass, plastic and carton recycling––collections consist of unwanted materials such as organic residues, paper, foam plastics, and film plastics like bags and wraps. If we are more careful about where we toss our waste, then we can ensure that more items are recycled and don’t end up buried or burned.\n\nDon’t forget how large this process is: before your waste is recycled, buried, or burned, it is transported, sorted, and processed by many human hands. The men and women of our Department are on the front lines every day working tirelessly to keep our city healthy, safe and clean. Following Your Waste on its journey from curbside pickup and through the inner workings of our city gives you a glimpse into the varied work that keeps New York City alive.",
+      "about_resources_title": "Are you an educator?",
+      "about_resources_body": "We’ve created a collection of supplementary materials and lesson plans to help bring the story of New York’s sanitation system to the classroom, no matter what age.",
+      "about_foundation_title": "About sanitation foundation"
     }
   ],
   "items": [
@@ -151,91 +164,121 @@
       "slug": "garage-paper",
       "label": "Garage",
       "caption": "Hi, I am Sanitation Worker Tom from Manhattan. We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
-      "popup": "Our Manhattan Spring Street garage located in western lower Manhattan is LEED-certified GOLD for its sustainable design features such as a green vegetated roof, use of recycled materials, harvesting of rainwater, energy and water efficiency, and low toxicity materials."
+      "fact": "Our Manhattan Spring Street garage located in western lower Manhattan is LEED-certified GOLD for its sustainable design features such as a green vegetated roof, use of recycled materials, harvesting of rainwater, energy and water efficiency, and low toxicity materials.",
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "curbside-paper",
       "label": "Curbside Pickup",
       "caption": "After leaving our Manhattan Spring Street garage, our Sanitation Workers pick up your cardboard and paper recycling from the sidewalk, and throw it into a DSNY collection truck.",
-      "popup": null
+      "fact": "To ensure your recycling is picked up, remember that your paper and cardboard must be placed in a clear bag. Corrugated cardboard must be flattened and tied with sturdy twine into bundles 18 inches tall or smaller.",
+      "vocab": "DSNY",
+      "define": "The NYC Department of Sanitation––which you might know as DSNY––is the world’s largest sanitation department. We’ve been keeping NYC healthy, safe and clean since 1881!"
     },
     {
       "slug": "mts",
       "label": "Marine Transfer Station",
       "caption": "When our Sanitation Workers have completed their routes, they make their way to the 59th Street Manhattan transfer station.",
-      "popup": "Our logo hasn’t always looked the way it does today. It wasn’t until 1929 we became the Department of Sanitation we know today, and our logo became the most current caduceus: a winged staff with two serpents wrapped around it which represents good health."
+      "fact": "When our 59th Street Manhattan Transfer station was renovated in 1990, artist Stephen Antonakos installed a colorful light installation. The artwork, known as ‘Neon for the 59th Street Marine Transfer Station,’ was commissioned by the City’s Department of Cultural Affairs’ Percent for Art program.",
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "weighing",
       "label": "Weighing In",
       "caption": "Before entering, the collection truck is weighed so we can determine the load’s tonnage. It is also scanned for radiation. If it tests positive, the truck is removed to ensure the protection of our Sanitation Workers.",
-      "popup": "When we say safety, service and sustainability, we really mean it! Since 2005, DSNY has used biodiesel fuel from soybean oil to fuel our fleet - DSNY boasts the cleanest fleet in the United States!"
+      "fact": "When we say safety, service and sustainability, we really mean it! Since 2005, DSNY has used biodiesel fuel from soybean oil to fuel our fleet - DSNY boasts the cleanest fleet in the United States!",
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "fish-bowl",
       "label": "Fish Bowl",
       "caption": "Once inside the station, our Sanitation Worker is directed to available tipping bays.",
-      "popup": null
+      "fact": "This office is known as The Fishbowl because our operators see all the movements to and from our Marine Transfer Station. Important information, such as the weight of trucks and the unique truck identifier (similar to the E-ZPass system), are sent to a computer in The Fishbowl.",
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "tipping-paper",
       "label": "Tipping Bay",
       "caption": "Then they are signaled to release their load of paper and cardboard trash directly onto a barge.",
-      "popup": null
+      "fact": null,
+      "vocab": "Pulper",
+      "define": "The Pulper is a big vat filled with water and a blender type agitator which breaks up cardboard and paper into small pieces and eventually Pulp Fibers. The pulp looks like thick porridge, or rice pudding!"
     },
     {
       "slug": "barge-paper",
       "label": "Barge",
       "caption": "The barge––full of NYC’s paper and cardboard recyclables––is guided by a tugboat from the Upper Bay through Kill Van Kull and to Arthur Kill Narrows to the Pratt Paper Mill in Staten Island.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "pratt",
       "label": "Paper Mill",
       "caption": "When the barge arrives at the Pratt Industries Paper Mill, an operator steers a giant crane claw to scoop up paper recycling from the barge.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "pulper",
       "label": "The Pulper",
       "caption": "Once at Pratt Paper Mill, the paper and cardboard recycling is first dumped into a pit and then fed into a Pulper. In the pulper, the paper is blended with water to create a pulp. This pulp passes through screens to remove contaminants.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "press",
       "label": "The Press",
       "caption": "Then it is pressed, and ultimately dried and made into a large roll of recycled paper.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "winder",
       "label": "The Winder",
       "caption": "These huge rolls of recycled paper––which weigh 25 tons each–– are transported by a mechanized system controlled by a Mill Worker to the “Winder.”",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "storage",
       "label": "Storage",
       "caption": "There, the recycled paper is cut down into smaller rolls, which are then transported by a forklift driver to a storage area.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "corrugator",
       "label": "Corrugator",
       "caption": "This recycled paper is ready to be distributed to a corrugator, where the rolls of paper are made into sheets of cardboard and then cut and folded into boxes.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "quality-paper",
       "label": "Quality Control",
       "caption": "Mill workers examine the packets of cardboard boxes on the assembly line for quality control, and if they are happy with the standard then the recycled cardboard is distributed for use across NYC.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "end-paper",
       "label": "Pizza Boxes",
       "caption": "One big recipient of our recycled cardboard is our City’s pizzerias. Next time you’re about to bite into some tasty pizza, remember that pizza box could have been recycled from NY’s paper.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     }
   ],
   "landfill": [
@@ -243,55 +286,73 @@
       "slug": "garage",
       "label": "Garage",
       "caption": "Hi, I am Sanitation Worker Tuhina from Queens. We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
-      "popup": "Our current Queens West 1 garage was a former horse barn!"
+      "fact": "Our current Queens West 1 garage was a former horse barn!",
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "curbside-landfill",
       "label": "Curbside Pickup",
       "caption": "Once trash has been collected from the sidewalk, our Sanitation Workers make their way to the North Shore Marine Transfer Station.",
-      "popup": "Our 2006 Solid Waste Management Plan eliminated 60 million miles of truck travel per year by dramatically reducing the number of truck trips."
+      "fact": "Our 2006 Solid Waste Management Plan eliminated 60 million miles of truck travel per year by dramatically reducing the number of truck trips.",
+      "vocab": "Marine Transfer Station",
+      "define": "After collection, trash goes to a transfer station so it can be prepared to be brought to its final destination. Some of these transfer stations are by the water; we call them Marine Transfer Stations. On an average day, 2,200 tons of solid waste pass through The North Shore Marine Transfer Station."
     },
     {
       "slug": "weighing",
       "label": "Weighing In",
       "caption": "Before entering, the collection truck is weighed so we can determine the load’s tonnage. It is also scanned for radiation. If it tests positive, the truck is removed to ensure the protection of our Sanitation Workers.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "tipping-landfill",
       "label": "Tipping Floor",
       "caption": "After weighing, a DSNY employee will be on the tipping floor to direct truck drivers to available tipping bays.",
-      "popup": null
+      "fact": null,
+      "vocab": "tipping floor",
+      "define": "The tipping floor is a giant room where recyclables are unloaded into massive piles."
     },
     {
       "slug": "loading",
       "label": "Loading Floor",
       "caption": "Trash from the DSNY truck will land on the loading floor located below the elevated tipping bay. Two front-end loaders push the trash into an available container, where it is then compressed by an excavator.",
-      "popup": null
+      "fact": null,
+      "vocab": "front-end loaders",
+      "define": "Front-end loaders are big vehicles with a scoop in front for lifting and loading loose material."
     },
     {
       "slug": "lidding",
       "label": "Lidding Floor",
       "caption": "Once the container is full, Sanitation Workers on the lidding floor seal the container.",
-      "popup": null
+      "fact": null,
+      "vocab": "lidding floor",
+      "define": "The lidding floor is where lids are secured on containers of trash."
     },
     {
       "slug": "crane-landfill",
       "label": "Loading the Barge",
       "caption": "From here on, the container is the responsibility of a private contractor, who loads it onto a barge with a crane.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "barge-landfill",
       "label": "Barge-to-rail",
       "caption": "The barge––and containers full of trash––is guided by a tugboat to a container terminal, where it is off-loaded and placed on a train.",
-      "popup": null
+      "fact": null,
+      "vocab": "tugboat",
+      "define": "A tugboat is a small boat that tows, pushes or pulls other vessels. Here, our barge is attached to the tugboat by a tow line - a really strong piece of rope."
     },
     {
       "slug": "end-landfill",
       "label": "Landfill",
       "caption": "Finally, the train leaves and the containers of waste are either taken to a waste-to-energy facility to make electricity or dumped at landfill.",
-      "popup": "In the United States, landfills are the third largest contributor of methane gas which is 34 times the greenhouse effect of carbon dioxide. Want to help combat the effect of climate change? Avoid the trash bin and try to reduce, reuse, or recycle!"
+      "fact": "In the United States, landfills are the third largest contributor of methane gas which is 34 times the greenhouse effect of carbon dioxide. Want to help combat the effect of climate change? Avoid the trash bin and try to reduce, reuse, or recycle!",
+      "vocab": null,
+      "define": null
     }
   ],
   "metal": [
@@ -299,79 +360,105 @@
       "slug": "garage",
       "label": "The Garage",
       "caption": "Hi, I am Sanitation Worker Julian from the Bronx. We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "curbside-metal",
       "label": "Curbside Pickup",
       "caption": "MGP––your metal, glass, plastic and carton recycling––is picked up by my fellow Sanitation Workers, and thrown into a DSNY collection truck.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "mts",
       "label": "Marine Transfer Station",
       "caption": "After completing our collection route, our Sanitation Workers head to Sims Hunts Point where your recyclables are put on a barge.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sims",
       "label": "Sims",
       "caption": "The barge is guided by a tugboat to the Sims Sunset Park Material Recovery Facility (MRF).",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "claw",
       "label": "The Claw",
       "caption": "When the barge arrives at the Sims Material Recovery Facility in Sunset Park, Brooklyn, an operator steers a giant crane claw to scoop up your MGP recyclables from the barge to the tipping floor.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "tipping",
       "label": "The Tipping Floor",
       "caption": "In addition to the barge carrying recyclables, a DSNY collection truck arrives, and they too unload our City’s recycling into huge piles on the tipping floor.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sorting",
       "label": "Sorting",
       "caption": "From the tipping floor, the recycling is pushed into the sorting system by a front end loader. Alternatively––depending what equipment is available––your recyclables are picked up and dropped into the sorting system by a giant crane, known as an excavator.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "liberator",
       "label": "The Liberator",
       "caption": "At this point, the recyclables enter the sorting system and first pass through a slow-speed shredder, known as the liberator, that rips open your clear recycling bags.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "magnets",
       "label": "Magnets",
       "caption": "The recycling is passed under a large spinning magnet that collects ferrous metals, or magnetic materials. Later, an eddy current (a reverse magnet) repels any non-ferrous metals, such as aluminum.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "trommel",
       "label": "Trommel Screen",
       "caption": "The ferrous metals, or magnetic materials, go through a trommel screen. As the trommel spins, the smaller items––like cans––fall through these holes and are transported to their very own baler This machine compresses materials into square bales. Unlike the smaller metal items, bulky metals are not baled, and get loaded onto a barge that goes to a scrap metal facility.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "quality-metal",
       "label": "Quality Control",
       "caption": "The quality control step gives a final look at items that have been sorted. The quality control team is not exactly sorting the remainders, rather cleaning up what has already been sorted, or removing any remaining residue or trash from the recyclables.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "railcar",
       "label": "Railcar",
       "caption": "By now, all materials are separated. Stacks of rectangular bales of crushed non-ferrous metal leave the facility on trucks; the bales of magnetic metals are placed into rail cars by a giant crane claw.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "end-metal",
       "label": "Finished product",
       "caption": "Finally, the rail cars, containing magnetic, ferrous metals, float across the Upper Bay, starting from the area near Owl’s Head Wastewater treatment plant, meet up with a rail line in New Jersey where they are taken to a plant for further processing.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     }
   ],
   "glass": [
@@ -379,49 +466,65 @@
       "slug": "garage",
       "label": "The Garage",
       "caption": "Hi, I am Sanitation Worker Renee from Staten Island. We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "curbside-glass",
       "label": "Curbside Pickup",
       "caption": "MGP––your metal, glass, plastic and carton recycling––is picked up by my fellow Sanitation Workers and thrown into a DSNY collection truck.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sims",
       "label": "Sims",
       "caption": "After completing our collection route, we drive directly to the Sims Material Recovery Facility (MRF) in Jersey City to unload. The DSNY collection truck unloads your MGP recyclables onto the tipping floor, a giant room where recyclables are unloaded into massive piles.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sorting",
       "label": "Sorting System",
       "caption": "From the tipping floor, the recycling is pushed into the sorting system by a front end loader. Alternatively––depending what equipment is available––your recyclables are picked up and dropped into the sorting system by a giant crane, known as an excavator.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "liberator",
       "label": "The Liberator",
       "caption": "At this point, the recyclables first pass through a slow-speed shredder, known as the liberator, that rips open your clear recycling bags.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "screens",
       "label": "Disc Screens",
       "caption": "After the liberator rips open recycling bags, all recyclables pass over rows of spinning metal rods called disc screens. While metal and plastic recyclables roll right over the spinning disc screens, the glass hits into the metal rods and breaks into small pieces. These pieces fall through openings between the disc screens and are caught by another conveyor belt below.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "barge-glass",
       "label": "Glass Plant",
       "caption": "After the disc screens, the separated glass is loaded onto a barge and continues to a glass plant where it is sorted further into size and color.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "end-glass",
       "label": "RGA",
       "caption": "Finally, larger clear, brown, and green glass will be optically sorted and used to make new bottles. The smaller pieces of glass, or the pieces that are not clear, brown or green, are turned into Recycled Glass Aggregate (RGA) to be used for future construction projects.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     }
   ],
   "plastic": [
@@ -429,49 +532,65 @@
       "slug": "garage",
       "label": "The Garage",
       "caption": "Hi, I am Sanitation Worker Katia from Brooklyn.  We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "curbside-plastic",
       "label": "Curbside Pickup",
       "caption": "MGP––your metal, glass, plastic and carton recycling––is picked up by my fellow Sanitation Workers, and thrown into a DSNY collection truck.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sims",
       "label": "Sims",
       "caption": "After completing our collection route, we head to the Sims Sunset Park Material Recovery Facility (MRF). The DSNY collection truck unloads your MGP recyclables onto the tipping floor, a giant room where recyclables are unloaded into massive piles.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sorting",
       "label": "Sorting System",
       "caption": "From the tipping floor, the recycling is pushed into the sorting system by a front end loader. Alternatively––depending what equipment is available––your recyclables are picked up and dropped into the sorting system by a giant crane, known as an excavator.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "liberator",
       "label": "The Liberator",
       "caption": "At this point, the recyclables first pass through a slow-speed shredder, known as the liberator, that rips open your clear recycling bags.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "screens",
       "label": "Optical Scanners",
       "caption": "Your plastics move along conveyor belts that pass under Optical Scanners. When the scanner filters out nonrecyclable plastics, it cues an air jet at the end of the conveyor belt that shoots the item onto another conveyor.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "quality-plastic",
       "label": "Quality Control",
       "caption": "The quality control team cleans up what has already been sorted, removing any remaining residue or trash from the recyclables",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "end-plastic",
       "label": "New Products",
       "caption": "After being baled, plastics are loaded onto trucks and head out to be made into new products for sale.",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     }
   ]
 }

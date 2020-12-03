@@ -140,7 +140,7 @@ nav {
 			transform: skew(24deg);
 		}
 	}
-	@include md-under {
+	@include md-width {
 		display: none;
 	}
 }
@@ -304,7 +304,7 @@ body.alerts #alerts-view {
 	width: 340px;
 	position: absolute;
 	top: calc(100% - 1px);
-	left: calc(50% - 150px);
+	left: calc(50% - 170px);
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 100ms ease-in-out, top 100ms ease-in-out;
@@ -351,9 +351,9 @@ body.alerts #alerts-view {
 }
 
 .tooltip-inner {
-	width: 300px;
+	width: 330px;
 	padding: 15px 20px 20px 20px;
-	margin: 20px;
+	margin: 20px 5px;
 	background-color: $darken;
 	color: white;
 	border-radius: 20px;
@@ -437,13 +437,13 @@ body.alerts #alerts-view {
 	}
 	&[data-dir="prev"] {
 		left: 50px;
-		@include md-under {
+		@include md-width {
 			left: 0;
 		}
 	}
 	&[data-dir="next"] {
 		right: 50px;
-		@include md-under {
+		@include md-width {
 			right: 0;
 		}
 	}
@@ -483,7 +483,7 @@ body.alerts #alerts-view {
 	z-index: 50;
 	display: flex;
 	justify-content: space-evenly;
-	@include md-under {
+	@include md-width {
 		display: none;
 	}
 }
@@ -546,15 +546,16 @@ body.alerts #alerts-view {
 		&.width {
 			display: flex;
 			svg, img {
-				width: 100%;
-				height: auto;
+				width: 100% !important;
+				height: auto !important;
+				margin-top: calc(((100vw / 1.75) - 100vh)/-2) !important;
 			}
 		}
 		&.height {
 			svg, img {
-				width: auto;
-				height: 100%;
-				margin-left: calc(((100vh * 1.75) - 100vw)/-2);
+				width: auto !important;
+				height: 100% !important;
+				margin-left: calc(((100vh * 1.75) - 100vw)/-2) !important;
 			}
 		}
 	}
@@ -592,7 +593,7 @@ body.alerts #alerts-view {
 	body#streams .stream.show &  {
 		opacity: 1;
 	}
-	@include md-under {
+	@include md-width {
 		bottom: 0;
 	}
 }
@@ -600,7 +601,7 @@ body.alerts #alerts-view {
 	width: 90%;
 	max-width: $md-width;
 	margin: auto;
-	@include md-under {
+	@include md-width {
 		width: 100%;
 	}
 }
@@ -622,7 +623,7 @@ body.alerts #alerts-view {
 		width: 120px;
 		max-height: 120px;
 	}
-	@include md-under {
+	@include md-width {
 		min-height: $portrait-width;
 		border-width: 3px 0 0 0;
 		border-radius: 0;
@@ -646,7 +647,7 @@ body.alerts #alerts-view {
 		left: -76px;
 		top: -24px;
 		z-index: 51;
-		@include md-under {
+		@include md-width {
 			left: 0;
 			top: 0;
 		}
@@ -679,17 +680,17 @@ body.alerts #alerts-view {
 		.factoid {
 			display: none;
 		}
-		@include md-under {
+		@include md-width {
 			padding-left: $portrait-width;
 		}
 		.text {
 			float: right;
 			width: 100%;
 			max-width: #{$md-width - $portrait-width};
-			@include md-under {
+			@include md-width {
 				width: calc(90vw - #{$portrait-width});
 			}
-			@include sm-under {
+			@include sm-width {
 				width: 100%;
 			}
 		}
@@ -776,12 +777,7 @@ body.alerts #alerts-view {
 	}
 }
 
-
-
-
-
-
 @import 'select.scss';
 @import 'scenes.scss';
-@import 'animate.scss';
+// @import 'animate.scss';
 @import 'pages.scss';

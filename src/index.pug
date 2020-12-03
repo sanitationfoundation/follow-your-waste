@@ -74,19 +74,16 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 						.scenes-wrap
 							each sceneData, index in streamData
 								- var sceneText = streamText[index];
-								.scene(class=sceneData.slug data-scene=sceneData.slug data-color=sceneData.color data-media=sceneData.media)
+								.scene(class=sceneData.slug data-scene=sceneData.slug data-color=sceneData.color data-animated=sceneData.animated.toString() data-loop=sceneData.loop.toString())
 									if(streamSlug == 'paper' || streamSlug == 'landfill')
-										if(sceneData.media == 'svg')
-											.svg-wrap(class=sceneData.format)
-										else
-											.img-wrap(class=sceneData.format)
-												img(src=rootPath+"assets/scenes/"+sceneData.slug+".png")
+										.svg-wrap(class=sceneData.format)
 
-
-									.tooltip
-										.tooltip-arrow
-										.tooltip-inner
-											p= sceneText.popup
+									if(sceneText.fact)
+										.marker
+										.tooltip
+											.tooltip-arrow
+											.tooltip-inner
+												p= sceneText.fact
 							-;
 						.chyron-wrap-wrap
 							.chyron-wrap

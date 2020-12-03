@@ -5911,7 +5911,7 @@ class Item {
           tooltipInner = elem.querySelector(".tooltip-inner"),
           image = this.image,
           imageBounds = image.getBoundingClientRect(),
-          margin = 20;
+          margin = 0;
     let newLeft = 0;
 
     if (tooltipBounds.left <= windowWidth / 2) {
@@ -6057,8 +6057,7 @@ class Stream {
     this.scenesWrap = elem.querySelector(".scenes-wrap");
     this.progress = elem.querySelector(".progress");
     const prevArrow = elem.querySelector(".arrow[data-dir='prev']"),
-          nextArrow = elem.querySelector(".arrow[data-dir='next']"),
-          tickElems = elem.querySelectorAll(".tick");
+          nextArrow = elem.querySelector(".arrow[data-dir='next']");
 
     prevArrow.onclick = () => {
       self.goToPrevScene();
@@ -6164,8 +6163,7 @@ class Stream {
     tickElem.classList.add("active");
     captionElem.classList.add("show");
     sceneElem.classList.add("show", "animate");
-    streamsView.dataset.color = sceneColor;
-    sceneObj.animateScene();
+    streamsView.dataset.color = sceneColor; // sceneObj.animateScene();
   }
 
   goToScene(sceneSlug) {
@@ -6263,32 +6261,24 @@ class Scene {
     this.audio = this.caption ? this.caption.querySelector("audio") : null;
     this.tooltip = sceneElem.querySelector(".tooltip");
 
-    if (sceneElem.dataset.media === "svg") {
-      if (this.isAnimated()) {
-        this.getAnimation();
-      } else {
-        this.getSvg();
-      }
+    if (sceneElem.dataset.animated == "true") {
+      this.getAnimation();
     } else {
-      sceneElem.classList.add("setup");
-      this.setUpScene(sceneElem);
+      this.getSvg();
     }
   }
 
-  isAnimated() {
-    const animated = ["garage-paper", "weighing"];
-    return animated.includes(this.slug);
-  }
-
   getAnimation() {
+    const loop = this.elem.dataset.loop == "true";
     const animation = lottie.loadAnimation({
       container: this.elem.querySelector(".svg-wrap"),
       renderer: 'svg',
-      loop: false,
+      loop: loop,
       autoplay: false,
       path: "assets/animate/" + this.slug + "/" + this.slug + ".json"
     });
     this.animation = animation;
+    this.setUpScene();
   }
 
   getSvg() {
@@ -6393,19 +6383,17 @@ class Scene {
 
     tooltipElem.style.left = newLeft + "px";
     tooltipElem.style.top = newTop + "px";
-  }
+  } // animateScene() {
+  // 	const sceneElem = this.elem,
+  // 				sceneAnim = animations[this.slug];
+  // 	if(sceneAnim && !sceneElem.classList.contains("animating")) {
+  // 		sceneElem.classList.add("animating");
+  // 		setTimeout(function() {
+  // 			sceneAnim(sceneElem);
+  // 		}, 100);
+  // 	}
+  // }
 
-  animateScene() {
-    const sceneElem = this.elem,
-          sceneAnim = animate_js__WEBPACK_IMPORTED_MODULE_0__["animations"][this.slug];
-
-    if (sceneAnim && !sceneElem.classList.contains("animating")) {
-      sceneElem.classList.add("animating");
-      setTimeout(function () {
-        sceneAnim(sceneElem);
-      }, 100);
-    }
-  }
 
 }
 

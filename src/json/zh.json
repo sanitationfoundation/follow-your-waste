@@ -151,91 +151,121 @@
       "slug": "garage-paper",
       "label": "车库",
       "caption": "大家好，我是来自 Manhattan 的环卫工人 Tom。我们在我们当地的车库打卡上班，然后出发去收集你们的生活垃圾或可回收物。",
-      "popup": "我们的 Manhattan Spring Street 车库位于 Manhattan 下城西部，因其可持续性设计特色（如绿植屋顶、使用回收材料、收集雨水、能源和水资源利用率高以及材料毒性低）而获得能源与环境设计先锋 (LEED) 黄金级认证。"
+      "fact": "我们的 Manhattan Spring Street 车库位于 Manhattan 下城西部，因其可持续性设计特色（如绿植屋顶、使用回收材料、收集雨水、能源和水资源利用率高以及材料毒性低）而获得能源与环境设计先锋 (LEED) 黄金级认证。",
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "curbside-paper",
       "label": "路边拾音器",
       "caption": "离开我们的 Manhattan Spring Street 车库后，我们的环卫工人从人行道上捡起你们的纸板和废纸，然后扔进 DSNY 垃圾收集车中。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "mts",
       "label": "海上转运站",
       "caption": "当我们的环卫工人结束各自的路线时，他们前往 Manhattan 第 59 大街的转运站。",
-      "popup": "我们的标志并非始终是现在这样。直到 1929 年我们才成为今天大家所熟知的卫生局，我们的标志也变成了最流行的双蛇杖：一根顶端带有翅膀、上面缠绕着两条蛇的权杖，寓意是健康。"
+      "fact": "我们的标志并非始终是现在这样。直到 1929 年我们才成为今天大家所熟知的卫生局，我们的标志也变成了最流行的双蛇杖：一根顶端带有翅膀、上面缠绕着两条蛇的权杖，寓意是健康。",
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "weighing",
       "label": "称重",
       "caption": "在进入之前，会对垃圾收集车进行称重，这样我们可以确定装载物的吨位。也会进行辐射扫描。如果检测结果为阳性，则收集车会被转移走以确保保护我们的环卫工人。",
-      "popup": "当我们说到安全、服务和可持续性时，我们是认真的！自 2005 年起，DSNY 便使用从豆油中提取的生物柴油燃料作为车队的燃料 — DSNY 拥有美国最清洁的车队！"
+      "fact": "当我们说到安全、服务和可持续性时，我们是认真的！自 2005 年起，DSNY 便使用从豆油中提取的生物柴油燃料作为车队的燃料 — DSNY 拥有美国最清洁的车队！",
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "fish-bowl",
       "label": "鱼缸",
       "caption": "进入站点后，我们的环卫工人就会被引导至可用的倾卸区。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "tipping",
       "label": "小费湾",
       "caption": "然后，他们会接到信号，把纸张和纸板垃圾直接卸载到驳船上。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "barge-paper",
       "label": "驳船",
       "caption": "这艘驳船装满了纽约市的可回收纸张和纸板，由一艘拖船引导，从 Upper Bay 出发，经由 Kill Van Kill 到达 Arthur Kull Narrows，再到 Staten Island 的 Pratt 造纸厂。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "pratt",
       "label": "造纸厂",
       "caption": "当驳船到达 Pratt 工业造纸厂后，操作员操纵一个巨大的起重机抓斗，把可回收纸张从驳船上铲出。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "pulper",
       "label": "碎纸机",
       "caption": "到达 Pratt 造纸厂后，可回收的纸张和纸板首先被倾倒进一个坑中，然后送入碎浆机。在碎浆机中，纸张与水混合形成纸浆。纸浆通过筛网以移除污染物。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "press",
       "label": "新闻",
       "caption": "然后，纸浆被压缩，最终干燥，形成大卷的再生纸。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "winder",
       "label": "绕线机",
       "caption": "这些大卷的再生纸每卷重 25 吨，通过由工厂工人控制的机械化系统运送到“卷纸机”。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "storage",
       "label": "存储",
       "caption": "在那里，再生纸被切割成小卷，然后由叉车司机运输到存储区域。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "corrugator",
       "label": "瓦楞机",
       "caption": "这种再生纸已经准备就绪可以分配至瓦楞机。瓦楞机将纸卷制成纸板，然后切割，再折叠成纸板箱。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "quality-paper",
       "label": "质量控制",
       "caption": "工厂工人在装配线上检查纸板箱的包装，以进行质量控制，如果满足标准，那么回收纸板就会被分发到纽约市各地使用。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "end-paper",
       "label": "披萨盒",
       "caption": "回收纸板的一个大型接受者便是我们市的披萨店。下次当你们想吃美味的披萨时，请记得披萨盒可能是使用纽约回收的纸张做成的。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     }
   ],
   "landfill": [
@@ -243,55 +273,73 @@
       "slug": "garage",
       "label": "Garage",
       "caption": "大家好，我是来自 Queens 的环卫工人 Tuhina。我们在我们当地的车库打卡上班，然后出发去收集你们的生活垃圾或可回收物。",
-      "popup": "我们现在的 Queens 西部 1 号车库以前是个马场！"
+      "fact": "我们现在的 Queens 西部 1 号车库以前是个马场！",
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "curbside-landfill",
       "label": "Curbside Pickup",
       "caption": "当从人行道上收集完垃圾后，我们的环卫工人会前往 North Shore Marine 转运站。",
-      "popup": "我们的 2006 年固体废物管理计划 (Solid Waste Management Plan) 通过大幅减少垃圾收集车的出行次数，每年减少了 6,000 万英里的垃圾收集车出行里程。"
+      "fact": "我们的 2006 年固体废物管理计划 (Solid Waste Management Plan) 通过大幅减少垃圾收集车的出行次数，每年减少了 6,000 万英里的垃圾收集车出行里程。",
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "weighing",
       "label": "Weighing In",
       "caption": "在进入之前，会对垃圾收集车进行称重，这样我们可以确定装载物的吨位。也会进行辐射扫描。如果检测结果为阳性，则收集车会被转移走以确保保护我们的环卫工人。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "tipping",
       "label": "Tipping Floor",
       "caption": "称重后，DSNY 的雇员将出现在倾卸场，以将垃圾收集车司机引导至可用的倾卸区。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "loading",
       "label": "Loading Floor",
       "caption": "DSNY 垃圾收集车里的垃圾将卸载到位于高架倾卸区下方的装载台上。两个前端装载机将垃圾推入一个可用的集装箱中，然后由挖掘机进行压缩。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "lidding",
       "label": "Lidding Floor",
       "caption": "集装箱填满后，封盖区的环卫工人会将集装箱密封。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "crane",
       "label": "Loading the Barge",
       "caption": "从此时开始，集装箱就由私人承包商负责，由他们用起重机将集装箱装载到驳船上。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "barge",
       "label": "Barge-to-rail",
       "caption": "这艘驳船和装满垃圾的集装箱由拖船引导至集装箱码头，在那里将集装箱卸载到火车上。",
-      "popup": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "end-landfill",
       "label": "Landfill",
       "caption": "最终，火车离开后，装满垃圾的集装箱被送到废物发电能源转化设施或者在垃圾填埋场倾倒。",
-      "popup": "在美国，垃圾填埋场是甲烷气体的第三大来源，其温室效应是二氧化碳的 34 倍。想要在对抗气候变化影响中贡献一份力量吗？避免使用垃圾桶以及尽量减少垃圾，做到重复使用或循环利用！"
+      "fact": "在美国，垃圾填埋场是甲烷气体的第三大来源，其温室效应是二氧化碳的 34 倍。想要在对抗气候变化影响中贡献一份力量吗？避免使用垃圾桶以及尽量减少垃圾，做到重复使用或循环利用！",
+      "vocab": null,
+      "define": null
     }
   ],
   "metal": [
@@ -299,118 +347,105 @@
       "slug": "garage",
       "label": "The Garage",
       "caption": "Hi, I am Sanitation Worker Julian from the Bronx. We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
-      "color": "blue",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "curbside-metal",
       "label": "Curbside Pickup",
       "caption": "MGP––your metal, glass, plastic and carton recycling––is picked up by my fellow Sanitation Workers, and thrown into a DSNY collection truck.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "mts",
       "label": "Marine Transfer Station",
       "caption": "After completing our collection route, our Sanitation Workers head to Sims Hunts Point where your recyclables are put on a barge.",
-      "color": "yellow",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sims",
       "label": "Sims",
       "caption": "The barge is guided by a tugboat to the Sims Sunset Park Material Recovery Facility (MRF).",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "claw",
       "label": "The Claw",
       "caption": "When the barge arrives at the Sims Material Recovery Facility in Sunset Park, Brooklyn, an operator steers a giant crane claw to scoop up your MGP recyclables from the barge to the tipping floor.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "tipping",
       "label": "The Tipping Floor",
       "caption": "In addition to the barge carrying recyclables, a DSNY collection truck arrives, and they too unload our City’s recycling into huge piles on the tipping floor.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sorting",
       "label": "Sorting",
       "caption": "From the tipping floor, the recycling is pushed into the sorting system by a front end loader. Alternatively––depending what equipment is available––your recyclables are picked up and dropped into the sorting system by a giant crane, known as an excavator.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "liberator",
       "label": "The Liberator",
       "caption": "At this point, the recyclables enter the sorting system and first pass through a slow-speed shredder, known as the liberator, that rips open your clear recycling bags.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "magnets",
       "label": "Magnets",
       "caption": "The recycling is passed under a large spinning magnet that collects ferrous metals, or magnetic materials. Later, an eddy current (a reverse magnet) repels any non-ferrous metals, such as aluminum.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "trommel",
       "label": "Trommel Screen",
       "caption": "The ferrous metals, or magnetic materials, go through a trommel screen. As the trommel spins, the smaller items––like cans––fall through these holes and are transported to their very own baler This machine compresses materials into square bales. Unlike the smaller metal items, bulky metals are not baled, and get loaded onto a barge that goes to a scrap metal facility.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "quality-metal",
       "label": "Quality Control",
       "caption": "The quality control step gives a final look at items that have been sorted. The quality control team is not exactly sorting the remainders, rather cleaning up what has already been sorted, or removing any remaining residue or trash from the recyclables.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "railcar",
       "label": "Railcar",
       "caption": "By now, all materials are separated. Stacks of rectangular bales of crushed non-ferrous metal leave the facility on trucks; the bales of magnetic metals are placed into rail cars by a giant crane claw.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "end-metal",
       "label": "Finished product",
       "caption": "Finally, the rail cars, containing magnetic, ferrous metals, float across the Upper Bay, starting from the area near Owl’s Head Wastewater treatment plant, meet up with a rail line in New Jersey where they are taken to a plant for further processing.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     }
   ],
   "glass": [
@@ -418,73 +453,65 @@
       "slug": "garage",
       "label": "The Garage",
       "caption": "Hi, I am Sanitation Worker Renee from Staten Island. We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
-      "color": "blue",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "curbside-glass",
       "label": "Curbside Pickup",
       "caption": "MGP––your metal, glass, plastic and carton recycling––is picked up by my fellow Sanitation Workers and thrown into a DSNY collection truck.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sims",
       "label": "Sims",
       "caption": "After completing our collection route, we drive directly to the Sims Material Recovery Facility (MRF) in Jersey City to unload. The DSNY collection truck unloads your MGP recyclables onto the tipping floor, a giant room where recyclables are unloaded into massive piles.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sorting",
       "label": "Sorting System",
       "caption": "From the tipping floor, the recycling is pushed into the sorting system by a front end loader. Alternatively––depending what equipment is available––your recyclables are picked up and dropped into the sorting system by a giant crane, known as an excavator.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "liberator",
       "label": "The Liberator",
       "caption": "At this point, the recyclables first pass through a slow-speed shredder, known as the liberator, that rips open your clear recycling bags.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "screens",
       "label": "Disc Screens",
       "caption": "After the liberator rips open recycling bags, all recyclables pass over rows of spinning metal rods called disc screens. While metal and plastic recyclables roll right over the spinning disc screens, the glass hits into the metal rods and breaks into small pieces. These pieces fall through openings between the disc screens and are caught by another conveyor belt below.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "barge-glass",
       "label": "Glass Plant",
       "caption": "After the disc screens, the separated glass is loaded onto a barge and continues to a glass plant where it is sorted further into size and color.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "end-glass",
       "label": "RGA",
       "caption": "Finally, larger clear, brown, and green glass will be optically sorted and used to make new bottles. The smaller pieces of glass, or the pieces that are not clear, brown or green, are turned into Recycled Glass Aggregate (RGA) to be used for future construction projects.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     }
   ],
   "plastic": [
@@ -492,73 +519,65 @@
       "slug": "garage",
       "label": "The Garage",
       "caption": "Hi, I am Sanitation Worker Katia from Brooklyn.  We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
-      "color": "blue",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "curbside-plastic",
       "label": "Curbside Pickup",
       "caption": "MGP––your metal, glass, plastic and carton recycling––is picked up by my fellow Sanitation Workers, and thrown into a DSNY collection truck.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sims",
       "label": "Sims",
       "caption": "After completing our collection route, we head to the Sims Sunset Park Material Recovery Facility (MRF). The DSNY collection truck unloads your MGP recyclables onto the tipping floor, a giant room where recyclables are unloaded into massive piles.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "sorting",
       "label": "Sorting System",
       "caption": "From the tipping floor, the recycling is pushed into the sorting system by a front end loader. Alternatively––depending what equipment is available––your recyclables are picked up and dropped into the sorting system by a giant crane, known as an excavator.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "liberator",
       "label": "The Liberator",
       "caption": "At this point, the recyclables first pass through a slow-speed shredder, known as the liberator, that rips open your clear recycling bags.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "screens",
       "label": "Optical Scanners",
       "caption": "Your plastics move along conveyor belts that pass under Optical Scanners. When the scanner filters out nonrecyclable plastics, it cues an air jet at the end of the conveyor belt that shoots the item onto another conveyor.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "quality-plastic",
       "label": "Quality Control",
       "caption": "The quality control team cleans up what has already been sorted, removing any remaining residue or trash from the recyclables",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     },
     {
       "slug": "end-plastic",
       "label": "New Products",
       "caption": "After being baled, plastics are loaded onto trucks and head out to be made into new products for sale.",
-      "color": "black",
-      "popup_caption": null,
-      "popup_left": null,
-      "popup_top": null
+      "fact": null,
+      "vocab": null,
+      "define": null
     }
   ]
 }

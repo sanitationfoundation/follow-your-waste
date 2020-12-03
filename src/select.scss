@@ -48,7 +48,15 @@
 		transform: translateY(100%);
 		transition: all 500ms ease-in;
 	}
-	@include lg-under {
+	@include lg-width {
+		width: 150px;
+		height: 200px;
+		transform: translateY(50px);
+		&.open {
+			transform: translateY(30px);	
+		}
+	}
+	@include sm-height {
 		width: 150px;
 		height: 200px;
 		transform: translateY(50px);
@@ -64,14 +72,20 @@
 	position: absolute;
 	bottom: 122px;
 	transition: transform 400ms ease;
-	@include lg-under {
+	@include lg-width {
+		bottom: 73px;
+	}
+	@include sm-height {
 		bottom: 73px;
 	}
 }
 .bin-back {
 	bottom: 137px;
-	@include lg-under {
+	@include lg-width {
     bottom: 81px;
+	}
+	@include sm-height {
+		bottom: 81px;
 	}
 }
 .bin.open .bin-lid {
@@ -202,7 +216,7 @@ $items: (
 @each $name, $scale in $items {
   [data-item="#{$name}"] {
     width: $scale * 1%;
-		@include lg-under {
+		@include lg-width {
 			width: #{$scale * 1% / 2};
 			min-width: #{$scale * 10px};
 		}
