@@ -17,7 +17,7 @@
   background-color: #000; }
 
 [data-color="green"] {
-  background-color: #024A32; }
+  background-color: #00995C; }
 
 [data-color="lime"] {
   background-color: #ADF940; }
@@ -613,16 +613,6 @@ body.alerts #alerts-view {
       min-height: 160px;
       border-width: 3px 0 0 0;
       border-radius: 0; } }
-  .stream[data-slug="metal"] .chyron-inner {
-    border-color: #012E7F; }
-  .stream[data-slug="glass"] .chyron-inner {
-    border-color: #AC8118; }
-  .stream[data-slug="plastic"] .chyron-inner {
-    border-color: #861C11; }
-  .stream[data-slug="paper"] .chyron-inner {
-    border-color: #025237; }
-  .stream[data-slug="landfill"] .chyron-inner {
-    border-color: #9E465F; }
   .chyron-inner .portrait {
     left: -76px;
     top: -24px;
@@ -655,8 +645,6 @@ body.alerts #alerts-view {
     overflow-y: auto;
     font-size: 25px;
     line-height: 30px; }
-    .captions .caption .factoid {
-      display: none; }
     @media (max-width: 900px) {
       .captions .caption {
         padding-left: 160px; } }
@@ -670,12 +658,12 @@ body.alerts #alerts-view {
       @media (max-width: 640px) {
         .captions .caption .text {
           width: 100%; } }
+    .captions .caption .vocab {
+      cursor: pointer;
+      -webkit-transition: color 300ms ease-in-out;
+      transition: color 300ms ease-in-out; }
     .captions .caption audio {
       display: none; }
-    .captions .caption.show-factoid .text {
-      display: none; }
-    .captions .caption.show-factoid .factoid {
-      display: block; }
     .captions .caption:not(.show) {
       display: none; }
 
@@ -706,6 +694,93 @@ body.alerts #alerts-view {
   .icon-button:hover, .icon-button:focus {
     opacity: 1;
     cursor: pointer; }
+
+.stream[data-slug="metal"] .vocab {
+  color: #0551dd; }
+  .stream[data-slug="metal"] .vocab:hover, .stream[data-slug="metal"] .vocab:focus {
+    color: #0140b2; }
+
+.stream[data-slug="metal"] .chyron-inner {
+  border-color: #012E7F; }
+
+.stream[data-slug="glass"] .vocab {
+  color: #F2B621; }
+  .stream[data-slug="glass"] .vocab:hover, .stream[data-slug="glass"] .vocab:focus {
+    color: #AC8118; }
+
+.stream[data-slug="glass"] .chyron-inner {
+  border-color: #AC8118; }
+
+.stream[data-slug="plastic"] .vocab {
+  color: #e0301e; }
+  .stream[data-slug="plastic"] .vocab:hover, .stream[data-slug="plastic"] .vocab:focus {
+    color: #b32517; }
+
+.stream[data-slug="plastic"] .chyron-inner {
+  border-color: #861C11; }
+
+.stream[data-slug="paper"] .vocab {
+  color: #00cc7b; }
+  .stream[data-slug="paper"] .vocab:hover, .stream[data-slug="paper"] .vocab:focus {
+    color: #038458; }
+
+.stream[data-slug="paper"] .chyron-inner {
+  border-color: #025237; }
+
+.stream[data-slug="landfill"] .vocab {
+  color: #da97a9; }
+  .stream[data-slug="landfill"] .vocab:hover, .stream[data-slug="landfill"] .vocab:focus {
+    color: #b85f78; }
+
+.stream[data-slug="landfill"] .chyron-inner {
+  border-color: #9E465F; }
+
+.factoids {
+  width: 100px;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+.factoid {
+  width: 50%;
+  min-width: 400px;
+  max-width: 600px;
+  margin: 0 0 15px 0;
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out; }
+  .factoid.open {
+    -webkit-transform: translateX(calc(-100% + 100px));
+            transform: translateX(calc(-100% + 100px)); }
+
+.factoid-inner {
+  width: 100%;
+  padding: 15px 20px 20px 20px;
+  background-color: rgba(46, 46, 46, 0.9);
+  color: white;
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+  position: relative; }
+  .factoid-inner p {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 5px 0 0 0; }
 
 #alerts-view {
   background-color: rgba(46, 46, 46, 0.5);
@@ -1059,7 +1134,7 @@ body.alerts #alerts-view {
   background-color: #000; }
 
 [data-color="green"] {
-  background-color: #024A32; }
+  background-color: #00995C; }
 
 [data-color="lime"] {
   background-color: #ADF940; }

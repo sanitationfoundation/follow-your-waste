@@ -8,13 +8,10 @@
 	// var streams = ['landfill','metal','glass','plastic','paper']
 	var streams = ['paper','landfill']
 
-//- include mixins.pug
-
 doctype html
-html(lang=lang dir="ltr" data-root-path=rootPath)
+html
 	head
 		include head.pug
-			
 	body#intro.mute
 		include header.pug
 
@@ -45,26 +42,25 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 									p= itemText.tooltip
 						-;
 
-				
-				#bins.bins-wrap
-					.bin(data-stream="paper" data-title="Paper")
-						img.bin-front(src=rootPath+"assets/images/bin-paper-front.png")
-						img.bin-lid(src=rootPath+"assets/images/bin-paper-lid.png")
-					.bin(data-stream="metal-glass-plastic" data-title="Metal, Glass, Plastic, Cartons")
-						img.bin-front(src=rootPath+"assets/images/bin-mgp-front.png")
-						img.bin-lid(src=rootPath+"assets/images/bin-mgp-lid.png")
-					.bin(data-stream="landfill" data-title="Landfill")
-						img.bin-front(src=rootPath+"assets/images/bin-landfill-front.png")
-						img.bin-lid(src=rootPath+"assets/images/bin-landfill-lid.png")
+					#bins.bins-wrap
+						.bin(data-stream="paper" data-title="Paper")
+							img.bin-front(src=rootPath+"assets/images/bin-paper-front.png")
+							img.bin-lid(src=rootPath+"assets/images/bin-paper-lid.png")
+						.bin(data-stream="metal-glass-plastic" data-title="Metal, Glass, Plastic, Cartons")
+							img.bin-front(src=rootPath+"assets/images/bin-mgp-front.png")
+							img.bin-lid(src=rootPath+"assets/images/bin-mgp-lid.png")
+						.bin(data-stream="landfill" data-title="Landfill")
+							img.bin-front(src=rootPath+"assets/images/bin-landfill-front.png")
+							img.bin-lid(src=rootPath+"assets/images/bin-landfill-lid.png")
 
-				#bin-backs.bins-wrap
-					.bin(data-stream="paper")
-						img.bin-back(src=rootPath+"assets/images/bin-paper-back.png")
-					.bin(data-stream="metal-glass-plastic")
-						img.bin-back(src=rootPath+"assets/images/bin-mgp-back.png")
-					.bin(data-stream="landfill")
-						img.bin-back(src=rootPath+"assets/images/bin-landfill-back.png")
-		
+					#bin-backs.bins-wrap
+						.bin(data-stream="paper")
+							img.bin-back(src=rootPath+"assets/images/bin-paper-back.png")
+						.bin(data-stream="metal-glass-plastic")
+							img.bin-back(src=rootPath+"assets/images/bin-mgp-back.png")
+						.bin(data-stream="landfill")
+							img.bin-back(src=rootPath+"assets/images/bin-landfill-back.png")
+
 		#streams-view.view
 			.view-inner
 				each streamSlug in streams
@@ -78,14 +74,13 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 									if(streamSlug == 'paper' || streamSlug == 'landfill')
 										.svg-wrap(class=sceneData.orientation)
 
-									.factoids
-										- var x = 0;
-										while x <= 3
-											- x++;
-											if(sceneText["fact"+x])
-													.factoid(data-index=x data-vocab=sceneText["vocab"+x])
-														.factoid-inner
-															p= sceneText["fact"+x]
+									- var x = 0;
+									while x <= 3
+										if(sceneText["fact"+x])
+											.factoid
+												.tooltip-inner
+													//- p= sceneText["fact"+x]
+													//- p= "fact"+x
 							-;
 						.chyron-wrap-wrap
 							.chyron-wrap
@@ -116,43 +111,3 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 							.arrow-shape
 						.arrow(data-dir="next")
 							.arrow-shape
-
-		#alerts-view.view
-			.view-inner
-				.alert(data-alert="select")
-					.portrait
-						img(src=rootPath+"assets/images/workers/renee.png")
-					.message
-						| Hi there, and welcome to Disposal Journey! I’m Renee, and I work at DSNY. Do you ever wonder what happens to your waste after you toss it in a bin? My team and I are here to teach you.
-					button.button
-						| Okay
-				.alert(data-alert="not-trash")
-					.message
-						| #{dialog.not_trash}
-					button.button
-						| #{micro.try_again}
-				.alert(data-alert="wrong-recycle")
-					.message
-						| #{dialog.wrong_recycle}
-					button.button
-						| #{micro.try_again}
-				.alert(data-alert="not-recycle")
-					.message
-						| #{dialog.not_recycle}
-					button.button
-						| #{micro.try_again}
-				.alert(data-alert="correct-bin")
-					.message
-						| #{dialog.correct_bin}
-					button.button
-						| #{micro.lets_go}
-
-		#full-toggle ⊞
-
-		#lang-select
-			span.lang-option(title="English")
-				a(lang="es" href=rootPath+"index.html") English
-			span.lang-option(title="Español")
-				a(lang="es" href=rootPath+"es/index.html") Español
-			span.lang-option(title="简体")
-				a(lang="es" href=rootPath+"zh/index.html") 简体

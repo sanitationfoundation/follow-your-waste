@@ -61,388 +61,381 @@
     {
       "slug": "garage-paper",
       "color": "yellow",
-      "format": "width",
-      "animated": true,
-      "loop": false
+      "orientation": "width",
+      "animated": "true",
+      "looped": "false"
     },
     {
       "slug": "curbside-paper",
       "color": "black",
-      "format": "height",
-      "animated": true,
-      "loop": false
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false"
     },
     {
       "slug": "mts",
       "color": "yellow",
-      "format": "width",
-      "animated": true,
-      "loop": true
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
     },
     {
       "slug": "weighing",
       "color": "blue",
-      "format": "width",
-      "animated": true,
-      "loop": true
-    },
-    {
-      "slug": "fish-bowl",
-      "color": "green",
-      "format": "height",
-      "animated": false,
-      "loop": false
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
     },
     {
       "slug": "tipping-paper",
       "color": "orange",
-      "format": "height",
-      "animated": false,
-      "loop": false
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "barge-paper",
       "color": "blue",
-      "format": "height",
-      "animated": true,
-      "loop": true
+      "orientation": "height",
+      "animated": "true",
+      "looped": "true"
     },
     {
       "slug": "pratt",
       "color": "black",
-      "format": "height",
-      "animated": true,
-      "loop": true
+      "orientation": "height",
+      "animated": "true",
+      "looped": "true"
     },
     {
       "slug": "pulper",
       "color": "yellow",
-      "format": "height",
-      "animated": false,
-      "loop": false
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "press",
       "color": "pink",
-      "format": "width",
-      "animated": false,
-      "loop": false
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "winder",
       "color": "teal",
-      "format": "height",
-      "animated": false,
-      "loop": false
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "storage",
-      "color": "green",
-      "format": "width",
-      "animated": false,
-      "loop": false
+      "color": "forest",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "corrugator",
       "color": "yellow",
-      "format": "width",
-      "animated": false,
-      "loop": false
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "quality-paper",
       "color": "yellow",
-      "format": "width",
-      "animated": false,
-      "loop": false
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "end-paper",
       "color": "pink",
-      "format": "height",
-      "animated": false,
-      "loop": false
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
     }
   ],
   "landfill": [
     {
       "slug": "garage",
       "color": "blue",
-      "format": "width",
-      "animated": true,
-      "loop": true
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
     },
     {
       "slug": "curbside-landfill",
       "color": "black",
-      "format": "height",
-      "animated": true,
-      "loop": false
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false"
     },
     {
       "slug": "weighing",
       "color": "blue",
-      "format": "width",
-      "animated": true,
-      "loop": true
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
     },
     {
       "slug": "tipping-landfill",
       "color": "orange",
-      "format": "height",
-      "animated": false,
-      "loop": false
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "loading",
       "color": "lime",
-      "format": "width",
-      "animated": true,
-      "loop": false
+      "orientation": "width",
+      "animated": "true",
+      "looped": "false"
     },
     {
       "slug": "lidding",
       "color": "pink",
-      "format": "height",
-      "animated": true,
-      "loop": false
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false"
     },
     {
       "slug": "crane-landfill",
       "color": "yellow",
-      "format": "height",
-      "animated": true,
-      "loop": true
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false"
     },
     {
       "slug": "barge-landfill",
       "color": "blue",
-      "format": "height",
-      "animated": true,
-      "loop": false
+      "orientation": "height",
+      "animated": "true",
+      "looped": "true"
     },
     {
       "slug": "end-landfill",
       "color": "yellow",
-      "format": "width",
-      "animated": true,
-      "loop": true
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
     }
   ],
   "metal": [
     {
       "slug": "garage",
       "color": "blue",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "curbside-metal",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "mts",
       "color": "yellow",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "barge-metal",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "sims",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "claw",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "tipping",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "sorting",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "liberator",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "magnets",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "trommel",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "quality-metal",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "railcar",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "end-metal",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     }
   ],
   "glass": [
     {
       "slug": "garage",
       "color": "blue",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "curbside-glass",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "sims",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "sorting",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "liberator",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "screens",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "barge-glass",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "end-glass",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     }
   ],
   "plastic": [
     {
       "slug": "garage",
       "color": "blue",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "curbside-plastic",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "sims",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "sorting",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "liberator",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "optical",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "quality-plastic",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     },
     {
       "slug": "end-plastic",
       "color": "black",
-      "format": null,
-      "animated": null,
-      "loop": null
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
     }
   ]
 }

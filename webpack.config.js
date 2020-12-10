@@ -21,10 +21,10 @@ if(env === 'build') {
 
 const config = {
 	mode: mode,
-	entry: [__dirname + '/src/script.js'],
+	entry: [path.resolve(__dirname, 'src/script.js')],
 	devtool: 'source-map',
 	output: {
-		path: path.resolve(__dirname + '/dist'),
+		path: path.resolve(__dirname, 'dist'),
 		filename: outputJS,
 		library: 'fyw',
 		libraryTarget: 'umd',
@@ -81,10 +81,10 @@ const config = {
 				test: /\.pug$/,
 				use: ["pug-loader"]
 			},
-		]
+		],
 	},
 	resolve: {
-		modules: [path.resolve('./node_modules'), path.resolve('./src')],
+		modules: [path.resolve(__dirname, 'node_modules'), path.resolve(__dirname, 'src')],
 		extensions: ['.json', '.js']
 	},
 	plugins: [
@@ -93,58 +93,35 @@ const config = {
 			chunkFilename: '[id].css'
 		}),
 		new HtmlWebpackPlugin({
-			minify: false,
+			// minify: false,
+			// template: path.resolve(__dirname, 'src/index.pug'),
 			template: './src/index.pug',
-			filename: '../index.html',
-			data: require('./src/json/data.json'),
-			text: require('./src/json/en.json'),
+			filename: path.resolve(__dirname, 'index.html'),
+			data: require(path.resolve(__dirname, 'src/json/data.json')),
+			text: require(path.resolve(__dirname, 'src/json/en.json')),
 			lang: 'en',
-			rootPath: env === 'build' ? url : './'
-		}),
-		new HtmlWebpackPlugin({
-			minify: false,
-			template: './src/index.pug',
-			filename: '../es/index.html',
-			data: require('./src/json/data.json'),
-			text: require('./src/json/es.json'),
-			lang: 'es',
-			rootPath: env === 'build' ? url : '../'
-		}),
-		new HtmlWebpackPlugin({
-			minify: false,
-			template: './src/index.pug',
-			filename: '../zh/index.html',
-			data: require('./src/json/data.json'),
-			text: require('./src/json/zh.json'),
-			lang: 'zh-Hans',
-			rootPath: env === 'build' ? url : '../'
-		}),
-		new HtmlWebpackPlugin({
-			minify: false,
-			template: './src/about.pug',
-			filename: '../about/index.html',
-			data: require('./src/json/data.json'),
-			text: require('./src/json/zh.json'),
-			lang: 'en',
-			rootPath: env === 'build' ? url : '../'
-		}),
-		new HtmlWebpackPlugin({
-			minify: false,
-			template: './src/workers.pug',
-			filename: '../workers/index.html',
-			data: require('./src/json/data.json'),
-			text: require('./src/json/en.json'),
-			lang: 'en',
-			rootPath: env === 'build' ? url : '../'
+			rootPath: env === 'build' ? url : './',
+			// showErrors: true,
+			// cache: false
 		}),
 	],
+	// ].concat(entryHtmlPlugins)
 	optimization: {
 		minimize: env === 'build' ? true : false,
 		minimizer: [
 			new OptimizeCSSAssetsPlugin({}),
 			new TerserPlugin()
-		]
-	}
+		],
+	},
 };
+
+// const entryHtmlPlugins = Object.keys(entry.html).map(entryName => {
+//     return new HtmlWebpackPlugin({
+//         filename: `${entry.html[entryName]}.html`,
+//         template: `./source/templates/containers/${entryName}/${entryName}.pug`,
+//         chunks: [entryName],
+//         file: require(`../source/templates/containers/${entryName}/${entryName}.json`)
+//     })
+// });
 
 module.exports = config;

@@ -628,21 +628,6 @@ body.alerts #alerts-view {
 		border-width: 3px 0 0 0;
 		border-radius: 0;
 	}
-	.stream[data-slug="metal"] & {
-		border-color: $blue-dark;
-	}
-	.stream[data-slug="glass"] & {
-		border-color: $yellow-dark;
-	}
-	.stream[data-slug="plastic"] & {
-		border-color: $red-dark;
-	}
-	.stream[data-slug="paper"] & {
-		border-color: $green-dark;
-	}
-	.stream[data-slug="landfill"] & {
-		border-color: $pink-dark;
-	}
 	.portrait {
 		left: -76px;
 		top: -24px;
@@ -676,10 +661,6 @@ body.alerts #alerts-view {
 		text-align: left;
 		overflow-y: auto;
 		@include lg-text;
-		// letter-spacing: 1px;
-		.factoid {
-			display: none;
-		}
 		@include md-width {
 			padding-left: $portrait-width;
 		}
@@ -694,16 +675,12 @@ body.alerts #alerts-view {
 				width: 100%;
 			}
 		}
+		.vocab {
+			cursor: pointer;
+			transition: color 300ms ease-in-out;
+		}
 		audio {
 			display: none;
-		}
-		&.show-factoid {
-			.text {
-				display: none;
-			}
-			.factoid {
-				display: block;
-			}
 		}
 		&:not(.show) {
 			display: none;
@@ -744,6 +721,104 @@ body.alerts #alerts-view {
 	}
 }
 
+$light-amt: 10%;
+$lighter-amt: 10%;
+
+.stream[data-slug="metal"] {
+	.vocab {
+		color: lighten($blue, $light-amt);
+		&:hover, &:focus {
+			color: lighten($blue-dark, $lighter-amt);
+		}
+	}
+	.chyron-inner {
+		border-color: $blue-dark;
+	}
+}
+.stream[data-slug="glass"] {
+	.vocab {
+		color: $yellow;
+		&:hover, &:focus {
+			color: $yellow-dark;
+		}
+	}
+	.chyron-inner {
+		border-color: $yellow-dark;
+	}
+}
+.stream[data-slug="plastic"] {
+	.vocab {
+		color: lighten($red, $light-amt);
+		&:hover, &:focus {
+			color: lighten($red-dark, $lighter-amt);
+		}
+	}
+	.chyron-inner {
+		border-color: $red-dark;
+	}
+}
+.stream[data-slug="paper"] {
+	.vocab {
+		color: lighten($green, $light-amt);
+		&:hover, &:focus {
+			color: lighten($green-dark, $lighter-amt);
+		}
+	}
+	.chyron-inner {
+		border-color: $green-dark;
+	}
+}
+.stream[data-slug="landfill"] {
+	.vocab {
+		color: lighten($pink, $light-amt);
+		&:hover, &:focus {
+			color: lighten($pink-dark, $lighter-amt);
+		}
+	}
+	.chyron-inner {
+		border-color: $pink-dark;
+	}
+}
+
+
+.factoids {
+	width: 100px;
+	height: 100%;
+	position: fixed;
+	right: 0;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.factoid {
+	width: 50%;
+	min-width: 400px;
+	max-width: 600px;
+	margin: 0 0 15px 0;
+	// &::before {
+	// 	content: '';
+	// 	width: 80px;
+	// 	height: 80px;
+	// }
+	transition: transform 300ms ease-in-out;
+	&.open {
+		transform: translateX(calc(-100% + 100px));
+	}
+}
+.factoid-inner {
+	width: 100%;
+	padding: 15px 20px 20px 20px;
+	background-color: $darken;
+	color: white;
+	border-radius: 20px;
+	box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+	position: relative;
+	p {
+		@include sm-text;
+		margin: 5px 0 0 0;
+	}
+}
 
 #alerts-view {
 	background-color: rgba($darken, .5);

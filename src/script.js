@@ -610,6 +610,7 @@ class Scene {
 		this.caption = streamElem.querySelector(".caption[data-scene='"+this.slug+"']");
 		this.audio = this.caption ? this.caption.querySelector("audio") : null;
 		this.tooltip = sceneElem.querySelector(".tooltip");
+		this.factoids = sceneElem.querySelectorAll(".factoid");
 
 		if(sceneElem.dataset.animated == "true") {
 			this.getAnimation();
@@ -619,11 +620,11 @@ class Scene {
 	}
 
 	getAnimation() {
-		const loop = this.elem.dataset.loop == "true";
+		const looped = this.elem.dataset.looped == "true";
 		const animation = lottie.loadAnimation({
 			container: this.elem.querySelector(".svg-wrap"),
 			renderer: 'svg',
-			loop: loop,
+			loop: looped,
 			autoplay: false,
 			path: "assets/animate/"+this.slug+"/"+this.slug+".json"
 		});
@@ -667,7 +668,8 @@ class Scene {
 					captionElem = this.caption,
 					audioElem = this.audio,
 					tooltipElem = this.tooltip,
-					markerElem = sceneElem.querySelector(".marker");
+					markerElem = sceneElem.querySelector(".marker"),
+					factoidElems = this.factoids;
 		this.marker = markerElem;
 
 		if(tickElem) {
@@ -704,6 +706,30 @@ class Scene {
 				});
 			};
 		}
+
+		factoidElems.forEach((factoidElem) => {
+			factoidElem.onclick = (e) => {
+				factoidElem.classList.toggle("open");
+			};
+
+			const vocab = factoidElem.dataset.vocab;
+			if(vocab) {
+				const captionTextElem = captionElem.querySelector(".text"),
+							captionText = captionTextElem.innerHTML,
+							newCaptionText = captionText.replace(vocab, `<span class="vocab">${vocab}</span>`);
+				captionTextElem.innerHTML = newCaptionText;
+			}
+		});
+
+		const vocabElems = captionElem.querySelectorAll(".vocab");
+		vocabElems.forEach((vocabElem) => {
+			const vocabStr = vocabElem.innerText,
+						factoidElem = sceneElem.querySelector(`[data-vocab="${vocabStr}"]`);
+			vocabElem.onclick = (e) => {
+				factoidElem.classList.toggle("open");
+			};
+		});
+
 	}
 
 	fixTooltip() {
