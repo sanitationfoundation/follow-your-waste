@@ -6371,11 +6371,11 @@ class Scene {
       if (vocab) {
         const captionTextElem = captionElem.querySelector(".text"),
               captionText = captionTextElem.innerHTML,
-              newCaptionText = captionText.replace(vocab, `<span class="vocab">${vocab}</span>`);
+              newCaptionText = captionText.replace(vocab, `<span class="vocab clickable">${vocab}</span>`);
         captionTextElem.innerHTML = newCaptionText;
       }
     });
-    const vocabElems = captionElem.querySelectorAll(".vocab");
+    const vocabElems = captionElem.querySelectorAll(".vocab.clickable");
     vocabElems.forEach(vocabElem => {
       const vocabStr = vocabElem.innerText,
             factoidElem = sceneElem.querySelector(`[data-vocab="${vocabStr}"]`);

@@ -16,7 +16,7 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 		include head.pug
 			
 	body#intro.mute
-		include header.pug
+		//- include header.pug
 
 		#intro-view.view.loading
 			#intro-selection-wrap
@@ -82,13 +82,22 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 										- var x = 0;
 										while x <= 3
 											- x++;
-											if(sceneText["fact"+x])
-													.factoid(data-index=x data-vocab=sceneText["vocab"+x])
-														.factoid-tab
-														.factoid-inner
-															p= sceneText["fact"+x]
+											- var vocab = sceneText["vocab"+x];
+											- var fact = sceneText["fact"+x];
+											if(fact)
+												.factoid(data-index=x data-vocab=vocab)
+													.factoid-tab
+													.factoid-inner
+														p
+															if(vocab)
+																span.vocab= vocab
+															| #{fact}
 							-;
 						.chyron-wrap-wrap
+
+							.arrow(data-dir="prev")
+							.arrow(data-dir="next")
+
 							.chyron-wrap
 								.chyron
 									.chyron-inner
@@ -112,11 +121,6 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 								.tick(data-scene=sceneData.slug)
 									.label= sceneText.label
 							-;
-
-						.arrow(data-dir="prev")
-							.arrow-shape
-						.arrow(data-dir="next")
-							.arrow-shape
 
 		#alerts-view.view
 			.view-inner
@@ -148,7 +152,7 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 					button.button
 						| #{micro.lets_go}
 
-		#full-toggle ⊞
+		#full-toggle
 
 		#lang-select
 			span.lang-option(title="English")
