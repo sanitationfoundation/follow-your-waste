@@ -6286,7 +6286,7 @@ class Scene {
     const self = this;
     let req = null;
 
-    if (this.stream == "paper", "landfill") {
+    if (this.stream == "paper", "landfill", "plastic") {
       req = fetch(rootPath + "assets/scenes/" + this.slug + "/scene.svg").then(response => {
         if (!response.ok) {
           throw new Error(self.slug + ' scene is not found');

@@ -2,7 +2,7 @@
   background-color: #043FAB; }
 
 [data-color="teal"] {
-  background-color: #028FBF; }
+  background-color: #3f8dba; }
 
 [data-color="yellow"] {
   background-color: #F2B621; }
@@ -21,6 +21,9 @@
 
 [data-color="lime"] {
   background-color: #ADF940; }
+
+[data-color="forest"] {
+  background-color: #036A47; }
 
 html, body {
   width: 100%;
@@ -736,10 +739,10 @@ body.alerts #alerts-view {
   border-color: #9E465F; }
 
 .factoids {
-  width: 100px;
+  width: 100%;
   height: 100%;
   position: fixed;
-  right: 0;
+  left: 100%;
   top: 0;
   display: -webkit-box;
   display: -webkit-flex;
@@ -763,24 +766,52 @@ body.alerts #alerts-view {
   -webkit-transition: -webkit-transform 300ms ease-in-out;
   transition: -webkit-transform 300ms ease-in-out;
   transition: transform 300ms ease-in-out;
-  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out; }
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+  position: relative;
+  cursor: pointer; }
   .factoid.open {
-    -webkit-transform: translateX(calc(-100% + 100px));
-            transform: translateX(calc(-100% + 100px)); }
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%); }
+
+.factoid-tab {
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  left: -60px;
+  top: 0; }
+  .factoid-tab::after {
+    content: '';
+    width: 50px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 60px 0 0 60px;
+    background-color: rgba(46, 46, 46, 0.9);
+    overflow: hidden;
+    -webkit-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out; }
+  .factoid:not(.open):hover .factoid-tab::after {
+    width: 60px; }
 
 .factoid-inner {
   width: 100%;
   padding: 15px 20px 20px 20px;
   background-color: rgba(46, 46, 46, 0.9);
   color: white;
-  border-radius: 20px;
-  -webkit-box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
-  position: relative; }
+  border-radius: 0 0 0 20px;
+  position: relative;
+  -webkit-transition: -webkit-box-shadow 300ms ease-in-out;
+  transition: -webkit-box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out;
+  transition: box-shadow 300ms ease-in-out, -webkit-box-shadow 300ms ease-in-out; }
   .factoid-inner p {
     font-size: 16px;
     line-height: 22px;
     margin: 5px 0 0 0; }
+  .factoid.open .factoid-inner {
+    -webkit-box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5); }
 
 #alerts-view {
   background-color: rgba(46, 46, 46, 0.5);
@@ -1119,7 +1150,7 @@ body.alerts #alerts-view {
   background-color: #043FAB; }
 
 [data-color="teal"] {
-  background-color: #028FBF; }
+  background-color: #3f8dba; }
 
 [data-color="yellow"] {
   background-color: #F2B621; }
@@ -1138,6 +1169,9 @@ body.alerts #alerts-view {
 
 [data-color="lime"] {
   background-color: #ADF940; }
+
+[data-color="forest"] {
+  background-color: #036A47; }
 
 body.page {
   overflow-y: scroll;

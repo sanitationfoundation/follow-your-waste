@@ -6,7 +6,7 @@
 	var lang = htmlWebpackPlugin.options.lang
 	var rootPath = htmlWebpackPlugin.options.rootPath
 	// var streams = ['landfill','metal','glass','plastic','paper']
-	var streams = ['paper','landfill']
+	var streams = ['paper','landfill','plastic']
 
 //- include mixins.pug
 
@@ -75,7 +75,7 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 							each sceneData, index in streamData
 								- var sceneText = streamText[index];
 								.scene(class=sceneData.slug data-scene=sceneData.slug data-color=sceneData.color data-animated=sceneData.animated data-looped=sceneData.looped)
-									if(streamSlug == 'paper' || streamSlug == 'landfill')
+									if(streamSlug == 'paper', 'landfill', 'plastic')
 										.svg-wrap(class=sceneData.orientation)
 
 									.factoids
@@ -84,6 +84,7 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 											- x++;
 											if(sceneText["fact"+x])
 													.factoid(data-index=x data-vocab=sceneText["vocab"+x])
+														.factoid-tab
 														.factoid-inner
 															p= sceneText["fact"+x]
 							-;

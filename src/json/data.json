@@ -167,7 +167,7 @@
     },
     {
       "slug": "curbside-landfill",
-      "color": "black",
+      "color": "teal",
       "orientation": "height",
       "animated": "true",
       "looped": "false"
@@ -390,21 +390,21 @@
     },
     {
       "slug": "curbside-plastic",
-      "color": "black",
-      "orientation": "width",
+      "color": "forest",
+      "orientation": "height",
       "animated": "false",
       "looped": "false"
     },
     {
       "slug": "sims",
-      "color": "black",
-      "orientation": "width",
+      "color": "teal",
+      "orientation": "height",
       "animated": "false",
       "looped": "false"
     },
     {
       "slug": "sorting",
-      "color": "black",
+      "color": "yellow",
       "orientation": "width",
       "animated": "false",
       "looped": "false"
@@ -418,7 +418,7 @@
     },
     {
       "slug": "optical",
-      "color": "black",
+      "color": "lime",
       "orientation": "width",
       "animated": "false",
       "looped": "false"

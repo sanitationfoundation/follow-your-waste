@@ -1,5 +1,5 @@
 $blue: #043FAB;
-$teal: #028FBF;
+$teal: #3f8dba;
 $yellow: #F2B621;
 $orange: #FC652C;
 $pink: #CD718A;
@@ -43,6 +43,9 @@ $darken: rgba(#2E2E2E, .9);
 }
 [data-color="lime"] {
 	background-color: $lime;
+}
+[data-color="forest"] {
+	background-color: $forest;
 }
 
 
