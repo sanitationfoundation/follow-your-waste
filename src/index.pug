@@ -6,7 +6,7 @@
 	var lang = htmlWebpackPlugin.options.lang
 	var rootPath = htmlWebpackPlugin.options.rootPath
 	// var streams = ['landfill','metal','glass','plastic','paper']
-	var streams = ['paper','landfill','plastic']
+	var streams = ['paper','landfill','glass','plastic']
 
 //- include mixins.pug
 
@@ -75,7 +75,7 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 							each sceneData, index in streamData
 								- var sceneText = streamText[index];
 								.scene(class=sceneData.slug data-scene=sceneData.slug data-color=sceneData.color data-animated=sceneData.animated data-looped=sceneData.looped)
-									if(streamSlug == 'paper', 'landfill', 'plastic')
+									if(streamSlug == 'paper', 'landfill', 'glass', 'plastic')
 										.svg-wrap(class=sceneData.orientation)
 
 									.factoids
@@ -105,11 +105,12 @@ html(lang=lang dir="ltr" data-root-path=rootPath)
 											img(src=rootPath+"assets/images/workers/"+streamSlug+".png")
 										.captions
 											each sceneData, index in streamData
-												- var sceneText = streamText[index]
-												.caption(data-scene=sceneData.slug)
-													.text= sceneText.caption
-													audio(controls="false" preload="none")
-														source(src=rootPath+"assets/audio/"+streamSlug+"/"+sceneData.slug+".wav" type="audio/wav")
+												if(index < streamData.length - 1)
+													- var sceneText = streamText[index]
+													.caption(data-scene=sceneData.slug)
+														.text= sceneText.caption
+														audio(controls="false" preload="none")
+															source(src=rootPath+"assets/audio/"+streamSlug+"/"+sceneData.slug+".wav" type="audio/wav")
 											-;
 										button.icon-button.toggle
 										button.icon-button.replay

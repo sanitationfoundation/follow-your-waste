@@ -6157,13 +6157,20 @@ class Stream {
           captionElem = sceneObj.caption,
           sceneElem = sceneObj.elem,
           audioElem = sceneObj.audio;
-    audioElem.load();
-    audioElem.currentTime = 0;
-    audioElem.pause();
+
+    if (audioElem) {
+      audioElem.load();
+      audioElem.currentTime = 0;
+      audioElem.pause();
+    }
+
+    if (captionElem) {
+      captionElem.classList.add("show");
+    }
+
     tickElem.classList.add("active");
-    captionElem.classList.add("show");
     sceneElem.classList.add("show", "animate");
-    streamsView.dataset.color = sceneColor; // sceneObj.animateScene();
+    streamsView.dataset.color = sceneColor;
   }
 
   goToScene(sceneSlug) {
@@ -6199,6 +6206,12 @@ class Stream {
 
     if (nextSceneObj.animation) {
       nextSceneObj.animation.goToAndPlay(0);
+    }
+
+    if (!nextSceneElem.nextSibling) {
+      this.elem.classList.add("end");
+    } else {
+      this.elem.classList.remove("end");
     }
 
     nextSceneElem.classList.add("show");
@@ -6286,7 +6299,7 @@ class Scene {
     const self = this;
     let req = null;
 
-    if (this.stream == "paper", "landfill", "plastic") {
+    if (this.stream == "paper", "landfill", "plastic", "glass") {
       req = fetch(rootPath + "assets/scenes/" + this.slug + "/scene.svg").then(response => {
         if (!response.ok) {
           throw new Error(self.slug + ' scene is not found');
@@ -6375,15 +6388,18 @@ class Scene {
         captionTextElem.innerHTML = newCaptionText;
       }
     });
-    const vocabElems = captionElem.querySelectorAll(".vocab.clickable");
-    vocabElems.forEach(vocabElem => {
-      const vocabStr = vocabElem.innerText,
-            factoidElem = sceneElem.querySelector(`[data-vocab="${vocabStr}"]`);
 
-      vocabElem.onclick = e => {
-        factoidElem.classList.toggle("open");
-      };
-    });
+    if (captionElem) {
+      const vocabElems = captionElem.querySelectorAll(".vocab.clickable");
+      vocabElems.forEach(vocabElem => {
+        const vocabStr = vocabElem.innerText,
+              factoidElem = sceneElem.querySelector(`[data-vocab="${vocabStr}"]`);
+
+        vocabElem.onclick = e => {
+          factoidElem.classList.toggle("open");
+        };
+      });
+    }
   }
 
   fixTooltip() {

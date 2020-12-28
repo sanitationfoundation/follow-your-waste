@@ -14,10 +14,13 @@ html, body {
 	-webkit-font-smoothing: subpixel-antialiased;
 }
 html {
-	min-width: $sm-width;
+	
 	overflow-x: scroll;
+	overflow-y: scroll;
 }
 body {
+	min-width: $sm-width;
+	min-height: $sm-width;
 	font-size: 20px;
 	transition: opacity 300ms;
 	position: relative;
@@ -52,109 +55,12 @@ button {
 }
 
 ////////////////////////////////////
-////////////// HEADER //////////////
-////////////////////////////////////
-// header {
-// 	width: 100%;
-// 	padding: 20px 21px 20px 20px;
-// 	position: absolute;
-// 	left: 0px;
-// 	top: 0px;
-// 	z-index: 60;
-// 	display: flex;
-// 	pointer-events: none;
-// 	display: none;
-// 	// body:not(.full) {
-// 	// 	display: none;
-// 	// }
-// }
-// #logos {
-// 	height: 88px;
-// 	display: flex;
-// 	a {
-// 		display: table;
-// 		pointer-events: all;
-		
-// 	}
-// 	img {
-// 		height: 88px;
-// 	}
-// }
-// .site-logo {
-// 	transition: opacity 500ms ease-in-out;
-// }
-
-// nav {
-// 	width: 100%;
-// 	display: flex;
-// 	justify-content: flex-end;
-// 	padding: 18px 0;
-// 	line-height: 1;
-// 	a {
-// 		@include md-text;
-// 		padding: 15px 22px;
-// 		font-weight: 700;
-// 		color: white;
-// 		text-decoration: none;
-// 		text-transform: lowercase;
-// 		display: table;
-// 		pointer-events: all;
-// 		text-rendering: auto;
-// 		&:hover {
-// 			color: black;
-// 		}
-// 		&:nth-last-child(2) {
-// 			// padding-right: 0;
-// 		}
-// 	}
-// 	#donate {
-// 		height: 44px;
-// 		position: relative;
-// 		margin: 4px .9em 0 20px;
-// 		border-radius: 3px;
-// 		overflow: hidden;
-// 		line-height: 1;
-//     display: inline-block;
-//     padding: .6em 1.5em .6em .75em !important;
-//     span {
-//     	position: relative;
-//     	z-index: 61;
-//     }
-// 		&:hover {
-// 			color: white;
-// 		}
-// 		&::before, &::after {
-// 			position: absolute;
-// 	    content: "";
-// 	    top: 0;
-// 	    height: 45px;
-// 	    background: $lightgreen;
-// 		}
-// 		&::before {
-// 			right: 40px;
-// 			left: 0;
-// 		}
-// 		&::after {
-// 			top: 0;
-// 			border-radius: 0 4px 6px 0;
-// 			left: 10px;
-// 			right: 10px;
-// 			transform: skew(24deg);
-// 		}
-// 	}
-// 	@include md-width {
-// 		display: none;
-// 	}
-// }
-
-////////////////////////////////////
 /////////////// VIEWS //////////////
 ////////////////////////////////////
 .view {
 	width: 100% !important;
 	height: 100% !important;
 	position: absolute;
-	// left: -9999999px;
 	left: 0;
 	top: 0;
 	overflow-x: hidden;
@@ -162,10 +68,6 @@ button {
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 500ms ease-in, background 500ms ease-in;
-	// animation: close-view 800ms forwards 1;
-	// body#intro & {
-		// animation: none;
-	// }
 	#intro &#intro-view,
 	#select &#select-view,
 	#pre-select &#select-view,
@@ -620,7 +522,7 @@ $lighter-amt: 10%;
 	opacity: 0;
 	color: white;
 	transition: opacity 300ms ease-in;
-	body#streams .stream.show &  {
+	body#streams .stream.show:not(.end) &  {
 		opacity: 1;
 	}
 	@include md-width {

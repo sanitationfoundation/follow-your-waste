@@ -550,9 +550,20 @@
       "fact3": null
     },
     {
+      "slug": "barge-metal",
+      "label": "Barge",
+      "caption": "Finally, the rail cars, containing magnetic, ferrous metals, float across the Upper Bay, starting from the area near Owl’s Head Wastewater treatment plant, meet up with a rail line in New Jersey where they are taken to a plant for further processing.",
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    },
+    {
       "slug": "end-metal",
       "label": "Finished product",
-      "caption": "Finally, the rail cars, containing magnetic, ferrous metals, float across the Upper Bay, starting from the area near Owl’s Head Wastewater treatment plant, meet up with a rail line in New Jersey where they are taken to a plant for further processing.",
+      "caption": "The aluminum can that you tossed in the recycling bin can be made into another can, foil, or even car parts - pretty cool, right?",
       "vocab1": null,
       "fact1": null,
       "vocab2": null,
@@ -640,6 +651,17 @@
       "fact3": null
     },
     {
+      "slug": "optical-glass",
+      "label": "Optical Sorting",
+      "caption": "Next time you’re walking along the sidewalk, remember that glass you tossed in the recycling bin—it could potentially be part of the sidewalk you are walking on!",
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    },
+    {
       "slug": "end-glass",
       "label": "RGA",
       "caption": "Finally, larger clear, brown, and green glass will be optically sorted and used to make new bottles. The smaller pieces of glass, or the pieces that are not clear, brown or green, are turned into Recycled Glass Aggregate (RGA) to be used for future construction projects.",
@@ -708,7 +730,7 @@
       "fact3": null
     },
     {
-      "slug": "optical",
+      "slug": "optical-plastic",
       "label": "Optical Scanners",
       "caption": "Your plastics move along conveyor belts that pass under Optical Scanners. When the scanner filters out nonrecyclable plastics, it cues an air jet at the end of the conveyor belt that shoots the item onto another conveyor.",
       "vocab1": "optical scanners",
@@ -730,13 +752,24 @@
       "fact3": null
     },
     {
-      "slug": "end-plastic",
-      "label": "New Products",
+      "slug": "bales",
+      "label": "Bales",
       "caption": "After being baled, plastics are loaded onto trucks and head out to be made into new products for sale.",
+      "vocab1": "baled",
+      "fact1": "The process of tightly bounding waste material into cubes.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "end-plastic",
+      "label": "Recycled!",
+      "caption": "Your recycled plastic bottle can be made into new bottles, textiles, and carpeting. Who knows, you could be drinking from, wearing, or walking upon the bottle you recycled!",
       "vocab1": null,
-      "fact1": "Your recycled plastic bottle can be made into new bottles, textiles, and carpeting. Who knows, you could be drinking from, wearing, or walking upon the bottle you recycled!",
-      "vocab2": "baled",
-      "fact2": "The process of tightly bounding waste material into cubes.",
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
       "vocab3": null,
       "fact3": null
     }

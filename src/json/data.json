@@ -283,8 +283,8 @@
       "slug": "liberator",
       "color": "black",
       "orientation": "width",
-      "animated": "false",
-      "looped": "false"
+      "animated": "true",
+      "looped": "true"
     },
     {
       "slug": "magnets",
@@ -355,8 +355,8 @@
       "slug": "liberator",
       "color": "black",
       "orientation": "width",
-      "animated": "false",
-      "looped": "false"
+      "animated": "true",
+      "looped": "true"
     },
     {
       "slug": "screens",
@@ -367,6 +367,13 @@
     },
     {
       "slug": "barge-glass",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "optical-glass",
       "color": "black",
       "orientation": "width",
       "animated": "false",
@@ -392,32 +399,32 @@
       "slug": "curbside-plastic",
       "color": "forest",
       "orientation": "height",
-      "animated": "false",
+      "animated": "true",
       "looped": "false"
     },
     {
       "slug": "sims",
       "color": "teal",
       "orientation": "height",
-      "animated": "false",
-      "looped": "false"
+      "animated": "true",
+      "looped": "true"
     },
     {
       "slug": "sorting",
       "color": "yellow",
       "orientation": "width",
-      "animated": "false",
+      "animated": "true",
       "looped": "false"
     },
     {
       "slug": "liberator",
       "color": "black",
       "orientation": "width",
-      "animated": "false",
-      "looped": "false"
+      "animated": "true",
+      "looped": "true"
     },
     {
-      "slug": "optical",
+      "slug": "optical-plastic",
       "color": "lime",
       "orientation": "width",
       "animated": "false",
@@ -425,15 +432,22 @@
     },
     {
       "slug": "quality-plastic",
-      "color": "black",
+      "color": "pink",
       "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "bales",
+      "color": "orange",
+      "orientation": "height",
       "animated": "false",
       "looped": "false"
     },
     {
       "slug": "end-plastic",
       "color": "black",
-      "orientation": "width",
+      "orientation": "height",
       "animated": "false",
       "looped": "false"
     }

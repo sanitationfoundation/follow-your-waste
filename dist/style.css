@@ -40,10 +40,12 @@ html, body {
   -webkit-font-smoothing: subpixel-antialiased; }
 
 html {
-  min-width: 640px;
-  overflow-x: scroll; }
+  overflow-x: scroll;
+  overflow-y: scroll; }
 
 body {
+  min-width: 640px;
+  min-height: 640px;
   font-size: 20px;
   -webkit-transition: opacity 300ms;
   transition: opacity 300ms;
@@ -504,7 +506,7 @@ body.alerts #alerts-view {
   color: white;
   -webkit-transition: opacity 300ms ease-in;
   transition: opacity 300ms ease-in; }
-  body#streams .stream.show .chyron-wrap-wrap {
+  body#streams .stream.show:not(.end) .chyron-wrap-wrap {
     opacity: 1; }
   @media (max-width: 900px) {
     .chyron-wrap-wrap {
