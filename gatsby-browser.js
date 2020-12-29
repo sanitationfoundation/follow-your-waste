@@ -597,7 +597,6 @@ export const onClientEntry = () => {
 
       getAnimation() {
         const looped = this.elem.dataset.looped === "true";
-        console.log(this.elem.dataset.src);
         const animation = lottie.loadAnimation({
           container: this.elem.querySelector(".svg-wrap"),
           renderer: "svg",
@@ -613,6 +612,7 @@ export const onClientEntry = () => {
         const self = this;
         let req = null;
         if (["paper", "landfill", "plastic", "glass"].includes(this.stream)) {
+          console.log(this.elem.dataset.src);
           req = fetch(this.elem.dataset.src)
             .then((response) => {
               if (!response.ok) {

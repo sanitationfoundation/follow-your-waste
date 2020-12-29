@@ -17,9 +17,9 @@ export default function Streams({ data, text }) {
 									const sceneText = streamText[j];
 									let svgSrc;
 									if(sceneData.animated === "true") {
-										svgSrc = withPrefix(`animate/${sceneData.slug}/${sceneData.slug}.json`);
+										svgSrc = withPrefix(`scenes/animate/${sceneData.slug}/${sceneData.slug}.json`);
 									} else {
-										svgSrc = withPrefix(`scenes/${sceneData.slug}/scene.svg`);
+										svgSrc = withPrefix(`scenes/static/${sceneData.slug}/scene.svg`);
 									}
 
 									if(["paper", "landfill", "plastic"].indexOf(stream)) {
@@ -80,7 +80,7 @@ export default function Streams({ data, text }) {
 										<div className="chyron-inner">
 											<div className="portrait">
 												<img
-													src={`./assets/images/workers/${stream}.png`}
+													src={withPrefix(`images/workers/${stream}.png`)}
 													alt=""
 												/>
 											</div>
@@ -97,7 +97,7 @@ export default function Streams({ data, text }) {
 																<div className="text">{sceneText.caption}</div>
 																<audio controls={false} preload="none">
 																	<source
-																		src={`./assets/audio/${stream}/${sceneData.slug}.wav`}
+																		src={withPrefix(`audio/${stream}/${sceneData.slug}.wav`)}
 																		type="audio/wav"
 																	/>
 																</audio>
