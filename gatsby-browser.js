@@ -10,8 +10,6 @@ import "jquery-ui/ui/widgets/droppable";
 export const onClientEntry = () => {
   window.onload = () => {
     const body = document.querySelector("body"),
-      html = document.querySelector("html"),
-      rootPath = html.dataset.rootPath,
       docElem = document.documentElement,
       introView = document.querySelector("#intro-view"),
       startButtn = document.querySelector("#intro-button"),
@@ -599,12 +597,13 @@ export const onClientEntry = () => {
 
       getAnimation() {
         const looped = this.elem.dataset.looped === "true";
+        console.log(this.elem.dataset.src);
         const animation = lottie.loadAnimation({
           container: this.elem.querySelector(".svg-wrap"),
           renderer: "svg",
           loop: looped,
           autoplay: false,
-          path: "/animate/" + this.slug + "/" + this.slug + ".json",
+          path: this.elem.dataset.src
         });
         this.animation = animation;
         this.setUpScene();
@@ -614,7 +613,7 @@ export const onClientEntry = () => {
         const self = this;
         let req = null;
         if (["paper", "landfill", "plastic", "glass"].includes(this.stream)) {
-          req = fetch("/scenes/" + this.slug + "/scene.svg")
+          req = fetch(this.elem.dataset.src)
             .then((response) => {
               if (!response.ok) {
                 throw new Error(self.slug + " scene is not found");

@@ -1,12 +1,11 @@
 // import { animations } from "animate.js";
-import { lottie } from "lottie-web";
-import { Packery } from "packery";
+import lottie from "lottie-web";
+import Packery from "packery";
 import $ from "jquery";
 // import { gsap } from "gsap";
 // require("./style.scss");
 const body = document.querySelector("body"),
   html = document.querySelector("html"),
-  rootPath = html.dataset.rootPath,
   docElem = document.documentElement,
   introView = document.querySelector("#intro-view"),
   startButtn = document.querySelector("#intro-button"),
@@ -614,7 +613,7 @@ class Scene {
     const self = this;
     let req = null;
     if (["paper", "landfill", "plastic", "glass"].includes(this.stream)) {
-      req = fetch(rootPath + "assets/scenes/" + this.slug + "/scene.svg")
+      req = fetch("assets/scenes/" + this.slug + "/scene.svg")
         .then((response) => {
           if (!response.ok) {
             throw new Error(self.slug + " scene is not found");
