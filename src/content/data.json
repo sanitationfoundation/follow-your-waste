@@ -1,0 +1,455 @@
+{
+  "items": [
+    {
+      "slug": "aluminum-foil",
+      "stream": "metal"
+    },
+    {
+      "slug": "broken-glass",
+      "stream": "glass"
+    },
+    {
+      "slug": "cardboard",
+      "stream": "paper"
+    },
+    {
+      "slug": "chip-bag",
+      "stream": "landfill"
+    },
+    {
+      "slug": "detergent-bottle",
+      "stream": "plastic"
+    },
+    {
+      "slug": "food-can",
+      "stream": "metal"
+    },
+    {
+      "slug": "glass-bottles",
+      "stream": "glass"
+    },
+    {
+      "slug": "glass-jar",
+      "stream": "glass"
+    },
+    {
+      "slug": "milk-carton",
+      "stream": "plastic"
+    },
+    {
+      "slug": "newspaper",
+      "stream": "paper"
+    },
+    {
+      "slug": "plastic-bag",
+      "stream": "landfill"
+    },
+    {
+      "slug": "plastic-bottle",
+      "stream": "plastic"
+    },
+    {
+      "slug": "soda-can",
+      "stream": "metal"
+    },
+    {
+      "slug": "toothpaste",
+      "stream": "landfill"
+    }
+  ],
+  "paper": [
+    {
+      "slug": "garage-paper",
+      "color": "yellow",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "false"
+    },
+    {
+      "slug": "curbside-paper",
+      "color": "black",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false"
+    },
+    {
+      "slug": "mts",
+      "color": "yellow",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
+    },
+    {
+      "slug": "weighing",
+      "color": "blue",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
+    },
+    {
+      "slug": "tipping-paper",
+      "color": "orange",
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "barge-paper",
+      "color": "blue",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "true"
+    },
+    {
+      "slug": "pratt",
+      "color": "black",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "true"
+    },
+    {
+      "slug": "pulper",
+      "color": "yellow",
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "press",
+      "color": "pink",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "winder",
+      "color": "teal",
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "storage",
+      "color": "forest",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "corrugator",
+      "color": "yellow",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "quality-paper",
+      "color": "yellow",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "end-paper",
+      "color": "pink",
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
+    }
+  ],
+  "landfill": [
+    {
+      "slug": "garage",
+      "color": "blue",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
+    },
+    {
+      "slug": "curbside-landfill",
+      "color": "teal",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false"
+    },
+    {
+      "slug": "weighing",
+      "color": "blue",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
+    },
+    {
+      "slug": "tipping-landfill",
+      "color": "orange",
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "loading",
+      "color": "lime",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "false"
+    },
+    {
+      "slug": "lidding",
+      "color": "pink",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false"
+    },
+    {
+      "slug": "crane-landfill",
+      "color": "yellow",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false"
+    },
+    {
+      "slug": "barge-landfill",
+      "color": "blue",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "true"
+    },
+    {
+      "slug": "end-landfill",
+      "color": "yellow",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
+    }
+  ],
+  "metal": [
+    {
+      "slug": "garage",
+      "color": "blue",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "curbside-metal",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "mts",
+      "color": "yellow",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "barge-metal",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "sims",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "claw",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "tipping",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "sorting",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "liberator",
+      "color": "black",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
+    },
+    {
+      "slug": "magnets",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "trommel",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "quality-metal",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "railcar",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "end-metal",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    }
+  ],
+  "glass": [
+    {
+      "slug": "garage",
+      "color": "blue",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "curbside-glass",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "sims",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "sorting",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "liberator",
+      "color": "black",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
+    },
+    {
+      "slug": "screens",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "barge-glass",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "optical-glass",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "end-glass",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    }
+  ],
+  "plastic": [
+    {
+      "slug": "garage",
+      "color": "blue",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "curbside-plastic",
+      "color": "forest",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false"
+    },
+    {
+      "slug": "sims",
+      "color": "teal",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "true"
+    },
+    {
+      "slug": "sorting",
+      "color": "yellow",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "false"
+    },
+    {
+      "slug": "liberator",
+      "color": "black",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true"
+    },
+    {
+      "slug": "optical-plastic",
+      "color": "lime",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "quality-plastic",
+      "color": "pink",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "bales",
+      "color": "orange",
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
+    },
+    {
+      "slug": "end-plastic",
+      "color": "black",
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false"
+    }
+  ]
+}

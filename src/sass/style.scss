@@ -1,0 +1,793 @@
+@import "vars.scss";
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: $orange;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  color: white;
+  overflow: hidden;
+  overflow-y: hidden;
+  @include lg-text;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+html {
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+body {
+  min-width: $sm-width;
+  min-height: $sm-width;
+  font-size: 20px;
+  transition: opacity 300ms;
+  position: relative;
+}
+* {
+  box-sizing: border-box;
+}
+a {
+  color: inherit;
+}
+.label {
+  @include md-text;
+}
+button {
+  border-width: 0;
+  background-color: transparent;
+  @include md-text;
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    outline: none;
+    outline: none;
+  }
+}
+.button {
+  display: table;
+  padding: 5px 20px;
+  border: 2px solid;
+  border-radius: 5px;
+  color: inherit;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+////////////////////////////////////
+/////////////// VIEWS //////////////
+////////////////////////////////////
+.view {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 500ms ease-in, background 500ms ease-in;
+  #intro &#intro-view,
+  #select &#select-view,
+  #pre-select &#select-view,
+  #streams &#streams-view,
+  .alerts &#alerts-view {
+    pointer-events: all;
+    opacity: 1;
+    // animation: open-view 800ms forwards 1;
+  }
+}
+.view-inner {
+  // min-width: $md-width;
+  max-width: $xl-width;
+  height: 100%;
+  margin: auto;
+  position: relative;
+  overflow: visible;
+}
+body#intro #intro-view,
+body#selection #selection-view,
+body#streams #streams-view,
+body.alerts #alerts-view {
+  opacity: 1;
+  pointer-events: all;
+}
+
+////////////////////////////////////
+/////////////// UTILS //////////////
+////////////////////////////////////
+#full-toggle {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  z-index: 70;
+  cursor: pointer;
+  background-image: url(../images/expand.svg);
+  background-position: center;
+  background-size: cover;
+  transition: all 300ms ease-in-out;
+}
+#lang-select {
+  position: absolute;
+  left: 5px;
+  bottom: 0px;
+  z-index: 70;
+}
+.lang-option {
+  margin: 0 0 0 10px;
+  a {
+    @include xs-text;
+    color: white;
+  }
+}
+
+////////////////////////////////////
+//////////// INTRO VIEW ////////////
+////////////////////////////////////
+#intro-view {
+}
+#site-title {
+  width: 50%;
+  float: left;
+  @include lg-text;
+}
+#intro-selection-wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  display: flex;
+  align-content: center;
+  @include lg-text;
+}
+#intro-selection {
+  margin: auto;
+}
+#intro-title {
+  display: table;
+  margin: auto;
+  padding: 20px;
+  img {
+    width: 60%;
+    max-height: 50vh;
+    height: auto;
+    margin: auto;
+    display: block;
+  }
+}
+#intro-tagline {
+  text-align: center;
+  @include lg-text;
+}
+#intro-bottom {
+  position: relative;
+}
+#loading {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: opacity 500ms ease-in-out;
+  animation: blinking 1s infinite;
+  @include sm-text;
+  text-align: center;
+  pointer-events: none;
+  .view:not(.loading) & {
+    opacity: 0;
+  }
+}
+
+@keyframes blinking {
+  0%,
+  100% {
+    color: white;
+  }
+  50% {
+    color: rgba(white, 0.5);
+  }
+}
+
+#intro-button {
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-radius: 5px;
+  margin: 60px auto 0 auto;
+  transition: opacity 300ms 1s ease-in-out;
+  .view.loading & {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+////////////////////////////////////
+//////////// TOOLTIPS //////////////
+////////////////////////////////////
+.tooltip {
+  width: 340px;
+  position: absolute;
+  top: calc(100% - 1px);
+  left: calc(50% - 170px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 100ms ease-in-out, top 100ms ease-in-out;
+  .item.hovering &,
+  .scene.show &.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .scene & {
+    transform: translateY(-56px);
+  }
+  .top & {
+    opacity: 0 !important;
+  }
+}
+.tooltip-inner {
+  width: 330px;
+  padding: 15px 20px 20px 20px;
+  margin: 20px 5px;
+  background-color: $darken;
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+  position: relative;
+  p {
+    @include sm-text;
+    margin: 5px 0 0 0;
+  }
+}
+.tooltip-arrow {
+  width: 20px;
+  height: 20px;
+  display: table;
+  margin: auto;
+  border-radius: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid $darken;
+  position: absolute;
+  z-index: 21;
+  .item & {
+    left: calc(50% - 20px);
+    top: 0px;
+  }
+  .scene & {
+    left: 100%;
+    top: 70px;
+  }
+  .item.top & {
+    top: unset;
+    bottom: 0;
+    transform: rotate(180deg);
+  }
+  .scene .left & {
+    left: calc(100% - 30px);
+    transform: rotate(90deg);
+  }
+  .scene .right & {
+    left: -10px;
+    transform: rotate(-90deg);
+  }
+}
+
+////////////////////////////////////
+/////////// STREAMS VIEW ///////////
+////////////////////////////////////
+#streams-view.view {
+  .view-inner {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+.stream {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  &:not(.show) {
+    opacity: 0;
+    pointer-events: none;
+  }
+  &.pseudo {
+    display: none;
+  }
+}
+.arrow {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: calc(50% - 50px);
+  z-index: 60;
+  &:hover {
+    cursor: pointer;
+  }
+  &[data-dir="prev"] {
+    left: 0;
+    @include md-width {
+      display: none;
+    }
+  }
+  &[data-dir="next"] {
+    right: 0;
+    @include md-width {
+      display: none;
+    }
+  }
+  &::before {
+    content: "";
+    width: 40px;
+    height: 75px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    transition: all 300ms ease-in-out;
+  }
+  &[data-dir="prev"]::before {
+    background-image: url(../images/prev-arrow.svg);
+  }
+  &[data-dir="prev"]:hover::before {
+    transform: translateX(-25px);
+  }
+  &[data-dir="next"]::before {
+    background-image: url(../images/next-arrow.svg);
+  }
+  &[data-dir="next"]:hover::before {
+    transform: translateX(25px);
+  }
+}
+.progress {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.25);
+  position: absolute;
+  left: 0;
+  top: 20px;
+  z-index: 50;
+  display: flex;
+  justify-content: space-evenly;
+  @include md-width {
+    display: none;
+  }
+}
+.tick {
+  width: 10px;
+  height: 10px;
+  margin: 0 auto;
+  background-color: white;
+  opacity: 0.25;
+  border-radius: 50%;
+  position: relative;
+  pointer-events: all;
+  cursor: pointer;
+  transition: opacity 200ms ease-in-out;
+  .label {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    opacity: 0;
+    color: white;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 200ms ease-in-out;
+  }
+  &:last-child .label,
+  &:nth-last-child(2) .label {
+    left: auto;
+    right: 0;
+  }
+  &:hover,
+  &:hover .label {
+    opacity: 0.75;
+  }
+  &.active,
+  &.active .label {
+    opacity: 1;
+  }
+}
+////////////////////////////////////
+////////////// SCENES //////////////
+////////////////////////////////////
+.scene {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 40;
+  display: flex;
+  user-select: none;
+  transition: opacity 300ms ease-in, background 300ms ease-in;
+  opacity: 0;
+  pointer-events: none;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-content: center;
+  .svg-wrap,
+  .img-wrap {
+    width: 100%;
+    // display: flex;
+    overflow: hidden;
+    position: relative;
+    &.width {
+      display: flex;
+      svg,
+      img {
+        width: 100% !important;
+        height: auto !important;
+        margin-top: calc(((100vw / 1.75) - 100vh) / -2) !important;
+      }
+    }
+    &.height {
+      svg,
+      img {
+        width: auto !important;
+        height: 100% !important;
+        margin-left: calc(((100vh * 1.75) - 100vw) / -2) !important;
+      }
+    }
+  }
+  img {
+    width: auto;
+    height: 100%;
+    display: block;
+    margin: auto;
+  }
+  svg {
+    height: unset;
+    display: block;
+    margin: auto;
+  }
+  body#streams &.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .marker {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+$light-amt: 10%;
+$lighter-amt: 10%;
+
+.stream[data-slug="metal"] {
+  .vocab {
+    color: lighten($blue, $light-amt);
+    &.clickable:hover,
+    &.clickable:focus {
+      color: lighten($blue-dark, $lighter-amt);
+    }
+  }
+  .chyron-inner {
+    border-color: $blue-dark;
+  }
+}
+.stream[data-slug="glass"] {
+  .vocab {
+    color: $yellow;
+    &.clickable:hover,
+    &.clickable:focus {
+      color: $yellow-dark;
+    }
+  }
+  .chyron-inner {
+    border-color: $yellow-dark;
+  }
+}
+.stream[data-slug="plastic"] {
+  .vocab {
+    color: lighten($red, $light-amt);
+    &.clickable:hover,
+    &.clickable:focus {
+      color: lighten($red-dark, $lighter-amt);
+    }
+  }
+  .chyron-inner {
+    border-color: $red-dark;
+  }
+}
+.stream[data-slug="paper"] {
+  .vocab {
+    color: lighten($green, $light-amt);
+    &.clickable:hover,
+    &.clickable:focus {
+      color: lighten($green-dark, $lighter-amt);
+    }
+  }
+  .chyron-inner {
+    border-color: $green-dark;
+  }
+}
+.stream[data-slug="landfill"] {
+  .vocab {
+    color: lighten($pink, $light-amt);
+    &.clickable:hover,
+    &.clickable:focus {
+      color: lighten($pink-dark, $lighter-amt);
+    }
+  }
+  .chyron-inner {
+    border-color: $pink-dark;
+  }
+}
+////////////////////////////////////
+///////////// CHYRONS //////////////
+////////////////////////////////////
+.chyron-wrap-wrap {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  z-index: 50;
+  opacity: 0;
+  color: white;
+  transition: opacity 300ms ease-in;
+  body#streams .stream.show:not(.end) & {
+    opacity: 1;
+  }
+  @include md-width {
+    bottom: 0;
+  }
+}
+.chyron-wrap {
+  width: 90%;
+  max-width: $md-width;
+  margin: auto;
+  @include md-width {
+    width: 100%;
+  }
+}
+.chyron {
+  width: 100%;
+  margin: auto;
+}
+.chyron-inner {
+  width: 100%;
+  min-height: 120px;
+  max-height: 190px;
+  border: 3px solid;
+  border-radius: 7px;
+  background-color: $darken;
+  box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+  transition: width 300ms ease-in-out, max-height 300ms ease-in-out;
+  position: relative;
+  body.close-chyron & {
+    width: 120px;
+    max-height: 120px;
+  }
+  @include md-width {
+    min-height: $portrait-width;
+    border-width: 3px 0 0 0;
+    border-radius: 0;
+  }
+  .portrait {
+    left: -76px;
+    top: -24px;
+    z-index: 51;
+    @include md-width {
+      left: 0;
+      top: 0;
+    }
+  }
+}
+.portrait {
+  position: absolute;
+  img {
+    width: auto;
+    height: 159px;
+    display: block;
+  }
+}
+.captions {
+  height: 100%;
+  min-height: 120px;
+  max-height: 184px;
+  overflow-y: scroll;
+  -webkit-overflow-scroll: touch;
+  transition: height 300ms ease-in-out;
+  body.close-chyron & {
+    height: 120px;
+  }
+  .caption {
+    padding: 20px 60px 20px 90px;
+    text-align: left;
+    overflow-y: auto;
+    @include lg-text;
+    @include md-width {
+      padding-left: $portrait-width;
+    }
+    .text {
+      float: right;
+      width: 100%;
+      max-width: #{$md-width - $portrait-width};
+      @include md-width {
+        width: calc(90vw - #{$portrait-width});
+      }
+      @include sm-width {
+        width: 100%;
+      }
+    }
+    .vocab.clickable {
+      cursor: pointer;
+      transition: color 300ms ease-in-out;
+    }
+    audio {
+      display: none;
+    }
+    &:not(.show) {
+      display: none;
+    }
+  }
+}
+.icon-button {
+  width: 25px;
+  height: 25px;
+  right: 15px;
+  position: absolute;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  transition: opacity 300ms ease-in-out;
+  &.toggle {
+    top: 12px;
+    background-image: url(../images/toggle.svg);
+    body.close-chyron & {
+      background-position-y: bottom;
+    }
+  }
+  &.replay {
+    top: 46px;
+    background-image: url(../images/replay.svg);
+  }
+  &.volume {
+    top: 82px;
+    background-image: url(../images/volume.svg);
+    body.mute & {
+      background-position-y: bottom;
+    }
+  }
+  &:hover,
+  &:focus {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+////////////////////////////////////
+///////////// FACTOIDS /////////////
+////////////////////////////////////
+.factoids {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.factoid {
+  width: 50%;
+  min-width: 400px;
+  max-width: 600px;
+  margin: 0 0 15px 0;
+  transition: transform 300ms ease-in-out;
+  position: relative;
+  cursor: pointer;
+  &.open {
+    transform: translateX(-100%);
+  }
+}
+.factoid-tab {
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  left: -60px;
+  top: 0;
+  &::before {
+    content: "";
+    width: 50px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 60px 0 0 60px;
+    background-color: $darken;
+    box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transition: width 300ms ease-in-out;
+  }
+  &::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 5px;
+    top: 15px;
+    background-image: url(../images/plus.svg);
+    background-position: bottom center;
+    background-size: cover;
+    transition: all 300ms ease-in-out;
+  }
+  .factoid:not(.open):hover &::before {
+    width: 60px;
+  }
+  .factoid:not(.open):hover &::after {
+    right: 15px;
+  }
+  .factoid.open &::after {
+    transform: rotate(45deg);
+  }
+}
+.factoid-inner {
+  width: 100%;
+  min-height: 80px;
+  padding: 15px 20px 20px 20px;
+  background-color: $darken;
+  color: white;
+  border-radius: 0 0 0 20px;
+  position: relative;
+  transition: box-shadow 300ms ease-in-out;
+  .vocab {
+    text-transform: capitalize;
+    &::after {
+      content: ": ";
+      display: inline;
+    }
+  }
+  p {
+    @include lg-text;
+    margin: 5px 0 0 0;
+  }
+  .factoid.open & {
+    box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+  }
+}
+////////////////////////////////////
+/////////// ALERTS VIEW ////////////
+////////////////////////////////////
+#alerts-view {
+  background-color: rgba($darken, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease-in;
+  z-index: 30;
+  .view-inner {
+    display: flex;
+    align-content: center;
+  }
+}
+.alert {
+  width: 600px;
+  padding: 30px 40px;
+  margin: auto;
+  background-color: $darken;
+  color: white;
+  border-radius: 20px;
+  display: none;
+  position: relative;
+  &.show {
+    display: block;
+  }
+  .button {
+    margin: 40px auto 0 auto;
+  }
+  .portrait {
+    left: -90px;
+    top: 120px;
+  }
+}
+////////////////////////////////////
+///////////// IMPORTS //////////////
+////////////////////////////////////
+@import "select.scss";
