@@ -1,7 +1,7 @@
 import React from "react";
 import { withPrefix } from "gatsby";
 
-const streams = ["landfill", "paper"];
+const streams = ["landfill", "paper", "plastic"];
 
 export default function Streams({ data, text }) {
 	return (
@@ -45,8 +45,7 @@ export default function Streams({ data, text }) {
 																	className="factoid"
 																	data-index={l}
 																	data-vocab={vocab}
-																	key={l}
-																>
+																	key={l}>
 																	<div className="factoid-tab"></div>
 																	<div className="factoid-inner">
 																		<p>
@@ -81,8 +80,7 @@ export default function Streams({ data, text }) {
 											<div className="portrait">
 												<img
 													src={withPrefix(`images/workers/${stream}.png`)}
-													alt=""
-												/>
+													alt="" />
 											</div>
 											<div className="captions">
 												{streamData.map((sceneData, j) => {
@@ -92,14 +90,12 @@ export default function Streams({ data, text }) {
 															<div
 																className="caption"
 																data-scene={sceneData.slug}
-																key={j}
-															>
+																key={j}>
 																<div className="text">{sceneText.caption}</div>
 																<audio controls={false} preload="none">
 																	<source
 																		src={withPrefix(`audio/${stream}/${sceneData.slug}.wav`)}
-																		type="audio/wav"
-																	/>
+																		type="audio/wav" />
 																</audio>
 															</div>
 														);

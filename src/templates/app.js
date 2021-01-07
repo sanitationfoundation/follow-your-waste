@@ -32,14 +32,7 @@ export default ({ pageContext }) => {
         bodyAttributes={{
           id: "intro",
           class: "mute",
-        }}
-      >
-        {/*<script type="text/javascript" src={withPrefix("jquery.js")} />
-				<script type="text/javascript" src={withPrefix("jquery-ui.min.js")} />
-				<script type="text/javascript" src={withPrefix("masonry.pkgd.min.js")} />
-				<script type="text/javascript" src="https://unpkg.com/packery@2/dist/packery.pkgd.min.js" />
-				<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.4/lottie.min.js" integrity="sha512-m0RQU4SBx0p/bLwRiI4fJBGRafVLZ4s86wRe1+OAx5EXbcWiS/X1jvYdJQRD8jOoIVl+WTyVeMawUWVCh1O8+Q==" crossorigin="anonymous" />
-				<script src={withPrefix("script.js")} type="text/javascript" />*/}
+        }}>
       </Helmet>
 
       <Intro microText={microText} />

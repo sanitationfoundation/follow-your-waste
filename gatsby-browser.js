@@ -326,7 +326,6 @@ export const onClientEntry = () => {
 
         if (binStreamArr.includes(itemStreamSlug)) {
           const streamObj = streams[itemStreamSlug];
-          console.log(streams, itemStreamSlug);
           showAlert("correct-bin", function () {
             streamObj.startStreaming();
           });
@@ -612,7 +611,6 @@ export const onClientEntry = () => {
         const self = this;
         let req = null;
         if (["paper", "landfill", "plastic", "glass"].includes(this.stream)) {
-          console.log(this.elem.dataset.src);
           req = fetch(this.elem.dataset.src)
             .then((response) => {
               if (!response.ok) {

@@ -14,12 +14,10 @@ export default function Selection({ itemsData, itemsText }) {
                 className="item"
                 data-item={item.slug}
                 data-stream={item.stream}
-                key={i}
-              >
+                key={i}>
                 <img
                   src={withPrefix(`images/items/${item.slug}.png`)}
-                  alt={`${itemText.label}: ${itemText.tooltip}`}
-                />
+                  alt={`${itemText.label}: ${itemText.tooltip}`} />
                 <div className="tooltip">
                   <div className="tooltip-arrow"></div>
                   <div className="tooltip-inner">
@@ -37,41 +35,34 @@ export default function Selection({ itemsData, itemsText }) {
             <img
               className="bin-front"
               src={withPrefix("images/bin-paper-front.png")}
-              alt=""
-            />
+              alt="" />
             <img
               className="bin-lid"
               src={withPrefix("images/bin-paper-lid.png")}
-              alt=""
-            />
+              alt="" />
           </div>
           <div
             className="bin"
             data-stream="metal-glass-plastic"
-            data-title="Metal, Glass, Plastic, Cartons"
-          >
+            data-title="Metal, Glass, Plastic, Cartons">
             <img
               className="bin-front"
               src={withPrefix("images/bin-mgp-front.png")}
-              alt=""
-            />
+              alt="" />
             <img
               className="bin-lid"
               src={withPrefix("images/bin-mgp-lid.png")}
-              alt=""
-            />
+              alt="" />
           </div>
           <div className="bin" data-stream="landfill" data-title="Landfill">
             <img
               className="bin-front"
               src={withPrefix("images/bin-landfill-front.png")}
-              alt=""
-            />
+              alt="" />
             <img
               className="bin-lid"
               src={withPrefix("images/bin-landfill-lid.png")}
-              alt=""
-            />
+              alt="" />
           </div>
         </div>
 
@@ -80,22 +71,19 @@ export default function Selection({ itemsData, itemsText }) {
             <img
               className="bin-back"
               src={withPrefix("images/bin-paper-back.png")}
-              alt=""
-            />
+              alt="" />
           </div>
           <div className="bin" data-stream="metal-glass-plastic">
             <img
               className="bin-back"
               src={withPrefix("images/bin-mgp-back.png")}
-              alt=""
-            />
+              alt="" />
           </div>
           <div className="bin" data-stream="landfill">
             <img
               className="bin-back"
               src={withPrefix("images/bin-landfill-back.png")}
-              alt=""
-            />
+              alt="" />
           </div>
         </div>
       </div>
