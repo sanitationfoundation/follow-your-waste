@@ -1,6 +1,6 @@
 {
   "name": "follow-your-waste",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "",
   "author": "",
   "license": "ISC",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "eslint": "^7.16.0",
-    "gatsby": "^2.26.1",
+    "gatsby": "^2.30.1",
     "gatsby-plugin-sass": "^2.8.0",
     "gatsby-source-filesystem": "^2.8.1",
     "gatsby-transformer-json": "^2.8.0",
@@ -35,7 +35,7 @@
   "devDependencies": {
     "gh-pages": "^3.1.0",
     "i": "^0.3.6",
-    "npm": "^6.14.10",
+    "npm": "^7.3.0",
     "prettier": "2.2.1"
   },
   "browserslist": [
