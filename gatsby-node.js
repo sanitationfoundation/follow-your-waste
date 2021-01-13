@@ -2,8 +2,8 @@ exports.createPages = async ({ actions: { createPage } }) => {
   const langs = ["en", "es", "zh"];
 
   createPage({
-    path: `/`,
-    component: require.resolve("./src/templates/app.js"),
+    path: "/",
+    component: require.resolve("./src/templates/app.jsx"),
     context: {
       lang: "en",
     },
@@ -11,7 +11,7 @@ exports.createPages = async ({ actions: { createPage } }) => {
   // langs.forEach((lang) => {
   //   createPage({
   //     path: `/${lang}/`,
-  //     component: require.resolve("./src/templates/app.js"),
+  //     component: require.resolve("./src/templates/app.jsx"),
   //     context: {
   //       lang: lang,
   //     },

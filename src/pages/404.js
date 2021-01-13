@@ -1,5 +1,9 @@
-import React from "react";
+import { useEffect } from "react";
+import { navigate } from "@reach/router"
 
-export default function Error() {
-  return <h1>404</h1>;
-}
+export default () => {
+  useEffect(() => {
+    navigate("/");
+  }, []);
+  return null;
+};
