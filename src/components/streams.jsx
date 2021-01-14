@@ -111,8 +111,8 @@ export default function Streams({ data, text }) {
 												aria-label="Toggle audio"
 												aria-pressed="false">
 											</button>
-											<button className="icon-button replay"
-												aria-label="Replay">
+											<button className="icon-button playback"
+												aria-label="Playback">
 											</button>
 											
 										</div>

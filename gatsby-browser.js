@@ -4,6 +4,7 @@ import "./src/sass/style.scss";
 import lottie from "lottie-web";
 import Packery from "packery";
 import $ from "jquery";
+// import { Draggable } from '@shopify/draggable';
 import "jquery-ui/ui/widgets/draggable";
 import "jquery-ui/ui/widgets/droppable";
 
@@ -59,12 +60,19 @@ export const onClientEntry = () => {
 					currStream.goToNextScene();
 					break;
 				case 77:
-					const currVoiceAudioElem = currStream.elem.querySelector(".caption.show audio");
+					const currSceneElem = document.querySelector(".stream.show .scene.show"),
+								currEnviron = currSceneElem.dataset.environ,
+								currVoiceAudioElem = currStream.elem.querySelector(".caption.show audio"),
+								currEnvironAudioElem = document.querySelector(`audio[data-environ="${currEnviron}"]`);
+
+					console.log(currEnviron, currEnvironAudioElem);
 					body.classList.toggle("mute");
 					if(body.classList.contains("mute")) {
-						pauseAudio(currVoiceAudioElem);
+						muteAudio(currVoiceAudioElem);
+						muteAudio(currEnvironAudioElem);
 					} else {
-						playAudio(currVoiceAudioElem);
+						unmuteAudio(currVoiceAudioElem);
+						unmuteAudio(currEnvironAudioElem);
 					}
 					break;
 				default:
@@ -138,12 +146,31 @@ export const onClientEntry = () => {
 			const type = elem.dataset.type;
 			$(elem).animate({
 				volume: 0
-			}, fadeOutDur[type], (e) => {
+			}, 100, (e) => {
 				elem.pause();
-				if(type === "voice") {
-					elem.currentTime = 0;	
-				}
 			});
+		};
+
+		const muteAudio = (elem) => {
+			const type = elem.dataset.type;
+			$(elem).animate({
+				volume: 0
+			}, fadeOutDur[type], (e) => {
+				// elem.pause();
+				// if(type === "voice") {
+				// 	elem.currentTime = 0;	
+				// }
+			});
+		};
+
+		const unmuteAudio = (elem) => {
+			if(body.classList.contains("mute")) return;
+			const type = elem.dataset.type;
+			// $(elem).prop("volume", 0);
+			// elem.play();
+			$(elem).animate({
+				volume: volMax[type]
+			}, fadeInDur[type]);
 		};
 
 		/************************************/
@@ -208,6 +235,11 @@ export const onClientEntry = () => {
 				this.image = elem.querySelector("img");
 				this.tooltip = elem.querySelector(".tooltip");
 
+
+				// const draggable = new Draggable(elem, {
+				//   draggable: 'li'
+				// });
+
 				$(elem).draggable({
 					containment: selectView,
 					scroll: false,
@@ -218,9 +250,6 @@ export const onClientEntry = () => {
 
 				elem.onmouseover = () => {
 					elem.classList.add("hovering");
-					if(!body.classList.contains("dragging")) {
-						// elem.parentNode.appendChild(elem);
-					}
 					self.fixTooltip();
 				};
 
@@ -239,6 +268,7 @@ export const onClientEntry = () => {
 			}
 
 			onStopDragItem(e, ui) {
+				const itemElem = e.target;
 				body.classList.remove("dragging");
 			}
 
@@ -416,32 +446,37 @@ export const onClientEntry = () => {
 				};
 
 				const volumeButton = elem.querySelector(".icon-button.volume"),
-							replayButton = elem.querySelector(".icon-button.replay");
+							playbackButton = elem.querySelector(".icon-button.playback");
 
 				volumeButton.onclick = () => {
 					const currSceneObj = self.scenes[self.scene],
 								currVoiceAudioElem = currSceneObj.voiceover,
 								currEnvironAudioElem = currSceneObj.environ;
 					body.classList.toggle("mute");
-					if(currVoiceAudioElem) {
-						if(body.classList.contains("mute")) {
-							pauseAudio(currVoiceAudioElem);
-							pauseAudio(currEnvironAudioElem);
-						} else {
-							playAudio(currVoiceAudioElem);
-							playAudio(currEnvironAudioElem);
-						}
+					if(body.classList.contains("mute")) {
+						muteAudio(currVoiceAudioElem);
+						muteAudio(currEnvironAudioElem);
+					} else {
+						unmuteAudio(currVoiceAudioElem);
+						unmuteAudio(currEnvironAudioElem);
 					}
+					volumeButton.blur();
 				};
 
-				replayButton.onclick = () => {
+				playbackButton.onclick = (e) => {
 					const currSceneObj = self.scenes[self.scene],
-								currVoiceAudioElem = currSceneObj.voiceover;
-					body.classList.remove("mute");
-					if(currVoiceAudioElem) {
-						currVoiceAudioElem.currentTime = 0;
+								currVoiceAudioElem = currSceneObj.voiceover,
+								currEnvironAudioElem = currSceneObj.environ;
+					body.classList.toggle("playing");
+					if(body.classList.contains("playing")) {
+						body.classList.remove("mute");
 						playAudio(currVoiceAudioElem);
+						unmuteAudio(currVoiceAudioElem);
+						unmuteAudio(currEnvironAudioElem);
+					} else {
+						pauseAudio(currVoiceAudioElem);
 					}
+					playbackButton.blur();
 				};
 
 				this.setUpScenes();
@@ -534,7 +569,7 @@ export const onClientEntry = () => {
 				}
 				if(currCaptionElem) {
 					currCaptionElem.classList.remove("show");
-					currCaptionElem.classList.remove("playing");
+					body.classList.remove("playing");
 				}
 				if(currVoiceAudioElem) {
 					pauseAudio(currVoiceAudioElem);
@@ -702,13 +737,13 @@ export const onClientEntry = () => {
 				}
 				if(voiceAudioElem && captionElem) {
 					voiceAudioElem.onplay = () => {
-						captionElem.classList.add("playing");
+						body.classList.add("playing");
 					};
 					voiceAudioElem.onpause = () => {
-						captionElem.classList.remove("playing");
+						body.classList.remove("playing");
 					};
 					voiceAudioElem.onended = () => {
-						captionElem.classList.remove("playing");
+						body.classList.remove("playing");
 					};
 				}
 

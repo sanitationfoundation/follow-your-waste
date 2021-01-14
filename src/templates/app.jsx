@@ -7,35 +7,35 @@ import esText from "../content/es.json";
 import zhText from "../content/zh.json";
 import data from "../content/data.json";
 
+import Header from "../components/header.jsx";
 import Intro from "../components/intro.jsx";
 import Selection from "../components/selection.jsx";
 import Streams from "../components/streams.jsx";
 
-const langObjs = {
-	en: {
-		long: "Español",
-		short: "eng",
-		text: enText
-	},
-	es: {
-		long: "Español",
-		short: "esp",
-		text: esText
-	},
-	zh: {
-		long: "简体",
-		short: "简体",
-		text: zhText
-	}
-};
-
-const langKeys = Object.keys(langObjs);
-
-const { items } = data;
-
 export default ({ pageContext }) => {
 	const { lang } = pageContext,
-				text = langObjs[lang].text,
+				{ items } = data;
+
+	const langObjs = {
+		en: {
+			long: "Español",
+			short: "eng",
+			text: enText
+		},
+		es: {
+			long: "Español",
+			short: "esp",
+			text: esText
+		},
+		zh: {
+			long: "简体",
+			short: "简体",
+			text: zhText
+		}
+	};
+
+
+	const text = langObjs[lang].text,
 				microText = text.micro[0],
 				dialogText = text.dialog[0],
 				itemsText = text.items;
@@ -49,6 +49,7 @@ export default ({ pageContext }) => {
 				}}>
 			</Helmet>
 
+			<Header lang={lang} langObjs={langObjs} />
 			<Intro microText={microText} />
 			<Selection itemsData={items} itemsText={itemsText} />
 			<Streams data={data} text={text} />
@@ -109,18 +110,6 @@ export default ({ pageContext }) => {
 
 			<div id="full-toggle"></div>
 
-			<div id="lang-select">
-				{langKeys.map((langKey, i) => {
-					const langObj = langObjs[langKey];
-					return (
-						<div className="lang-option" key={i}>
-							<a lang={langKey} href={"/"+langKey} title={langObj.long}>
-								{langObj.short}
-							</a>
-						</div>
-					);
-				})}
-			</div>
 		</div>
 	);
 };

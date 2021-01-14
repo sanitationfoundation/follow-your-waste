@@ -111,36 +111,54 @@ body.alerts #alerts-view {
 	background-size: cover;
 	transition: all 300ms ease-in-out;
 }
-#lang-select {
+
+header#header {
+	width: 100%;
 	position: absolute;
-	right: 20px;
-	top: 20px;
+	left: 0px;
 	z-index: 70;
+	display: flex;
+	justify-content: flex-end;
+	font-weight: bold;
+	text-align: right;
+	text-transform: lowercase;
+	user-select: none;
+	pointer-events: none;
 	@include md-text;
 }
-.lang-option {
-	width: 50px;
+.dropdown {
+	position: relative;
+	margin: 10px 20px 0 50px;
+}
+.option {
+	padding: 3px 0;
+	pointer-events: all;
 	&:first-child::before {
 		content: "";
 		width: 18px;
 		height: 18px;
-		position: absolute;
-		left: -25px;
-		top: 5px;
+    position: relative;
+    left: -8px;
+    top: 4px;
+		display: inline-block;
 		background-image: url(../images/arrow.svg);
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
 	}
-	#lang-select:hover &:first-child::before {
+	&:first-child {
+		cursor: pointer;
+		pointer-events: all;
+	}
+	.dropdown.open &:first-child::before {
 		transform: rotate(180deg);
 	}
-	#lang-select:not(:hover) &:not(:first-child) {
-		display: none;
+	.dropdown:not(.open) &:not(:first-child) {
+		opacity: 0;
+		pointer-events: none;
 	}
 	a {
 		color: white;
-		font-weight: bold;
 		text-decoration: none;
 		&:hover {
 			
@@ -684,9 +702,12 @@ $lighter-amt: 10%;
 			background-position-y: bottom;
 		}
 	}
-	&.replay {
+	&.playback {
 		top: 60px;
-		background-image: url(../images/replay.svg);
+		background-image: url(../images/playback.svg);
+		body.playing & {
+			background-position-y: bottom;
+		}
 	}
 	&:hover,
 	&:focus {

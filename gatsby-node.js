@@ -8,13 +8,13 @@ exports.createPages = async ({ actions: { createPage } }) => {
       lang: "en",
     },
   });
-  // langs.forEach((lang) => {
-  //   createPage({
-  //     path: `/${lang}/`,
-  //     component: require.resolve("./src/templates/app.jsx"),
-  //     context: {
-  //       lang: lang,
-  //     },
-  //   });
-  // });
+  langs.forEach((lang) => {
+    createPage({
+      path: `/${lang}/`,
+      component: require.resolve("./src/templates/app.jsx"),
+      context: {
+        lang: lang,
+      },
+    });
+  });
 };
