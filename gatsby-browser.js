@@ -143,7 +143,6 @@ export const onClientEntry = () => {
 		};
 
 		const pauseAudio = (elem) => {
-			const type = elem.dataset.type;
 			$(elem).animate({
 				volume: 0
 			}, 100, (e) => {
@@ -155,19 +154,12 @@ export const onClientEntry = () => {
 			const type = elem.dataset.type;
 			$(elem).animate({
 				volume: 0
-			}, fadeOutDur[type], (e) => {
-				// elem.pause();
-				// if(type === "voice") {
-				// 	elem.currentTime = 0;	
-				// }
-			});
+			}, fadeOutDur[type]);
 		};
 
 		const unmuteAudio = (elem) => {
 			if(body.classList.contains("mute")) return;
 			const type = elem.dataset.type;
-			// $(elem).prop("volume", 0);
-			// elem.play();
 			$(elem).animate({
 				volume: volMax[type]
 			}, fadeInDur[type]);
@@ -212,14 +204,21 @@ export const onClientEntry = () => {
 					"[data-alert='" + alertSlug + "']"
 				),
 				buttonElem = alertElem.querySelector(".button");
-			alertElem.classList.add("show");
+			alertElem.classList.add("show");			
 			buttonElem.onclick = (e) => {
 				alertElem.classList.remove("show");
 				body.classList.remove("alerts");
 				if(onClick) {
-					onClick();
+					onClick(e);
 				}
 			};
+
+			var menuElem = alertElem.querySelector(`[role="menu"]`);
+			if(menuElem) {
+				menuElem.focus();
+			} else {
+				buttonElem.focus();
+			}
 		};
 
 		/************************************/
@@ -268,22 +267,17 @@ export const onClientEntry = () => {
 			}
 
 			onStopDragItem(e, ui) {
-				const itemElem = e.target;
 				body.classList.remove("dragging");
 			}
 
 			onDragItem(e, ui) {
-				// const itemElem = e.target,
-				// 			itemHeight = itemElem.clientHeight,
-				// 			itemTop = ui.position.top,
-				// 			itemBottom = itemHeight + itemTop;
 				this.fixTooltip();
 			}
 
 			returnItem(bin) {
 				const itemElem = this.elem,
-					binElem = bin.elem,
-					binBackElem = bin.backElem;
+							binElem = bin.elem,
+							binBackElem = bin.backElem;
 
 				binBackElem.classList.add("open");
 				binElem.classList.add("open");
@@ -498,10 +492,11 @@ export const onClientEntry = () => {
 				});
 
 				Promise.all(svgReqs).then((responses) => {
+					startButtn.setAttribute("aria-disabled", false);
 					startButtn.onclick = () => {
 						body.id = "pre-select";
 						handleStreamSelect();
-						showAlert("select", () => {
+						showAlert("select", (e) => {
 							body.id = "select";
 						});
 					};

@@ -11,7 +11,7 @@ export default function Header({ lang, langObjs }) {
 	//   	lang: true
 	//   };
 	// }
-	const [mainMenu, setMainMenu] = useState(false);
+	// const [mainMenu, setMainMenu] = useState(false);
 	const [langMenu, setLangMenu] = useState(false);
 
 	// toggleDropdown(menuId) {
@@ -24,49 +24,48 @@ export default function Header({ lang, langObjs }) {
 		return a === lang ? -1 : b === lang ? 1 : 0
 	});
 
+	const currLangKey = langKeys.shift(),
+				currLangObj = langObjs[currLangKey];
+
 	return (
 		<header id="header">
 
-			<div className={`dropdown ${mainMenu ? "open" : ""}`}>
-				<div className="option" onClick={() => setMainMenu(!mainMenu)}>
-					Menu
-				</div>
-				<div className="option">
-					<a href="https://www.sanitationfoundation.org/" title="Meet The Workers">
-						Meet The Workers
-					</a>
-				</div>
-				<div className="option">
-					<a href="https://www.sanitationfoundation.org/" title="Teaching Resources">
-						Teaching Resources
-					</a>
-				</div>
-				<div className="option">
-					<a href="https://www.sanitationfoundation.org/" title="About The Site">
-						About The Site
-					</a>
-				</div>
+			<div id="skip-to-intro">
+				<a href="#intro-view">Skip to main content</a>
 			</div>
 
-			<div className={`dropdown ${langMenu ? "open" : ""}`}>
+			<div id="lang-switch" className={`dropdown ${langMenu ? "open" : ""}`}>
 
-				{langKeys.map((langKey, i) => {
-					const langObj = langObjs[langKey];
-					return (
-						<React.Fragment key={i}>
-							{ i === 0 ?
-								<div className="option" onClick={() => setLangMenu(!langMenu)}>
+				<div className="option"
+						 role="button"
+						 title={currLangObj.long}
+						 aria-hidden="true"
+						 onClick={() => setLangMenu(!langMenu)}
+						 onKeyPress={() => setLangMenu(!langMenu)}>
+					{currLangObj.short}
+				</div>
+
+				<div id="lang-switch-label" className="aria-only" aria-hidden="true">
+					Switch language
+				</div>
+
+				<div role="menu" aria-labelledby="lang-switch-label">
+					{langKeys.map((langKey, i) => {
+						const langObj = langObjs[langKey];
+						return (
+							<div className="option" key={i}>
+								<a role="menuitem"
+									 lang={langKey}
+									 href={"/"+langKey}
+									 title={langObj.long}
+									 aria-label={`Switch to ${langObj.long}`}
+									 tabIndex="0">
 									{langObj.short}
-								</div>
-							: <div className="option">
-									<a lang={langKey} href={"/"+langKey} title={langObj.long}>
-										{langObj.short}
-									</a>
-								</div>
-							}
-						</React.Fragment>
-					);
-				})}
+								</a>
+							</div>
+						);
+					})}
+				</div>
 
 			</div>
 

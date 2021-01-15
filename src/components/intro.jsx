@@ -13,10 +13,16 @@ export default function Selection({ microText }) {
           </div>
           <div id="intro-tagline">{microText.tagline}</div>
           <div id="intro-bottom">
-            <button className="button" id="intro-button">
+            <div id="loading">
+              <span aria-hidden="true">{microText.loading}</span>
+            </div>
+            <button
+              className="button"
+              id="intro-button"
+              aria-disabled="true"
+              aria-haspopup="true">
               {microText.get_started}
             </button>
-            <div id="loading">{microText.loading}</div>
           </div>
         </div>
       </div>

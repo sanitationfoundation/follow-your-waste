@@ -98,6 +98,10 @@ export default function Streams({ data, text }) {
 																	<source
 																		src={withPrefix(`audio/${stream}/${sceneData.slug}.wav`)}
 																		type="audio/wav" />
+																	<track
+																		src=""
+																		srcLang="en"
+																		kind="captions" />
 																</audio>
 															</div>
 														);

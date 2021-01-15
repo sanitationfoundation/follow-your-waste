@@ -11,6 +11,7 @@ import Header from "../components/header.jsx";
 import Intro from "../components/intro.jsx";
 import Selection from "../components/selection.jsx";
 import Streams from "../components/streams.jsx";
+import Alerts from "../components/alerts.jsx";
 
 export default ({ pageContext }) => {
 	const { lang } = pageContext,
@@ -18,7 +19,7 @@ export default ({ pageContext }) => {
 
 	const langObjs = {
 		en: {
-			long: "Español",
+			long: "English",
 			short: "eng",
 			text: enText
 		},
@@ -53,60 +54,7 @@ export default ({ pageContext }) => {
 			<Intro microText={microText} />
 			<Selection itemsData={items} itemsText={itemsText} />
 			<Streams data={data} text={text} />
-
-			<div id="alerts-view" className="view">
-				<div className="view-inner">
-					<div className="alert" data-alert="select">
-						<div className="portrait">
-							<img src="./images/workers/renee.png" alt="" />
-						</div>
-						<div className="message">
-							<p>Hi there, and welcome to Disposal Journey! I’m Renee, and I work
-							at DSNY. Do you ever wonder what happens to your waste after you
-							toss it in a bin? My team and I are here to teach you.</p>
-						</div>
-						<button className="button" aria-label="Close">
-							Okay
-						</button>
-					</div>
-
-					<div className="alert" data-alert="not-trash">
-						<div className="message">
-							<p>{dialogText.not_trash}</p>
-							<button className="button" aria-label="Close">
-								{microText.try_again}
-							</button>
-						</div>
-					</div>
-
-					<div className="alert" data-alert="wrong-recycle">
-						<div className="message">
-							<p>{dialogText.wrong_recycle}</p>
-							<button className="button" aria-label="Close">
-								{microText.try_again}
-							</button>
-						</div>
-					</div>
-
-					<div className="alert" data-alert="not-recycle">
-						<div className="message">
-							<p>{dialogText.not_recycle}</p>
-							<button className="button" aria-label="Close">
-								{microText.try_again}
-							</button>
-						</div>
-					</div>
-
-					<div className="alert" data-alert="correct-bin">
-						<div className="message">
-							<p>{dialogText.correct_bin}</p>
-							<button className="button" aria-label="Start">
-								{microText.lets_go}
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
+			<Alerts dialogText={dialogText} microText={microText} />
 
 			<div id="full-toggle"></div>
 

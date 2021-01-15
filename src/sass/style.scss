@@ -31,6 +31,10 @@ body {
 a {
 	color: inherit;
 }
+.aria-only {
+	position: absolute;
+	left: -999999px;
+}
 .label {
 	@include md-text;
 }
@@ -55,61 +59,22 @@ button {
 	text-decoration: none;
 }
 
-////////////////////////////////////
-/////////////// VIEWS //////////////
-////////////////////////////////////
-.view {
-	width: 100% !important;
-	height: 100% !important;
-	position: absolute;
-	left: 0;
-	top: 0;
-	overflow-x: hidden;
-	overflow-y: hidden;
-	opacity: 0;
-	pointer-events: none;
-	transition: opacity 500ms ease-in, background 500ms ease-in;
-	#intro &#intro-view,
-	#select &#select-view,
-	#pre-select &#select-view,
-	#streams &#streams-view,
-	.alerts &#alerts-view {
-		pointer-events: all;
-		opacity: 1;
-		// animation: open-view 800ms forwards 1;
-	}
-}
-.view-inner {
-	// min-width: $md-width;
-	max-width: $xl-width;
-	height: 100%;
-	margin: auto;
-	position: relative;
-	overflow: visible;
-}
-body#intro #intro-view,
-body#selection #selection-view,
-body#streams #streams-view,
-body.alerts #alerts-view {
-	opacity: 1;
-	pointer-events: all;
-}
 
 ////////////////////////////////////
-/////////////// UTILS //////////////
+////////////// HEADER //////////////
 ////////////////////////////////////
-#full-toggle {
-	width: 30px;
-	height: 30px;
-	position: absolute;
-	right: 5px;
-	bottom: 5px;
-	z-index: 70;
-	cursor: pointer;
-	background-image: url(../images/expand.svg);
-	background-position: center;
-	background-size: cover;
-	transition: all 300ms ease-in-out;
+#skip-to-intro {
+	margin: 10px auto 0 20px;
+	a {
+		position: relative;
+		left: -999999px;
+		&:focus {
+			left: 0;
+		}
+	}
+	body:not(#intro) {
+		display: none;
+	}
 }
 
 header#header {
@@ -129,42 +94,99 @@ header#header {
 .dropdown {
 	position: relative;
 	margin: 10px 20px 0 50px;
+	&:not(.open) [role="menu"] {
+		opacity: 0;
+		pointer-events: none;
+	}
 }
 .option {
 	padding: 3px 0;
 	pointer-events: all;
-	&:first-child::before {
-		content: "";
-		width: 18px;
-		height: 18px;
-    position: relative;
-    left: -8px;
-    top: 4px;
-		display: inline-block;
-		background-image: url(../images/arrow.svg);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
-	}
-	&:first-child {
+	&[role="button"] {
 		cursor: pointer;
 		pointer-events: all;
-	}
-	.dropdown.open &:first-child::before {
-		transform: rotate(180deg);
-	}
-	.dropdown:not(.open) &:not(:first-child) {
-		opacity: 0;
-		pointer-events: none;
+		&::before {
+			content: "";
+			width: 18px;
+			height: 18px;
+	    position: relative;
+	    left: -8px;
+	    top: 4px;
+			display: inline-block;
+			background-image: url(../images/arrow.svg);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			.dropdown.open & {
+				transform: rotate(180deg);	
+			}
+		}
 	}
 	a {
 		color: white;
 		text-decoration: none;
-		&:hover {
-			
+		pointer-events: none;
+		.dropdown.open & {
+			pointer-events: all;
 		}
 	}
 }
+
+#full-toggle {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	z-index: 70;
+	cursor: pointer;
+	background-image: url(../images/expand.svg);
+	background-position: center;
+	background-size: cover;
+	transition: all 300ms ease-in-out;
+}
+
+////////////////////////////////////
+/////////////// VIEWS //////////////
+////////////////////////////////////
+.view {
+	width: 100% !important;
+	height: 100% !important;
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	display: none;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 500ms ease-in, background 500ms ease-in;
+	#intro &#intro-view,
+	#select &#select-view,
+	#pre-select &#select-view,
+	#streams &#streams-view,
+	.alerts &#alerts-view {
+		opacity: 1;
+		display: block;
+		pointer-events: all;
+	}
+}
+.view-inner {
+	max-width: $xl-width;
+	height: 100%;
+	margin: auto;
+	position: relative;
+	overflow: visible;
+}
+// body#intro #intro-view,
+// body#selection #selection-view,
+// body#streams #streams-view,
+// body.alerts #alerts-view {
+// 	opacity: 1;
+// 	display: block;
+// 	pointer-events: all;
+// }
+
 // transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
 // background-image: url(../images/arrow.svg);
 
@@ -212,27 +234,46 @@ header#header {
 	position: relative;
 }
 #loading {
-	width: 100%;
+	width: 300px;
+	height: 150px;
 	position: absolute;
-	left: 0;
-	top: 0;
-	transition: opacity 500ms ease-in-out;
-	animation: blinking 1s infinite;
-	@include sm-text;
+	left: calc(50% - 150px);
+	top: -50px;
+	z-index: 1;
 	text-align: center;
 	pointer-events: none;
+	background-image: url(../images/loading.png);
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	transition: transform 2000ms ease-in-out;
+	span {
+		position: absolute;
+		left: 100px;
+    top: 45px;
+		color: black;
+		text-transform: lowercase;
+		font-weight: bold;
+		@include lg-text;
+		animation: blinking 1s infinite;
+	}
 	.view:not(.loading) & {
-		opacity: 0;
+		transform: translateX(100vw);
+		span {
+			opacity: 0;
+			animation-play-state: paused;
+			transition: opacity 2000ms ease-in-out;
+		}
 	}
 }
 
 @keyframes blinking {
 	0%,
 	100% {
-		color: white;
+		opacity: 1;
 	}
 	50% {
-		color: rgba(white, 0.5);
+		opacity: .75;
 	}
 }
 
@@ -241,7 +282,7 @@ header#header {
 	text-transform: uppercase;
 	border-radius: 5px;
 	margin: 60px auto 0 auto;
-	transition: opacity 300ms 1s ease-in-out;
+	transition: opacity 100ms ease-in-out;
 	.view.loading & {
 		opacity: 0;
 		pointer-events: none;
@@ -317,494 +358,6 @@ header#header {
 		transform: rotate(-90deg);
 	}
 }
-
-////////////////////////////////////
-/////////// STREAMS VIEW ///////////
-////////////////////////////////////
-#streams-view.view {
-	.view-inner {
-		min-width: 100%;
-		max-width: 100%;
-	}
-}
-.stream {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	&:not(.show) {
-		opacity: 0;
-		pointer-events: none;
-	}
-	&.pseudo {
-		display: none;
-	}
-}
-.progress {
-	width: 80%;
-	background-color: rgba(255, 255, 255, 0.25);
-	position: absolute;
-	left: 10%;
-	top: 60px;
-	z-index: 50;
-	border-radius: 10px;
-	@include md-width {
-		display: none;
-	}
-}
-.ticks-wrap {
-	display: flex;
-	justify-content: space-evenly;
-}
-.tick {
-	width: 15px;
-	height: 15px;
-	margin: 0 auto;
-	background-color: white;
-	opacity: 0.5;
-	border-radius: 50%;
-	position: relative;
-	pointer-events: all;
-	cursor: pointer;
-	transition: opacity 200ms ease-in-out;
-	.label {
-		position: absolute;
-		top: 25px;
-		left: 0px;
-		opacity: 0;
-		color: white;
-		white-space: nowrap;
-		pointer-events: none;
-		transition: opacity 200ms ease-in-out;
-	}
-	&:first-child {
-		margin-left: 0;
-	}
-	&:last-child {
-		margin-right: 0;
-	}
-	&:last-child .label,
-	&:nth-last-child(2) .label {
-		left: auto;
-		right: 0;
-	}
-	&:hover,
-	&:hover .label {
-		opacity: 1;
-	}
-	&.active {
-	// &.active .label {
-		opacity: 1;
-	}
-}
-.arrow {
-	width: 36px;
-	height: 36px;
-	position: absolute;
-	top: calc(50% - 18px);
-	z-index: 60;
-	&:hover {
-		cursor: pointer;
-	}
-	&[data-dir="prev"] {
-		right: 100%;
-		@include md-width {
-			display: none;
-		}
-	}
-	&[data-dir="next"] {
-		left: 100%;
-		@include md-width {
-			display: none;
-		}
-	}
-	&::before {
-		content: "";
-		width: 36px;
-		height: 36px;
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: contain;
-		position: absolute;
-		top: 0;
-		left: 0;
-		opacity: 0.5;
-		transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
-	}
-	&::before {
-			background-image: url(../images/arrow.svg);
-		}
-	&:hover::before {
-		opacity: 1;
-	}
-	&[data-dir="prev"] {
-		transform: rotate(90deg);
-		&:hover::before {
-			transform: translateY(10px);
-		}
-	}
-	&[data-dir="next"] {
-		transform: rotate(-90deg);
-		&:hover::before {
-			transform: translateY(10px);
-		}
-	}
-}
-
-audio {
-	display: none;
-}
-
-////////////////////////////////////
-////////////// SCENES //////////////
-////////////////////////////////////
-.scene {
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	position: absolute;
-	z-index: 40;
-	display: flex;
-	user-select: none;
-	transition: opacity 300ms ease-in, background 300ms ease-in;
-	opacity: 0;
-	pointer-events: none;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	display: flex;
-	align-content: center;
-	.svg-wrap,
-	.img-wrap {
-		width: 100%;
-		// display: flex;
-		overflow: hidden;
-		position: relative;
-		&.width {
-			display: flex;
-			svg,
-			img {
-				width: 100% !important;
-				height: auto !important;
-				margin-top: calc(((100vw / 1.75) - 100vh) / -2) !important;
-			}
-		}
-		&.height {
-			svg,
-			img {
-				width: auto !important;
-				height: 100% !important;
-				margin-left: calc(((100vh * 1.75) - 100vw) / -2) !important;
-			}
-		}
-	}
-	img {
-		width: auto;
-		height: 100%;
-		display: block;
-		margin: auto;
-	}
-	svg {
-		height: unset;
-		display: block;
-		margin: auto;
-	}
-	body#streams &.show {
-		opacity: 1;
-		pointer-events: all;
-	}
-	.marker {
-		&:hover {
-			cursor: pointer;
-		}
-	}
-}
-$light-amt: 10%;
-$lighter-amt: 10%;
-
-.stream[data-slug="metal"] {
-	.vocab {
-		color: lighten($blue, $light-amt);
-		&.clickable:hover,
-		&.clickable:focus {
-			color: lighten($blue-dark, $lighter-amt);
-		}
-	}
-	.chyron-inner {
-		border-color: $blue-dark;
-	}
-}
-.stream[data-slug="glass"] {
-	.vocab {
-		color: $yellow;
-		&.clickable:hover,
-		&.clickable:focus {
-			color: $yellow-dark;
-		}
-	}
-	.chyron-inner {
-		border-color: $yellow-dark;
-	}
-}
-.stream[data-slug="plastic"] {
-	.vocab {
-		color: lighten($red, $light-amt);
-		&.clickable:hover,
-		&.clickable:focus {
-			color: lighten($red-dark, $lighter-amt);
-		}
-	}
-	.chyron-inner {
-		border-color: $red-dark;
-	}
-}
-.stream[data-slug="paper"] {
-	.vocab {
-		color: lighten($green, $light-amt);
-		&.clickable:hover,
-		&.clickable:focus {
-			color: lighten($green-dark, $lighter-amt);
-		}
-	}
-	.chyron-inner {
-		border-color: $green-dark;
-	}
-}
-.stream[data-slug="landfill"] {
-	.vocab {
-		color: lighten($pink, $light-amt);
-		&.clickable:hover,
-		&.clickable:focus {
-			color: lighten($pink-dark, $lighter-amt);
-		}
-	}
-	.chyron-inner {
-		border-color: $pink-dark;
-	}
-}
-////////////////////////////////////
-///////////// CHYRONS //////////////
-////////////////////////////////////
-.chyron-wrap-wrap {
-	width: 100%;
-	position: absolute;
-	left: 0;
-	bottom: 20px;
-	z-index: 50;
-	opacity: 0;
-	color: white;
-	pointer-events: none;
-	transition: opacity 300ms ease-in;
-	body#streams .stream.show:not(.end) & {
-		opacity: 1;
-		pointer-events: all;
-	}
-	@include md-width {
-		bottom: 0;
-	}
-}
-.chyron-wrap {
-	width: 90%;
-	max-width: $md-width;
-	margin: auto;
-	@include md-width {
-		width: 100%;
-	}
-}
-.chyron {
-	width: 100%;
-	margin: auto;
-}
-.chyron-inner {
-	width: 100%;
-	min-height: 120px;
-	max-height: 190px;
-	border: 3px solid;
-	border-radius: 7px;
-	background-color: $darken;
-	box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
-	transition: width 300ms ease-in-out, max-height 300ms ease-in-out;
-	position: relative;
-	@include md-width {
-		min-height: $portrait-width;
-		border-width: 3px 0 0 0;
-		border-radius: 0;
-	}
-	.portrait {
-		left: -76px;
-		top: -24px;
-		z-index: 51;
-		@include md-width {
-			left: 0;
-			top: 0;
-		}
-	}
-}
-.portrait {
-	position: absolute;
-	img {
-		width: auto;
-		height: 159px;
-		display: block;
-	}
-}
-.captions {
-	height: 100%;
-	min-height: 120px;
-	max-height: 184px;
-	overflow-y: scroll;
-	-webkit-overflow-scroll: touch;
-	transition: height 300ms ease-in-out;
-	.caption {
-		padding: 20px 60px 20px 90px;
-		text-align: left;
-		overflow-y: auto;
-		@include lg-text;
-		@include md-width {
-			padding-left: $portrait-width;
-		}
-		.text {
-			float: right;
-			width: 100%;
-			max-width: #{$md-width - $portrait-width};
-			@include md-width {
-				width: calc(90vw - #{$portrait-width});
-			}
-			@include sm-width {
-				width: 100%;
-			}
-		}
-		.vocab.clickable {
-			cursor: pointer;
-			transition: color 300ms ease-in-out;
-		}
-		&:not(.show) {
-			display: none;
-		}
-	}
-}
-.icon-button {
-	width: 25px;
-	height: 25px;
-	right: 15px;
-	position: absolute;
-	background-size: cover;
-	background-position: center top;
-	background-repeat: no-repeat;
-	opacity: 0.5;
-	transition: opacity 300ms ease-in-out;
-	&.volume {
-		top: 20px;
-		background-image: url(../images/volume.svg);
-		body.mute & {
-			background-position-y: bottom;
-		}
-	}
-	&.playback {
-		top: 60px;
-		background-image: url(../images/playback.svg);
-		body.playing & {
-			background-position-y: bottom;
-		}
-	}
-	&:hover,
-	&:focus {
-		opacity: 1;
-		cursor: pointer;
-	}
-}
-////////////////////////////////////
-///////////// FACTOIDS /////////////
-////////////////////////////////////
-.factoids {
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	left: 100%;
-	top: 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-.factoid {
-	width: 50%;
-	min-width: 400px;
-	max-width: 600px;
-	margin: 0 0 15px 0;
-	transition: transform 300ms ease-in-out;
-	position: relative;
-	cursor: pointer;
-	&.open {
-		transform: translateX(-100%);
-	}
-}
-.factoid-tab {
-	height: 60px;
-	width: 60px;
-	position: absolute;
-	left: -60px;
-	top: 0;
-	&::before {
-		content: "";
-		width: 50px;
-		height: 100%;
-		position: absolute;
-		right: 0;
-		top: 0;
-		border-radius: 60px 0 0 60px;
-		background-color: $darken;
-		box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
-		overflow: hidden;
-		transition: width 300ms ease-in-out;
-	}
-	&::after {
-		content: "";
-		width: 30px;
-		height: 30px;
-		position: absolute;
-		right: 5px;
-		top: 15px;
-		background-image: url(../images/plus.svg);
-		background-position: bottom center;
-		background-size: cover;
-		transition: all 300ms ease-in-out;
-	}
-	.factoid:not(.open):hover &::before {
-		width: 60px;
-	}
-	.factoid:not(.open):hover &::after {
-		right: 15px;
-	}
-	.factoid.open &::after {
-		transform: rotate(45deg);
-	}
-}
-.factoid-inner {
-	width: 100%;
-	min-height: 80px;
-	padding: 15px 20px 20px 20px;
-	background-color: $darken;
-	color: white;
-	border-radius: 0 0 0 20px;
-	position: relative;
-	transition: box-shadow 300ms ease-in-out;
-	.vocab {
-		text-transform: capitalize;
-		&::after {
-			content: ": ";
-			display: inline;
-		}
-	}
-	p {
-		@include lg-text;
-		margin: 5px 0 0 0;
-	}
-	.factoid.open & {
-		box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
-	}
-}
 ////////////////////////////////////
 /////////// ALERTS VIEW ////////////
 ////////////////////////////////////
@@ -846,3 +399,4 @@ $lighter-amt: 10%;
 ///////////// IMPORTS //////////////
 ////////////////////////////////////
 @import "select.scss";
+@import "streams.scss";

@@ -5,6 +5,7 @@ export default function Selection({ itemsData, itemsText }) {
   return (
     <div id="select-view" className="view">
       <div className="view-inner">
+
         <div id="items-wrap">
           <div id="stamp"></div>
           {itemsData.map((item, i) => {
@@ -14,6 +15,7 @@ export default function Selection({ itemsData, itemsText }) {
                 className="item"
                 data-item={item.slug}
                 data-stream={item.stream}
+                aria-hidden="true"
                 key={i}>
                 <img
                   src={withPrefix(`images/items/${item.slug}.png`)}
