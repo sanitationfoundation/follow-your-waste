@@ -19,11 +19,15 @@ html {
 	overflow-y: scroll;
 }
 body {
-	min-width: $sm-width;
-	min-height: $sm-width;
+	// min-width: $sm-width;
+	// min-height: $sm-width;
 	font-size: 20px;
-	transition: opacity 300ms;
 	position: relative;
+	opacity: 0;
+	&.loaded {
+		opacity: 1;
+		transition: opacity 1000ms;
+	}
 }
 * {
 	box-sizing: border-box;
@@ -31,32 +35,22 @@ body {
 a {
 	color: inherit;
 }
-.aria-only {
-	position: absolute;
-	left: -999999px;
+.screen-hidden {
+	@include hide;
+}
+.mobile-show {
+	@include hide;
+	@include sm-width {
+		@include show;
+	}
+}
+.mobile-hidden {
+	@include sm-width {
+		@include hide;
+	}
 }
 .label {
 	@include md-text;
-}
-button {
-	border-width: 0;
-	background-color: transparent;
-	@include md-text;
-	&:hover,
-	&:focus {
-		cursor: pointer;
-		outline: none;
-		outline: none;
-	}
-}
-.button {
-	display: table;
-	padding: 5px 20px;
-	border: 2px solid;
-	border-radius: 5px;
-	color: inherit;
-	background-color: transparent;
-	text-decoration: none;
 }
 
 
@@ -82,6 +76,7 @@ header#header {
 	position: absolute;
 	left: 0px;
 	z-index: 70;
+	padding: 15px;
 	display: flex;
 	justify-content: flex-end;
 	font-weight: bold;
@@ -93,15 +88,16 @@ header#header {
 }
 .dropdown {
 	position: relative;
-	margin: 10px 20px 0 50px;
 	&:not(.open) [role="menu"] {
 		opacity: 0;
 		pointer-events: none;
 	}
 }
 .option {
-	padding: 3px 0;
+	padding: 0 0 6px 0;
 	pointer-events: all;
+	opacity: .75;
+	transition: opacity 300ms ease-in-out;
 	&[role="button"] {
 		cursor: pointer;
 		pointer-events: all;
@@ -122,6 +118,9 @@ header#header {
 			}
 		}
 	}
+	&:hover {
+		opacity: 1;
+	}
 	a {
 		color: white;
 		text-decoration: none;
@@ -134,16 +133,27 @@ header#header {
 
 #full-toggle {
 	width: 30px;
-	height: 30px;
-	position: absolute;
-	right: 5px;
-	bottom: 5px;
+	height: 23px;
+	position: fixed;
+	right: 15px;
+	bottom: 15px;
 	z-index: 70;
-	cursor: pointer;
-	background-image: url(../images/expand.svg);
-	background-position: center;
+	background-image: url(../images/full.svg);
+	background-position: top center;
 	background-size: cover;
-	transition: all 300ms ease-in-out;
+	opacity: .75;
+	transition: opacity 300ms ease-in-out;
+	pointer-events: all;
+	&:hover {
+		opacity: 1;
+		cursor: pointer;
+	}
+	.full & {
+		background-position-y: bottom;
+	}
+	@include sm-width {
+		display: none;
+	}
 }
 
 ////////////////////////////////////
@@ -359,44 +369,8 @@ header#header {
 	}
 }
 ////////////////////////////////////
-/////////// ALERTS VIEW ////////////
-////////////////////////////////////
-#alerts-view {
-	background-color: rgba($darken, 0.5);
-	opacity: 0;
-	pointer-events: none;
-	transition: opacity 300ms ease-in;
-	z-index: 30;
-	.view-inner {
-		display: flex;
-		align-content: center;
-	}
-}
-.alert {
-	width: 600px;
-	padding: 30px 40px;
-	margin: auto;
-	background-color: $darken;
-	color: white;
-	border-radius: 20px;
-	display: none;
-	position: relative;
-	&.show {
-		display: block;
-	}
-	p {
-		margin: 0 0 25px 0;
-	}
-	.button {
-		margin: 15px auto 0 auto;
-	}
-	.portrait {
-		left: -90px;
-		top: 120px;
-	}
-}
-////////////////////////////////////
 ///////////// IMPORTS //////////////
 ////////////////////////////////////
 @import "select.scss";
 @import "streams.scss";
+@import "alerts.scss";

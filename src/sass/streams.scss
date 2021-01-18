@@ -27,27 +27,33 @@
 	position: absolute;
 	left: 10%;
 	top: 60px;
-	z-index: 50;
+	z-index: 40;
 	border-radius: 10px;
 	@include md-width {
-		display: none;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
 	}
 }
 .ticks-wrap {
 	display: flex;
 	justify-content: space-evenly;
+	@include md-width {
+		display: none;
+	}
 }
 .tick {
 	width: 15px;
 	height: 15px;
 	margin: 0 auto;
 	background-color: white;
-	opacity: 0.5;
+	opacity: .5;
 	border-radius: 50%;
 	position: relative;
 	pointer-events: all;
 	cursor: pointer;
-	transition: opacity 200ms ease-in-out;
+	transition: opacity 300ms ease-in-out;
 	.label {
 		position: absolute;
 		top: 25px;
@@ -56,7 +62,7 @@
 		color: white;
 		white-space: nowrap;
 		pointer-events: none;
-		transition: opacity 200ms ease-in-out;
+		transition: opacity 300ms ease-in-out;
 	}
 	&:first-child {
 		margin-left: 0;
@@ -74,7 +80,6 @@
 		opacity: 1;
 	}
 	&.active {
-	// &.active .label {
 		opacity: 1;
 	}
 }
@@ -83,51 +88,73 @@
 	height: 36px;
 	position: absolute;
 	top: calc(50% - 18px);
-	z-index: 60;
 	&:hover {
 		cursor: pointer;
-	}
-	&[data-dir="prev"] {
-		right: 100%;
-		@include md-width {
-			display: none;
-		}
-	}
-	&[data-dir="next"] {
-		left: 100%;
-		@include md-width {
-			display: none;
-		}
 	}
 	&::before {
 		content: "";
 		width: 36px;
 		height: 36px;
+		background-image: url(../images/arrow.svg);
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: contain;
 		position: absolute;
 		top: 0;
 		left: 0;
-		opacity: 0.5;
+		opacity: 0.75;
 		transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
 	}
-	&::before {
-			background-image: url(../images/arrow.svg);
-		}
 	&:hover::before {
 		opacity: 1;
 	}
 	&[data-dir="prev"] {
-		transform: rotate(90deg);
+		right: 100%;
+		&::before {
+			transform: rotate(90deg);
+		}
 		&:hover::before {
-			transform: translateY(10px);
+			transform: rotate(90deg) translateY(10px);
 		}
 	}
 	&[data-dir="next"] {
-		transform: rotate(-90deg);
+		left: 100%;
+		&::before {
+			transform: rotate(-90deg);
+		}
 		&:hover::before {
-			transform: translateY(10px);
+			transform: rotate(-90deg) translateY(10px);
+		}
+	}
+	@include md-width {
+		width: 50vw;
+		height: 100vh;
+		position: absolute;
+		top: 0;
+		&::before {
+			top: calc(50% - 18px);
+		}
+		&[data-dir="prev"] {
+			left: 0;
+			right: unset;
+			&::before {
+				left: 10px;
+				right: auto;
+			}
+			&:hover::before {
+				transform: rotate(90deg);
+			}
+		}
+		&[data-dir="next"] {
+			right: 0;
+			left: unset;
+			&::before {
+				right: 10px;
+				left: auto;
+			}
+			&:hover::before {
+				transform: rotate(-90deg);
+			}
 		}
 	}
 }
@@ -312,22 +339,29 @@ $lighter-amt: 10%;
 		border-width: 3px 0 0 0;
 		border-radius: 0;
 	}
+	@include sm-width {
+		max-height: 300px;
+	}
 	.portrait {
+		position: absolute;
 		left: -76px;
 		top: -24px;
 		z-index: 51;
+		img {
+			width: auto;
+			height: 159px;
+			display: block;	
+		}
 		@include md-width {
 			left: 0;
 			top: 0;
 		}
-	}
-}
-.portrait {
-	position: absolute;
-	img {
-		width: auto;
-		height: 159px;
-		display: block;
+		@include sm-width {
+			top: -40px;
+			img {
+				height: 80px;
+			}
+		}
 	}
 }
 .captions {
@@ -337,6 +371,9 @@ $lighter-amt: 10%;
 	overflow-y: scroll;
 	-webkit-overflow-scroll: touch;
 	transition: height 300ms ease-in-out;
+	@include sm-width {
+		max-height: 194px;
+	}
 	.caption {
 		padding: 20px 60px 20px 90px;
 		text-align: left;
@@ -344,6 +381,9 @@ $lighter-amt: 10%;
 		@include lg-text;
 		@include md-width {
 			padding-left: $portrait-width;
+		}
+		@include sm-width {
+			padding: 8px 15px 20px 15px;
 		}
 		.text {
 			float: right;
@@ -354,6 +394,7 @@ $lighter-amt: 10%;
 			}
 			@include sm-width {
 				width: 100%;
+				text-indent: 135px;
 			}
 		}
 		.vocab.clickable {
@@ -365,25 +406,36 @@ $lighter-amt: 10%;
 		}
 	}
 }
+
+.icon-buttons {
+	width: 25px;
+	position: absolute;
+	top: 20px;
+	right: 15px;
+	@include sm-width {
+		width: auto;
+		height: 25px;
+		top: 10px;
+    left: 70px;
+	}
+}
 .icon-button {
 	width: 25px;
 	height: 25px;
-	right: 15px;
-	position: absolute;
+	float: left;
+	margin: 0 0 10px 0;
 	background-size: cover;
 	background-position: center top;
 	background-repeat: no-repeat;
 	opacity: 0.5;
 	transition: opacity 300ms ease-in-out;
 	&.volume {
-		top: 20px;
 		background-image: url(../images/volume.svg);
 		body.mute & {
 			background-position-y: bottom;
 		}
 	}
 	&.playback {
-		top: 60px;
 		background-image: url(../images/playback.svg);
 		body.playing & {
 			background-position-y: bottom;
@@ -393,6 +445,9 @@ $lighter-amt: 10%;
 	&:focus {
 		opacity: 1;
 		cursor: pointer;
+	}
+	@include sm-width {
+		margin: 0 0 0 10px;
 	}
 }
 ////////////////////////////////////
@@ -407,6 +462,9 @@ $lighter-amt: 10%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	@include md-width {
+		display: none;
+	}
 }
 .factoid {
 	width: 50%;
@@ -446,10 +504,14 @@ $lighter-amt: 10%;
 		position: absolute;
 		right: 5px;
 		top: 15px;
+		opacity: .75;
 		background-image: url(../images/plus.svg);
 		background-position: bottom center;
 		background-size: cover;
 		transition: all 300ms ease-in-out;
+	}
+	.factoid:hover &::after {
+		opacity: 1;
 	}
 	.factoid:not(.open):hover &::before {
 		width: 60px;

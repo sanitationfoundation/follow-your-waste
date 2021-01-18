@@ -19,6 +19,7 @@ export const onClientEntry = () => {
 					streamElems = document.querySelectorAll(".stream"),
 					itemsWrap = document.querySelector("#items-wrap"),
 					itemElems = document.querySelectorAll(".item"),
+					selectMenuButtons = document.querySelectorAll("#select-menu button"),
 					itemsArr = [],
 					scenesArr = [],
 					streamsArr = [];
@@ -32,6 +33,8 @@ export const onClientEntry = () => {
 			glass: "Glass",
 			plastic: "Plastic"
 		};
+
+		body.classList.add("loaded");
 
 		window.onresize = () => {
 			scenesArr.forEach((sceneObj) => {
@@ -47,7 +50,7 @@ export const onClientEntry = () => {
 		document.onkeydown = (e) => {
 			e = e || window.event;
 			const keyCode = e.keyCode ? e.keyCode : e.which;
-
+			let currSceneElem, currEnviron, currVoiceAudioElem, currEnvironAudioElem;
 			switch (keyCode) {
 				case 27:
 					body.classList.remove("full");
@@ -59,13 +62,28 @@ export const onClientEntry = () => {
 				case 39:
 					currStream.goToNextScene();
 					break;
+				case 32:
+					currSceneElem = document.querySelector(".stream.show .scene.show");
+					if(!currSceneElem) return;
+					currEnviron = currSceneElem.dataset.environ;
+					currVoiceAudioElem = currStream.elem.querySelector(".caption.show audio");
+					currEnvironAudioElem = document.querySelector(`audio[data-environ="${currEnviron}"]`);
+					body.classList.toggle("playing");
+					if(body.classList.contains("playing")) {
+						body.classList.remove("mute");
+						playAudio(currVoiceAudioElem);
+						unmuteAudio(currVoiceAudioElem);
+						unmuteAudio(currEnvironAudioElem);
+					} else {
+						pauseAudio(currVoiceAudioElem);
+					}
+					break;
 				case 77:
-					const currSceneElem = document.querySelector(".stream.show .scene.show"),
-								currEnviron = currSceneElem.dataset.environ,
-								currVoiceAudioElem = currStream.elem.querySelector(".caption.show audio"),
-								currEnvironAudioElem = document.querySelector(`audio[data-environ="${currEnviron}"]`);
-
-					console.log(currEnviron, currEnvironAudioElem);
+					currSceneElem = document.querySelector(".stream.show .scene.show");
+					if(!currSceneElem) return;
+					currEnviron = currSceneElem.dataset.environ;
+					currVoiceAudioElem = currStream.elem.querySelector(".caption.show audio");
+					currEnvironAudioElem = document.querySelector(`audio[data-environ="${currEnviron}"]`);
 					body.classList.toggle("mute");
 					if(body.classList.contains("mute")) {
 						muteAudio(currVoiceAudioElem);
@@ -128,8 +146,8 @@ export const onClientEntry = () => {
 		}
 
 		const volMax = {
-			voice: .5,
-			environ: 1
+			voice: 1,
+			environ: .75
 		}
 
 		const playAudio = (elem) => {
@@ -181,6 +199,15 @@ export const onClientEntry = () => {
 					streamObj = new Stream(streamElem);
 				streamsArr[slug] = streamObj;
 			});
+
+			selectMenuButtons.forEach(function (buttonElem) {
+				buttonElem.onclick = (e) => {
+					const streamSlug = buttonElem.dataset.stream,
+								streamObj = streams[streamSlug];
+					body.classList.remove("alerts");
+					streamObj.startStreaming();
+				};
+			});
 		};
 
 		const handleStreamSelect = () => {
@@ -200,10 +227,8 @@ export const onClientEntry = () => {
 
 		const showAlert = (alertSlug, onClick) => {
 			body.classList.add("alerts");
-			const alertElem = document.querySelector(
-					"[data-alert='" + alertSlug + "']"
-				),
-				buttonElem = alertElem.querySelector(".button");
+			const alertElem = document.querySelector("[data-alert='" + alertSlug + "']"),
+						buttonElem = alertElem.querySelector(".button");
 			alertElem.classList.add("show");			
 			buttonElem.onclick = (e) => {
 				alertElem.classList.remove("show");
@@ -212,7 +237,7 @@ export const onClientEntry = () => {
 					onClick(e);
 				}
 			};
-
+			
 			var menuElem = alertElem.querySelector(`[role="menu"]`);
 			if(menuElem) {
 				menuElem.focus();
@@ -428,21 +453,19 @@ export const onClientEntry = () => {
 				this.scenes = {};
 				this.scenesWrap = elem.querySelector(".scenes-wrap");
 				this.progress = elem.querySelector(".progress");
+				this.volumeButton = elem.querySelector(".icon-button.volume");
+				this.playbackButton = elem.querySelector(".icon-button.playback");
+				this.prevArrow = elem.querySelector(".arrow[data-dir='prev']");
+				this.nextArrow = elem.querySelector(".arrow[data-dir='next']");
 
-				const prevArrow = elem.querySelector(".arrow[data-dir='prev']"),
-							nextArrow = elem.querySelector(".arrow[data-dir='next']");
-
-				prevArrow.onclick = () => {
+				this.prevArrow.onclick = () => {
 					self.goToPrevScene();
 				};
-				nextArrow.onclick = () => {
+				this.nextArrow.onclick = () => {
 					self.goToNextScene();
 				};
 
-				const volumeButton = elem.querySelector(".icon-button.volume"),
-							playbackButton = elem.querySelector(".icon-button.playback");
-
-				volumeButton.onclick = () => {
+				this.volumeButton.onclick = () => {
 					const currSceneObj = self.scenes[self.scene],
 								currVoiceAudioElem = currSceneObj.voiceover,
 								currEnvironAudioElem = currSceneObj.environ;
@@ -454,10 +477,10 @@ export const onClientEntry = () => {
 						unmuteAudio(currVoiceAudioElem);
 						unmuteAudio(currEnvironAudioElem);
 					}
-					volumeButton.blur();
+					self.volumeButton.blur();
 				};
 
-				playbackButton.onclick = (e) => {
+				this.playbackButton.onclick = (e) => {
 					const currSceneObj = self.scenes[self.scene],
 								currVoiceAudioElem = currSceneObj.voiceover,
 								currEnvironAudioElem = currSceneObj.environ;
@@ -470,7 +493,7 @@ export const onClientEntry = () => {
 					} else {
 						pauseAudio(currVoiceAudioElem);
 					}
-					playbackButton.blur();
+					self.playbackButton.blur();
 				};
 
 				this.setUpScenes();
@@ -505,19 +528,28 @@ export const onClientEntry = () => {
 			}
 
 			startStreaming() {
-				const currStreamElem = body.querySelector(".stream.show"),
+				const nextStreamElem = this.elem,
+							currStreamElem = body.querySelector(".stream.show"),
 							currSceneElem = body.querySelector(".scene.show"),
 							droppingItemElem = body.querySelector(".item.dropping");
 
-				if(currStreamElem) currStreamElem.classList.remove("show");
-				if(currSceneElem) currSceneElem.classList.remove("show");
+				if(currStreamElem) {
+					currStreamElem.classList.remove("show");
+					currStreamElem.setAttribute("aria-hidden", true);
+				}
+				if(currSceneElem) {
+					currSceneElem.classList.remove("show");
+				}
+				if(droppingItemElem) {
+					droppingItemElem.classList.remove("dropping");
+				}
 
-				droppingItemElem.classList.remove("dropping");
-
-				this.elem.classList.remove("exit");
-				this.elem.classList.add("show");
+				nextStreamElem.classList.remove("exit");
+				nextStreamElem.classList.add("show");
+				nextStreamElem.setAttribute("aria-hidden", false);
 				body.id = "streams";
 				this.goToScene(this.scene);
+				this.playbackButton.focus();
 				currStream = this;
 			}
 
@@ -553,6 +585,7 @@ export const onClientEntry = () => {
 				let currEnviron;
 
 				if(currSceneElem) {
+					currSceneElem.setAttribute("aria-hidden", true);
 					currSceneElem.classList.remove("show");
 					setTimeout(function () {
 						currSceneElem.classList.remove("animate");
@@ -580,17 +613,16 @@ export const onClientEntry = () => {
 					this.elem.classList.remove("end");
 				}
 
-				nextSceneElem.classList.add("show");
 				if(!nextSceneElem) return (body.id = "");
+				nextSceneElem.classList.add("show");
+				nextSceneElem.setAttribute("aria-hidden", false);
 
 				const nextEnviron = nextSceneElem.dataset.environ;
 				this.scene = nextSceneSlug;
 				this.prepareScene(nextSceneSlug);
 
 				if(nextVoiceAudioElem) {
-					setTimeout(function() {
-						playAudio(nextVoiceAudioElem);
-					}, 500);
+					playAudio(nextVoiceAudioElem);
 				}
 
 				const nextEnvironAudioElem = nextSceneObj.environ;

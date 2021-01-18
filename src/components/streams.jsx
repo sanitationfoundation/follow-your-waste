@@ -1,7 +1,7 @@
 import React from "react";
 import { withPrefix } from "gatsby";
 
-const streams = ["landfill", "paper", "plastic"],
+const streams = ["landfill", "metal", "glass", "paper", "plastic"],
 			environs = ["traffic", "facility", "water"];
 
 export default function Streams({ data, text }) {
@@ -12,7 +12,12 @@ export default function Streams({ data, text }) {
 					const streamText = text[stream],
 								streamData = data[stream];
 					return (
-						<div className="stream" data-slug={stream} key={i}>
+						<div
+							className="stream"
+							tabIndex={-1}
+							aria-hidden={true}
+							data-slug={stream}
+							key={i}>
 							<div className="scenes-wrap">
 								{streamData.map((sceneData, j) => {
 									const sceneText = streamText[j];
@@ -26,17 +31,21 @@ export default function Streams({ data, text }) {
 										return (
 											<div
 												className="scene"
-												key={j}
+												aria-hidden={true}
 												data-scene={sceneData.slug}
 												data-color={sceneData.color}
 												data-animated={sceneData.animated}
 												data-looped={sceneData.looped}
 												data-environ={sceneData.environment}
-												data-src={svgSrc}>
+												data-src={svgSrc}
+												key={j}>
 												
-												<div className={`svg-wrap ${sceneData.orientation}`}></div>
+												<div
+													className={`svg-wrap ${sceneData.orientation}`}
+													aria-hidden={true}>
+												</div>
 
-												<div className="factoids">
+												<div className="factoids" aria-hidden={true}>
 													{Array.apply(null, { length: 3 }).map((x, l) => {
 														const vocab = sceneText["vocab" + l],
 															fact = sceneText["fact" + l];
@@ -90,7 +99,9 @@ export default function Streams({ data, text }) {
 																className="caption"
 																data-scene={sceneData.slug}
 																key={j}>
-																<div className="text">{sceneText.caption}</div>
+																<div className="text" aria-hidden={true}>
+																	{sceneText.caption}
+																</div>
 																<audio
 																	data-type="voice"
 																	preload="none"
@@ -111,27 +122,55 @@ export default function Streams({ data, text }) {
 												})}
 											</div>
 
-											<button className="icon-button volume"
-												aria-label="Toggle audio"
-												aria-pressed="false">
-											</button>
-											<button className="icon-button playback"
-												aria-label="Playback">
-											</button>
+											<div role="menu"
+												className="icon-buttons"
+												aria-label="Voiceover controls">
+												<button
+													className="icon-button volume"
+													tabIndex={0}
+													aria-label="Toggle volume"
+													aria-pressed="false">
+												</button>
+												<button
+													className="icon-button playback"
+													tabIndex={0}
+													aria-label="Toggle play/pause">
+												</button>
+											</div>
 											
 										</div>
 									</div>
 								</div>
 							</div>
-							<div className="progress">
-								<div className="arrow" data-dir="prev"></div>
-								<div className="arrow" data-dir="next"></div>
-								<div className="ticks-wrap">
+
+							<div role="menu"
+								className="progress"
+								aria-label="Progress controls">
+								<button
+									className="arrow"
+									tabIndex={0}
+									aria-label="Previous"
+									data-dir="prev">
+								</button>
+								<button
+									className="arrow"
+									tabIndex={0}
+									aria-label="Next"
+									data-dir="next">
+								</button>
+								<div className="ticks-wrap" aria-hidden={true}>
 									{streamData.map((sceneData, j) => {
 										const sceneText = streamText[j];
 										return (
-											<div className="tick" data-scene={sceneData.slug} key={j}>
-												<div className="label">{sceneText.label}</div>
+											<div
+												className="tick"
+												data-scene={sceneData.slug}
+												key={j}>
+												<div
+													className="label"
+													aria-hidden={true}>
+													{sceneText.label}
+												</div>
 											</div>
 										);
 									})}

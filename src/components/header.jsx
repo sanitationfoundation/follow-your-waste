@@ -31,25 +31,29 @@ export default function Header({ lang, langObjs }) {
 		<header id="header">
 
 			<div id="skip-to-intro">
-				<a href="#intro-view">Skip to main content</a>
+				<a href="#main">Skip to main content</a>
 			</div>
 
 			<div id="lang-switch" className={`dropdown ${langMenu ? "open" : ""}`}>
 
-				<div className="option"
-						 role="button"
-						 title={currLangObj.long}
-						 aria-hidden="true"
-						 onClick={() => setLangMenu(!langMenu)}
-						 onKeyPress={() => setLangMenu(!langMenu)}>
+				<div role="button"
+						className="option"
+						title={currLangObj.long}
+						aria-hidden={true}
+						onClick={() => setLangMenu(!langMenu)}
+						onKeyPress={() => setLangMenu(!langMenu)}>
 					{currLangObj.short}
 				</div>
 
-				<div id="lang-switch-label" className="aria-only" aria-hidden="true">
+				<div
+					id="lang-switch-label"
+					className="screen-hidden"
+					aria-hidden={true}>
 					Switch language
 				</div>
 
-				<div role="menu" aria-labelledby="lang-switch-label">
+				<div role="menu"
+					aria-labelledby="lang-switch-label">
 					{langKeys.map((langKey, i) => {
 						const langObj = langObjs[langKey];
 						return (
@@ -68,6 +72,12 @@ export default function Header({ lang, langObjs }) {
 				</div>
 
 			</div>
+
+			<button
+				id="full-toggle"
+				tabIndex={0}
+				aria-hidden={true}>
+			</button>
 
 		</header>
 	);

@@ -115,3 +115,12 @@ $sm-height: 710px;
     @content;
   }
 }
+
+@mixin hide {
+  position: absolute !important;
+  left: -999999px !important;
+}
+@mixin show {
+  position: static !important;
+  left: unset !important;
+}

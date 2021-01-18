@@ -9,7 +9,7 @@ import data from "../content/data.json";
 
 import Header from "../components/header.jsx";
 import Intro from "../components/intro.jsx";
-import Selection from "../components/selection.jsx";
+import Select from "../components/select.jsx";
 import Streams from "../components/streams.jsx";
 import Alerts from "../components/alerts.jsx";
 
@@ -46,17 +46,17 @@ export default ({ pageContext }) => {
 			<Helmet
 				bodyAttributes={{
 					id: "intro",
-					class: "",
+					class: "mute",
 				}}>
 			</Helmet>
 
-			<Header lang={lang} langObjs={langObjs} />
-			<Intro microText={microText} />
-			<Selection itemsData={items} itemsText={itemsText} />
-			<Streams data={data} text={text} />
-			<Alerts dialogText={dialogText} microText={microText} />
-
-			<div id="full-toggle"></div>
+			<main id="main">
+				<Header lang={lang} langObjs={langObjs} />
+				<Intro microText={microText} />
+				<Select itemsData={items} itemsText={itemsText} />
+				<Streams data={data} text={text} />
+				<Alerts dialogText={dialogText} microText={microText} />
+			</main>
 
 		</div>
 	);

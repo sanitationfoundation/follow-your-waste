@@ -5,8 +5,14 @@
   }
 }
 
-#select-form {
+
+#select-menu-message {
   
+}
+#select-menu {
+  button {
+    
+  }
 }
 
 .bins-wrap {
@@ -39,7 +45,7 @@
   transition: transform 100ms ease-in;
   pointer-events: none;
   img {
-    width: 100%;
+    width: 250px;
     height: auto;
     position: absolute;
     left: 0;
@@ -51,14 +57,6 @@
   body.intro & {
     transform: translateY(100%);
     transition: all 500ms ease-in;
-  }
-  @include lg-width {
-    width: 150px;
-    height: 200px;
-    transform: translateY(50px);
-    &.open {
-      transform: translateY(30px);
-    }
   }
   @include sm-height {
     width: 150px;
@@ -76,18 +74,13 @@
   position: absolute;
   bottom: 122px;
   transition: transform 400ms ease;
-  @include lg-width {
-    bottom: 73px;
-  }
   @include sm-height {
     bottom: 73px;
   }
 }
 .bin-back {
-  bottom: 137px;
-  @include lg-width {
-    bottom: 81px;
-  }
+  // bottom: 137px;
+  bottom: 45%;
   @include sm-height {
     bottom: 81px;
   }
