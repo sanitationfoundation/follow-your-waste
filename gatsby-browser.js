@@ -291,10 +291,6 @@ export const onClientEntry = () => {
 			}
 
 			onDragStart(e) {
-				// const itemElem = e.target;
-				// if(itemElem.dataset.origin === undefined) {
-					// itemElem.dataset.origin
-				// }
 				body.classList.add("dragging");
 			}
 
@@ -324,7 +320,7 @@ export const onClientEntry = () => {
 						self.unhoverBin(binElem);
 					}
 				});
-				
+				itemElem.classList.remove("hovering");
 				body.classList.remove("dragging");
 				this.fixTooltip();
 			}
@@ -366,12 +362,13 @@ export const onClientEntry = () => {
 							itemStreamSlug = itemElem.dataset.stream;
 
 				binElem.classList.add("open");
+				itemElem.classList.add("dropping");
 				itemElem.classList.remove("opening");
 
 				gsap.timeline()
 					.to(itemElem, {
 						x: newItemLeft,
-						duration: .5
+						duration: .25
 					})
 					.to(itemElem, {
 						y: newItemTop,
@@ -423,12 +420,6 @@ export const onClientEntry = () => {
 				binBackElem.classList.add("open");
 				binElem.classList.add("open");
 
-				// gsap.timeline()
-				// 	.to(itemElem, {
-				// 		x: newItemLeft,
-				// 		duration: .5
-				// 	})
-				
 				itemElem.classList.remove("dropping");
 				itemElem.classList.add("returning");
 				setTimeout(function () {
