@@ -1,24 +1,8 @@
 import React, { useState } from 'react';
 
-export default function Header({ lang, langObjs }) {
+export default function Header({ text, lang, langObjs }) {
 
-// export default class Header extends React.Component {
-
-	// constructor(props) {
-	//   super(props);
-	//   this.state = {
-	//   	menu: true,
-	//   	lang: true
-	//   };
-	// }
-	// const [mainMenu, setMainMenu] = useState(false);
 	const [langMenu, setLangMenu] = useState(false);
-
-	// toggleDropdown(menuId) {
-	// 	// this.setState({
-	// 	// 	[menuId]: !this.state[menuId]
-	// 	// });
- //  }
 
 	const langKeys = Object.keys(langObjs).sort((a, b) => {
 		return a === lang ? -1 : b === lang ? 1 : 0
@@ -31,7 +15,7 @@ export default function Header({ lang, langObjs }) {
 		<header id="header">
 
 			<div id="skip-to-intro">
-				<a href="#main">Skip to main content</a>
+				<a href="#main">{text.system.skip}</a>
 			</div>
 
 			<div id="lang-switch" className={`dropdown ${langMenu ? "open" : ""}`}>
@@ -49,7 +33,7 @@ export default function Header({ lang, langObjs }) {
 					id="lang-switch-label"
 					className="screen-hidden"
 					aria-hidden={true}>
-					Switch language
+					{text.system.lang_switch}
 				</div>
 
 				<div role="menu"

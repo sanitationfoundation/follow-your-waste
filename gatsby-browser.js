@@ -1,12 +1,11 @@
 import "./src/sass/style.scss";
-// import "./src/js/script.js";
-
 import lottie from "lottie-web";
 import Packery from "packery";
 import $ from "jquery";
-// import { Draggable } from '@shopify/draggable';
-import "jquery-ui/ui/widgets/draggable";
-import "jquery-ui/ui/widgets/droppable";
+import { gsap } from "gsap";
+import { Draggable } from "gsap/Draggable";
+
+gsap.registerPlugin(Draggable);
 
 export const onClientEntry = () => {
 	window.onload = () => {
@@ -19,6 +18,7 @@ export const onClientEntry = () => {
 					streamElems = document.querySelectorAll(".stream"),
 					itemsWrap = document.querySelector("#items-wrap"),
 					itemElems = document.querySelectorAll(".item"),
+					binElems = selectView.querySelectorAll("#bins .bin"),
 					selectMenuButtons = document.querySelectorAll("#select-menu button"),
 					itemsArr = [],
 					scenesArr = [],
@@ -190,13 +190,13 @@ export const onClientEntry = () => {
 		const setUpStreamSelect = () => {
 			itemElems.forEach(function (itemElem) {
 				const slug = itemElem.dataset.item,
-					itemObj = new Item(itemElem);
+							itemObj = new Item(itemElem);
 				itemsArr[slug] = itemObj;
 			});
 
 			streamElems.forEach(function (streamElem) {
 				const slug = streamElem.dataset.slug,
-					streamObj = new Stream(streamElem);
+							streamObj = new Stream(streamElem);
 				streamsArr[slug] = streamObj;
 			});
 
@@ -217,12 +217,24 @@ export const onClientEntry = () => {
 				resize: true,
 				gutter: 40,
 			});
-			itemsWrap.classList.add("setup");
 
-			const binElems = selectView.querySelectorAll("#bins .bin");
-			binElems.forEach(function (binElem, i) {
-				new Bin(binElem);
+			itemsWrapPackery.on( 'layoutComplete', () => {
+				itemElems.forEach((itemElem) => {
+					const itemSlug = itemElem.dataset.item,
+								itemBounds = itemElem.getBoundingClientRect(),
+								itemObj = itemsArr[itemSlug];
+					itemObj.left = itemBounds.left;
+					itemObj.top = itemBounds.top;
+					gsap.set(itemElem, {
+						x: 0,
+						y: 0
+					});
+				});
 			});
+
+			itemsWrapPackery.layout();
+			
+			itemsWrap.classList.add("setup");
 		};
 
 		const showAlert = (alertSlug, onClick) => {
@@ -258,19 +270,15 @@ export const onClientEntry = () => {
 				this.stream = elem.dataset.stream;
 				this.image = elem.querySelector("img");
 				this.tooltip = elem.querySelector(".tooltip");
+				this.left = 0;
+				this.top = 0;
 
-
-				// const draggable = new Draggable(elem, {
-				//   draggable: 'li'
-				// });
-
-				$(elem).draggable({
-					containment: selectView,
-					scroll: false,
-					start: this.onStartDragItem.bind(this),
-					stop: this.onStopDragItem.bind(this),
-					drag: this.onDragItem.bind(this),
-				});
+				this.draggable = Draggable.create(elem, {
+					bounds: window,
+					onDragStart: self.onDragStart.bind(self),
+					onDrag: self.onDrag.bind(self),
+					onDragEnd: self.onDragEnd.bind(self)
+				})[0];
 
 				elem.onmouseover = () => {
 					elem.classList.add("hovering");
@@ -282,126 +290,94 @@ export const onClientEntry = () => {
 				};
 			}
 
-			onStartDragItem(e, ui) {
-				const itemElem = e.target;
-				if(itemElem.dataset.origin === undefined) {
-					const origin = [ui.originalPosition.left, ui.originalPosition.top];
-					itemElem.dataset.origin = JSON.stringify(origin);
-				}
+			onDragStart(e) {
+				// const itemElem = e.target;
+				// if(itemElem.dataset.origin === undefined) {
+					// itemElem.dataset.origin
+				// }
 				body.classList.add("dragging");
 			}
 
-			onStopDragItem(e, ui) {
-				body.classList.remove("dragging");
-			}
-
-			onDragItem(e, ui) {
+			onDrag(e) {
+				const self = this,
+							itemElem = this.elem;
+				this.fixTooltip();
+				binElems.forEach((binElem) => {
+					const isOver = Draggable.hitTest(itemElem, binElem, 50);
+					if(isOver) {
+						self.hoverBin(binElem);
+					} else {
+						self.unhoverBin(binElem);
+					}
+				});
 				this.fixTooltip();
 			}
 
-			returnItem(bin) {
-				const itemElem = this.elem,
-							binElem = bin.elem,
-							binBackElem = bin.backElem;
-
-				binBackElem.classList.add("open");
-				binElem.classList.add("open");
-				itemElem.classList.remove("dropping");
-				itemElem.classList.add("returning");
-				setTimeout(function () {
-					itemElem.classList.remove("returning");
-				}, 600);
-			}
-
-			fixTooltip() {
-				const elem = this.elem,
-					windowWidth = window.innerWidth,
-					tooltip = this.tooltip,
-					tooltipBounds = tooltip.getBoundingClientRect(),
-					tooltipInner = elem.querySelector(".tooltip-inner"),
-					margin = 0;
-
-				let newLeft = 0;
-
-				if(tooltipBounds.left <= windowWidth / 2) {
-					const leftEdge = -1 * tooltipBounds.left + margin;
-					if(leftEdge > 0) {
-						newLeft = leftEdge;
+			onDragEnd(e) {
+				const self = this,
+							itemElem = this.elem;
+				binElems.forEach((binElem) => {
+					const isOver = Draggable.hitTest(itemElem, binElem, 50);
+					if(isOver) {
+						self.dropInBin(binElem);
+					} else {
+						self.unhoverBin(binElem);
 					}
-				} else {
-					const rightEdge =
-						window.innerWidth -
-						(tooltipBounds.x + tooltipBounds.width) -
-						margin;
-					if(rightEdge <= 0) {
-						newLeft = rightEdge;
-					}
-				}
-				tooltipInner.style.left = newLeft + "px";
-			}
-		}
-
-		/************************************/
-		/*****************BIN****************/
-		/************************************/
-
-		class Bin {
-			constructor(elem) {
-				this.elem = elem;
-				this.stream = elem.dataset.stream;
-				this.backElem = body.querySelector(
-					"#bin-backs [data-stream='" + this.stream + "']"
-				);
-				$(elem).droppable({
-					over: this.onOverBin.bind(this),
-					out: this.onOutBin.bind(this),
-					drop: this.onDropBin.bind(this),
 				});
+				
+				body.classList.remove("dragging");
+				this.fixTooltip();
 			}
 
-			onOverBin(e, ui) {
-				const binElem = e.target,
-					binBackElem = this.backElem,
-					itemElem = ui.draggable[0];
+			hoverBin(binElem) {
+				const binSlug = binElem.dataset.bin,
+							binBackElem = body.querySelector(`#${binSlug}-back`),
+							itemElem = this.elem;
 				binElem.classList.add("open");
 				binBackElem.classList.add("open");
 				itemElem.classList.add("opening");
 			}
 
-			onOutBin(e, ui) {
-				const binElem = e.target,
-					binBackElem = this.backElem,
-					itemElem = ui.draggable[0];
+			unhoverBin(binElem) {
+				const binSlug = binElem.dataset.bin,
+							binBackElem = body.querySelector(`#${binSlug}-back`),
+							itemElem = this.elem;
 				binElem.classList.remove("open");
 				binBackElem.classList.remove("open");
 				itemElem.classList.remove("opening");
 			}
 
-			onDropBin(e, ui) {
+			dropInBin(binElem) {
 				const self = this,
-					itemsWrapBounds = itemsWrap.getBoundingClientRect(),
-					binElem = e.target,
-					binBounds = binElem.getBoundingClientRect(),
-					binSlug = binElem.dataset.stream,
-					binStreamArr = binSlug.split("-"),
-					binBackElem = this.backElem,
-					itemElem = ui.draggable[0],
-					itemBounds = itemElem.getBoundingClientRect(),
-					newItemLeft =
-						binBounds.left +
-						binBounds.width / 2 -
-						itemBounds.width / 2 -
-						itemsWrapBounds.left,
-					itemObj = itemsArr[itemElem.dataset.item],
-					itemStreamSlug = itemElem.dataset.stream;
+							binBounds = binElem.getBoundingClientRect(),
+							binSlug = binElem.dataset.bin,
+							binStreamArr = binSlug.split("-"),
+							binBackElem = body.querySelector(`#${binSlug}-back`),
+							itemElem = this.elem,
+							itemBounds = itemElem.getBoundingClientRect(),
+							newItemLeft =
+								-this.left
+								+ binBounds.left
+								+ ( binBounds.width/2 )
+								- ( itemBounds.width/2 ),
+							newItemTop =
+								this.top
+								+ window.innerHeight,
+							itemStreamSlug = itemElem.dataset.stream;
 
+				binElem.classList.add("open");
 				itemElem.classList.remove("opening");
-				itemElem.classList.add("centering");
-				itemElem.style.left = newItemLeft + "px";
-				setTimeout(function () {
-					itemElem.classList.remove("centering");
-					itemElem.classList.add("dropping");
-				}, 100);
+
+				gsap.timeline()
+					.to(itemElem, {
+						x: newItemLeft,
+						duration: .5
+					})
+					.to(itemElem, {
+						y: newItemTop,
+						duration: 1.5
+					});
+				
 
 				setTimeout(function () {
 					binElem.classList.remove("open");
@@ -415,7 +391,7 @@ export const onClientEntry = () => {
 					});
 				} else {
 					setTimeout(function () {
-						itemObj.returnItem(self);
+						self.returnItem(binElem);
 					}, 400);
 					if(itemStreamSlug === "landfill") {
 						showAlert("not-recycle", function () {
@@ -437,6 +413,54 @@ export const onClientEntry = () => {
 						});
 					}
 				}
+			}
+
+			returnItem(binElem) {
+				const itemElem = this.elem,
+							binSlug = binElem.dataset.bin,
+							binBackElem = body.querySelector(`#${binSlug}-back`);
+
+				binBackElem.classList.add("open");
+				binElem.classList.add("open");
+
+				// gsap.timeline()
+				// 	.to(itemElem, {
+				// 		x: newItemLeft,
+				// 		duration: .5
+				// 	})
+				
+				itemElem.classList.remove("dropping");
+				itemElem.classList.add("returning");
+				setTimeout(function () {
+					itemElem.classList.remove("returning");
+				}, 600);
+			}
+
+			fixTooltip() {
+				const elem = this.elem,
+							windowWidth = window.innerWidth,
+							tooltip = this.tooltip,
+							tooltipBounds = tooltip.getBoundingClientRect(),
+							tooltipInner = elem.querySelector(".tooltip-inner"),
+							margin = 0;
+
+				let newLeft = 0;
+
+				if(tooltipBounds.left <= windowWidth / 2) {
+					const leftEdge = -1 * tooltipBounds.left + margin;
+					if(leftEdge > 0) {
+						newLeft = leftEdge;
+					}
+				} else {
+					const rightEdge =
+						window.innerWidth -
+						(tooltipBounds.x + tooltipBounds.width) -
+						margin;
+					if(rightEdge <= 0) {
+						newLeft = rightEdge;
+					}
+				}
+				tooltipInner.style.left = newLeft + "px";
 			}
 		}
 

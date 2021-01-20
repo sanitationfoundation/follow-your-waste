@@ -28,7 +28,6 @@
 	left: 10%;
 	top: 60px;
 	z-index: 40;
-	border-radius: 10px;
 	@include md-width {
 		width: 100%;
 		height: 100%;
@@ -37,6 +36,8 @@
 	}
 }
 .ticks-wrap {
+	height: 15px;
+	// padding: 0 20px;
 	display: flex;
 	justify-content: space-evenly;
 	@include md-width {
@@ -44,8 +45,8 @@
 	}
 }
 .tick {
-	width: 15px;
-	height: 15px;
+	width: 16px;
+	height: 16px;
 	margin: 0 auto;
 	background-color: white;
 	opacity: .5;
@@ -86,8 +87,8 @@
 .arrow {
 	width: 36px;
 	height: 36px;
-	position: absolute;
-	top: calc(50% - 18px);
+	position: relative;
+	top: -10px;
 	&:hover {
 		cursor: pointer;
 	}
@@ -109,22 +110,22 @@
 		opacity: 1;
 	}
 	&[data-dir="prev"] {
-		right: 100%;
+		right: 29px;
 		&::before {
 			transform: rotate(90deg);
 		}
-		&:hover::before {
-			transform: rotate(90deg) translateY(10px);
-		}
+		// &:hover::before {
+		// 	transform: rotate(90deg) translateY(10px);
+		// }
 	}
 	&[data-dir="next"] {
-		left: 100%;
+		left: 29px;
 		&::before {
 			transform: rotate(-90deg);
 		}
-		&:hover::before {
-			transform: rotate(-90deg) translateY(10px);
-		}
+		// &:hover::before {
+		// 	transform: rotate(-90deg) translateY(10px);
+		// }
 	}
 	@include md-width {
 		width: 50vw;

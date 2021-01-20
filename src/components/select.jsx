@@ -1,15 +1,15 @@
 import React from "react";
 import { withPrefix } from "gatsby";
 
-export default function Selection({ itemsData, itemsText }) {
+export default function Select({ text, data }) {
   return (
     <div id="select-view" className="view">
       <div className="view-inner">
 
         <div id="items-wrap">
           <div id="stamp"></div>
-          {itemsData.map((item, i) => {
-            const itemText = itemsText[i];
+          {data.items.map((item, i) => {
+            const itemText = text.items[i];
             return (
               <div
                 className="item"
@@ -33,7 +33,11 @@ export default function Selection({ itemsData, itemsText }) {
         </div>
 
         <div id="bins" className="bins-wrap mobile-hidden">
-          <div className="bin" data-stream="paper" data-title="Paper">
+          <div
+            className="bin"
+            id="paper-bin"
+            data-bin="paper"
+            data-title={text.system.paper}>
             <img
               className="bin-front"
               src={withPrefix("images/bin-paper-front.png")}
@@ -45,8 +49,9 @@ export default function Selection({ itemsData, itemsText }) {
           </div>
           <div
             className="bin"
-            data-stream="metal-glass-plastic"
-            data-title="Metal, Glass, Plastic, Cartons">
+            id="metal-glass-plastic-bin"
+            data-bin="metal-glass-plastic"
+            data-title={text.system.mgp}>
             <img
               className="bin-front"
               src={withPrefix("images/bin-mgp-front.png")}
@@ -56,7 +61,11 @@ export default function Selection({ itemsData, itemsText }) {
               src={withPrefix("images/bin-mgp-lid.png")}
               alt="" />
           </div>
-          <div className="bin" data-stream="landfill" data-title="Landfill">
+          <div
+            className="bin"
+            id="landfill-bin"
+            data-bin="landfill"
+            data-title={text.system.landfill}>
             <img
               className="bin-front"
               src={withPrefix("images/bin-landfill-front.png")}
@@ -69,19 +78,28 @@ export default function Selection({ itemsData, itemsText }) {
         </div>
 
         <div id="bin-backs" className="bins-wrap mobile-hidden">
-          <div className="bin" data-stream="paper">
+          <div
+            className="bin"
+            id="paper-back"
+            data-bin="paper">
             <img
               className="bin-back"
               src={withPrefix("images/bin-paper-back.png")}
               alt="" />
           </div>
-          <div className="bin" data-stream="metal-glass-plastic">
+          <div
+            className="bin"
+            id="metal-glass-plastic-back"
+            data-bin="metal-glass-plastic">
             <img
               className="bin-back"
               src={withPrefix("images/bin-mgp-back.png")}
               alt="" />
           </div>
-          <div className="bin" data-stream="landfill">
+          <div
+            className="bin"
+            id="landfill-back"
+            data-bin="landfill">
             <img
               className="bin-back"
               src={withPrefix("images/bin-landfill-back.png")}

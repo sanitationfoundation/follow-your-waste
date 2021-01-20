@@ -2,7 +2,7 @@ import React from "react";
 
 const streams = ["landfill", "metal", "glass", "paper", "plastic"];
 
-export default function Alerts({ dialogText, microText }) {
+export default function Alerts({ text }) {
 	return(
 		<div id="alerts-view" className="view">
 			<div className="view-inner">
@@ -11,18 +11,18 @@ export default function Alerts({ dialogText, microText }) {
 						 role="dialog">
 
 					<div className="message mobile-hidden" aria-hidden="true">
-						<p>Discover what happens to your household waste after you toss it in the bin.</p>
-						<p>To start, click on any item and drag it into the bin you think it belongs.</p>
+						<p>{text.system.select_intro}</p>
+						<p>{text.system.begin_select}</p>
 						<button className="button" aria-hidden="true">
-							Okay
+							{text.system.okay}
 						</button>
 					</div>
 
 					<div className="message mobile-show">
 						<div id="select-menu-message" aria-hidden="true">
 							<p>
-								Discover what happens to your household waste after you toss it in the bin.
-								To start, select which material you would like to follow.
+								{text.system.select_intro}
+								{text.system.begin_select_alt}
 							</p>
 						</div>
 					</div>
@@ -48,11 +48,11 @@ export default function Alerts({ dialogText, microText }) {
 						 data-alert="not-trash"
 						 aria-hidden="true">
 					<div className="message" id="not-trash-message">
-						<p>{dialogText.not_trash}</p>
+						<p>{text.system.not_trash}</p>
 					</div>
 					<div className="alert-buttons">
 						<button className="button">
-							{microText.try_again}
+							{text.system.try_again}
 						</button>
 					</div>
 				</div>
@@ -61,11 +61,11 @@ export default function Alerts({ dialogText, microText }) {
 						 data-alert="wrong-recycle"
 						 aria-hidden="true">
 					<div className="message" id="wrong-recycle-message">
-						<p>{dialogText.wrong_recycle}</p>
+						<p>{text.system.wrong_recycle}</p>
 					</div>
 					<div className="alert-buttons">
 						<button className="button">
-							{microText.try_again}
+							{text.system.try_again}
 						</button>
 					</div>
 				</div>
@@ -74,11 +74,11 @@ export default function Alerts({ dialogText, microText }) {
 						 data-alert="not-recycle"
 						 aria-hidden="true">
 					<div className="message" id="not-recycle-message">
-						<p>{dialogText.not_recycle}</p>
+						<p>{text.system.not_recycle}</p>
 					</div>
 					<div className="alert-buttons">
 						<button className="button">
-							{microText.try_again}
+							{text.system.try_again}
 						</button>
 					</div>
 				</div>
@@ -87,11 +87,11 @@ export default function Alerts({ dialogText, microText }) {
 						 data-alert="correct-bin"
 						 aria-hidden="true">
 					<div className="message" id="correct-bin-message">
-						<p>{dialogText.correct_bin}</p>
+						<p>{text.system.correct_bin}</p>
 					</div>
 					<div className="alert-buttons">
 						<button className="button">
-							{microText.lets_go}
+							{text.system.lets_go}
 						</button>
 					</div>
 				</div>

@@ -4,17 +4,6 @@
     height: 100%;
   }
 }
-
-
-#select-menu-message {
-  
-}
-#select-menu {
-  button {
-    
-  }
-}
-
 .bins-wrap {
   width: 100%;
   position: absolute;
@@ -79,7 +68,6 @@
   }
 }
 .bin-back {
-  // bottom: 137px;
   bottom: 45%;
   @include sm-height {
     bottom: 81px;
@@ -87,7 +75,6 @@
 }
 .bin.open .bin-lid {
   transform: translateX(100px) translateY(-60px) rotate(45deg);
-  /*transform: translateX(190px) translateY(-30px) rotate(105deg);*/
 }
 
 #items-wrap {
@@ -101,6 +88,8 @@
   align-items: center;
   justify-content: center;
   opacity: 0;
+  touch-action: none;
+  user-select: none;
   body#select &,
   body#pre-select & {
     opacity: 1;
@@ -126,41 +115,18 @@
 .item {
   position: absolute !important;
   height: auto;
-  z-index: 20;
+  z-index: 20 !important;
   cursor: pointer;
   transition: opacity 300ms ease-in;
   img {
     width: 100%;
     height: auto;
   }
-  &:hover,
-  &.dragging {
-    z-index: 21;
+  :not(.dragging) &.hovering {
+    z-index: 31 !important;
   }
-  &:hover {
-    cursor: grab;
-  }
-  &.dragging {
-    cursor: grabbing;
-  }
-  &.hovering {
-    z-index: 22;
-  }
-  &.centering {
-    transition: all 100ms ease-in;
-  }
-  &.dropping {
-    top: 100% !important;
-    opacity: 0;
-    transition: all 300ms ease-in;
-    img {
-      transition: all 300ms ease-in;
-      transform: scale(0.5);
-    }
-  }
-  &.returning {
-    top: calc(100% - 250px);
-    transition: all 300ms ease-in;
+  .dragging &.hovering {
+    z-index: 22 !important;
   }
   .dragging & .tooltip,
   &.dropping .tooltip,
@@ -171,12 +137,71 @@
 }
 #intro .item {
   pointer-events: none;
-  /*left: unset !important;*/
-  /*top: unset !important;*/
 }
-.item {
-  // min-width: 100px;
-  // max-width: 200px;
+////////////////////////////////////
+//////////// TOOLTIPS //////////////
+////////////////////////////////////
+.tooltip {
+  width: 340px;
+  position: absolute;
+  top: calc(100% - 1px);
+  left: calc(50% - 170px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 100ms ease-in-out, top 100ms ease-in-out;
+  body:not(.dragging) .item.hovering & {
+    opacity: 1;
+  }
+  .top & {
+    opacity: 0 !important;
+  }
+}
+.tooltip-inner {
+  width: 330px;
+  padding: 15px 20px 20px 20px;
+  margin: 20px 5px;
+  background-color: $darken;
+  color: white;
+  border-radius: 20px;
+  box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+  position: relative;
+  p {
+    @include sm-text;
+    margin: 5px 0 0 0;
+  }
+}
+.tooltip-arrow {
+  width: 20px;
+  height: 20px;
+  display: table;
+  margin: auto;
+  border-radius: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid $darken;
+  position: absolute;
+  z-index: 21;
+  .item & {
+    left: calc(50% - 20px);
+    top: 0px;
+  }
+  .scene & {
+    left: 100%;
+    top: 70px;
+  }
+  .item.top & {
+    top: unset;
+    bottom: 0;
+    transform: rotate(180deg);
+  }
+  .scene .left & {
+    left: calc(100% - 30px);
+    transform: rotate(90deg);
+  }
+  .scene .right & {
+    left: -10px;
+    transform: rotate(-90deg);
+  }
 }
 
 $aluminum-foil: 6%;

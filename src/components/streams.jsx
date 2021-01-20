@@ -4,7 +4,7 @@ import { withPrefix } from "gatsby";
 const streams = ["landfill", "metal", "glass", "paper", "plastic"],
 			environs = ["traffic", "facility", "water"];
 
-export default function Streams({ data, text }) {
+export default function Streams({ text, data }) {
 	return (
 		<div id="streams-view" className="view">
 			<div className="view-inner">
@@ -124,17 +124,17 @@ export default function Streams({ data, text }) {
 
 											<div role="menu"
 												className="icon-buttons"
-												aria-label="Voiceover controls">
+												aria-label={text.system.audio_menu}>
 												<button
 													className="icon-button volume"
 													tabIndex={0}
-													aria-label="Toggle volume"
+													aria-label={text.system.volume}
 													aria-pressed="false">
 												</button>
 												<button
 													className="icon-button playback"
 													tabIndex={0}
-													aria-label="Toggle play/pause">
+													aria-label={text.system.playback}>
 												</button>
 											</div>
 											
@@ -145,20 +145,14 @@ export default function Streams({ data, text }) {
 
 							<div role="menu"
 								className="progress"
-								aria-label="Progress controls">
-								<button
-									className="arrow"
-									tabIndex={0}
-									aria-label="Previous"
-									data-dir="prev">
-								</button>
-								<button
-									className="arrow"
-									tabIndex={0}
-									aria-label="Next"
-									data-dir="next">
-								</button>
+								aria-label={text.system.progress_menu}>
 								<div className="ticks-wrap" aria-hidden={true}>
+									<button
+										className="arrow"
+										tabIndex={0}
+										aria-label={text.system.prev}
+										data-dir="prev">
+									</button>
 									{streamData.map((sceneData, j) => {
 										const sceneText = streamText[j];
 										return (
@@ -174,6 +168,12 @@ export default function Streams({ data, text }) {
 											</div>
 										);
 									})}
+									<button
+										className="arrow"
+										tabIndex={0}
+										aria-label={text.system.next}
+										data-dir="next">
+									</button>
 								</div>
 							</div>
 						</div>

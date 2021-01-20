@@ -3,25 +3,25 @@ import { withPrefix } from "gatsby";
 
 // import TitleLogo from "../images/title.svg";
 
-export default function Selection({ microText }) {
+export default function Intro({ text }) {
   return (
     <div id="intro-view" className="view loading">
       <div id="intro-selection-wrap">
         <div id="intro-selection">
           <div id="intro-title">
-            <img src={withPrefix("images/title.svg")} alt={microText.title} />
+            <img src={withPrefix("images/title.svg")} alt={text.system.title} />
           </div>
-          <div id="intro-tagline">{microText.tagline}</div>
+          <div id="intro-tagline">{text.system.tagline}</div>
           <div id="intro-bottom">
             <div id="loading">
-              <span aria-hidden="true">{microText.loading}</span>
+              <span aria-hidden="true">{text.system.loading}</span>
             </div>
             <button
               className="button"
               id="intro-button"
               aria-disabled="true"
               aria-haspopup="true">
-              {microText.get_started}
+              {text.system.get_started}
             </button>
           </div>
         </div>
