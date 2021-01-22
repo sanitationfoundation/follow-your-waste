@@ -13,7 +13,10 @@ export default function Alerts({ text }) {
 					<div className="message mobile-hidden" aria-hidden="true">
 						<p>{text.system.select_intro}</p>
 						<p>{text.system.begin_select}</p>
-						<button className="button" aria-hidden="true">
+					</div>
+
+					<div className="alert-buttons mobile-hidden">
+						<button className="button okay" aria-hidden="true">
 							{text.system.okay}
 						</button>
 					</div>
@@ -51,7 +54,7 @@ export default function Alerts({ text }) {
 						<p>{text.system.not_trash}</p>
 					</div>
 					<div className="alert-buttons">
-						<button className="button">
+						<button className="button okay">
 							{text.system.try_again}
 						</button>
 					</div>
@@ -64,7 +67,7 @@ export default function Alerts({ text }) {
 						<p>{text.system.wrong_recycle}</p>
 					</div>
 					<div className="alert-buttons">
-						<button className="button">
+						<button className="button okay">
 							{text.system.try_again}
 						</button>
 					</div>
@@ -77,7 +80,7 @@ export default function Alerts({ text }) {
 						<p>{text.system.not_recycle}</p>
 					</div>
 					<div className="alert-buttons">
-						<button className="button">
+						<button className="button okay">
 							{text.system.try_again}
 						</button>
 					</div>
@@ -90,7 +93,10 @@ export default function Alerts({ text }) {
 						<p>{text.system.correct_bin}</p>
 					</div>
 					<div className="alert-buttons">
-						<button className="button">
+						<button className="button cancel" aria-hidden="true">
+							Try another
+						</button>
+						<button className="button okay">
 							{text.system.lets_go}
 						</button>
 					</div>

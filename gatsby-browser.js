@@ -11,14 +11,14 @@ export const onClientEntry = () => {
 	window.onload = () => {
 		const body = document.querySelector("body"),
 					docElem = document.documentElement,
+					fullToggle = document.querySelector("#full-toggle"),
 					introView = document.querySelector("#intro-view"),
 					startButtn = document.querySelector("#intro-button"),
-					selectView = document.querySelector("#select-view"),
 					streamsView = document.querySelector("#streams-view"),
 					streamElems = document.querySelectorAll(".stream"),
 					itemsWrap = document.querySelector("#items-wrap"),
 					itemElems = document.querySelectorAll(".item"),
-					binElems = selectView.querySelectorAll("#bins .bin"),
+					binElems = document.querySelectorAll("#bins .bin"),
 					selectMenuButtons = document.querySelectorAll("#select-menu button"),
 					itemsArr = [],
 					scenesArr = [],
@@ -35,6 +35,10 @@ export const onClientEntry = () => {
 		};
 
 		body.classList.add("loaded");
+
+		if(fullToggle) {
+			fullToggle.onclick = toggleFullscreen;
+		}
 
 		window.onresize = () => {
 			scenesArr.forEach((sceneObj) => {
@@ -215,7 +219,7 @@ export const onClientEntry = () => {
 				itemSelector: ".item",
 				transitionDuration: 200,
 				resize: true,
-				gutter: 40,
+				gutter: 20,
 			});
 
 			itemsWrapPackery.on( 'layoutComplete', () => {
@@ -237,24 +241,38 @@ export const onClientEntry = () => {
 			itemsWrap.classList.add("setup");
 		};
 
-		const showAlert = (alertSlug, onClick) => {
+		const showAlert = (alertSlug, onOkay, onCancel) => {
 			body.classList.add("alerts");
-			const alertElem = document.querySelector("[data-alert='" + alertSlug + "']"),
-						buttonElem = alertElem.querySelector(".button");
+			const alertElem = document.querySelector(`[data-alert="${alertSlug}"]`),
+						okayButtonElem = alertElem.querySelector(".okay"),
+						cancelButtonElem = alertElem.querySelector(".cancel");
 			alertElem.classList.add("show");			
-			buttonElem.onclick = (e) => {
-				alertElem.classList.remove("show");
-				body.classList.remove("alerts");
-				if(onClick) {
-					onClick(e);
-				}
-			};
+
+			if(okayButtonElem) {
+				okayButtonElem.onclick = (e) => {
+					alertElem.classList.remove("show");
+					body.classList.remove("alerts");
+					if(onOkay) {
+						onOkay(e);
+					}
+				};
+			}
+
+			if(cancelButtonElem) {
+				cancelButtonElem.onclick = (e) => {
+					alertElem.classList.remove("show");
+					body.classList.remove("alerts");
+					if(onCancel) {
+						onCancel(e);
+					}
+				};
+			}
 			
 			var menuElem = alertElem.querySelector(`[role="menu"]`);
 			if(menuElem) {
 				menuElem.focus();
 			} else {
-				buttonElem.focus();
+				okayButtonElem.focus();
 			}
 		};
 
@@ -291,6 +309,8 @@ export const onClientEntry = () => {
 			}
 
 			onDragStart(e) {
+				const itemElem = this.elem;
+							// itemBounds = itemElem.getBoundingClientRect();				
 				body.classList.add("dragging");
 			}
 
@@ -351,80 +371,93 @@ export const onClientEntry = () => {
 							binBackElem = body.querySelector(`#${binSlug}-back`),
 							itemElem = this.elem,
 							itemBounds = itemElem.getBoundingClientRect(),
+							timeline = gsap.timeline(),
 							newItemLeft =
-								-this.left
-								+ binBounds.left
+								binBounds.left
 								+ ( binBounds.width/2 )
-								- ( itemBounds.width/2 ),
+								- ( itemBounds.width/2 )
+								- this.left,
 							newItemTop =
-								this.top
-								+ window.innerHeight,
+								window.innerHeight
+								- this.top,
 							itemStreamSlug = itemElem.dataset.stream;
 
 				binElem.classList.add("open");
 				itemElem.classList.add("dropping");
 				itemElem.classList.remove("opening");
 
-				gsap.timeline()
+
+				timeline
 					.to(itemElem, {
 						x: newItemLeft,
 						duration: .25
 					})
 					.to(itemElem, {
-						y: newItemTop,
-						duration: 1.5
+						y: window.innerHeight,
+						duration: .75
 					});
-				
-
-				setTimeout(function () {
-					binElem.classList.remove("open");
-					binBackElem.classList.remove("open");
-				}, 350);
 
 				if(binStreamArr.includes(itemStreamSlug)) {
 					const streamObj = streams[itemStreamSlug];
-					showAlert("correct-bin", function () {
-						streamObj.startStreaming();
-					});
+					showAlert("correct-bin",
+						() => {
+							streamObj.startStreaming();
+						},
+						() => {
+							self.liftFromBin(binElem, timeline, true);
+						}
+					);
 				} else {
-					setTimeout(function () {
-						self.returnItem(binElem);
-					}, 400);
+					self.liftFromBin(binElem, timeline);
 					if(itemStreamSlug === "landfill") {
 						showAlert("not-recycle", function () {
-							itemsWrapPackery.layout();
-							binElem.classList.remove("open");
-							binBackElem.classList.remove("open");
+							self.refreshItems(binElem);
 						});
 					} else if(!binStreamArr.includes("landfill")) {
 						showAlert("wrong-recycle", function () {
-							itemsWrapPackery.layout();
-							binElem.classList.remove("open");
-							binBackElem.classList.remove("open");
+							self.refreshItems(binElem);
 						});
 					} else {
 						showAlert("not-trash", function () {
-							itemsWrapPackery.layout();
-							binElem.classList.remove("open");
-							binBackElem.classList.remove("open");
+							self.refreshItems(binElem);
 						});
 					}
 				}
 			}
 
-			returnItem(binElem) {
-				const itemElem = this.elem,
-							binSlug = binElem.dataset.bin,
-							binBackElem = body.querySelector(`#${binSlug}-back`);
-
-				binBackElem.classList.add("open");
-				binElem.classList.add("open");
+			liftFromBin(binElem, timeline, refresh) {
+				const self= this,
+							itemElem = this.elem,
+							itemBounds = itemElem.getBoundingClientRect(),
+							binBounds = binElem.getBoundingClientRect(),
+							newItemTop =
+								window.innerHeight
+								- parseInt(itemElem.style.top)
+								- binBounds.height
+								- itemBounds.height;
 
 				itemElem.classList.remove("dropping");
 				itemElem.classList.add("returning");
-				setTimeout(function () {
-					itemElem.classList.remove("returning");
-				}, 600);
+
+				timeline.to(itemElem, {
+					y: newItemTop,
+					duration: .25,
+					onComplete: () => {
+						if(refresh) {
+							self.refreshItems(binElem);
+						}
+					}
+				});
+			}
+
+			refreshItems(binElem) {
+				const itemElem = this.elem,
+							binSlug = binElem.dataset.bin,
+							binBackElem = body.querySelector(`#${binSlug}-back`);
+				itemsWrapPackery.layout();
+				binBackElem.classList.remove("open");
+				binElem.classList.remove("open");
+				itemElem.classList.remove("returning");
 			}
 
 			fixTooltip() {
@@ -564,7 +597,7 @@ export const onClientEntry = () => {
 				nextStreamElem.setAttribute("aria-hidden", false);
 				body.id = "streams";
 				this.goToScene(this.scene);
-				this.playbackButton.focus();
+				this.nextArrow.focus();
 				currStream = this;
 			}
 
@@ -853,23 +886,9 @@ export const onClientEntry = () => {
 				tooltipElem.style.left = newLeft + "px";
 				tooltipElem.style.top = newTop + "px";
 			}
-
-			// animateScene() {
-			// 	const sceneElem = this.elem,
-			// 				sceneAnim = animations[this.slug];
-			// 	if(sceneAnim && !sceneElem.classList.contains("animating")) {
-			// 		sceneElem.classList.add("animating");
-			// 		setTimeout(function() {
-			// 			sceneAnim(sceneElem);
-			// 		}, 100);
-			// 	}
-			// }
 		}
 
 		setUpStreamSelect();
-
-		const fullToggle = document.querySelector("#full-toggle");
-		fullToggle.onclick = toggleFullscreen;
 
 		if(isIframe()) {
 			body.classList.add("full");

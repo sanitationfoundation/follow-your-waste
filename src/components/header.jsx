@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withPrefix } from "gatsby";
 
 export default function Header({ text, lang, langObjs }) {
 
@@ -17,6 +18,12 @@ export default function Header({ text, lang, langObjs }) {
 			<div id="skip-to-intro">
 				<a href="#main">{text.system.skip}</a>
 			</div>
+
+			{/*<div id="logo">
+				<a href="https://sanitaionfoundation.org" target="_blank">
+					<img src={withPrefix("images/logo.png")} alt="Sanitation Foundation" />
+				</a>
+			</div>*/}
 
 			<div id="lang-switch" className={`dropdown ${langMenu ? "open" : ""}`}>
 

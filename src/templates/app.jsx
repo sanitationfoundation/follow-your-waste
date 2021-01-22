@@ -50,6 +50,7 @@ export default ({ pageContext }) => {
 	return (
 		<div>
 			<Helmet
+				title={text.system.title}
 				bodyAttributes={{
 					id: "intro",
 					class: "",
@@ -62,6 +63,19 @@ export default ({ pageContext }) => {
 					{
 						"src": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/Draggable.min.js", 
 						"type": "text/javascript"
+					}
+				]}
+				meta={[
+					{
+						name: text.system.title,
+						content: text.system.tagline
+					}
+				]}
+				link={[
+					{
+						"rel": "icon", 
+						"type": "image/png", 
+						"href": "../static/images/icon.png"
 					}
 				]}>
 			</Helmet>

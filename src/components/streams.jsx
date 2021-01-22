@@ -18,6 +18,42 @@ export default function Streams({ text, data }) {
 							aria-hidden={true}
 							data-slug={stream}
 							key={i}>
+
+							<div role="menu"
+								className="progress"
+								aria-label={text.system.progress_menu}>
+								<div className="ticks-wrap">
+									<button
+										className="arrow"
+										tabIndex={0}
+										aria-label={text.system.prev}
+										data-dir="prev">
+									</button>
+									{streamData.map((sceneData, j) => {
+										const sceneText = streamText[j];
+										return (
+											<div
+												className="tick"
+												data-scene={sceneData.slug}
+												aria-hidden={true}
+												key={j}>
+												<div
+													className="label"
+													aria-hidden={true}>
+													{sceneText.label}
+												</div>
+											</div>
+										);
+									})}
+									<button
+										className="arrow"
+										tabIndex={0}
+										aria-label={text.system.next}
+										data-dir="next">
+									</button>
+								</div>
+							</div>
+							
 							<div className="scenes-wrap">
 								{streamData.map((sceneData, j) => {
 									const sceneText = streamText[j];
@@ -27,58 +63,65 @@ export default function Streams({ text, data }) {
 									} else {
 										svgSrc = withPrefix(`scenes/static/${sceneData.slug}/scene.svg`);
 									}
-									if(streams.indexOf(stream) > -1) {
-										return (
+									return (
+										<div
+											className="scene"
+											aria-hidden={true}
+											data-scene={sceneData.slug}
+											data-color={sceneData.color}
+											data-animated={sceneData.animated}
+											data-looped={sceneData.looped}
+											data-environ={sceneData.environment}
+											data-src={svgSrc}
+											key={j}>
+											
 											<div
-												className="scene"
-												aria-hidden={true}
-												data-scene={sceneData.slug}
-												data-color={sceneData.color}
-												data-animated={sceneData.animated}
-												data-looped={sceneData.looped}
-												data-environ={sceneData.environment}
-												data-src={svgSrc}
-												key={j}>
-												
-												<div
-													className={`svg-wrap ${sceneData.orientation}`}
-													aria-hidden={true}>
-												</div>
-
-												<div className="factoids" aria-hidden={true}>
-													{Array.apply(null, { length: 3 }).map((x, l) => {
-														const vocab = sceneText["vocab" + l],
-															fact = sceneText["fact" + l];
-														if (fact) {
-															return (
-																<div
-																	className="factoid"
-																	data-index={l}
-																	data-vocab={vocab}
-																	key={l}>
-																	<div className="factoid-tab"></div>
-																	<div className="factoid-inner">
-																		<p>
-																			{vocab ? (
-																				<span className="vocab">{vocab}</span>
-																			) : (
-																				false
-																			)}
-																			{fact}
-																		</p>
-																	</div>
-																</div>
-															);
-														} else {
-															return false;
-														}
-													})}
-												</div>
+												className={`svg-wrap ${sceneData.orientation}`}
+												aria-hidden={true}>
 											</div>
-										)
-									} else {
-										return false;
-									}
+
+											{j === streamData.length - 1 ?
+												<div className="end-note">
+													<div className="end-note-inner">
+														<h3 className="end-title">Recycled!</h3>
+														<div className="end-factoid">
+															{sceneText["fact1"]}
+														</div>
+													</div>
+												</div>
+											: false}
+
+											<div className="factoids" aria-hidden={true}>
+												{Array.apply(null, { length: 3 }).map((x, l) => {
+													const vocab = sceneText["vocab" + l],
+																fact = sceneText["fact" + l];
+													if (fact && j < streamData.length - 1) {
+														return (
+															<div
+																className="factoid"
+																data-index={l}
+																data-vocab={vocab}
+																key={l}>
+																<div className="factoid-tab"></div>
+																<div className="factoid-inner">
+																	<p>
+																		{vocab ? (
+																			<span className="vocab">{vocab}</span>
+																		) : (
+																			false
+																		)}
+																		{fact}
+																	</p>
+																</div>
+															</div>
+														);
+													} else {
+														return false;
+													}
+												})}
+											</div>
+										</div>
+									);
 								})}
 							</div>
 							<div className="chyron-wrap-wrap">
@@ -140,40 +183,6 @@ export default function Streams({ text, data }) {
 											
 										</div>
 									</div>
-								</div>
-							</div>
-
-							<div role="menu"
-								className="progress"
-								aria-label={text.system.progress_menu}>
-								<div className="ticks-wrap" aria-hidden={true}>
-									<button
-										className="arrow"
-										tabIndex={0}
-										aria-label={text.system.prev}
-										data-dir="prev">
-									</button>
-									{streamData.map((sceneData, j) => {
-										const sceneText = streamText[j];
-										return (
-											<div
-												className="tick"
-												data-scene={sceneData.slug}
-												key={j}>
-												<div
-													className="label"
-													aria-hidden={true}>
-													{sceneText.label}
-												</div>
-											</div>
-										);
-									})}
-									<button
-										className="arrow"
-										tabIndex={0}
-										aria-label={text.system.next}
-										data-dir="next">
-									</button>
 								</div>
 							</div>
 						</div>
