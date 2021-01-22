@@ -7,7 +7,7 @@ import { Draggable } from "gsap/Draggable";
 
 gsap.registerPlugin(Draggable);
 
-export const onClientEntry = () => {
+export const onInitialClientRender = () => {
 	window.onload = () => {
 		const body = document.querySelector("body"),
 					docElem = document.documentElement,

@@ -128,7 +128,7 @@
       "orientation": "width",
       "animated": "true",
       "looped": "true",
-      "environment": null
+      "environment": "traffic"
     }
   ],
   "paper": [
@@ -242,7 +242,7 @@
       "orientation": "height",
       "animated": "false",
       "looped": "false",
-      "environment": null
+      "environment": "traffic"
     }
   ],
   "metal": [
@@ -348,7 +348,7 @@
       "orientation": "width",
       "animated": "false",
       "looped": "false",
-      "environment": null
+      "environment": "traffic"
     }
   ],
   "glass": [
@@ -422,7 +422,7 @@
       "orientation": "width",
       "animated": "false",
       "looped": "false",
-      "environment": null
+      "environment": "traffic"
     }
   ],
   "plastic": [
@@ -496,7 +496,7 @@
       "orientation": "height",
       "animated": "false",
       "looped": "false",
-      "environment": null
+      "environment": "traffic"
     }
   ]
 }
