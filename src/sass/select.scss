@@ -134,6 +134,9 @@
   &.returning .tooltip {
     opacity: 0 !important;
   }
+  .static & {
+    transition-duration: 0ms !important; 
+  }
 }
 #intro .item {
   pointer-events: none;

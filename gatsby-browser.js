@@ -36,10 +36,6 @@ export const onClientEntry = () => {
 
 		body.classList.add("loaded");
 
-		if(fullToggle) {
-			fullToggle.onclick = toggleFullscreen;
-		}
-
 		window.onresize = () => {
 			scenesArr.forEach((sceneObj) => {
 				if(sceneObj.marker) {
@@ -102,43 +98,6 @@ export const onClientEntry = () => {
 			}
 		};
 
-		document.onfullscreenchange = (e) => {
-			if(document.fullscreenElement) {
-				body.classList.add("full");
-			} else {
-				body.classList.remove("full");
-			}
-		};
-
-		const toggleFullscreen = (e) => {
-			body.classList.toggle("full");
-			if(body.classList.contains("full")) {
-				openFullscreen();
-			} else {
-				closeFullscreen();
-			}
-		};
-
-		const openFullscreen = (e) => {
-			if(docElem.requestFullscreen && !document.fullscreenElement) {
-				docElem.requestFullscreen();
-			}
-		};
-
-		const closeFullscreen = (e) => {
-			if(document.exitFullscreen && document.fullscreenElement) {
-				document.exitFullscreen();
-			}
-		};
-
-		const isIframe = (e) => {
-			try {
-				return window.self !== window.top;
-			} catch (e) {
-				return true;
-			}
-		};
-
 		const fadeInDur = {
 			voice: 50,
 			environ: 1000
@@ -187,6 +146,50 @@ export const onClientEntry = () => {
 			}, fadeInDur[type]);
 		};
 
+
+		document.onfullscreenchange = (e) => {
+			if(document.fullscreenElement) {
+				body.classList.add("full");
+			} else {
+				body.classList.remove("full");
+			}
+		};
+
+		const toggleFullscreen = (e) => {
+			body.classList.toggle("full");
+			if(body.classList.contains("full")) {
+				openFullscreen();
+			} else {
+				closeFullscreen();
+			}
+		};
+
+		const openFullscreen = (e) => {
+			if(docElem.requestFullscreen && !document.fullscreenElement) {
+				docElem.requestFullscreen();
+			}
+		};
+
+		const closeFullscreen = (e) => {
+			if(document.exitFullscreen && document.fullscreenElement) {
+				document.exitFullscreen();
+			}
+		};
+
+		const isIframe = (e) => {
+			try {
+				return window.self !== window.top;
+			} catch (e) {
+				return true;
+			}
+		};
+
+		if(fullToggle) {
+			fullToggle.onclick = () => {
+				toggleFullscreen();
+			};
+		}
+
 		/************************************/
 		/************STREAM SELECT***********/
 		/************************************/
@@ -215,30 +218,27 @@ export const onClientEntry = () => {
 		};
 
 		const handleStreamSelect = () => {
-			itemsWrapPackery = new Packery(itemsWrap, {
-				itemSelector: ".item",
-				transitionDuration: 200,
-				resize: true,
-				gutter: 20,
-			});
+			if(!itemsWrap.classList.contains("setup")) {
+				itemsWrapPackery = new Packery(itemsWrap, {
+					itemSelector: ".item",
+					transitionDuration: 200,
+					resize: true,
+					gutter: 20,
+				});
 
-			itemsWrapPackery.on( 'layoutComplete', () => {
-				itemElems.forEach((itemElem) => {
-					const itemSlug = itemElem.dataset.item,
-								itemBounds = itemElem.getBoundingClientRect(),
-								itemObj = itemsArr[itemSlug];
-					itemObj.left = itemBounds.left;
-					itemObj.top = itemBounds.top;
-					gsap.set(itemElem, {
-						x: 0,
-						y: 0
+				itemsWrapPackery.on( 'layoutComplete', () => {
+					itemElems.forEach((itemElem) => {
+						gsap.set(itemElem, {
+							x: 0,
+							y: 0
+						});
 					});
 				});
-			});
-
-			itemsWrapPackery.layout();
-			
-			itemsWrap.classList.add("setup");
+				itemsWrapPackery.layout();
+				itemsWrap.classList.add("setup");
+			} else {
+				itemsWrapPackery.layout();
+			}
 		};
 
 		const showAlert = (alertSlug, onOkay, onCancel) => {
@@ -288,8 +288,9 @@ export const onClientEntry = () => {
 				this.stream = elem.dataset.stream;
 				this.image = elem.querySelector("img");
 				this.tooltip = elem.querySelector(".tooltip");
-				this.left = 0;
-				this.top = 0;
+				this.bin = null;
+				// this.left = 0;
+				// this.top = 0;
 
 				this.draggable = Draggable.create(elem, {
 					bounds: window,
@@ -332,54 +333,59 @@ export const onClientEntry = () => {
 			onDragEnd(e) {
 				const self = this,
 							itemElem = this.elem;
+				this.bin = null;
 				binElems.forEach((binElem) => {
 					const isOver = Draggable.hitTest(itemElem, binElem, 50);
 					if(isOver) {
-						self.dropInBin(binElem);
-					} else {
-						self.unhoverBin(binElem);
+						self.bin = binElem.dataset.bin;
 					}
 				});
+
+				if(this.bin) {
+					this.dropInBin();
+				}
+
 				itemElem.classList.remove("hovering");
 				body.classList.remove("dragging");
 				this.fixTooltip();
 			}
 
 			hoverBin(binElem) {
-				const binSlug = binElem.dataset.bin,
-							binBackElem = body.querySelector(`#${binSlug}-back`),
-							itemElem = this.elem;
+				const itemElem = this.elem,
+							binSlug = binElem.dataset.bin,
+							binBackElem = body.querySelector(`#${binSlug}-back`);
 				binElem.classList.add("open");
 				binBackElem.classList.add("open");
 				itemElem.classList.add("opening");
 			}
 
 			unhoverBin(binElem) {
-				const binSlug = binElem.dataset.bin,
-							binBackElem = body.querySelector(`#${binSlug}-back`),
-							itemElem = this.elem;
+				const itemElem = this.elem,
+							binSlug = binElem.dataset.bin,
+							binBackElem = body.querySelector(`#${binSlug}-back`);
 				binElem.classList.remove("open");
 				binBackElem.classList.remove("open");
 				itemElem.classList.remove("opening");
 			}
 
-			dropInBin(binElem) {
+			dropInBin() {
 				const self = this,
-							binBounds = binElem.getBoundingClientRect(),
-							binSlug = binElem.dataset.bin,
-							binStreamArr = binSlug.split("-"),
-							binBackElem = body.querySelector(`#${binSlug}-back`),
 							itemElem = this.elem,
 							itemBounds = itemElem.getBoundingClientRect(),
+							binSlug = this.bin,
+							binElem = body.querySelector(`#${binSlug}-bin`),
+							binBackElem = body.querySelector(`#${binSlug}-back`),
+							binBounds = binElem.getBoundingClientRect(),
+							binStreamArr = binSlug.split("-"),
 							timeline = gsap.timeline(),
 							newItemLeft =
-								binBounds.left
+								-parseInt(itemElem.style.left)
+								+ binBounds.left
 								+ ( binBounds.width/2 )
-								- ( itemBounds.width/2 )
-								- this.left,
+								- ( itemBounds.width/2 ),
 							newItemTop =
 								window.innerHeight
-								- this.top,
+								- parseInt(itemElem.style.top),
 							itemStreamSlug = itemElem.dataset.stream;
 
 				binElem.classList.add("open");
@@ -402,33 +408,42 @@ export const onClientEntry = () => {
 					showAlert("correct-bin",
 						() => {
 							streamObj.startStreaming();
+							self.liftFromBin(timeline, true);
 						},
 						() => {
-							self.liftFromBin(binElem, timeline, true);
+							self.liftFromBin(timeline, true);
 						}
 					);
 				} else {
-					self.liftFromBin(binElem, timeline);
+					self.liftFromBin(timeline);
 					if(itemStreamSlug === "landfill") {
 						showAlert("not-recycle", function () {
-							self.refreshItems(binElem);
+							timeline.call(() => {
+								self.refreshItems();
+							});
 						});
 					} else if(!binStreamArr.includes("landfill")) {
 						showAlert("wrong-recycle", function () {
-							self.refreshItems(binElem);
+							timeline.call(() => {
+								self.refreshItems();
+							});
 						});
 					} else {
 						showAlert("not-trash", function () {
-							self.refreshItems(binElem);
+							timeline.call(() => {
+								self.refreshItems();
+							});
 						});
 					}
 				}
 			}
 
-			liftFromBin(binElem, timeline, refresh) {
-				const self= this,
+			liftFromBin(timeline, refresh) {
+				const self = this,
 							itemElem = this.elem,
 							itemBounds = itemElem.getBoundingClientRect(),
+							binSlug = this.bin,
+							binElem = body.querySelector(`#${binSlug}-bin`),
 							binBounds = binElem.getBoundingClientRect(),
 							newItemTop =
 								window.innerHeight
@@ -444,20 +459,23 @@ export const onClientEntry = () => {
 					duration: .25,
 					onComplete: () => {
 						if(refresh) {
-							self.refreshItems(binElem);
+							self.refreshItems();
 						}
 					}
 				});
 			}
 
-			refreshItems(binElem) {
+			refreshItems() {
 				const itemElem = this.elem,
-							binSlug = binElem.dataset.bin,
+							binSlug = this.bin,
+							binElem  = body.querySelector(`#${binSlug}-bin`),
 							binBackElem = body.querySelector(`#${binSlug}-back`);
 				itemsWrapPackery.layout();
 				binBackElem.classList.remove("open");
 				binElem.classList.remove("open");
+				itemElem.classList.remove("dropping");
 				itemElem.classList.remove("returning");
+				this.bin = null;
 			}
 
 			fixTooltip() {
@@ -692,7 +710,7 @@ export const onClientEntry = () => {
 
 			goToNextScene() {
 				const currSceneSlug = this.scene,
-							currElem = this.elem.querySelector("[data-scene='" + currSceneSlug + "']"),
+							currElem = this.elem.querySelector(".scene[data-scene='" + currSceneSlug + "']"),
 							nextElem = currElem.nextSibling;
 				if(nextElem) {
 					const nextSlug = nextElem.dataset.scene;
@@ -702,7 +720,7 @@ export const onClientEntry = () => {
 
 			goToPrevScene() {
 				const currSceneSlug = this.scene,
-							currElem = this.elem.querySelector("[data-scene='" + currSceneSlug + "']"),
+							currElem = this.elem.querySelector(".scene[data-scene='" + currSceneSlug + "']"),
 							prevElem = currElem.previousSibling;
 
 				if(prevElem) {
