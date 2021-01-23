@@ -1,21 +1,120 @@
 {
-  "micro": [
+  "system": [
     {
-      "title": "Follow Your Waste",
-      "tagline": "La historia cotidiana de sus residuos, contada por Strongest de Nueva York.",
-      "description": null,
-      "loading": "Cargando",
-      "get_started": "¡Empezar!",
-      "try_again": "Inténtalo de nuevo",
-      "lets_go": "¡Vamonos!"
-    }
-  ],
-  "dialog": [
+      "slug": "title",
+      "text": "Follow Your Waste"
+    },
     {
-      "not_trash": "¡Oh no!, este artículo es reciclable. Échelo en otro cubo, por favor.",
-      "wrong_recycle": "Ha colocado mal este artículo reciclable, un error muy fácil de cometer. Pruebe echarlo en otro cubo.",
-      "not_recycle": "Este artículo de basura actualmente no se recicla en la ciudad de Nueva York. Échelo en otro cubo.",
-      "correct_bin": "¡Lo ha echado en el cubo correcto! Ahora, conozca lo que sucede a continuación de un trabajador de saneamiento de la ciudad de Nueva York."
+      "slug": "tagline",
+      "text": "La historia cotidiana de sus residuos, contada por Strongest de Nueva York."
+    },
+    {
+      "slug": "loading",
+      "text": "Cargando"
+    },
+    {
+      "slug": "get_started",
+      "text": "¡Empezar!"
+    },
+    {
+      "slug": "try_again",
+      "text": "Inténtalo de nuevo"
+    },
+    {
+      "slug": "lets_go",
+      "text": "¡Vamonos!"
+    },
+    {
+      "slug": "okay",
+      "text": "Okay"
+    },
+    {
+      "slug": "select_intro",
+      "text": "Discover what happens to your household waste after you toss it in the bin."
+    },
+    {
+      "slug": "begin_select",
+      "text": "To start, click on any item and drag it into the bin you think it belongs."
+    },
+    {
+      "slug": "begin_select_alt",
+      "text": "To start, select which material you would like to follow."
+    },
+    {
+      "slug": "not_trash",
+      "text": "¡Oh no!, este artículo es reciclable. Échelo en otro cubo, por favor."
+    },
+    {
+      "slug": "wrong_recycle",
+      "text": "Ha colocado mal este artículo reciclable, un error muy fácil de cometer. Pruebe echarlo en otro cubo."
+    },
+    {
+      "slug": "not_recycle",
+      "text": "Este artículo de basura actualmente no se recicla en la ciudad de Nueva York. Échelo en otro cubo."
+    },
+    {
+      "slug": "correct_bin",
+      "text": "¡Lo ha echado en el cubo correcto! Ahora, conozca lo que sucede a continuación de un trabajador de saneamiento de la ciudad de Nueva York."
+    },
+    {
+      "slug": "lang_switch",
+      "text": "Switch language"
+    },
+    {
+      "slug": "full_screen",
+      "text": "Toggle full screen"
+    },
+    {
+      "slug": "audio_menu",
+      "text": "Voiceover controls"
+    },
+    {
+      "slug": "playback",
+      "text": "Toggle play/pause"
+    },
+    {
+      "slug": "volume",
+      "text": "Toggle volume"
+    },
+    {
+      "slug": "progress_menu",
+      "text": "Progress controls"
+    },
+    {
+      "slug": "prev",
+      "text": "Previous"
+    },
+    {
+      "slug": "next",
+      "text": "Next"
+    },
+    {
+      "slug": "skip",
+      "text": "Skip to main content"
+    },
+    {
+      "slug": "mgp",
+      "text": "Metal, Glass, Plastic, Cartons"
+    },
+    {
+      "slug": "metal",
+      "text": "Metal"
+    },
+    {
+      "slug": "glass",
+      "text": "Glass"
+    },
+    {
+      "slug": "plastic",
+      "text": "Plastic"
+    },
+    {
+      "slug": "paper",
+      "text": "Paper"
+    },
+    {
+      "slug": "landfill",
+      "text": "Landfill"
     }
   ],
   "workers": [
@@ -151,121 +250,155 @@
       "slug": "garage-paper",
       "label": "Garaje",
       "caption": "Hola, soy Tom, empleado de saneamiento de Manhattan. Comenzamos nuestro turno al marcar la entrada en nuestro taller local y luego salimos a recoger la basura o los materiales reciclables de su casa.",
-      "fact": "Nuestro taller de la calle Spring en el oeste del bajo Manhattan cuenta con la certificación LEED GOLD por sus características de diseño sostenible, tales como un techo con vegetación, el uso de materiales reciclados, el recogido de agua de lluvia, la eficiencia energética e hídrica, y materiales de poca toxicidad.",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "Nuestro taller de la calle Spring en el oeste del bajo Manhattan cuenta con la certificación LEED GOLD por sus características de diseño sostenible, tales como un techo con vegetación, el uso de materiales reciclados, el recogido de agua de lluvia, la eficiencia energética e hídrica, y materiales de poca toxicidad.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "curbside-paper",
       "label": "Recogida en la acera",
       "caption": "Al salir del taller de la calle Spring en Manhattan, nuestros empleados de saneamiento recogen de la acera su reciclaje de cartón y papel y lo arrojan en un camión de basura de DSNY.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "mts",
       "label": "Estación de transferencia marina",
       "caption": "Al terminar la ruta de recogido, nuestros empleados de saneamiento se dirigen a la estación de traslado de la calle 59 en Manhattan.",
-      "fact": "Nuestro logotipo no siempre ha tenido el aspecto que tiene hoy en día. No fue hasta 1929 que nos convertimos en el Departamento de Saneamiento que conocemos hoy, y que nuestro logotipo pasó a ser el caduceo más actual: un bastón alado con dos serpientes envueltas a su alrededor que representa la buena salud.",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "Nuestro logotipo no siempre ha tenido el aspecto que tiene hoy en día. No fue hasta 1929 que nos convertimos en el Departamento de Saneamiento que conocemos hoy, y que nuestro logotipo pasó a ser el caduceo más actual: un bastón alado con dos serpientes envueltas a su alrededor que representa la buena salud.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "weighing",
       "label": "Pesando",
       "caption": "El camión de basura se pesa antes de entrar y así determinar el tonelaje de la carga. También se analiza en busca de radiación. Si da positivo, se retira para asegurar la protección de los empleados de saneamiento.",
-      "fact": "Cuando hablamos de seguridad, servicio y sostenibilidad, ¡lo decimos en serio! El DSNY emplea combustible biodiésel de aceite de soja para alimentar nuestra flota desde el 2005. ¡Nos enorgullece tener la flota más limpia de los Estados Unidos!",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "Cuando hablamos de seguridad, servicio y sostenibilidad, ¡lo decimos en serio! El DSNY emplea combustible biodiésel de aceite de soja para alimentar nuestra flota desde el 2005. ¡Nos enorgullece tener la flota más limpia de los Estados Unidos!",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
-      "slug": "fish-bowl",
-      "label": "Pecera",
-      "caption": "Ya en la estación, el empleado de saneamiento se dirige al muelle de descarga que esté libre.",
-      "fact": null,
-      "vocab": null,
-      "define": null
-    },
-    {
-      "slug": "tipping",
+      "slug": "tipping-paper",
       "label": "Piso basculante",
       "caption": "Luego se le indica que arroje la carga de papel y cartón sobre una barcaza.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "barge-paper",
       "label": "Barcaza",
       "caption": "Un remolcador guía la barcaza, repleta del papel y cartón reciclable de la ciudad, desde la Bahía Superior por de Kill Van Kill, pasando por Arthur Kill Narrows hasta la fábrica de papel Pratt Paper Mill en Staten Island.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "pratt",
       "label": "Fábrica de papel",
       "caption": "Al llegar la barcaza a la fábrica de papel Pratt Industries Mill, un operario dirige una garra de grúa gigante que recoge el reciclaje de papel.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "pulper",
       "label": "El pulper",
       "caption": "Ya en la fábrica de papel Pratt Paper Mill, el reciclado de papel y cartón se vierte primero en un pozo y luego se alimenta en una despulpadora, donde se mezcla con agua para conseguir pulpa, la cual pasa a través de mallas que eliminan los contaminantes.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "press",
       "label": "La prensa",
       "caption": "Luego se prensa y, tras secarse, se envuelve en un gran rollo de papel reciclado.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "winder",
       "label": "El enrollador",
       "caption": "Estos enormes rollos de papel reciclado, que pesan 25 toneladas cada uno, se transportan hasta la \"bobinadora\" por un sistema mecanizado que opera un obrero.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "storage",
       "label": "Almacenamiento",
       "caption": "Allí, el papel reciclado se corta en rollos más pequeños, que luego transportan un conductor de montacargas a la zona de almacenamiento.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "corrugator",
       "label": "Corrugador",
       "caption": "El papel reciclado está listo para ser distribuido a una corrugadora, donde los rollos de papel se convierten en hojas de cartón que luego se cortan y se doblan en cajas.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "quality-paper",
       "label": "Control de calidad",
       "caption": "Los obreros examinan los paquetes de cajas de cartón en la línea de montaje a efectos de control de calidad, y si están satisfechos con la calidad, el cartón reciclado se distribuye para su uso por toda la ciudad de Nueva York.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "end-paper",
       "label": "Cajas de pizza",
       "caption": "Las pizzerías de la ciudad son uno de los destinatarios principales del cartón reciclado. La próxima vez que estés a punto de degustar una sabrosa pizza, recuerda que esa caja pudo haber sido reciclada con el papel de Nueva York.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     }
   ],
   "landfill": [
@@ -273,73 +406,100 @@
       "slug": "garage",
       "label": "Garage",
       "caption": "Hola, soy Tuhina, empleada de saneamiento de Queens. Comenzamos nuestro turno al marcar la entrada en nuestro taller local y luego salimos a recoger la basura o los materiales reciclables de su casa.",
-      "fact": "Nuestro taller actual Queens West 1 ¡era un establo antiguo!",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "Nuestro taller actual Queens West 1 ¡era un establo antiguo!",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "curbside-landfill",
       "label": "Curbside Pickup",
       "caption": "Después de haber recogido la basura de la acera, los empleados de saneamiento se dirigen a la Estación Marítima de Traslado en North Shore.",
-      "fact": "Nuestro Plan de Gestión de Residuos Sólidos de 2006 redujo notablemente el número de viajes en camión al eliminar 60 millones de millas de recorrido al año.",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "Nuestro Plan de Gestión de Residuos Sólidos de 2006 redujo notablemente el número de viajes en camión al eliminar 60 millones de millas de recorrido al año.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "weighing",
       "label": "Weighing In",
       "caption": "El camión de basura se pesa antes de entrar y así determinar el tonelaje de la carga. También se analiza en busca de radiación. Si da positivo, se retira para asegurar la protección de los empleados de saneamiento.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
-      "slug": "tipping",
+      "slug": "tipping-landfill",
       "label": "Tipping Floor",
       "caption": "Luego del pesaje, un empleado de DSNY dirige a los camioneros de la zona de descarga a los muelles de descarga que estén libres.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "loading",
       "label": "Loading Floor",
       "caption": "La basura del camión de DSNY se deposita en el piso de carga ubicado debajo del muelle de descarga elevado. Dos cargadores frontales empujan la basura al cubo que esté libre en el que una excavadora la comprime.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "lidding",
       "label": "Lidding Floor",
       "caption": "En cuanto se llene el cubo, los empleados de saneamiento lo sellan en la zona de envase.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
-      "slug": "crane",
+      "slug": "crane-landfill",
       "label": "Loading the Barge",
       "caption": "A partir de aquí, un contratista privado es responsable de cargar el envase con una grúa sobre una barcaza.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
-      "slug": "barge",
+      "slug": "barge-landfill",
       "label": "Barge-to-rail",
       "caption": "La barcaza con los cubos llenos de basura la guía un remolcador hasta el terminal de contenedores, donde se descargan y se colocan en un tren.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "end-landfill",
       "label": "Landfill",
       "caption": "Por último, el tren lleva los contenedores a la instalación de conversión de residuos en energía eléctrica o los vierte en un vertedero.",
-      "fact": "Los vertederos son el tercer mayor contribuyente de gas metano en los Estados Unidos, lo que supone 34 veces el efecto invernadero del dióxido de carbono. ¿Desea contribuir a combatir el efecto del cambio climático? Ahórrese el cubo de basura y ¡procure reducir, reutilizar y reciclar!",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "Los vertederos son el tercer mayor contribuyente de gas metano en los Estados Unidos, lo que supone 34 veces el efecto invernadero del dióxido de carbono. ¿Desea contribuir a combatir el efecto del cambio climático? Ahórrese el cubo de basura y ¡procure reducir, reutilizar y reciclar!",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     }
   ],
   "metal": [
@@ -347,105 +507,155 @@
       "slug": "garage",
       "label": "The Garage",
       "caption": "Hola, soy Julian, empleado de saneamiento de El Bronx. Comenzamos nuestro turno al marcar la entrada en nuestro taller local y luego salimos a recoger la basura o los materiales reciclables de su casa.",
-      "fact": "Muchos de nuestros talleres son incineradores. Los del Bronx 9/10/11 en la avenida Zerega fueron incineradores que funcionaron alguna vez.",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "Muchos de nuestros talleres son incineradores. Los del Bronx 9/10/11 en la avenida Zerega fueron incineradores que funcionaron alguna vez.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "curbside-metal",
       "label": "Curbside Pickup",
       "caption": "Sus artículos de metal, vidrio, plástico (MVP) y cartón reciclables los recogen mis compañeros de saneamiento y los vierten en un camión de basura del Departamento de Saneamiento de la Ciudad de Nueva York (New York City Department of Sanitation, DSNY).",
-      "fact": "Nuestro logotipo no siempre ha tenido el aspecto que tiene hoy en día. No fue hasta 1929 que nos convertimos en el Departamento de Saneamiento que conocemos hoy, y que nuestro logotipo pasó a ser el caduceo más actual: un bastón alado con dos serpientes envueltas a su alrededor que representa la buena salud.",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "Nuestro logotipo no siempre ha tenido el aspecto que tiene hoy en día. No fue hasta 1929 que nos convertimos en el Departamento de Saneamiento que conocemos hoy, y que nuestro logotipo pasó a ser el caduceo más actual: un bastón alado con dos serpientes envueltas a su alrededor que representa la buena salud.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "mts",
       "label": "Marine Transfer Station",
       "caption": "Al terminar la ruta de recogido, los empleados de saneamiento se dirigen a Sims Hunts Point donde se colocan los materiales reciclables en una barcaza.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "sims",
       "label": "Sims",
       "caption": "Un remolcador guía la barcaza hasta el Centro de Recuperación de Material de Sims Sunset Park (Sims Sunset Park Material Recovery Facility, MRF).",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "claw",
       "label": "The Claw",
       "caption": "Al atracar la barcaza en el Centro de Recuperación de Material de los Sims en Sunset Park, en Brooklyn, un operario dirige una garra de grúa gigante, recoge los materiales reciclables MVP de la barcaza y los deposita en el suelo del vertedero.",
-      "fact": "La zona de vertido es una habitación gigante donde los materiales reciclables se descargan en pilas enormes.",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "La zona de vertido es una habitación gigante donde los materiales reciclables se descargan en pilas enormes.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "tipping",
       "label": "The Tipping Floor",
       "caption": "Además de la barcaza que transporta los reciclables, llega un camión de basura de DSNY que también descarga pilas enormes de reciclaje de la ciudad en la zona de vertido.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "sorting",
       "label": "Sorting",
       "caption": "Un cargador frontal empuja el reciclaje de la zona de vertido al sistema de clasificación. Como alternativa, una grúa gigante que llaman excavadora recoge los materiales reciclables y los deposita en el sistema de clasificación, o según el equipo a disposición.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "liberator",
       "label": "The Liberator",
       "caption": "A continuación, los reciclables entran en el sistema de clasificación y pasan primero por una trituradora de baja velocidad que abre las bolsas de reciclaje y se le conoce como Liberator.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "magnets",
       "label": "Magnets",
       "caption": "Los reciclables pasan por debajo de un gran imán giratorio que recoge metales férricos o materiales magnéticos. Luego, una corriente en remolino (un imán invertido) repele cualquier metal que no sea férrico, como el aluminio.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "trommel",
       "label": "Trommel Screen",
       "caption": "Los metales férricos y materiales magnéticos atraviesan un tambor tamizador. Al girar el tambor, los artículos más pequeños, como las latas, caen por agujeros y se transportan a su propia empacadora. Esta máquina comprime los materiales en fardos cuadrados. A diferencia de los artículos metálicos más pequeños, los voluminosos no se embalan, sino que se montan en una barcaza que va a una instalación de chatarra.",
-      "fact": "El tambor tamizador es como una lavadora cilíndrica gigante con agujeros de ocho pulgadas.",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "El tambor tamizador es como una lavadora cilíndrica gigante con agujeros de ocho pulgadas.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "quality-metal",
       "label": "Quality Control",
       "caption": "En la etapa de control de calidad se da una mirada final a los artículos clasificados. El equipo de control de calidad no separa los residuos, sino que limpia lo que ya está clasificado o elimina cualquier rastro de basura de entre los materiales reciclables.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "railcar",
       "label": "Railcar",
       "caption": "Los materiales ya están separados. Pilas de fardos rectangulares de metal no férrico triturado salen de las instalaciones en camiones, mientras una garra de grúa gigante coloca los fardos de metales magnéticos en vagones de ferrocarril.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "barge-metal",
+      "label": "Finished product",
+      "caption": "Por último, los vagones con metales magnéticos y férricos flotan a lo largo de Upper Bay, partiendo de la zona cercana a la planta de tratamiento de aguas residuales Owl's Head Wastewater para encontrarse con una línea de ferrocarril en Nueva Jersey que los lleva a una planta de tratamiento.",
+      "vocab1": null,
+      "fact1": "La lata de aluminio que arrojó en el cubo de reciclaje se puede convertir en otra lata, papel de aluminio, o incluso en piezas de coche. Qué chévere, ¿verdad?",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "end-metal",
-      "label": "Finished product",
-      "caption": "Por último, los vagones con metales magnéticos y férricos flotan a lo largo de Upper Bay, partiendo de la zona cercana a la planta de tratamiento de aguas residuales Owl's Head Wastewater para encontrarse con una línea de ferrocarril en Nueva Jersey que los lleva a una planta de tratamiento.",
-      "fact": "La lata de aluminio que arrojó en el cubo de reciclaje se puede convertir en otra lata, papel de aluminio, o incluso en piezas de coche. Qué chévere, ¿verdad?",
-      "vocab": null,
-      "define": null
+      "label": null,
+      "caption": null,
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     }
   ],
   "glass": [
@@ -453,65 +663,100 @@
       "slug": "garage",
       "label": "The Garage",
       "caption": "Hola, soy Renee, empleada de saneamiento de Staten Island. Comenzamos nuestro turno al marcar la entrada en nuestro taller local y luego salimos a recoger la basura o los materiales reciclables de su casa.",
-      "fact": "Nuestro taller de Staten Island 1 ¡es una antigua estación de tranvía!",
-      "vocab": null,
-      "define": null
+      "vocab1": "Nuestro taller de Staten Island 1 ¡es una antigua estación de tranvía!",
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "curbside-glass",
       "label": "Curbside Pickup",
       "caption": "Sus artículos de metal, vidrio, plástico (MVP) y cartón reciclables los recogen mis compañeros de saneamiento y los vierten en un camión de basura del Departamento de Saneamiento de la Ciudad de Nueva York (New York City Department of Sanitation, DSNY).",
-      "fact": "Ventana emergente: La próxima vez que camine por la acera, recuerde que el vidrio que arrojó en el cubo de reciclaje ¡podría ser parte de la acera por la que está caminando!",
-      "vocab": null,
-      "define": null
+      "vocab1": "Ventana emergente: La próxima vez que camine por la acera, recuerde que el vidrio que arrojó en el cubo de reciclaje ¡podría ser parte de la acera por la que está caminando!",
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "sims",
       "label": "Sims",
       "caption": "Al terminar la ruta de recogido, nos dirigimos a Sims Material Recovery Facility en Jersey City para descargar. El camión de basura de DSNY descarga MVP reciclables en la zona de vertido, un cuarto gigante donde se descargan materiales reciclables en pilas enormes.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "sorting",
       "label": "Sorting System",
       "caption": "Un cargador frontal empuja el reciclaje de la zona de vertido al sistema de clasificación. Como alternativa, una grúa gigante que llaman excavadora recoge los materiales reciclables y los deposita en el sistema de clasificación, o según el equipo a disposición.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "liberator",
       "label": "The Liberator",
       "caption": "A continuación, los reciclables entran en el sistema de clasificación y pasan primero por una trituradora de baja velocidad que abre las bolsas de reciclaje y se le conoce como Liberator",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "screens",
       "label": "Disc Screens",
       "caption": "Luego de que el Liberator abra las bolsas de reciclaje, los reciclables pasan sobre filas de barras de metal giratorias que se les conoce como cribas de disco. Mientras el metal y el plástico reciclables pasan por encima de las pantallas de disco giratorio, el vidrio golpea las barras de metal y se rompe en pedazos pequeños, los cuales caen a través de las aberturas entre las cribas de disco y los atrapa otra cinta transportadora.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "barge-glass",
       "label": "Glass Plant",
       "caption": "El vidrio separado pasa de las cribas de disco a una barcaza que lo transporta a una planta donde se clasifica por tamaño y color.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "optical-glass",
+      "label": "RGA",
+      "caption": "Por último, los trozos de vidrio transparente, marrón y verde más grandes se clasifican a ojo y se utilizan para fabricar botellas nuevas. Los más pequeños y los que no son transparente, marrón o verde se transforman en conglomerado de vidrio reciclado (CVR) para uso en proyectos de construcción.",
+      "vocab1": "Ventana emergente: La próxima vez que camine por la acera, recuerde que el vidrio que arrojó en el cubo de reciclaje ¡podría ser parte de la acera por la que está caminando!",
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "end-glass",
-      "label": "RGA",
-      "caption": "Por último, los trozos de vidrio transparente, marrón y verde más grandes se clasifican a ojo y se utilizan para fabricar botellas nuevas. Los más pequeños y los que no son transparente, marrón o verde se transforman en conglomerado de vidrio reciclado (CVR) para uso en proyectos de construcción.",
-      "fact": "Ventana emergente: La próxima vez que camine por la acera, recuerde que el vidrio que arrojó en el cubo de reciclaje ¡podría ser parte de la acera por la que está caminando!",
-      "vocab": null,
-      "define": null
+      "label": null,
+      "caption": null,
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     }
   ],
   "plastic": [
@@ -519,65 +764,100 @@
       "slug": "garage",
       "label": "The Garage",
       "caption": "Hola, soy Katia, empleada de saneamiento de Brooklyn. Comenzamos nuestro turno al marcar la entrada en nuestro taller local y luego salimos a recoger la basura o los materiales reciclables de su casa.",
-      "fact": "En nuestro taller Brooklyn 15 Annex, hay un mural pintado que pintó un empleado de saneamiento en homenaje a la historia estadounidense, con ilustraciones detalladas de la bandera americana y un águila calva.",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "En nuestro taller Brooklyn 15 Annex, hay un mural pintado que pintó un empleado de saneamiento en homenaje a la historia estadounidense, con ilustraciones detalladas de la bandera americana y un águila calva.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "curbside-plastic",
       "label": "Curbside Pickup",
       "caption": "Sus artículos de metal, vidrio, plástico (MVP) y cartón reciclables los recogen mis compañeros de saneamiento y los vierten en un camión de basura del Departamento de Saneamiento de la Ciudad de Nueva York (New York City Department of Sanitation, DSNY).",
-      "fact": "Nuestro logotipo no siempre ha tenido el aspecto que el de hoy en día. No fue hasta 1929 que nos convertimos en el Departamento de Saneamiento que conocemos hoy, y que nuestro logotipo pasó a ser el caduceo más actual: un bastón alado con dos serpientes envueltas a su alrededor que representa la buena salud.",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "Nuestro logotipo no siempre ha tenido el aspecto que el de hoy en día. No fue hasta 1929 que nos convertimos en el Departamento de Saneamiento que conocemos hoy, y que nuestro logotipo pasó a ser el caduceo más actual: un bastón alado con dos serpientes envueltas a su alrededor que representa la buena salud.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "sims",
       "label": "Sims",
       "caption": "Al terminar la ruta de recogido, nos dirigimos a Sims Sunset Park Material Recovery Facility. El camión de basura de DSNY descarga MVP reciclables en la zona de vertido, un cuarto gigante donde se descargan materiales reciclables en pilas enormes.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "sorting",
       "label": "Sorting System",
       "caption": "Un cargador frontal empuja el reciclaje de la zona de vertido al sistema de clasificación. Como alternativa, una grúa gigante que llaman excavadora recoge los materiales reciclables y los deposita en el sistema de clasificación, o según el equipo a disposición.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "liberator",
       "label": "The Liberator",
       "caption": "A continuación, los reciclables entran en el sistema de clasificación y pasan primero por una trituradora de baja velocidad que abre las bolsas de reciclaje y se le conoce como Liberator.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
-      "slug": "screens",
+      "slug": "optical-plastic",
       "label": "Optical Scanners",
       "caption": "Los plásticos se mueven a lo largo de cintas transportadoras que pasan por debajo de lectores ópticos. A medida que el lector filtra los plásticos que no se pueden reciclar, lanza un chorro de aire al final de la cinta transportadora que dispara el artículo a otra cinta.",
-      "fact": "Los lectores ópticos son cámaras de tecnología punta que analizan materiales reciclables mediante radiación infrarroja cercana (RIC), la cual identifica tipos de plásticos distintos y demás materiales.",
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": "Los lectores ópticos son cámaras de tecnología punta que analizan materiales reciclables mediante radiación infrarroja cercana (RIC), la cual identifica tipos de plásticos distintos y demás materiales.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "quality-plastic",
       "label": "Quality Control",
       "caption": "El equipo de control de calidad limpia lo que ya ha sido clasificado al eliminar cualquier rastro de basura de los materiales reciclables.",
-      "fact": null,
-      "vocab": null,
-      "define": null
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "bales",
+      "label": "New Products",
+      "caption": "Luego de embalados, los plásticos se cargan en camiones y se dirigen a la fabricación de nuevos productos para la venta.",
+      "vocab1": null,
+      "fact1": "Su botella de plástico reciclado se puede transformar en botellas, textiles y alfombras nuevas. Quién sabe: ¡su botella, vestimenta o sendero podrían estar hechos con la botella que acaba de reciclar!",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     },
     {
       "slug": "end-plastic",
-      "label": "New Products",
-      "caption": "Luego de embalados, los plásticos se cargan en camiones y se dirigen a la fabricación de nuevos productos para la venta.",
-      "fact": "Su botella de plástico reciclado se puede transformar en botellas, textiles y alfombras nuevas. Quién sabe: ¡su botella, vestimenta o sendero podrían estar hechos con la botella que acaba de reciclar!",
-      "vocab": null,
-      "define": null
+      "label": null,
+      "caption": null,
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
     }
   ]
 }

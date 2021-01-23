@@ -237,30 +237,6 @@ audio {
 			cursor: pointer;
 		}
 	}
-	&:last-child {
-		.svg-wrap {
-			margin-left: -25%;
-		}
-	}
-}
-
-.end-note {
-	width: 50%;
-	height: 100%;
-	position: absolute;
-	right: 0;
-	top: 0;
-	padding: 120px 30px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	color: white;
-}
-.end-title {
-
-}
-.end-fact {
-
 }
 
 $light-amt: 10%;
@@ -339,7 +315,7 @@ $lighter-amt: 10%;
 	color: white;
 	pointer-events: none;
 	transition: opacity 300ms ease-in;
-	body#streams .stream.show:not(.end) & {
+	body#streams .stream.show & {
 		opacity: 1;
 		pointer-events: all;
 	}

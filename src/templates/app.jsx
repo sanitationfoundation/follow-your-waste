@@ -22,27 +22,23 @@ export default ({ pageContext }) => {
 			short: "eng",
 			text: enText
 		},
-		// es: {
-		// 	long: "Español",
-		// 	short: "esp",
-		// 	text: esText
-		// },
-		// zh: {
-		// 	long: "简体",
-		// 	short: "简体",
-		// 	text: zhText
-		// }
+		es: {
+			long: "Español",
+			short: "esp",
+			text: esText
+		},
+		zh: {
+			long: "简体",
+			short: "简体",
+			text: zhText
+		}
 	};
 
-	Object.keys(langObjs).map((lang) => {
-		let newSysObj = {};
-		const langObj = langObjs[lang],
-					sysArr = langObj.text.system;
-		sysArr.forEach((textObj) => {
-			newSysObj[textObj.slug] = textObj.text;
+	const textObjs = { en: enText, es: esText, zh: zhText };
+	Object.keys(textObjs).forEach((key) => {
+		textObjs[key].system.forEach((textPair) => {
+			langObjs[key].text.system[textPair.slug] = textPair.text;
 		});
-		langObj.text.system = newSysObj;
-		return langObj;
 	});
 
 	const text = langObjs[lang].text;
@@ -80,8 +76,9 @@ export default ({ pageContext }) => {
 				]}>
 			</Helmet>
 
+			<Header text={text} lang={lang} langObjs={langObjs} />
+
 			<main id="main">
-				<Header text={text} lang={lang} langObjs={langObjs} />
 				<Intro text={text} />
 				<Select text={text} data={data} />
 				<Streams text={text} data={data} />

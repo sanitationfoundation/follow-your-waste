@@ -19,6 +19,7 @@ export default function Intro({ text }) {
             <button
               className="button"
               id="intro-button"
+              tabIndex={0}
               aria-disabled="true"
               aria-haspopup="true">
               {text.system.get_started}

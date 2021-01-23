@@ -13,63 +13,64 @@ export default function Header({ text, lang, langObjs }) {
 				currLangObj = langObjs[currLangKey];
 
 	return (
-		<header id="header">
-
+		<React.Fragment>
 			<div id="skip-to-intro">
 				<a href="#main">{text.system.skip}</a>
 			</div>
-
-			{/*<div id="logo">
-				<a href="https://sanitaionfoundation.org" target="_blank">
+			<header id="header">
+				<a id="logo" href="https://sanitaionfoundation.org" target="_blank" rel="noreferrer">
 					<img src={withPrefix("images/logo.png")} alt="Sanitation Foundation" />
 				</a>
-			</div>*/}
 
-			<div id="lang-switch" className={`dropdown ${langMenu ? "open" : ""}`}>
+				<div id="lang-switch" className={`dropdown ${langMenu ? "open" : ""}`}>
 
-				<div role="button"
-						className="option"
-						title={currLangObj.long}
-						aria-hidden={true}
-						onClick={() => setLangMenu(!langMenu)}
-						onKeyPress={() => setLangMenu(!langMenu)}>
-					{currLangObj.short}
+					<div role="button"
+							className="option"
+							title={currLangObj.long}
+							aria-hidden={true}
+							tabIndex={0}
+							onFocus={() => setLangMenu(!langMenu)}
+							onClick={() => setLangMenu(!langMenu)}
+							onKeyPress={() => setLangMenu(!langMenu)}>
+						{currLangObj.short}
+					</div>
+
+					<div
+						id="lang-switch-label"
+						className="screen-hidden"
+						tabIndex={-1}
+						aria-hidden={true}>
+						{text.system.lang_switch}
+					</div>
+
+					<div role="menu"
+						aria-labelledby="lang-switch-label">
+						{langKeys.map((langKey, i) => {
+							const langObj = langObjs[langKey];
+							return (
+								<div className="option" key={i}>
+									<a role="menuitem"
+										 lang={langKey}
+										 href={"/"+langKey}
+										 title={langObj.long}
+										 tabIndex={0}
+										 aria-label={`Switch to ${langObj.long}`}>
+										{langObj.short}
+									</a>
+								</div>
+							);
+						})}
+					</div>
+
 				</div>
 
-				<div
-					id="lang-switch-label"
-					className="screen-hidden"
+				<button
+					id="full-toggle"
+					tabIndex={0}
 					aria-hidden={true}>
-					{text.system.lang_switch}
-				</div>
+				</button>
 
-				<div role="menu"
-					aria-labelledby="lang-switch-label">
-					{langKeys.map((langKey, i) => {
-						const langObj = langObjs[langKey];
-						return (
-							<div className="option" key={i}>
-								<a role="menuitem"
-									 lang={langKey}
-									 href={"/"+langKey}
-									 title={langObj.long}
-									 aria-label={`Switch to ${langObj.long}`}
-									 tabIndex="0">
-									{langObj.short}
-								</a>
-							</div>
-						);
-					})}
-				</div>
-
-			</div>
-
-			<button
-				id="full-toggle"
-				tabIndex={0}
-				aria-hidden={true}>
-			</button>
-
-		</header>
+			</header>
+		</React.Fragment>
 	);
 }

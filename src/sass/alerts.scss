@@ -51,11 +51,8 @@ button {
 	border-width: 0;
 	background-color: transparent;
 	@include md-text;
-	&:hover,
-	&:focus {
+	&:hover {
 		cursor: pointer;
-		outline: none;
-		outline: none;
 	}
 }
 .button {

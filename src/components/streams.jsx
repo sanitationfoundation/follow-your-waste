@@ -80,44 +80,29 @@ export default function Streams({ text, data }) {
 												aria-hidden={true}>
 											</div>
 
-											{j === streamData.length - 1 ?
-												<div className="end-note">
-													<div className="end-note-inner">
-														<h3 className="end-title">Recycled!</h3>
-														<div className="end-factoid">
-															{sceneText["fact1"]}
-														</div>
-													</div>
-												</div>
-											: false}
-
 											<div className="factoids" aria-hidden={true}>
 												{Array.apply(null, { length: 3 }).map((x, l) => {
 													const vocab = sceneText["vocab" + l],
 																fact = sceneText["fact" + l];
-													if (fact && j < streamData.length - 1) {
-														return (
-															<div
-																className="factoid"
-																data-index={l}
-																data-vocab={vocab}
-																key={l}>
-																<div className="factoid-tab"></div>
-																<div className="factoid-inner">
-																	<p>
-																		{vocab ? (
-																			<span className="vocab">{vocab}</span>
-																		) : (
-																			false
-																		)}
-																		{fact}
-																	</p>
-																</div>
+													return fact? (
+														<div
+															className="factoid"
+															data-index={l}
+															data-vocab={vocab}
+															key={l}>
+															<div className="factoid-tab"></div>
+															<div className="factoid-inner">
+																<p>
+																	{vocab ? (
+																		<span className="vocab">{vocab}</span>
+																	) : (
+																		false
+																	)}
+																	{fact}
+																</p>
 															</div>
-														);
-													} else {
-														return false;
-													}
+														</div>
+													) : null;
 												})}
 											</div>
 										</div>
@@ -135,33 +120,29 @@ export default function Streams({ text, data }) {
 											</div>
 											<div className="captions">
 												{streamData.map((sceneData, j) => {
-													if (j < streamData.length - 1) {
-														const sceneText = streamText[j];
-														return (
-															<div
-																className="caption"
-																data-scene={sceneData.slug}
-																key={j}>
-																<div className="text" aria-hidden={true}>
-																	{sceneText.caption}
-																</div>
-																<audio
-																	data-type="voice"
-																	preload="none"
-																	controls={false}>
-																	<source
-																		src={withPrefix(`audio/${stream}/${sceneData.slug}.wav`)}
-																		type="audio/wav" />
-																	<track
-																		src=""
-																		srcLang="en"
-																		kind="captions" />
-																</audio>
+													const sceneText = streamText[j];
+													return (
+														<div
+															className="caption"
+															data-scene={sceneData.slug}
+															key={j}>
+															<div className="text" aria-hidden={true}>
+																{sceneText.caption}
 															</div>
-														);
-													} else {
-														return false;
-													}
+															<audio
+																data-type="voice"
+																preload="none"
+																controls={false}>
+																<source
+																	src={withPrefix(`audio/${stream}/${sceneData.slug}.wav`)}
+																	type="audio/wav" />
+																<track
+																	src=""
+																	srcLang="en"
+																	kind="captions" />
+															</audio>
+														</div>
+													);
 												})}
 											</div>
 

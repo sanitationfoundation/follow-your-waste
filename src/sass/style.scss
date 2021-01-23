@@ -23,11 +23,6 @@ body {
 	// min-height: $sm-width;
 	font-size: 20px;
 	position: relative;
-	opacity: 0;
-	&.loaded {
-		opacity: 1;
-		transition: opacity 1000ms;
-	}
 }
 * {
 	box-sizing: border-box;
@@ -58,12 +53,12 @@ a {
 ////////////// HEADER //////////////
 ////////////////////////////////////
 #skip-to-intro {
-	margin: 10px auto 0 20px;
+	margin: 10px 0 0 20px;
 	a {
-		position: relative;
+		position: absolute;
 		left: -999999px;
 		&:focus {
-			left: 0;
+			position: static;
 		}
 	}
 	body:not(#intro) {
@@ -85,6 +80,19 @@ header#header {
 	user-select: none;
 	pointer-events: none;
 	@include md-text;
+}
+#logo {
+	width: 190px;
+	margin-right: auto;
+	img {
+		width: 100%;
+	}
+	body#intro & {
+		pointer-events: all;
+	}
+	body:not(#intro) & {
+		opacity: 0;
+	}
 }
 .dropdown {
 	position: relative;

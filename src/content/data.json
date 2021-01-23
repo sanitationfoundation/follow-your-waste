@@ -57,80 +57,6 @@
       "stream": "landfill"
     }
   ],
-  "landfill": [
-    {
-      "slug": "garage",
-      "color": "blue",
-      "orientation": "width",
-      "animated": "true",
-      "looped": "true",
-      "environment": "traffic"
-    },
-    {
-      "slug": "curbside-landfill",
-      "color": "teal",
-      "orientation": "height",
-      "animated": "true",
-      "looped": "false",
-      "environment": "traffic"
-    },
-    {
-      "slug": "weighing",
-      "color": "blue",
-      "orientation": "width",
-      "animated": "true",
-      "looped": "true",
-      "environment": "facility"
-    },
-    {
-      "slug": "tipping-landfill",
-      "color": "orange",
-      "orientation": "height",
-      "animated": "false",
-      "looped": "false",
-      "environment": "facility"
-    },
-    {
-      "slug": "loading",
-      "color": "lime",
-      "orientation": "width",
-      "animated": "true",
-      "looped": "false",
-      "environment": "facility"
-    },
-    {
-      "slug": "lidding",
-      "color": "pink",
-      "orientation": "height",
-      "animated": "true",
-      "looped": "false",
-      "environment": "facility"
-    },
-    {
-      "slug": "crane-landfill",
-      "color": "yellow",
-      "orientation": "height",
-      "animated": "true",
-      "looped": "false",
-      "environment": "water"
-    },
-    {
-      "slug": "barge-landfill",
-      "color": "blue",
-      "orientation": "height",
-      "animated": "true",
-      "looped": "true",
-      "environment": "water"
-    },
-    {
-      "slug": "end-landfill",
-      "color": "yellow",
-      "orientation": "width",
-      "animated": "true",
-      "looped": "true",
-      "environment": "traffic"
-    }
-  ],
   "paper": [
     {
       "slug": "garage-paper",
@@ -245,6 +171,80 @@
       "environment": "traffic"
     }
   ],
+  "landfill": [
+    {
+      "slug": "garage",
+      "color": "blue",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true",
+      "environment": "traffic"
+    },
+    {
+      "slug": "curbside-landfill",
+      "color": "teal",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false",
+      "environment": "traffic"
+    },
+    {
+      "slug": "weighing",
+      "color": "blue",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true",
+      "environment": "facility"
+    },
+    {
+      "slug": "tipping-landfill",
+      "color": "orange",
+      "orientation": "height",
+      "animated": "false",
+      "looped": "false",
+      "environment": "facility"
+    },
+    {
+      "slug": "loading",
+      "color": "lime",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "false",
+      "environment": "facility"
+    },
+    {
+      "slug": "lidding",
+      "color": "pink",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false",
+      "environment": "facility"
+    },
+    {
+      "slug": "crane-landfill",
+      "color": "yellow",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "false",
+      "environment": "water"
+    },
+    {
+      "slug": "barge-landfill",
+      "color": "blue",
+      "orientation": "height",
+      "animated": "true",
+      "looped": "true",
+      "environment": "water"
+    },
+    {
+      "slug": "end-landfill",
+      "color": "yellow",
+      "orientation": "width",
+      "animated": "true",
+      "looped": "true",
+      "environment": "traffic"
+    }
+  ],
   "metal": [
     {
       "slug": "garage",
@@ -271,7 +271,7 @@
       "environment": "water"
     },
     {
-      "slug": "barge-metal",
+      "slug": "sims",
       "color": "black",
       "orientation": "width",
       "animated": "false",
@@ -279,7 +279,7 @@
       "environment": "water"
     },
     {
-      "slug": "sims",
+      "slug": "claw",
       "color": "black",
       "orientation": "width",
       "animated": "false",
@@ -341,6 +341,14 @@
       "animated": "false",
       "looped": "false",
       "environment": "facility"
+    },
+    {
+      "slug": "barge-metal",
+      "color": "black",
+      "orientation": "width",
+      "animated": "false",
+      "looped": "false",
+      "environment": "traffic"
     },
     {
       "slug": "end-metal",

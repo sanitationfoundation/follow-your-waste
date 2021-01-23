@@ -5,9 +5,10 @@ import $ from "jquery";
 import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable";
 
-gsap.registerPlugin(Draggable);
-
 export const onInitialClientRender = () => {
+
+	gsap.registerPlugin(Draggable);
+
 	window.onload = () => {
 		const body = document.querySelector("body"),
 					docElem = document.documentElement,
@@ -310,8 +311,6 @@ export const onInitialClientRender = () => {
 			}
 
 			onDragStart(e) {
-				const itemElem = this.elem;
-							// itemBounds = itemElem.getBoundingClientRect();				
 				body.classList.add("dragging");
 			}
 
@@ -374,7 +373,6 @@ export const onInitialClientRender = () => {
 							itemBounds = itemElem.getBoundingClientRect(),
 							binSlug = this.bin,
 							binElem = body.querySelector(`#${binSlug}-bin`),
-							binBackElem = body.querySelector(`#${binSlug}-back`),
 							binBounds = binElem.getBoundingClientRect(),
 							binStreamArr = binSlug.split("-"),
 							timeline = gsap.timeline(),
@@ -383,9 +381,6 @@ export const onInitialClientRender = () => {
 								+ binBounds.left
 								+ ( binBounds.width/2 )
 								- ( itemBounds.width/2 ),
-							newItemTop =
-								window.innerHeight
-								- parseInt(itemElem.style.top),
 							itemStreamSlug = itemElem.dataset.stream;
 
 				binElem.classList.add("open");
@@ -615,7 +610,7 @@ export const onInitialClientRender = () => {
 				nextStreamElem.setAttribute("aria-hidden", false);
 				body.id = "streams";
 				this.goToScene(this.scene);
-				this.nextArrow.focus();
+				this.progress.focus();
 				currStream = this;
 			}
 
@@ -673,11 +668,11 @@ export const onInitialClientRender = () => {
 					nextSceneObj.animation.goToAndPlay(0);
 				}
 
-				if(!nextSceneElem.nextSibling) {
-					this.elem.classList.add("end");
-				} else {
-					this.elem.classList.remove("end");
-				}
+				// if(!nextSceneElem.nextSibling) {
+				// 	this.elem.classList.add("end");
+				// } else {
+				// 	this.elem.classList.remove("end");
+				// }
 
 				if(!nextSceneElem) return (body.id = "");
 				nextSceneElem.classList.add("show");
