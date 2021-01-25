@@ -67,14 +67,17 @@
 		pointer-events: none;
 		transition: opacity 300ms ease-in-out;
 	}
-	&:first-child {
+	&:first-of-type {
 		margin-left: 0;
 	}
-	&:last-child {
+	&:last-of-type {
+		@include hide;
+	}
+	&:nth-last-of-type(1) {
 		margin-right: 0;
 	}
-	&:last-child .label,
-	&:nth-last-child(2) .label {
+	&:last-of-type .label,
+	&:nth-last-of-type(2) .label {
 		left: auto;
 		right: 0;
 	}
@@ -315,7 +318,7 @@ $lighter-amt: 10%;
 	color: white;
 	pointer-events: none;
 	transition: opacity 300ms ease-in;
-	body#streams .stream.show & {
+	body#streams .stream:not(.ending).show & {
 		opacity: 1;
 		pointer-events: all;
 	}

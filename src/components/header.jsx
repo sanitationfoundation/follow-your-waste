@@ -64,12 +64,6 @@ export default function Header({ text, lang, langObjs }) {
 
 				</div>
 
-				<button
-					id="full-toggle"
-					tabIndex={0}
-					aria-hidden={true}>
-				</button>
-
 			</header>
 		</React.Fragment>
 	);

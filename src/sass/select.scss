@@ -1,4 +1,7 @@
 #select-view {
+  .view-inner {
+    padding: 55px 30px 100px 30px;
+  }
   svg {
     width: auto;
     height: 100%;
@@ -80,7 +83,7 @@
 #items-wrap {
   width: 100%;
   height: 100% !important;
-  padding: 20px;
+  // padding: 20px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -90,8 +93,7 @@
   opacity: 0;
   touch-action: none;
   user-select: none;
-  body#select &,
-  body#pre-select & {
+  body#select & {
     opacity: 1;
   }
 }
@@ -104,13 +106,6 @@
   top: 20px;
   opacity: 0;
   pointer-events: none;
-}
-
-#select-view {
-  .view-inner {
-    padding-top: 55px;
-    padding-bottom: 100px;
-  }
 }
 .item {
   position: absolute !important;

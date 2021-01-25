@@ -45,6 +45,13 @@ export default function Streams({ text, data }) {
 											</div>
 										);
 									})}
+
+									<div
+										className="tick"
+										data-scene="the-end"
+										aria-hidden={true}>
+									</div>
+
 									<button
 										className="arrow"
 										tabIndex={0}
@@ -66,13 +73,13 @@ export default function Streams({ text, data }) {
 									return (
 										<div
 											className="scene"
-											aria-hidden={true}
 											data-scene={sceneData.slug}
 											data-color={sceneData.color}
 											data-animated={sceneData.animated}
 											data-looped={sceneData.looped}
 											data-environ={sceneData.environment}
 											data-src={svgSrc}
+											aria-hidden={true}
 											key={j}>
 											
 											<div
@@ -91,7 +98,9 @@ export default function Streams({ text, data }) {
 															data-vocab={vocab}
 															key={l}>
 															<div className="factoid-tab"></div>
-															<div className="factoid-inner">
+															<div
+																className="factoid-inner"
+																tabIndex={-1}>
 																<p>
 																	{vocab ? (
 																		<span className="vocab">{vocab}</span>
@@ -108,6 +117,18 @@ export default function Streams({ text, data }) {
 										</div>
 									);
 								})}
+
+								<div
+									className="scene the-end"
+									data-color="orange"
+									aria-hidden={true}>
+									<h2>Da End!</h2>
+									<button
+										id="restart-button">
+										Restart
+									</button>
+								</div>
+
 							</div>
 							<div className="chyron-wrap-wrap">
 								<div className="chyron-wrap">
@@ -125,14 +146,18 @@ export default function Streams({ text, data }) {
 														<div
 															className="caption"
 															data-scene={sceneData.slug}
+															tabIndex={-1}
+															aria-hidden={true}
 															key={j}>
-															<div className="text" aria-hidden={true}>
+															<div
+																className="text">
 																{sceneText.caption}
 															</div>
 															<audio
 																data-type="voice"
 																preload="none"
-																controls={false}>
+																controls={false}
+																aria-hidden={true}>
 																<source
 																	src={withPrefix(`audio/${stream}/${sceneData.slug}.wav`)}
 																	type="audio/wav" />
@@ -152,8 +177,8 @@ export default function Streams({ text, data }) {
 												<button
 													className="icon-button volume"
 													tabIndex={0}
-													aria-label={text.system.volume}
-													aria-pressed="false">
+													aria-pressed={false}
+													aria-label={text.system.volume}>
 												</button>
 												<button
 													className="icon-button playback"
