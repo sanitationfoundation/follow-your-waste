@@ -418,7 +418,7 @@ $lighter-amt: 10%;
 	}
 }
 
-.icon-buttons {
+.audio-buttons {
 	width: 25px;
 	position: absolute;
 	top: 20px;
@@ -430,7 +430,7 @@ $lighter-amt: 10%;
     left: 70px;
 	}
 }
-.icon-button {
+.audio-button {
 	width: 25px;
 	height: 25px;
 	float: left;
@@ -442,13 +442,13 @@ $lighter-amt: 10%;
 	transition: opacity 300ms ease-in-out;
 	&.volume {
 		background-image: url(../images/volume.svg);
-		body.mute & {
+		body.mute .audio-buttons & {
 			background-position-y: bottom;
 		}
 	}
 	&.playback {
 		background-image: url(../images/playback.svg);
-		body.playing & {
+		body.playing .audio-buttons & {
 			background-position-y: bottom;
 		}
 	}

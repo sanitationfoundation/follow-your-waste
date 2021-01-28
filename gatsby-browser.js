@@ -216,7 +216,7 @@ export const onInitialClientRender = () => {
 		if(helpTog) {
 			helpTog.onclick = () => {
 				if(body.classList.contains("alerts")) {
-
+					closeAlert();
 				} else {
 					showAlert("streams-intro");
 				}
@@ -280,13 +280,8 @@ export const onInitialClientRender = () => {
 						okayBttnElem = alertElem.querySelector(".okay"),
 						cancelBttnElem = alertElem.querySelector(".cancel");
 
-
-			body.classList.toggle("alerts");
-			alertElem.classList.toggle("show");	
-
-			if(!alertElem.classList.contains("show")) {
-				return;
-			}
+			body.classList.add("alerts");
+			alertElem.classList.add("show");
 
 			if(okayBttnElem) {
 				okayBttnElem.onclick = (e) => {
@@ -313,6 +308,12 @@ export const onInitialClientRender = () => {
 				menuElem.focus();
 			}
 		};
+
+		const closeAlert = () => {
+			const alertElem = document.querySelector(".alert.show");
+			body.classList.remove("alerts");
+			alertElem.classList.remove("show");	
+		}
 
 		/************************************/
 		/*****************ITEM***************/
@@ -454,7 +455,6 @@ export const onInitialClientRender = () => {
 					const streamObj = streams[itemStreamSlug];
 					showAlert("correct-bin",
 						() => {
-							console.log(selectedItem);
 							const itemImg = itemElem.querySelector("img");
 							selectedItem.src = itemImg.src;
 							streamObj.introStreams();
@@ -569,8 +569,8 @@ export const onInitialClientRender = () => {
 				this.scenes = {};
 				this.scenesWrap = elem.querySelector(".scenes-wrap");
 				this.progress = elem.querySelector(".progress");
-				this.volBttn = elem.querySelector(".icon-button.volume");
-				this.playbackBttn = elem.querySelector(".icon-button.playback");
+				this.volBttn = elem.querySelector(".audio-button.volume");
+				this.playbackBttn = elem.querySelector(".audio-button.playback");
 				this.prevArrow = elem.querySelector(".arrow[data-dir='prev']");
 				this.nextArrow = elem.querySelector(".arrow[data-dir='next']");
 

@@ -86,7 +86,7 @@ export default ({ pageContext }) => {
 			</main>
 
 			<button
-				className="tool-icon"
+				className="tool-button"
 				id="help-toggle"
 				tabIndex={0}
 				aria-pressed={false}
@@ -99,7 +99,7 @@ export default ({ pageContext }) => {
 				{text.system.full_screen}
 			</label>
 			<button
-				className="tool-icon"
+				className="tool-button"
 				id="full-toggle"
 				tabIndex={0}
 				aria-pressed={false}

@@ -221,12 +221,12 @@ export default function Alerts({ text }) {
 							<div className="row">
 								<div className="col">
 									<div className="help-audio-buttons">
-										<div className="icon-button volume"></div>
-										<div className="icon-button playback"></div>
+										<div className="audio-button volume"></div>
+										<div className="audio-button playback"></div>
 									</div>
 									<div className="help-audio-buttons">
-										<div className="icon-button volume"></div>
-										<div className="icon-button playback"></div>
+										<div className="audio-button volume"></div>
+										<div className="audio-button playback"></div>
 									</div>
 								</div>
 								<div className="col">

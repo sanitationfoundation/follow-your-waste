@@ -160,16 +160,16 @@ export default function Streams({ text, data }) {
 											</div>
 
 											<div role="menu"
-												className="icon-buttons"
+												className="audio-buttons"
 												aria-label={text.system.audio_menu}>
 												<button
-													className="icon-button volume"
+													className="audio-button volume"
 													tabIndex={0}
 													aria-pressed={false}
 													aria-label={text.system.volume}>
 												</button>
 												<button
-													className="icon-button playback"
+													className="audio-button playback"
 													tabIndex={0}
 													aria-label={text.system.playback}>
 												</button>

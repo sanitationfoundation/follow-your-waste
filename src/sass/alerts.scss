@@ -127,11 +127,11 @@ button {
 		flex-direction: column;
 		align-content: flex-end;
 		margin-left: 10px;
-		&:last-child .icon-button {
+		&:last-child .audio-button {
 			background-position-y: bottom;
 		}
 	}
-	.icon-button {
+	.audio-button {
 		float: right;
 	}
 }

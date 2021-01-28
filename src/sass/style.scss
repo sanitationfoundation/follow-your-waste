@@ -158,7 +158,7 @@ header#header {
 	}
 }
 
-.tool-icon {
+.tool-button {
 	width: 30px;
 	position: fixed;
 	bottom: 15px;
@@ -180,10 +180,13 @@ header#header {
 	height: 30px;
 	left: 15px;
 	background-image: url(../images/help.svg);
-	background-position: center;
-	background-size: contain;
+	background-position: center top;
+	background-size: cover;
 	body:not(#streams) & {
 		display: none;
+	}
+	body#streams.alerts & {
+		background-position-y: bottom;
 	}
 }
 
