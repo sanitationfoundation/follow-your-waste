@@ -189,7 +189,54 @@ export default function Alerts({ text }) {
 					id="alert-streams-intro"
 					aria-hidden="true">
 					<div className="message" id="message-streams-intro">
-						<p>Instructions for the stream</p>
+						
+						<div id="help-grid">
+
+							<div className="row">
+								<div className="col">
+									<div className="progress">
+										<div className="ticks-wrap">
+											<div className="arrow" data-dir="prev"></div>
+											<div className="tick"></div>
+											<div className="tick"></div>
+											<div className="tick"></div>
+											<div className="arrow" data-dir="next"></div>
+										</div>
+									</div>
+								</div>
+								<div className="col">
+									Use the progress bar or your arrow keys to move between scenes.
+								</div>
+							</div>
+
+							<div className="row">
+								<div className="col">
+									<div className="factoid-tab"></div>
+								</div>
+								<div className="col">
+									Look out for these tabs to learn extra facts.
+								</div>
+							</div>
+
+							<div className="row">
+								<div className="col">
+									<div className="help-audio-buttons">
+										<div className="icon-button volume"></div>
+										<div className="icon-button playback"></div>
+									</div>
+									<div className="help-audio-buttons">
+										<div className="icon-button volume"></div>
+										<div className="icon-button playback"></div>
+									</div>
+								</div>
+								<div className="col">
+									Use these icons to control the sound.
+								</div>
+							</div>
+
+
+						</div>
+
 					</div>
 					<div
 						role="menu"
@@ -201,6 +248,59 @@ export default function Alerts({ text }) {
 							role="menuitem">
 							I'm ready
 						</button>
+					</div>
+				</div>
+
+				{/*******Streams end*******/}
+				<div
+					role="dialog"
+					className="alert big"
+					id="alert-streams-end"
+					aria-hidden="true">
+					<div className="message" id="message-streams-end">
+						<div className="row">
+							<div className="col">
+								<img id="selected-item" src="/images/items/aluminum-foil.png"/>
+							</div>
+							<div className="col">
+								<h2>Recycled!</h2>
+								One big recipient of our recycled cardboard is our City’s pizzerias. Next time you’re about to bite into some tasty pizza, remember that pizza box could have been recycled from New York’s paper.
+								<div
+									role="menu"
+									className="alert-buttons"
+									tabIndex={-1}
+									aria-labelledby="message-streams-end">
+									<button
+										className="button okay start"
+										role="menuitem">
+										Restart
+									</button>
+								</div>
+							</div>
+						</div>
+						<div
+							role="menu"
+							tabIndex={-1}>
+							<h3>Explore further</h3>
+							<a
+								className=""
+								href="https://www.sanitationfoundation.org/"
+								role="menuitem">
+								Meet the workers
+							</a>
+							<a
+								className=""
+								href="https://www.sanitationfoundation.org/"
+								role="menuitem">
+								Learning resources
+							</a>
+							<a
+								className=""
+								href="https://www.sanitationfoundation.org/"
+								role="menuitem">
+								About the project
+							</a>
+						</div>
 					</div>
 				</div>
 

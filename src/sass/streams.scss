@@ -29,21 +29,25 @@
 	top: 60px;
 	z-index: 50;
 	@include md-width {
-		width: 100%;
-		height: 100%;
-		left: 0;
-		top: 0;
-		background-color: transparent;
+		#streams-view & {
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			background-color: transparent;
+		}
 	}
 }
 .ticks-wrap {
-	height: 15px;
+	height: 16px;
 	// padding: 0 20px;
 	display: flex;
 	justify-content: space-evenly;
 	@include md-width {
-		width: 100%;
-		height: 100%;
+		#streams-view & {
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
 .tick {
@@ -70,14 +74,8 @@
 	&:first-of-type {
 		margin-left: 0;
 	}
-	&:last-of-type {
-		@include hide;
-	}
-	&:nth-last-of-type(1) {
-		margin-right: 0;
-	}
 	&:last-of-type .label,
-	&:nth-last-of-type(2) .label {
+	&:nth-last-of-type(1) .label {
 		left: auto;
 		right: 0;
 	}
@@ -89,7 +87,9 @@
 		opacity: 1;
 	}
 	@include md-width {
-		display: none;
+		#streams-view & {
+			display: none;
+		}
 	}
 }
 .arrow {
@@ -97,8 +97,11 @@
 	height: 36px;
 	position: relative;
 	top: -10px;
-	&:hover {
+	opacity: 0.75;
+	&:hover, &:focus {
+		opacity: 1;
 		cursor: pointer;
+		outline: none;
 	}
 	&::before {
 		content: "";
@@ -111,58 +114,51 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		opacity: 0.75;
 		transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
 	}
-	&:hover::before {
-		opacity: 1;
-	}
+	
 	&[data-dir="prev"] {
 		right: 29px;
 		&::before {
 			transform: rotate(90deg);
 		}
-		// &:hover::before {
-		// 	transform: rotate(90deg) translateY(10px);
-		// }
 	}
 	&[data-dir="next"] {
 		left: 29px;
 		&::before {
 			transform: rotate(-90deg);
 		}
-		// &:hover::before {
-		// 	transform: rotate(-90deg) translateY(10px);
-		// }
 	}
 	@include md-width {
-		width: 50vw;
-		height: 100vh;
-		position: absolute;
-		top: 0;
-		&::before {
-			top: calc(50% - 18px);
-		}
-		&[data-dir="prev"] {
-			left: 0;
-			right: unset;
+		#streams-view & {
+			width: 50vw;
+			height: 100vh;
+			position: absolute;
+			top: 0;
 			&::before {
-				left: 10px;
-				right: auto;
+				top: calc(50% - 18px);
 			}
-			&:hover::before {
-				transform: rotate(90deg);
+			&[data-dir="prev"] {
+				left: 0;
+				right: unset;
+				&::before {
+					left: 10px;
+					right: auto;
+				}
+				&:hover::before {
+					transform: rotate(90deg);
+				}
 			}
-		}
-		&[data-dir="next"] {
-			right: 0;
-			left: unset;
-			&::before {
-				right: 10px;
-				left: auto;
-			}
-			&:hover::before {
-				transform: rotate(-90deg);
+			&[data-dir="next"] {
+				right: 0;
+				left: unset;
+				&::before {
+					right: 10px;
+					left: auto;
+				}
+				&:hover::before {
+					transform: rotate(-90deg);
+				}
 			}
 		}
 	}
@@ -345,7 +341,7 @@ $lighter-amt: 10%;
 	border: 3px solid;
 	border-radius: 7px;
 	background-color: $darken;
-	box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+	// box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
 	transition: width 300ms ease-in-out, max-height 300ms ease-in-out;
 	position: relative;
 	@include md-width {
@@ -392,6 +388,7 @@ $lighter-amt: 10%;
 		padding: 20px 60px 20px 90px;
 		text-align: left;
 		overflow-y: auto;
+		font-weight: 500;
 		@include lg-text;
 		@include md-width {
 			padding-left: $portrait-width;
@@ -459,6 +456,7 @@ $lighter-amt: 10%;
 	&:focus {
 		opacity: 1;
 		cursor: pointer;
+		outline: none;
 	}
 	@include sm-width {
 		margin: 0 0 0 10px;
@@ -476,6 +474,7 @@ $lighter-amt: 10%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	outline: none;
 	@include md-width {
 		display: none;
 	}
@@ -487,9 +486,11 @@ $lighter-amt: 10%;
 	margin: 0 0 15px 0;
 	transition: transform 300ms ease-in-out;
 	position: relative;
-	cursor: pointer;
 	&.open {
 		transform: translateX(-100%);
+	}
+	&:focus {
+		outline: none;
 	}
 }
 .factoid-tab {
@@ -498,6 +499,9 @@ $lighter-amt: 10%;
 	position: absolute;
 	left: -60px;
 	top: 0;
+	&:hover {
+		cursor: pointer;
+	}
 	&::before {
 		content: "";
 		width: 50px;
@@ -507,7 +511,7 @@ $lighter-amt: 10%;
 		top: 0;
 		border-radius: 60px 0 0 60px;
 		background-color: $darken;
-		box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+		// box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
 		overflow: hidden;
 		transition: width 300ms ease-in-out;
 	}
@@ -524,13 +528,15 @@ $lighter-amt: 10%;
 		background-size: cover;
 		transition: all 300ms ease-in-out;
 	}
-	.factoid:hover &::after {
+	&:hover::after {
 		opacity: 1;
 	}
-	.factoid:not(.open):hover &::before {
+	.factoid:not(.open) &:hover::before,
+	.factoid:not(.open):focus &::before {
 		width: 60px;
 	}
-	.factoid:not(.open):hover &::after {
+	.factoid:not(.open) &:hover::after,
+	.factoid:not(.open):focus &::after {
 		right: 15px;
 	}
 	.factoid.open &::after {
@@ -545,7 +551,8 @@ $lighter-amt: 10%;
 	color: white;
 	border-radius: 0 0 0 20px;
 	position: relative;
-	transition: box-shadow 300ms ease-in-out;
+	user-select: text;
+	// transition: box-shadow 300ms ease-in-out;
 	.vocab {
 		text-transform: capitalize;
 		&::after {
@@ -558,6 +565,6 @@ $lighter-amt: 10%;
 		margin: 5px 0 0 0;
 	}
 	.factoid.open & {
-		box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
+		// box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
 	}
 }

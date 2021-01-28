@@ -46,11 +46,11 @@ export default function Streams({ text, data }) {
 										);
 									})}
 
-									<div
+									{/*<div
 										className="tick"
 										data-scene="the-end"
 										aria-hidden={true}>
-									</div>
+									</div>*/}
 
 									<button
 										className="arrow"
@@ -96,11 +96,10 @@ export default function Streams({ text, data }) {
 															className="factoid"
 															data-index={l}
 															data-vocab={vocab}
+															tabIndex={-1}
 															key={l}>
 															<div className="factoid-tab"></div>
-															<div
-																className="factoid-inner"
-																tabIndex={-1}>
+															<div className="factoid-inner">
 																<p>
 																	{vocab ? (
 																		<span className="vocab">{vocab}</span>
@@ -117,18 +116,7 @@ export default function Streams({ text, data }) {
 										</div>
 									);
 								})}
-
-								<div
-									className="scene the-end"
-									data-color="orange"
-									aria-hidden={true}>
-									<h2>Da End!</h2>
-									<button
-										id="restart-button">
-										Restart
-									</button>
-								</div>
-
+								
 							</div>
 							<div className="chyron-wrap-wrap">
 								<div className="chyron-wrap">

@@ -11,13 +11,17 @@ export default function Intro({ text }) {
           <div id="intro-title">
             <img src={withPrefix("images/title.svg")} alt={text.system.title} />
           </div>
-          <div id="intro-tagline">{text.system.tagline}</div>
+          <div id="intro-tagline">
+            {text.system.tagline}
+          </div>
           <div id="intro-bottom">
             <div id="loading">
-              <span aria-hidden="true">{text.system.loading}</span>
+              <span aria-hidden="true">
+                {text.system.loading}
+              </span>
             </div>
             <button
-              className="button"
+              className="button start"
               id="intro-button"
               tabIndex={0}
               aria-disabled="true"

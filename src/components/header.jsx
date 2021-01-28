@@ -18,7 +18,7 @@ export default function Header({ text, lang, langObjs }) {
 				<a href="#main">{text.system.skip}</a>
 			</div>
 			<header id="header">
-				<a id="logo" href="https://sanitaionfoundation.org" target="_blank" rel="noreferrer">
+				<a id="logo" href="https://sanitationfoundation.org" target="_blank" rel="noreferrer">
 					<img src={withPrefix("images/logo.png")} alt="Sanitation Foundation" />
 				</a>
 

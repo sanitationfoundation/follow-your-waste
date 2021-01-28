@@ -85,12 +85,21 @@ export default ({ pageContext }) => {
 				<Alerts text={text} />
 			</main>
 
+			<button
+				className="tool-icon"
+				id="help-toggle"
+				tabIndex={0}
+				aria-pressed={false}
+				aria-hidden={true}>
+			</button>
+
 			<label
 				htmlFor="full-toggle"
 				className="screen-hidden">
 				{text.system.full_screen}
 			</label>
 			<button
+				className="tool-icon"
 				id="full-toggle"
 				tabIndex={0}
 				aria-pressed={false}

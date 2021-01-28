@@ -6,7 +6,7 @@
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 300ms ease-in;
-	z-index: 30;
+	z-index: 50;
 	.view-inner {
 		max-width: unset;
 		display: flex;
@@ -30,7 +30,8 @@
 		background-color: $orange;
 		border-radius: 0;
 		.message, .alert-buttons {
-			max-width: 600px;
+			width: 100%;
+			max-width: 900px;
 			margin: 0 auto;
 		}
 	}
@@ -58,7 +59,6 @@
 	}
 	.button{
 		margin: 0 10px;
-		text-transform: capitalize;
 	}
 }
 button {
@@ -77,4 +77,97 @@ button {
 	color: inherit;
 	background-color: transparent;
 	text-decoration: none;
+	text-transform: lowercase;
+	font-weight: bold;
+}
+
+#message-select-intro {
+	text-align: center;
+}
+
+#message-streams-intro {
+	width: 100%;
+	max-width: 700px;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 30px 0;
+}
+.col {
+	width: 50%;
+	padding: 0 30px;
+	position: relative;
+	@include md-width {
+		width: 100%;
+		margin: 15px 0;
+	}
+}
+#help-grid {
+	margin: 0 0 60px 0;
+	.col {
+		display: flex;
+	  justify-content: flex-end;
+	}
+	.progress {
+		margin: auto;
+    position: relative;
+    top: unset;
+    left: unset;
+	}
+	.factoid-tab {
+		position: relative;
+		top: unset;
+		left: unset;
+		right: 7px;
+	}
+	.help-audio-buttons {
+		display: flex;
+		flex-direction: column;
+		align-content: flex-end;
+		margin-left: 10px;
+		&:last-child .icon-button {
+			background-position-y: bottom;
+		}
+	}
+	.icon-button {
+		float: right;
+	}
+}
+
+
+// #intro-view {
+// 	display: none !important;
+// }
+// #alerts-view {
+// 	display: block !important;
+// 	opacity: 1 !important;
+// 	pointer-events: all !important;
+// }
+// #alert-streams-end {
+// 	display: flex !important;
+// 	opacity: 1 !important;
+// }
+
+#alert-streams-end {
+	[role="menu"] {
+		text-align: center;
+	}
+	a {
+		display: block;
+		text-transform: lowercase;
+		text-decoration: none;
+	}
+}
+#message-streams-end {
+	display: block;
+	.button {
+		margin: 20px 0 0 0;
+	}
+}
+#selected-item {
+	width: 100%;
+	max-width: 300px;
+	margin: auto;
 }

@@ -6,7 +6,7 @@ body {
 	height: 100%;
 	margin: 0;
 	background-color: $orange;
-	font-family: "Helvetica Neue", "Helvetica", sans-serif;
+	font-family: Helvetica, sans-serif;
 	color: white;
 	overflow: hidden;
 	overflow-y: hidden;
@@ -24,8 +24,21 @@ body {
 	font-size: 20px;
 	position: relative;
 }
+h2, h3, h4 {
+	margin: 0 0 20px 0;
+}
+h2 {
+	@include xl-text;
+}
+h3 {
+	@include lg-text;
+}
+h4 {
+	@include md-text;
+}
 * {
 	box-sizing: border-box;
+	text-rendering: geometricPrecision;
 }
 a {
 	color: inherit;
@@ -47,7 +60,12 @@ a {
 .label {
 	@include md-text;
 }
-
+button.start {
+	background-color: $green;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+}
 
 ////////////////////////////////////
 ////////////// HEADER //////////////
@@ -126,8 +144,9 @@ header#header {
 			}
 		}
 	}
-	&:hover {
+	&:hover, &:focus {
 		opacity: 1;
+		outline: none;
 	}
 	a {
 		color: white;
@@ -139,28 +158,43 @@ header#header {
 	}
 }
 
-#full-toggle {
+.tool-icon {
 	width: 30px;
-	height: 23px;
 	position: fixed;
-	right: 15px;
 	bottom: 15px;
 	z-index: 70;
-	background-image: url(../images/full.svg);
-	background-position: top center;
-	background-size: cover;
 	opacity: .75;
 	transition: opacity 300ms ease-in-out;
 	pointer-events: all;
-	&:hover {
+	&:hover, &:focus {
 		opacity: 1;
+		outline: none;
 		cursor: pointer;
-	}
-	.full & {
-		background-position-y: bottom;
 	}
 	@include sm-width {
 		display: none;
+	}
+}
+
+#help-toggle {
+	height: 30px;
+	left: 15px;
+	background-image: url(../images/help.svg);
+	background-position: center;
+	background-size: contain;
+	body:not(#streams) & {
+		display: none;
+	}
+}
+
+#full-toggle {
+	height: 23px;
+	right: 15px;
+	background-image: url(../images/full.svg);
+	background-position: top center;
+	background-size: cover;
+	.full & {
+		background-position-y: bottom;
 	}
 }
 
@@ -295,8 +329,7 @@ header#header {
 }
 
 #intro-button {
-	font-weight: bolder;
-	text-transform: uppercase;
+	font-weight: bold;
 	border-radius: 5px;
 	margin: 60px auto 0 auto;
 	transition: opacity 100ms ease-in-out;

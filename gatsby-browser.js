@@ -12,13 +12,14 @@ export const onInitialClientRender = () => {
 		const body = document.querySelector("body"),
 					docElem = document.documentElement,
 					fullTog = document.querySelector("#full-toggle"),
+					helpTog = document.querySelector("#help-toggle"),
 					introView = document.querySelector("#intro-view"),
 					introBttn = document.querySelector("#intro-button"),
-					restartBttn = document.querySelector("#restart-button"),
 					streamsView = document.querySelector("#streams-view"),
 					streamElems = document.querySelectorAll(".stream"),
 					itemsWrap = document.querySelector("#items-wrap"),
 					itemElems = document.querySelectorAll(".item"),
+					selectedItem = document.querySelector("#selected-item"),
 					binElems = document.querySelectorAll("#bins .bin"),
 					selectMenu = document.querySelector("#menu-select"),
 					selectMenuBttns = document.querySelectorAll("#menu-select button"),
@@ -59,9 +60,19 @@ export const onInitialClientRender = () => {
 					closeFullscreen();
 					break;
 				case 37:
-					currStream.goToPrevScene();
+					if(!currStream) return;
+					if(!body.classList.contains("alerts")) {
+						currStream.goToPrevScene();
+					} else {
+						const alertElem = document.querySelector(".alert.show");
+						if(alertElem.id == "alert-streams-end") {
+							alertElem.classList.remove("show");
+							body.classList.remove("alerts");
+						}
+					}
 					break;
 				case 39:
+					if(!currStream || body.classList.contains("alerts")) return;
 					currStream.goToNextScene();
 					break;
 				case 32:
@@ -202,6 +213,16 @@ export const onInitialClientRender = () => {
 			};
 		}
 
+		if(helpTog) {
+			helpTog.onclick = () => {
+				if(body.classList.contains("alerts")) {
+
+				} else {
+					showAlert("streams-intro");
+				}
+			};
+		}
+
 		/************************************/
 		/************STREAM SELECT***********/
 		/************************************/
@@ -246,6 +267,7 @@ export const onInitialClientRender = () => {
 						});
 					});
 				});
+
 				itemsWrapPackery.layout();
 				itemsWrap.classList.add("setup");
 			} else {
@@ -254,11 +276,17 @@ export const onInitialClientRender = () => {
 		};
 
 		const showAlert = (alertSlug, onOkay, onCancel) => {
-			body.classList.add("alerts");
 			const alertElem = document.querySelector(`#alert-${alertSlug}`),
 						okayBttnElem = alertElem.querySelector(".okay"),
 						cancelBttnElem = alertElem.querySelector(".cancel");
-			alertElem.classList.add("show");			
+
+
+			body.classList.toggle("alerts");
+			alertElem.classList.toggle("show");	
+
+			if(!alertElem.classList.contains("show")) {
+				return;
+			}
 
 			if(okayBttnElem) {
 				okayBttnElem.onclick = (e) => {
@@ -426,6 +454,9 @@ export const onInitialClientRender = () => {
 					const streamObj = streams[itemStreamSlug];
 					showAlert("correct-bin",
 						() => {
+							console.log(selectedItem);
+							const itemImg = itemElem.querySelector("img");
+							selectedItem.src = itemImg.src;
 							streamObj.introStreams();
 							self.liftFromBin(timeline, true);
 						},
@@ -537,7 +568,6 @@ export const onInitialClientRender = () => {
 				this.scene = "garage" + (this.slug === "paper" ? "-paper" : "");
 				this.scenes = {};
 				this.scenesWrap = elem.querySelector(".scenes-wrap");
-				this.ending =  elem.querySelector(".the-end");
 				this.progress = elem.querySelector(".progress");
 				this.volBttn = elem.querySelector(".icon-button.volume");
 				this.playbackBttn = elem.querySelector(".icon-button.playback");
@@ -608,10 +638,6 @@ export const onInitialClientRender = () => {
 						showAlert("select-intro");
 					};
 					introView.classList.remove("loading");
-					restartBttn.onclick = () => {
-						body.id = "select";
-						handleSelect();
-					};
 				});
 			}
 
@@ -749,11 +775,18 @@ export const onInitialClientRender = () => {
 
 			goToNextScene() {
 				const currSceneSlug = this.scene,
+							currSceneObj = scenesArr[currSceneSlug],
 							currElem = this.elem.querySelector(`.scene[data-scene="${currSceneSlug}"]`),
 							nextElem = currElem.nextSibling;
 				if(nextElem) {
 					const nextSlug = nextElem.dataset.scene;
 					this.goToScene(nextSlug);
+				} else {
+					pauseAudio(currSceneObj.voiceover);
+					showAlert("streams-end", () => {
+						body.id = "select";
+						handleSelect();
+					});
 				}
 			}
 
@@ -898,7 +931,8 @@ export const onInitialClientRender = () => {
 				}
 
 				factoidElems.forEach((factoidElem) => {
-					factoidElem.onclick = (e) => {
+					const tabElem = factoidElem.querySelector(".factoid-tab");
+					tabElem.onclick = (e) => {
 						factoidElem.classList.toggle("open");
 					};
 
