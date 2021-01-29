@@ -99,13 +99,8 @@
 }
 
 #stamp {
-  width: 320px;
-  height: 90px;
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  opacity: 0;
-  pointer-events: none;
+  position: fixed;
+  top: 15px;
 }
 .item {
   position: absolute !important;
@@ -202,35 +197,21 @@
   }
 }
 
-$aluminum-foil: 6%;
-$broken-glass: 12%;
-$cardboard: 17%;
-$chip-bag: 8%;
-$detergent-bottle: 9%;
-$food-can: 6%;
-$glass-bottles: 10%;
-$glass-jar: 7%;
-$milk-carton: 8%;
-$newspaper: 13%;
-$plastic-bag: 14%;
-$plastic-bottle: 7%;
-$soda-can: 4%;
-$toothpaste: 10%;
 
 $items: (
   "aluminum-foil": 6,
-  "broken-glass": 12,
+  "broken-glass": 13,
   "cardboard": 15,
   "chip-bag": 8,
   "detergent-bottle": 9,
   "food-can": 5,
-  "glass-bottles": 10,
+  "glass-bottles": 9,
   "glass-jar": 7,
   "milk-carton": 8,
   "newspaper": 13,
   "plastic-bag": 14,
-  "plastic-bottle": 5,
-  "soda-can": 4,
+  "plastic-bottle": 6,
+  "soda-can": 5,
   "toothpaste": 10,
 );
 

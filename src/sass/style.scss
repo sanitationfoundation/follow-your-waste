@@ -112,6 +112,10 @@ header#header {
 		opacity: 0;
 	}
 }
+#lang-switch {
+	position: relative;
+	top: -6px;
+}
 .dropdown {
 	position: relative;
 	&:not(.open) [role="menu"] {

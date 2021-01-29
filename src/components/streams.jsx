@@ -68,7 +68,7 @@ export default function Streams({ text, data }) {
 									if(sceneData.animated === "true") {
 										svgSrc = withPrefix(`scenes/animate/${sceneData.slug}/${sceneData.slug}.json`);
 									} else {
-										svgSrc = withPrefix(`scenes/static/${sceneData.slug}/scene.svg`);
+										svgSrc = withPrefix(`scenes/static/${sceneData.slug}.svg`);
 									}
 									return (
 										<div

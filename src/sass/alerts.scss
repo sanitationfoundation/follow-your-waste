@@ -102,6 +102,7 @@ button {
 	@include md-width {
 		width: 100%;
 		margin: 15px 0;
+		text-align: center;
 	}
 }
 #help-grid {
@@ -137,19 +138,6 @@ button {
 }
 
 
-// #intro-view {
-// 	display: none !important;
-// }
-// #alerts-view {
-// 	display: block !important;
-// 	opacity: 1 !important;
-// 	pointer-events: all !important;
-// }
-// #alert-streams-end {
-// 	display: flex !important;
-// 	opacity: 1 !important;
-// }
-
 #alert-streams-end {
 	[role="menu"] {
 		text-align: center;
@@ -167,7 +155,9 @@ button {
 	}
 }
 #selected-item {
-	width: 100%;
+	width: auto;
 	max-width: 300px;
+	max-height: 300px;
+	display: block;
 	margin: auto;
 }

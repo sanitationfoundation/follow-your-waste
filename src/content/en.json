@@ -189,6 +189,107 @@
       "tooltip": "Not all bathroom items are recyclable—know before you throw!"
     }
   ],
+  "landfill": [
+    {
+      "slug": "garage-landfill",
+      "label": "Garage",
+      "caption": "Hi, I am Sanitation Worker Tuhina from Queens. We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
+      "vocab1": null,
+      "fact1": "Our current Queens West 1 garage was a former horse barn!",
+      "vocab2": null,
+      "fact2": "Our logo hasn’t always looked the way it does today. It wasn’t until 1929 we became the Department of Sanitation we know today, and our logo became the most current caduceus: a winged staff with two serpents wrapped around it which represents good health.",
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "curbside-landfill",
+      "label": "Curbside Pickup",
+      "caption": "Once trash has been collected from the sidewalk, our Sanitation Workers make their way to the North Shore Marine Transfer Station.",
+      "vocab1": null,
+      "fact1": "Our 2006 Solid Waste Management Plan eliminated 60 million miles of truck travel per year by dramatically reducing the number of truck trips.",
+      "vocab2": "Marine Transfer Station",
+      "fact2": "After collection, trash goes to a transfer station so it can be prepared to be brought to its final destination. Some of these transfer stations are by the water; we call them Marine Transfer Stations. On an average day, 2,200 tons of solid waste pass through The North Shore Marine Transfer Station.",
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "weighing",
+      "label": "Weighing In",
+      "caption": "Before entering, the collection truck is weighed so we can determine the load’s tonnage. It is also scanned for radiation. If it tests positive, the truck is removed to ensure the protection of our Sanitation Workers.",
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "tipping-landfill",
+      "label": "Tipping Floor",
+      "caption": "After weighing, a DSNY employee on the tipping floor directs truck drivers.",
+      "vocab1": "DSNY",
+      "fact1": "The NYC Department of Sanitation––which you might know as DSNY––is the world’s largest sanitation department. We’ve been keeping NYC healthy, safe and clean since 1881!",
+      "vocab2": "tipping floor",
+      "fact2": "The tipping floor is a giant room where recyclables are unloaded into massive piles.",
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "loading-landfill",
+      "label": "Loading Floor",
+      "caption": "Trash from the DSNY truck will land on the loading floor located below the elevated tipping bay. Two front-end loaders push the trash into an available container, where it is then compressed by an excavator.",
+      "vocab1": "front-end loaders",
+      "fact1": "Front-end loaders are big vehicles with a scoop in front for lifting and loading loose material.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "lidding",
+      "label": "Lidding Floor",
+      "caption": "Once the container is full, Sanitation Workers on the lidding floor seal the container. The lidding area is where containers full of waste are sealed for transport.",
+      "vocab1": "lidding floor",
+      "fact1": "The lidding floor is where lids are secured on containers of trash.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "crane-landfill",
+      "label": "Loading the Barge",
+      "caption": "From here on, the container is the responsibility of a private contractor, who loads it onto a barge with a crane.",
+      "vocab1": null,
+      "fact1": null,
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "barge-landfill",
+      "label": "Barge-to-rail",
+      "caption": "The barge––with containers full of trash––is guided by a tugboat to a container terminal, where it is off-loaded and placed on a train.",
+      "vocab1": "tugboat",
+      "fact1": "A tugboat is a small boat that tows, pushes or pulls other vessels. Here, our barge is attached to the tugboat by a tow line - a really strong piece of rope.",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    },
+    {
+      "slug": "end-landfill",
+      "label": "Landfill",
+      "caption": "Finally, the train leaves and the containers of waste are either taken to a waste-to-energy facility to make electricity or dumped at landfill.",
+      "vocab1": null,
+      "fact1": "In the United States, landfills are the third largest contributor of methane gas which is 34 times the greenhouse effect of carbon dioxide. Want to help combat the effect of climate change? Avoid the trash bin and try to reduce, reuse, or recycle!",
+      "vocab2": null,
+      "fact2": null,
+      "vocab3": null,
+      "fact3": null
+    }
+  ],
   "paper": [
     {
       "slug": "garage-paper",
@@ -345,111 +446,10 @@
       "fact3": null
     }
   ],
-  "landfill": [
-    {
-      "slug": "garage",
-      "label": "Garage",
-      "caption": "Hi, I am Sanitation Worker Tuhina from Queens. We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
-      "vocab1": null,
-      "fact1": "Our current Queens West 1 garage was a former horse barn!",
-      "vocab2": null,
-      "fact2": "Our logo hasn’t always looked the way it does today. It wasn’t until 1929 we became the Department of Sanitation we know today, and our logo became the most current caduceus: a winged staff with two serpents wrapped around it which represents good health.",
-      "vocab3": null,
-      "fact3": null
-    },
-    {
-      "slug": "curbside-landfill",
-      "label": "Curbside Pickup",
-      "caption": "Once trash has been collected from the sidewalk, our Sanitation Workers make their way to the North Shore Marine Transfer Station.",
-      "vocab1": null,
-      "fact1": "Our 2006 Solid Waste Management Plan eliminated 60 million miles of truck travel per year by dramatically reducing the number of truck trips.",
-      "vocab2": "Marine Transfer Station",
-      "fact2": "After collection, trash goes to a transfer station so it can be prepared to be brought to its final destination. Some of these transfer stations are by the water; we call them Marine Transfer Stations. On an average day, 2,200 tons of solid waste pass through The North Shore Marine Transfer Station.",
-      "vocab3": null,
-      "fact3": null
-    },
-    {
-      "slug": "weighing",
-      "label": "Weighing In",
-      "caption": "Before entering, the collection truck is weighed so we can determine the load’s tonnage. It is also scanned for radiation. If it tests positive, the truck is removed to ensure the protection of our Sanitation Workers.",
-      "vocab1": null,
-      "fact1": null,
-      "vocab2": null,
-      "fact2": null,
-      "vocab3": null,
-      "fact3": null
-    },
-    {
-      "slug": "tipping-landfill",
-      "label": "Tipping Floor",
-      "caption": "After weighing, a DSNY employee will be on the tipping floor to direct truck drivers to available tipping bays.",
-      "vocab1": "DSNY",
-      "fact1": "The NYC Department of Sanitation––which you might know as DSNY––is the world’s largest sanitation department. We’ve been keeping NYC healthy, safe and clean since 1881!",
-      "vocab2": "tipping floor",
-      "fact2": "The tipping floor is a giant room where recyclables are unloaded into massive piles.",
-      "vocab3": null,
-      "fact3": null
-    },
-    {
-      "slug": "loading",
-      "label": "Loading Floor",
-      "caption": "Trash from the DSNY truck will land on the loading floor located below the elevated tipping bay. Two front-end loaders push the trash into an available container, where it is then compressed by an excavator.",
-      "vocab1": "front-end loaders",
-      "fact1": "Front-end loaders are big vehicles with a scoop in front for lifting and loading loose material.",
-      "vocab2": null,
-      "fact2": null,
-      "vocab3": null,
-      "fact3": null
-    },
-    {
-      "slug": "lidding",
-      "label": "Lidding Floor",
-      "caption": "Once the container is full, Sanitation Workers on the lidding floor seal the container.",
-      "vocab1": "lidding floor",
-      "fact1": "The lidding floor is where lids are secured on containers of trash.",
-      "vocab2": null,
-      "fact2": null,
-      "vocab3": null,
-      "fact3": null
-    },
-    {
-      "slug": "crane-landfill",
-      "label": "Loading the Barge",
-      "caption": "From here on, the container is the responsibility of a private contractor, who loads it onto a barge with a crane.",
-      "vocab1": null,
-      "fact1": null,
-      "vocab2": null,
-      "fact2": null,
-      "vocab3": null,
-      "fact3": null
-    },
-    {
-      "slug": "barge-landfill",
-      "label": "Barge-to-rail",
-      "caption": "The barge––and containers full of trash––is guided by a tugboat to a container terminal, where it is off-loaded and placed on a train.",
-      "vocab1": "tugboat",
-      "fact1": "A tugboat is a small boat that tows, pushes or pulls other vessels. Here, our barge is attached to the tugboat by a tow line - a really strong piece of rope.",
-      "vocab2": null,
-      "fact2": null,
-      "vocab3": null,
-      "fact3": null
-    },
-    {
-      "slug": "end-landfill",
-      "label": "Landfill",
-      "caption": "Finally, the train leaves and the containers of waste are either taken to a waste-to-energy facility to make electricity or dumped at landfill.",
-      "vocab1": null,
-      "fact1": "In the United States, landfills are the third largest contributor of methane gas which is 34 times the greenhouse effect of carbon dioxide. Want to help combat the effect of climate change? Avoid the trash bin and try to reduce, reuse, or recycle!",
-      "vocab2": null,
-      "fact2": null,
-      "vocab3": null,
-      "fact3": null
-    }
-  ],
   "metal": [
     {
-      "slug": "garage",
-      "label": "The Garage",
+      "slug": "garage-metal",
+      "label": "Garage",
       "caption": "Hi, I am Sanitation Worker Julian from the Bronx. We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
       "vocab1": null,
       "fact1": null,
@@ -470,7 +470,7 @@
       "fact3": null
     },
     {
-      "slug": "mts",
+      "slug": "tipping-barge-metal",
       "label": "Marine Transfer Station",
       "caption": "After completing our collection route, our Sanitation Workers head to Sims Hunts Point where your recyclables are put on a barge.",
       "vocab1": null,
@@ -481,8 +481,8 @@
       "fact3": null
     },
     {
-      "slug": "sims",
-      "label": "Sims",
+      "slug": "barge-metal",
+      "label": "Barge",
       "caption": "The barge is guided by a tugboat to the Sims Sunset Park Material Recovery Facility (MRF).",
       "vocab1": null,
       "fact1": null,
@@ -492,8 +492,8 @@
       "fact3": null
     },
     {
-      "slug": "claw",
-      "label": "Claw",
+      "slug": "sims",
+      "label": "Materials Recovery Facility",
       "caption": "When the barge arrives at the Sims Material Recovery Facility in Sunset Park, Brooklyn, an operator steers a giant crane claw to scoop up your MGP recyclables from the barge to the tipping floor.",
       "vocab1": null,
       "fact1": null,
@@ -503,7 +503,7 @@
       "fact3": null
     },
     {
-      "slug": "tipping",
+      "slug": "tipping-floor-metal",
       "label": "Tipping Floor",
       "caption": "In addition to the barge carrying recyclables, a DSNY collection truck arrives, and they too unload our City’s recycling into huge piles on the tipping floor.",
       "vocab1": null,
@@ -569,8 +569,8 @@
       "fact3": null
     },
     {
-      "slug": "railcar",
-      "label": "Railcar",
+      "slug": "bales-metal",
+      "label": "Bales",
       "caption": "By now, all materials are separated. Stacks of rectangular bales of crushed non-ferrous metal leave the facility on trucks; the bales of magnetic metals are placed into rail cars by a giant crane claw.",
       "vocab1": null,
       "fact1": null,
@@ -580,8 +580,8 @@
       "fact3": null
     },
     {
-      "slug": "barge-metal",
-      "label": "Barge",
+      "slug": "barge-rail-metal",
+      "label": "Barge-to-rail",
       "caption": "Finally, the rail cars, containing magnetic, ferrous metals, float across the Upper Bay, starting from the area near Owl’s Head Wastewater treatment plant, meet up with a rail line in New Jersey where they are taken to a plant for further processing.",
       "vocab1": null,
       "fact1": null,
@@ -604,7 +604,7 @@
   ],
   "glass": [
     {
-      "slug": "garage",
+      "slug": "garage-glass",
       "label": "Garage",
       "caption": "Hi, I am Sanitation Worker Renee from Staten Island. We start off our shift by clocking-in at our local garage then set out to pick up your household trash or recyclables.",
       "vocab1": null,
@@ -627,7 +627,7 @@
     },
     {
       "slug": "sims",
-      "label": "Sims",
+      "label": "Materials Recovery Facility",
       "caption": "After completing our collection route, we drive directly to the Sims Material Recovery Facility (MRF) in Jersey City to unload. The DSNY collection truck unloads your MGP recyclables onto the tipping floor, a giant room where recyclables are unloaded into massive piles.",
       "vocab1": null,
       "fact1": null,
@@ -728,7 +728,7 @@
     },
     {
       "slug": "sims",
-      "label": "Sims",
+      "label": "Materials Recovery Facility",
       "caption": "After completing our collection route, we head to the Sims Sunset Park Material Recovery Facility (MRF). The DSNY collection truck unloads your MGP recyclables onto the tipping floor, a giant room where recyclables are unloaded into massive piles.",
       "vocab1": "Sims",
       "fact1": "Sims is a company that operates numerous recycling facilities throughout the city. They process 100% of the metal, glass and plastic collected by DSNY at their facilities.",
@@ -782,24 +782,13 @@
       "fact3": null
     },
     {
-      "slug": "bales",
-      "label": "Bales",
-      "caption": "After being baled, plastics are loaded onto trucks and head out to be made into new products for sale.",
-      "vocab1": "baled",
-      "fact1": "The process of tightly bounding waste material into cubes.",
-      "vocab2": null,
-      "fact2": null,
-      "vocab3": null,
-      "fact3": null
-    },
-    {
       "slug": "end-plastic",
       "label": "Recycled!",
-      "caption": "Your recycled plastic bottle can be made into new bottles, textiles, and carpeting. Who knows, you could be drinking from, wearing, or walking upon the bottle you recycled!",
+      "caption": "After being baled, plastics are loaded onto trucks and head out to be made into new products for sale.",
       "vocab1": null,
-      "fact1": null,
-      "vocab2": null,
-      "fact2": null,
+      "fact1": "Your recycled plastic bottle can be made into new bottles, textiles, and carpeting. Who knows, you could be drinking from, wearing, or walking upon the bottle you recycled!",
+      "vocab2": "baled",
+      "fact2": "The process of tightly bounding waste material into cubes.",
       "vocab3": null,
       "fact3": null
     }

@@ -260,7 +260,7 @@ export default function Alerts({ text }) {
 					<div className="message" id="message-streams-end">
 						<div className="row">
 							<div className="col">
-								<img id="selected-item" src="/images/items/aluminum-foil.png"/>
+								<img id="selected-item" alt="" />
 							</div>
 							<div className="col">
 								<h2>Recycled!</h2>
@@ -285,18 +285,24 @@ export default function Alerts({ text }) {
 							<a
 								className=""
 								href="https://www.sanitationfoundation.org/"
+								target="_blank"
+								rel="noreferrer"
 								role="menuitem">
 								Meet the workers
 							</a>
 							<a
 								className=""
 								href="https://www.sanitationfoundation.org/"
+								target="_blank"
+								rel="noreferrer"
 								role="menuitem">
 								Learning resources
 							</a>
 							<a
 								className=""
 								href="https://www.sanitationfoundation.org/"
+								target="_blank"
+								rel="noreferrer"
 								role="menuitem">
 								About the project
 							</a>

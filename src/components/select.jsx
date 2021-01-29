@@ -7,7 +7,9 @@ export default function Select({ text, data }) {
       <div className="view-inner">
 
         <div id="items-wrap">
-          <div id="stamp"></div>
+          <div id="stamp">
+            Place an item in the correct bin to begin your journey.
+          </div>
           {data.items.map((item, i) => {
             const itemText = text.items[i];
             return (

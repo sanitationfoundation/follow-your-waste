@@ -21,13 +21,12 @@ export const onInitialClientRender = () => {
 					itemElems = document.querySelectorAll(".item"),
 					selectedItem = document.querySelector("#selected-item"),
 					binElems = document.querySelectorAll("#bins .bin"),
-					selectMenu = document.querySelector("#menu-select"),
 					selectMenuBttns = document.querySelectorAll("#menu-select button"),
 					itemsArr = [],
 					scenesArr = [],
 					streamsArr = [];
 
-		let itemsWrapPackery, currStream, streamIntrod;
+		let itemsWrapPackery, currStreamObj, currSceneObj, streamIntrod;
 
 		const streams = {
 			landfill: "Landfill",
@@ -53,57 +52,60 @@ export const onInitialClientRender = () => {
 		document.onkeydown = (e) => {
 			e = e || window.event;
 			const keyCode = e.keyCode ? e.keyCode : e.which;
-			let currSceneElem, currEnviron, currVoiceAudioElem, currEnvironAudioElem;
+			let currEnviron, currVoiceAudioElem, currEnvironAudioElem;
 			switch (keyCode) {
 				case 27:
 					body.classList.remove("full");
 					closeFullscreen();
 					break;
 				case 37:
-					if(!currStream) return;
-					if(!body.classList.contains("alerts")) {
-						currStream.goToPrevScene();
-					} else {
+					if(body.classList.contains("alerts")) {
 						const alertElem = document.querySelector(".alert.show");
-						if(alertElem.id == "alert-streams-end") {
+						if(alertElem.id === "alert-streams-end") {
 							alertElem.classList.remove("show");
 							body.classList.remove("alerts");
 						}
+					} else if(currStreamObj) {
+						currStreamObj.goToPrevScene();
 					}
 					break;
 				case 39:
-					if(!currStream || body.classList.contains("alerts")) return;
-					currStream.goToNextScene();
+					if(body.classList.contains("alerts")) {
+						return;
+					}
+					if(currStreamObj) {
+						currStreamObj.goToNextScene();	
+					}
 					break;
 				case 32:
-					currSceneElem = document.querySelector(".stream.show .scene.show");
-					if(!currSceneElem) return;
-					currEnviron = currSceneElem.dataset.environ;
-					currVoiceAudioElem = currStream.elem.querySelector(".caption.show audio");
-					currEnvironAudioElem = document.querySelector(`audio[data-environ="${currEnviron}"]`);
-					body.classList.toggle("playing");
-					if(body.classList.contains("playing")) {
-						body.classList.remove("mute");
-						playAudio(currVoiceAudioElem);
-						unmuteAudio(currVoiceAudioElem);
-						unmuteAudio(currEnvironAudioElem);
-					} else {
-						pauseAudio(currVoiceAudioElem);
+					if(currSceneObj) {
+						currEnviron = currSceneObj.elem.dataset.environ;
+						currVoiceAudioElem = currStreamObj.elem.querySelector(".caption.show audio");
+						currEnvironAudioElem = document.querySelector(`audio[data-environ="${currEnviron}"]`);
+						body.classList.toggle("playing");
+						if(body.classList.contains("playing")) {
+							body.classList.remove("mute");
+							playAudio(currVoiceAudioElem);
+							unmuteAudio(currVoiceAudioElem);
+							unmuteAudio(currEnvironAudioElem);
+						} else {
+							pauseAudio(currVoiceAudioElem);
+						}
 					}
 					break;
 				case 77:
-					currSceneElem = document.querySelector(".stream.show .scene.show");
-					if(!currSceneElem) return;
-					currEnviron = currSceneElem.dataset.environ;
-					currVoiceAudioElem = currStream.elem.querySelector(".caption.show audio");
-					currEnvironAudioElem = document.querySelector(`audio[data-environ="${currEnviron}"]`);
-					body.classList.toggle("mute");
-					if(body.classList.contains("mute")) {
-						muteAudio(currVoiceAudioElem);
-						muteAudio(currEnvironAudioElem);
-					} else {
-						unmuteAudio(currVoiceAudioElem);
-						unmuteAudio(currEnvironAudioElem);
+					if(currSceneObj) {
+						currEnviron = currSceneObj.elem.dataset.environ;
+						currVoiceAudioElem = currStreamObj.elem.querySelector(".caption.show audio");
+						currEnvironAudioElem = document.querySelector(`audio[data-environ="${currEnviron}"]`);
+						body.classList.toggle("mute");
+						if(body.classList.contains("mute")) {
+							muteAudio(currVoiceAudioElem);
+							muteAudio(currEnvironAudioElem);
+						} else {
+							unmuteAudio(currVoiceAudioElem);
+							unmuteAudio(currEnvironAudioElem);
+						}
 					}
 					break;
 				default:
@@ -565,7 +567,7 @@ export const onInitialClientRender = () => {
 				const self = this;
 				this.elem = elem;
 				this.slug = elem.dataset.slug;
-				this.scene = "garage" + (this.slug === "paper" ? "-paper" : "");
+				this.scene = null;
 				this.scenes = {};
 				this.scenesWrap = elem.querySelector(".scenes-wrap");
 				this.progress = elem.querySelector(".progress");
@@ -620,11 +622,18 @@ export const onInitialClientRender = () => {
 				const self = this,
 							sceneElems = this.elem.querySelectorAll(".scene:not(.setup)"),
 							svgReqs = [];
+
 				sceneElems.forEach((sceneElem, i) => {
-					const slug = sceneElem.dataset.scene,
-								sceneObj = new Scene(sceneElem, self.elem);
-					scenesArr[slug] = sceneObj;
-					self.scenes[slug] = sceneObj;
+					const sceneSlug = sceneElem.dataset.scene,
+								sceneObj = new Scene(sceneElem, self);
+
+					scenesArr[sceneSlug] = sceneObj;
+					self.scenes[sceneSlug] = sceneObj;
+
+					if(i === 0) {
+						self.scene = sceneObj;
+					}
+
 					if(sceneObj.req) {
 						svgReqs.push(sceneObj.req);
 					}
@@ -649,8 +658,7 @@ export const onInitialClientRender = () => {
 						self.startStreaming();
 					});
 				} else {
-					this.scene = "garage" + (this.slug === "paper" ? "-paper" : "");
-					self.startStreaming();
+					this.startStreaming();
 				}
 			}
 
@@ -659,6 +667,8 @@ export const onInitialClientRender = () => {
 							currStreamElem = body.querySelector(".stream.show"),
 							currSceneElem = body.querySelector(".scene.show"),
 							droppingItemElem = body.querySelector(".item.dropping");
+
+				currStreamObj = this;
 
 				if(currStreamElem) {
 					currStreamElem.classList.remove("show");
@@ -675,37 +685,15 @@ export const onInitialClientRender = () => {
 				nextStreamElem.classList.add("show");
 				nextStreamElem.setAttribute("aria-hidden", false);
 				body.id = "streams";
-				this.goToScene(this.scene);
+
+				const firstSceneObj = this.scenes[`garage-${this.slug}`];
+				this.goToScene(firstSceneObj);
 				this.progress.focus();
-				currStream = this;
 			}
 
-			prepareScene(sceneSlug) {
-				const sceneObj = this.scenes[sceneSlug];
-				if(!sceneObj) return;
-				const sceneColor = sceneObj.color,
-							tickElem = sceneObj.tick,
-							captionElem = sceneObj.caption,
-							sceneElem = sceneObj.elem,
-							voiceAudioElem = sceneObj.voiceover;
-
-				if(voiceAudioElem) {
-					voiceAudioElem.load();
-				}
-				if(captionElem) {
-					captionElem.classList.add("show");
-				}
-				if(tickElem) {
-					tickElem.classList.add("active");
-				}
-				sceneElem.classList.add("animate");
-				streamsView.dataset.color = sceneColor;
-			}
-
-			goToScene(nextSceneSlug) {
+			goToScene(nextSceneObj) {
 				if(body.id !== "streams") return;
-				const nextSceneObj = this.scenes[nextSceneSlug],
-							nextSceneElem = nextSceneObj ? nextSceneObj.elem : this.ending,
+				const nextSceneElem = nextSceneObj ? nextSceneObj.elem : this.ending,
 							nextSceneCaptionElem = nextSceneObj.caption,
 							nextVoiceAudioElem = nextSceneObj.voiceover,
 							currSceneElem = this.scenesWrap.querySelector(".scene.show"),
@@ -727,9 +715,9 @@ export const onInitialClientRender = () => {
 				if(currTickElem) {
 					currTickElem.classList.remove("active");
 				}
+
 				if(currCaptionElem) {
 					currCaptionElem.classList.remove("show");
-				} else {
 				}
 
 				if(currVoiceAudioElem) {
@@ -749,9 +737,8 @@ export const onInitialClientRender = () => {
 					nextSceneCaptionElem.setAttribute("aria-hidden", false);
 				}
 
-				const nextEnviron = nextSceneElem.dataset.environ;
-				this.scene = nextSceneSlug;
-				this.prepareScene(nextSceneSlug);
+				this.scene = nextSceneObj;
+				nextSceneObj.prepareScene();
 
 				if(nextVoiceAudioElem) {
 					playAudio(nextVoiceAudioElem);
@@ -764,7 +751,9 @@ export const onInitialClientRender = () => {
 
 				const currSceneSlug = currSceneElem.dataset.scene,
 							currSceneObj = this.scenes[currSceneSlug],
-							currEnvironAudioElem = currSceneObj.environ;
+							currEnvironAudioElem = currSceneObj.environ,
+							nextEnviron = nextSceneElem.dataset.environ;
+
 				if(!nextEnviron) {
 					pauseAudio(currEnvironAudioElem);
 				} else if(currEnviron !== nextEnviron) {
@@ -774,13 +763,15 @@ export const onInitialClientRender = () => {
 			}
 
 			goToNextScene() {
-				const currSceneSlug = this.scene,
-							currSceneObj = scenesArr[currSceneSlug],
-							currElem = this.elem.querySelector(`.scene[data-scene="${currSceneSlug}"]`),
-							nextElem = currElem.nextSibling;
-				if(nextElem) {
-					const nextSlug = nextElem.dataset.scene;
-					this.goToScene(nextSlug);
+				const currSceneObj = this.scene,
+							currSceneSlug = currSceneObj.slug,
+							currSceneElem = this.elem.querySelector(`.scene[data-scene="${currSceneSlug}"]`),
+							nextSceneElem = currSceneElem.nextSibling;
+
+				if(nextSceneElem) {
+					const nextSceneSlug = nextSceneElem.dataset.scene,
+								nextSceneObj = this.scenes[nextSceneSlug];
+					this.goToScene(nextSceneObj);
 				} else {
 					pauseAudio(currSceneObj.voiceover);
 					showAlert("streams-end", () => {
@@ -791,16 +782,17 @@ export const onInitialClientRender = () => {
 			}
 
 			goToPrevScene() {
-				const currSceneSlug = this.scene,
-							currElem = this.elem.querySelector(`.scene[data-scene="${currSceneSlug}"]`),
-							prevElem = currElem.previousSibling;
+				const currSceneObj = this.scene,
+							currSceneSlug = currSceneObj.slug,
+							currSceneElem = this.elem.querySelector(`.scene[data-scene="${currSceneSlug}"]`),
+							prevSceneElem = currSceneElem.previousSibling;
 
-				if(prevElem) {
-					const prevSlug = prevElem.dataset.scene;
-					this.goToScene(prevSlug);
+				if(prevSceneElem) {
+					const prevSceneSlug = prevSceneElem.dataset.scene,
+								prevSceneObj = this.scenes[prevSceneSlug];
+					this.goToScene(prevSceneObj);
 				} else {
-					const currSceneObj = this.scenes[this.scene],
-								currVoiceAudioElem = currSceneObj.voiceover,
+					const currVoiceAudioElem = currSceneObj.voiceover,
 								currEnvironAudioElem = currSceneObj.environ;
 					if(currVoiceAudioElem) {
 						pauseAudio(currVoiceAudioElem);
@@ -815,24 +807,23 @@ export const onInitialClientRender = () => {
 		}
 
 		class Scene {
-			constructor(sceneElem, streamElem) {
+			constructor(sceneElem, streamObj) {
 				this.elem = sceneElem;
 				this.slug = sceneElem.dataset.scene;
-				this.parent = streamElem;
-				this.stream = streamElem.dataset.slug;
+				this.stream = streamObj;
 				this.color = sceneElem.dataset.color;
 
-				this.tick = streamElem.querySelector(
-					".tick[data-scene='" + this.slug + "']"
+				this.tick = streamObj.elem.querySelector(
+					`.tick[data-scene="${this.slug}"]`
 				);
-				this.caption = streamElem.querySelector(
-					".caption[data-scene='" + this.slug + "']"
+				this.caption = streamObj.elem.querySelector(
+					`.caption[data-scene="${this.slug}"]`
 				);
+				this.voiceover = this.caption.querySelector("audio");
 
 				const environ = sceneElem.dataset.environ;
 				this.environ = document.querySelector(`audio[data-environ="${environ}"]`);
-				this.voiceover = this.caption ? this.caption.querySelector("audio") : null;
-				this.tooltip = sceneElem.querySelector(".tooltip");
+				
 				this.factoids = sceneElem.querySelectorAll(".factoid");
 
 				if(sceneElem.dataset.animated === "true") {
@@ -857,47 +848,37 @@ export const onInitialClientRender = () => {
 
 			getSvg() {
 				const self = this;
-				let req = null;
-				if(["landfill", "paper", "plastic"].includes(this.stream)) {
-					req = fetch(this.elem.dataset.src)
-						.then((response) => {
-							if(!response.ok) {
-								throw new Error(`${self.slug} scene is not found`);
-							} else {
-								return response.text();
-							}
-						})
-						.then((svg) => {
+				this.req = fetch(this.elem.dataset.src)
+					.then((response) => {
+						if(!response.ok) {
 							self.elem.classList.add("setup");
-							const sceneSvgWrap = self.elem.querySelector(".svg-wrap");
-							if(!sceneSvgWrap) return;
-							sceneSvgWrap.insertAdjacentHTML("afterbegin", svg);
-							self.setUpScene(self.elem);
-							return svg;
-						});
-				} else {
-					this.elem.classList.add("setup");
-					this.setUpScene();
-				}
-				this.req = req;
+							throw new Error(`${self.slug} scene is not found`);
+						} else {
+							return response.text();
+						}
+					})
+					.then((svg) => {
+						self.elem.classList.add("setup");
+						const sceneSvgWrap = self.elem.querySelector(".svg-wrap");
+						if(!sceneSvgWrap) return;
+						sceneSvgWrap.insertAdjacentHTML("afterbegin", svg);
+						self.setUpScene(self.elem);
+						return svg;
+					});
 			}
 
 			setUpScene() {
 				const self = this,
-							slug = this.slug,
 							sceneElem = this.elem,
 							tickElem = this.tick,
 							captionElem = this.caption,
 							voiceAudioElem = this.voiceover,
-							tooltipElem = this.tooltip,
-							markerElem = sceneElem.querySelector(".marker"),
 							factoidElems = this.factoids;
-				this.marker = markerElem;
 
 				if(tickElem) {
 					tickElem.onclick = () => {
-						const stream = streamsArr[self.stream];
-						stream.goToScene(slug);
+						const stream = self.stream;
+						stream.goToScene(self);
 					};
 				}
 
@@ -915,17 +896,6 @@ export const onInitialClientRender = () => {
 						const caption = voiceAudioElem.parentElement;
 						if(caption.classList.contains("show")) {
 							body.classList.remove("playing");
-						}
-					};
-				}
-
-				if(markerElem) {
-					self.fixTooltip();
-					markerElem.onclick = (e) => {
-						tooltipElem.classList.toggle("show");
-
-						if(tooltipElem.classList.contains("show")) {
-							self.fixTooltip();
 						}
 					};
 				}
@@ -960,6 +930,26 @@ export const onInitialClientRender = () => {
 						};
 					});
 				}
+			}
+
+			prepareScene() {
+				const sceneColor = this.color,
+							tickElem = this.tick,
+							captionElem = this.caption,
+							sceneElem = this.elem,
+							voiceAudioElem = this.voiceover;
+
+				if(voiceAudioElem) {
+					voiceAudioElem.load();
+				}
+				if(captionElem) {
+					captionElem.classList.add("show");
+				}
+				if(tickElem) {
+					tickElem.classList.add("active");
+				}
+				sceneElem.classList.add("animate");
+				streamsView.dataset.color = sceneColor;
 			}
 
 			fixTooltip() {
