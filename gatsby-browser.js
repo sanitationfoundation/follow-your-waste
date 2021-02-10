@@ -1,12 +1,11 @@
 import "./src/sass/style.scss";
 import lottie from "lottie-web";
-import Packery from "packery";
 import $ from "jquery";
-import { gsap } from "gsap";
-import { Draggable } from "gsap/Draggable";
+import { gsap, Draggable, CSSPlugin } from "gsap/all";
+import Packery from "packery";
 
 export const onInitialClientRender = () => {
-	gsap.registerPlugin(Draggable);
+	gsap.registerPlugin(Draggable, CSSPlugin);
 
 	window.onload = () => {
 		const body = document.querySelector("body"),
@@ -15,13 +14,14 @@ export const onInitialClientRender = () => {
 					helpTog = document.querySelector("#help-toggle"),
 					introView = document.querySelector("#intro-view"),
 					introBttn = document.querySelector("#intro-button"),
-					streamsView = document.querySelector("#streams-view"),
-					streamElems = document.querySelectorAll(".stream"),
+					selectView = document.querySelector("#select-view"),
 					itemsWrap = document.querySelector("#items-wrap"),
 					itemElems = document.querySelectorAll(".item"),
 					selectedItem = document.querySelector("#selected-item"),
 					binElems = document.querySelectorAll("#bins .bin"),
 					selectMenuBttns = document.querySelectorAll("#menu-select button"),
+					streamsView = document.querySelector("#streams-view"),
+					streamElems = document.querySelectorAll(".stream"),
 					itemsArr = [],
 					scenesArr = [],
 					streamsArr = [];
@@ -36,16 +36,21 @@ export const onInitialClientRender = () => {
 			plastic: "Plastic"
 		};
 
-		body.classList.add("loaded");
+		body.classList.add("loading");
 
 		window.onresize = () => {
-			scenesArr.forEach((sceneObj) => {
+			scenesArr.forEach( (sceneObj) => {
 				if(sceneObj.marker) {
 					sceneObj.fixTooltip();
 				}
 			});
 			if(body.id === "select" && itemsWrap.classList.contains("setup")) {
+				// itemsWrap.classList.add("static");
 				itemsWrapPackery.layout();
+				setTimeout(() => {
+					// itemsWrap.classList.remove("static");
+					afterLayout();
+				}, 100);
 			}
 		};
 
@@ -152,7 +157,7 @@ export const onInitialClientRender = () => {
 				volume: 0
 			}, fadeOutDur[type]);
 			const volBttns = document.querySelectorAll("button.volume");
-			volBttns.forEach((volBttn) => {
+			volBttns.forEach( (volBttn) => {
 				volBttn.setAttribute("aria-pressed", true);
 			});
 		};
@@ -164,9 +169,24 @@ export const onInitialClientRender = () => {
 				volume: volMax[type]
 			}, fadeInDur[type]);
 			const volBttns = document.querySelectorAll("button.volume");
-			volBttns.forEach((volBttn) => {
+			volBttns.forEach( (volBttn) => {
 				volBttn.setAttribute("aria-pressed", false);
 			});
+		};
+
+
+
+		const isMobile = () => {
+			const styles = window.getComputedStyle(body);
+			return [`"sm"`,`"md"`].includes(styles.content);
+		}
+
+		const isIframe = (e) => {
+			try {
+				return window.self !== window.top;
+			} catch (e) {
+				return true;
+			}
 		};
 
 
@@ -201,14 +221,6 @@ export const onInitialClientRender = () => {
 			}
 		};
 
-		const isIframe = (e) => {
-			try {
-				return window.self !== window.top;
-			} catch (e) {
-				return true;
-			}
-		};
-
 		if(fullTog) {
 			fullTog.onclick = () => {
 				toggleFullscreen();
@@ -230,22 +242,24 @@ export const onInitialClientRender = () => {
 		/************************************/
 
 		const setUpSelect = () => {
-			itemElems.forEach((itemElem) => {
+			itemElems.forEach( (itemElem) => {
 				const slug = itemElem.dataset.item,
 							itemObj = new Item(itemElem);
 				itemsArr[slug] = itemObj;
 			});
 
-			streamElems.forEach((streamElem) => {
+			streamElems.forEach( (streamElem) => {
 				const slug = streamElem.dataset.slug,
 							streamObj = new Stream(streamElem);
 				streamsArr[slug] = streamObj;
 			});
 
-			selectMenuBttns.forEach((buttonElem) => {
+			selectMenuBttns.forEach( (buttonElem) => {
 				buttonElem.onclick = (e) => {
-					const streamSlug = buttonElem.dataset.stream,
+					const selectAlert = document.querySelector("#alert-select"),
+								streamSlug = buttonElem.dataset.stream,
 								streamObj = streams[streamSlug];
+					selectAlert.classList.remove("show");
 					body.classList.remove("alerts");
 					streamObj.introStreams();
 				};
@@ -256,20 +270,12 @@ export const onInitialClientRender = () => {
 			if(!itemsWrap.classList.contains("setup")) {
 				itemsWrapPackery = new Packery(itemsWrap, {
 					itemSelector: ".item",
-					transitionDuration: 200,
-					resize: true,
 					gutter: 20,
+					transitionDuration: 0,
+					initLayout: false,
+					resize: false,
 				});
-
-				itemsWrapPackery.on( 'layoutComplete', () => {
-					itemElems.forEach((itemElem) => {
-						gsap.set(itemElem, {
-							x: 0,
-							y: 0
-						});
-					});
-				});
-
+				itemsWrapPackery.on('layoutComplete', afterLayout);
 				itemsWrapPackery.layout();
 				itemsWrap.classList.add("setup");
 			} else {
@@ -277,18 +283,44 @@ export const onInitialClientRender = () => {
 			}
 		};
 
+		const afterLayout = () => {
+			itemElems.forEach( (itemElem) => {
+				gsap.set(itemElem, {
+					x: 0,
+					y: 0
+				});
+			});
+		}
+
+		const showView = (viewSlug) => {
+			const nextViewElem = document.querySelector(`#${viewSlug}-view`),
+						currViewElem = document.querySelector(".view.show");
+
+			if(nextViewElem) {
+				nextViewElem.classList.add("show");
+				nextViewElem.setAttribute("aria-hidden", false);
+			}
+
+			if(currViewElem) {
+				currViewElem.classList.remove("show");
+				currViewElem.setAttribute("aria-hidden", true);
+			}
+
+			body.id = viewSlug;
+		};
+
 		const showAlert = (alertSlug, onOkay, onCancel) => {
 			const alertElem = document.querySelector(`#alert-${alertSlug}`),
 						okayBttnElem = alertElem.querySelector(".okay"),
 						cancelBttnElem = alertElem.querySelector(".cancel");
 
-			body.classList.add("alerts");
 			alertElem.classList.add("show");
+			body.classList.add("alerts");
+			body.setAttribute("aria-hidden", false);
 
 			if(okayBttnElem) {
 				okayBttnElem.onclick = (e) => {
-					alertElem.classList.remove("show");
-					body.classList.remove("alerts");
+					closeAlert();
 					if(onOkay) {
 						onOkay(e);
 					}
@@ -297,8 +329,7 @@ export const onInitialClientRender = () => {
 
 			if(cancelBttnElem) {
 				cancelBttnElem.onclick = (e) => {
-					alertElem.classList.remove("show");
-					body.classList.remove("alerts");
+					closeAlert();
 					if(onCancel) {
 						onCancel(e);
 					}
@@ -315,6 +346,7 @@ export const onInitialClientRender = () => {
 			const alertElem = document.querySelector(".alert.show");
 			body.classList.remove("alerts");
 			alertElem.classList.remove("show");	
+			body.setAttribute("aria-hidden", true);
 		}
 
 		/************************************/
@@ -330,8 +362,6 @@ export const onInitialClientRender = () => {
 				this.image = elem.querySelector("img");
 				this.tooltip = elem.querySelector(".tooltip");
 				this.bin = null;
-				// this.left = 0;
-				// this.top = 0;
 
 				this.draggable = Draggable.create(elem, {
 					bounds: window,
@@ -374,7 +404,7 @@ export const onInitialClientRender = () => {
 				const self = this,
 							itemElem = this.elem;
 				this.fixTooltip();
-				binElems.forEach((binElem) => {
+				binElems.forEach( (binElem) => {
 					const isOver = Draggable.hitTest(itemElem, binElem, 50);
 					if(isOver) {
 						self.hoverBin(binElem);
@@ -389,7 +419,7 @@ export const onInitialClientRender = () => {
 				const self = this,
 							itemElem = this.elem;
 				this.bin = null;
-				binElems.forEach((binElem) => {
+				binElems.forEach( (binElem) => {
 					const isOver = Draggable.hitTest(itemElem, binElem, 50);
 					if(isOver) {
 						self.bin = binElem.dataset.bin;
@@ -522,11 +552,14 @@ export const onInitialClientRender = () => {
 							binSlug = this.bin,
 							binElem  = body.querySelector(`#${binSlug}-bin`),
 							binBackElem = body.querySelector(`#${binSlug}-back`);
-				itemsWrapPackery.layout();
 				binBackElem.classList.remove("open");
 				binElem.classList.remove("open");
 				itemElem.classList.remove("dropping");
 				itemElem.classList.remove("returning");
+
+				itemsWrap.classList.remove("static");
+				itemsWrapPackery.layout();
+
 				this.bin = null;
 			}
 
@@ -584,7 +617,7 @@ export const onInitialClientRender = () => {
 				};
 
 				this.volBttn.onclick = () => {
-					const currSceneObj = self.scenes[self.scene],
+					const currSceneObj = self.scene,
 								currVoiceAudioElem = currSceneObj.voiceover,
 								currEnvironAudioElem = currSceneObj.environ;
 					body.classList.toggle("mute");
@@ -599,7 +632,7 @@ export const onInitialClientRender = () => {
 				};
 
 				this.playbackBttn.onclick = (e) => {
-					const currSceneObj = self.scenes[self.scene],
+					const currSceneObj = self.scene,
 								currVoiceAudioElem = currSceneObj.voiceover,
 								currEnvironAudioElem = currSceneObj.environ;
 					body.classList.toggle("playing");
@@ -623,7 +656,7 @@ export const onInitialClientRender = () => {
 							sceneElems = this.elem.querySelectorAll(".scene:not(.setup)"),
 							svgReqs = [];
 
-				sceneElems.forEach((sceneElem, i) => {
+				sceneElems.forEach( (sceneElem, i) => {
 					const sceneSlug = sceneElem.dataset.scene,
 								sceneObj = new Scene(sceneElem, self);
 
@@ -642,7 +675,7 @@ export const onInitialClientRender = () => {
 				Promise.all(svgReqs).then((responses) => {
 					introBttn.setAttribute("aria-disabled", false);
 					introBttn.onclick = () => {
-						body.id = "select";
+						showView("select");
 						handleSelect();
 						showAlert("select-intro");
 					};
@@ -652,6 +685,9 @@ export const onInitialClientRender = () => {
 
 			introStreams() {
 				const self = this;
+				selectView.classList.remove("show");
+				body.id = "";
+
 				if(!streamIntrod) {
 					streamIntrod = true;
 					showAlert("streams-intro", () => {
@@ -684,7 +720,7 @@ export const onInitialClientRender = () => {
 				nextStreamElem.classList.remove("exit");
 				nextStreamElem.classList.add("show");
 				nextStreamElem.setAttribute("aria-hidden", false);
-				body.id = "streams";
+				showView("streams");
 
 				const firstSceneObj = this.scenes[`garage-${this.slug}`];
 				this.goToScene(firstSceneObj);
@@ -728,7 +764,9 @@ export const onInitialClientRender = () => {
 					nextSceneObj.animation.goToAndPlay(0);
 				}
 
-				if(!nextSceneElem) return (body.id = "");
+				if(!nextSceneElem) {
+					return;
+				}
 
 				nextSceneElem.classList.add("show");
 				nextSceneElem.setAttribute("aria-hidden", false);
@@ -774,9 +812,11 @@ export const onInitialClientRender = () => {
 					this.goToScene(nextSceneObj);
 				} else {
 					pauseAudio(currSceneObj.voiceover);
+					body.id = "";
+					streamsView.classList.remove("show");
+					handleSelect();
 					showAlert("streams-end", () => {
-						body.id = "select";
-						handleSelect();
+						showView("select");
 					});
 				}
 			}
@@ -800,7 +840,7 @@ export const onInitialClientRender = () => {
 					if(currEnvironAudioElem) {
 						pauseAudio(currEnvironAudioElem);
 					}
-					body.id = "select";
+					showView("select");
 					handleSelect();
 				}
 			}
@@ -900,7 +940,7 @@ export const onInitialClientRender = () => {
 					};
 				}
 
-				factoidElems.forEach((factoidElem) => {
+				factoidElems.forEach( (factoidElem) => {
 					const tabElem = factoidElem.querySelector(".factoid-tab");
 					tabElem.onclick = (e) => {
 						factoidElem.classList.toggle("open");
@@ -920,7 +960,7 @@ export const onInitialClientRender = () => {
 
 				if(captionElem) {
 					const vocabElems = captionElem.querySelectorAll(".vocab.clickable");
-					vocabElems.forEach((vocabElem) => {
+					vocabElems.forEach( (vocabElem) => {
 						const vocabStr = vocabElem.innerText,
 							factoidElem = sceneElem.querySelector(
 								`[data-vocab="${vocabStr}"]`
@@ -977,6 +1017,10 @@ export const onInitialClientRender = () => {
 		}
 
 		setUpSelect();
+
+		setTimeout(() => {
+			body.classList.replace("loading", "loaded");
+		}, 4000);
 
 		if(isIframe()) {
 			body.classList.add("full");

@@ -17,80 +17,56 @@
       "text": "Get started!"
     },
     {
-      "slug": "try_again",
-      "text": "Try again"
-    },
-    {
       "slug": "lets_go",
       "text": "Let's go!"
     },
     {
       "slug": "okay",
-      "text": "Okay"
+      "text": "Okay!"
+    },
+    {
+      "slug": "im_ready",
+      "text": "I'm ready!"
+    },
+    {
+      "slug": "try_again",
+      "text": "Try again"
+    },
+    {
+      "slug": "try_another",
+      "text": "Try another"
     },
     {
       "slug": "select_intro",
-      "text": "Discover what happens to your household waste after you toss it in the bin."
+      "text": "After we toss our waste in the bin, we don’t often think about where it goes next. We invite you to Follow Your Waste on its journey from curbside pickup and through the––often invisible––inner workings of our city."
     },
     {
-      "slug": "begin_select",
+      "slug": "select_prompt",
       "text": "To start, click on any item and drag it into the bin you think it belongs."
     },
     {
-      "slug": "begin_select_alt",
+      "slug": "select_prompt_alt",
       "text": "To start, select which material you would like to follow."
     },
     {
-      "slug": "not_trash",
+      "slug": "select_top",
+      "text": "Drag and drop an item in the correct bin to begin the journey."
+    },
+    {
+      "slug": "select_not_trash",
       "text": "Oh no! This item can be recycled! Please drop the item into a different bin."
     },
     {
-      "slug": "wrong_recycle",
+      "slug": "select_wrong_recycle",
       "text": "You have misplaced this recyclable item - an easy mistake to make. Try dropping the item into a different bin."
     },
     {
-      "slug": "not_recycle",
+      "slug": "select_not_recycle",
       "text": "This piece of trash is not currently recyclable in NYC. Drop the item into a different bin."
     },
     {
-      "slug": "correct_bin",
+      "slug": "select_correct_bin",
       "text": "You have placed this item in the correct bin! Now, learn from a NYC Sanitation Worker what happens next."
-    },
-    {
-      "slug": "lang_switch",
-      "text": "Switch language"
-    },
-    {
-      "slug": "full_screen",
-      "text": "Toggle full screen"
-    },
-    {
-      "slug": "audio_menu",
-      "text": "Voiceover controls"
-    },
-    {
-      "slug": "playback",
-      "text": "Toggle play/pause"
-    },
-    {
-      "slug": "volume",
-      "text": "Toggle volume"
-    },
-    {
-      "slug": "progress_menu",
-      "text": "Progress controls"
-    },
-    {
-      "slug": "prev",
-      "text": "Previous"
-    },
-    {
-      "slug": "next",
-      "text": "Next"
-    },
-    {
-      "slug": "skip",
-      "text": "Skip to main content"
     },
     {
       "slug": "mgp",
@@ -115,6 +91,86 @@
     {
       "slug": "landfill",
       "text": "Landfill"
+    },
+    {
+      "slug": "help_progress",
+      "text": "Use this progress bar or your keyboard arrow keys to move throughout the story."
+    },
+    {
+      "slug": "help_restart",
+      "text": "Click the bin to go back and select another item."
+    },
+    {
+      "slug": "help_factoid",
+      "text": "Look out for these tabs to learn extra facts and vocabulary words."
+    },
+    {
+      "slug": "help_audio",
+      "text": "Use these icons to control the sound."
+    },
+    {
+      "slug": "final_title",
+      "text": "Thanks for playing!"
+    },
+    {
+      "slug": "final_statement",
+      "text": "Remember, the story of this item may have ended but our fight to end waste hasn’t. Before our items even enter the bin, reduce what you can and donate the rest. Small steps can make a big impact."
+    },
+    {
+      "slug": "final_restart",
+      "text": "Start the journey again by sorting a new item."
+    },
+    {
+      "slug": "final_resources",
+      "text": "View additional resources"
+    },
+    {
+      "slug": "final_workers",
+      "text": "Meet the Sanitation Workers"
+    },
+    {
+      "slug": "final_lessons",
+      "text": "Lesson plans for teachers"
+    },
+    {
+      "slug": "final_about",
+      "text": "About the project"
+    },
+    {
+      "slug": "aria_skip",
+      "text": "Skip to main content"
+    },
+    {
+      "slug": "aria_lang_switch",
+      "text": "Switch language"
+    },
+    {
+      "slug": "aria_full_screen",
+      "text": "Toggle full screen"
+    },
+    {
+      "slug": "aria_audio_menu",
+      "text": "Voiceover controls"
+    },
+    {
+      "slug": "aria_playback",
+      "text": "Toggle play/pause"
+    },
+    {
+      "slug": "aria_volume",
+      "text": "Toggle volume"
+    },
+    {
+      "slug": "aria_progress_menu",
+      "text": "Progress controls"
+    },
+    {
+      "slug": "aria_prev",
+      "text": "Previous"
+    },
+    {
+      "slug": "aria_next",
+      "text": "Next"
     }
   ],
   "items": [
@@ -785,10 +841,10 @@
       "slug": "end-plastic",
       "label": "Recycled!",
       "caption": "After being baled, plastics are loaded onto trucks and head out to be made into new products for sale.",
-      "vocab1": null,
-      "fact1": "Your recycled plastic bottle can be made into new bottles, textiles, and carpeting. Who knows, you could be drinking from, wearing, or walking upon the bottle you recycled!",
-      "vocab2": "baled",
-      "fact2": "The process of tightly bounding waste material into cubes.",
+      "vocab1": "baled",
+      "fact1": "The process of tightly bounding waste material into cubes.",
+      "vocab2": null,
+      "fact2": "Your recycled plastic bottle can be made into new bottles, textiles, and carpeting. Who knows, you could be drinking from, wearing, or walking upon the bottle you recycled!",
       "vocab3": null,
       "fact3": null
     }

@@ -19,10 +19,14 @@ html {
 	overflow-y: scroll;
 }
 body {
-	// min-width: $sm-width;
-	// min-height: $sm-width;
 	font-size: 20px;
 	position: relative;
+	@include md-width {
+		content: "md";
+	}
+	@include sm-width {
+		content: "sm";
+	}
 }
 h2, h3, h4 {
 	margin: 0 0 20px 0;
@@ -105,7 +109,7 @@ header#header {
 	img {
 		width: 100%;
 	}
-	body#intro & {
+	.view.show & {
 		pointer-events: all;
 	}
 	body:not(#intro) & {
@@ -216,18 +220,15 @@ header#header {
 	top: 0;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	display: none;
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 500ms ease-in, background 500ms ease-in;
-	#intro &#intro-view,
-	#select &#select-view,
-	#streams &#streams-view,
-	.alerts &#alerts-view {
+	&.show,
+	body.alerts &#alerts-view {
 		opacity: 1;
-		display: block;
 		pointer-events: all;
 	}
+
 }
 .view-inner {
 	max-width: $xl-width;
@@ -236,23 +237,10 @@ header#header {
 	position: relative;
 	overflow: visible;
 }
-// body#intro #intro-view,
-// body#selection #selection-view,
-// body#streams #streams-view,
-// body.alerts #alerts-view {
-// 	opacity: 1;
-// 	display: block;
-// 	pointer-events: all;
-// }
-
-// transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
-// background-image: url(../images/arrow.svg);
 
 ////////////////////////////////////
 //////////// INTRO VIEW ////////////
 ////////////////////////////////////
-#intro-view {
-}
 #site-title {
 	width: 50%;
 	float: left;
@@ -270,21 +258,49 @@ header#header {
 	@include lg-text;
 }
 #intro-selection {
+	width: 100%;
+	display: table;
 	margin: auto;
 }
 #intro-title {
-	display: table;
+	width: 60%;
+	max-height: 50vh;
+	display: block;
 	margin: auto;
-	padding: 20px;
-	img {
-		width: 60%;
-		max-height: 50vh;
-		height: auto;
-		margin: auto;
-		display: block;
+	background-image: url(../images/title.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	span {
+		@include hide;
+	}
+	@include md-width {
+		width: calc(100% - 20px);
 	}
 }
+#intro-title-spacer {
+	width: 100%;
+	padding-bottom: 69%;
+	opacity: 0;
+}
+// #intro-title-image-wrap {
+// 	width: 100%;
+// 	height: 100%;
+// 	max-width: calc(50vh / .69);
+// 	padding-bottom: 69%;
+// 	display: block;
+// 	margin: auto;
+// 	position: relative;
+// }
+// #intro-title-image {
+// 	position: absolute;
+// 	left: 0;
+// 	top: 0;
+// 	width: 100%;
+// 	margin: auto;
+// }
 #intro-tagline {
+	margin-top: 20px;
 	text-align: center;
 	@include lg-text;
 }
@@ -295,16 +311,17 @@ header#header {
 	width: 300px;
 	height: 150px;
 	position: absolute;
-	left: calc(50% - 150px);
+	left: 0px;
 	top: -50px;
 	z-index: 1;
+	transform: translateX(-300px);
 	text-align: center;
-	pointer-events: none;
+	// pointer-events: none;
 	background-image: url(../images/loading.png);
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
-	transition: transform 2000ms ease-in-out;
+	user-select: none;
 	span {
 		position: absolute;
 		left: 100px;
@@ -315,13 +332,38 @@ header#header {
 		@include lg-text;
 		animation: blinking 1s infinite;
 	}
-	.view:not(.loading) & {
-		transform: translateX(100vw);
-		span {
-			opacity: 0;
-			animation-play-state: paused;
-			transition: opacity 2000ms ease-in-out;
-		}
+	body.loading & {
+		animation: driveIn 4s ease-out 1 forwards;
+	}
+	body.loaded & {
+		animation: driveOut 4s ease-in 1 forwards;
+	}
+	// .view:not(.loading) & {
+		// animation: driveOut 2s ease-in 1 forwards;
+	// 	transform: translateX(100vw);
+	// 	span {
+	// 		opacity: 0;
+	// 		animation-play-state: paused;
+	// 		transition: opacity 2000ms ease-in-out;
+	// 	}
+	// }
+}
+
+@keyframes driveIn {
+	0% {
+		transform: translateX(-300px);
+	}
+	100% {
+		transform: translateX(calc(50vw - 150px));
+	}
+}
+
+@keyframes driveOut {
+	0% {
+		transform: translateX(calc(50vw - 150px));
+	}
+	100% {
+		transform: translateX(calc(100vw + 300px));
 	}
 }
 
@@ -340,9 +382,11 @@ header#header {
 	border-radius: 5px;
 	margin: 60px auto 0 auto;
 	transition: opacity 100ms ease-in-out;
-	.view.loading & {
-		opacity: 0;
-		pointer-events: none;
+	// opacity: 0;
+	// pointer-events: none;
+	body.loaded & {
+		opacity: 1;
+		pointer-events: all;
 	}
 }
 ////////////////////////////////////

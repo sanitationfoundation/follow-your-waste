@@ -21,5 +21,19 @@ module.exports = {
         path: `${__dirname}/src/content/`,
       },
     },
+
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Follow Your Waste`,
+        short_name: `FYW`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#fc652c`,
+        display: `standalone`,
+        icon: `src/images/icon.png`
+      }
+    }
   ],
 };

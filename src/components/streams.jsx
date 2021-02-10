@@ -6,7 +6,7 @@ const streams = ["landfill", "metal", "glass", "paper", "plastic"],
 
 export default function Streams({ text, data }) {
 	return (
-		<div id="streams-view" className="view">
+		<div id="streams-view" className="view" aria-hidden="true">
 			<div className="view-inner">
 				{streams.map((stream, i) => {
 					const streamText = text[stream],
@@ -21,12 +21,12 @@ export default function Streams({ text, data }) {
 
 							<div role="menu"
 								className="progress"
-								aria-label={text.system.progress_menu}>
+								aria-label={text.system.aria_progress_menu}>
 								<div className="ticks-wrap">
 									<button
 										className="arrow"
 										tabIndex={0}
-										aria-label={text.system.prev}
+										aria-label={text.system.aria_prev}
 										data-dir="prev">
 									</button>
 									{streamData.map((sceneData, j) => {
@@ -46,16 +46,10 @@ export default function Streams({ text, data }) {
 										);
 									})}
 
-									{/*<div
-										className="tick"
-										data-scene="the-end"
-										aria-hidden={true}>
-									</div>*/}
-
 									<button
 										className="arrow"
 										tabIndex={0}
-										aria-label={text.system.next}
+										aria-label={text.system.aria_next}
 										data-dir="next">
 									</button>
 								</div>
@@ -161,17 +155,17 @@ export default function Streams({ text, data }) {
 
 											<div role="menu"
 												className="audio-buttons"
-												aria-label={text.system.audio_menu}>
+												aria-label={text.system.aria_audio_menu}>
 												<button
 													className="audio-button volume"
 													tabIndex={0}
 													aria-pressed={false}
-													aria-label={text.system.volume}>
+													aria-label={text.system.aria_volume}>
 												</button>
 												<button
 													className="audio-button playback"
 													tabIndex={0}
-													aria-label={text.system.playback}>
+													aria-label={text.system.aria_playback}>
 												</button>
 											</div>
 											

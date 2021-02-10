@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-// import { withPrefix } from "gatsby";
 
 import enText from "../content/en.json";
 import esText from "../content/es.json";
@@ -51,16 +50,6 @@ export default ({ pageContext }) => {
 					id: "intro",
 					class: "",
 				}}
-				script={[
-					{
-						"src": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js", 
-						"type": "text/javascript"
-					},
-					{
-						"src": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/Draggable.min.js", 
-						"type": "text/javascript"
-					}
-				]}
 				meta={[
 					{
 						name: text.system.title,
@@ -96,7 +85,7 @@ export default ({ pageContext }) => {
 			<label
 				htmlFor="full-toggle"
 				className="screen-hidden">
-				{text.system.full_screen}
+				{text.system.aria_full_screen}
 			</label>
 			<button
 				className="tool-button"

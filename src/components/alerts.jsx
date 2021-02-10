@@ -1,22 +1,20 @@
 import React from "react";
 
-const streams = ["landfill", "metal", "glass", "paper", "plastic"];
-
 export default function Alerts({ text }) {
 	return(
-		<div id="alerts-view" className="view">
+		<div id="alerts-view" className="view" aria-hidden="true">
 			<div className="view-inner">
 
 
 				{/*******Select intro*******/}
 				<div
 					role="dialog"
-					className="alert big"
+					className="alert"
 					id="alert-select-intro"
 					aria-hidden="true">
 					<div className="message" id="message-select-intro">
 						<p>{text.system.select_intro}</p>
-						<p>{text.system.begin_select}</p>
+						<p>{text.system.select_prompt}</p>
 					</div>
 					<div
 						role="menu"
@@ -26,66 +24,9 @@ export default function Alerts({ text }) {
 						<button
 							className="button okay"
 							role="menuitem">
-							I'm ready
+							{text.system.im_ready}
 						</button>
 					</div>
-				</div>
-
-				{/*******Select info*******/}
-				<div
-					role="dialog"
-					className="alert"
-					id="alert-select">
-
-					<div
-						className="message mobile-hidden"
-						aria-hidden="true">
-						<p>{text.system.select_intro}</p>
-						<p>{text.system.begin_select}</p>
-					</div>
-
-					<div
-						role="menu"
-						className="alert-buttons mobile-hidden"
-						aria-hidden="true">
-						<button
-							className="button okay"
-							aria-hidden="true">
-							{text.system.okay}
-						</button>
-					</div>
-
-					<div className="message mobile-show">
-						<div
-							id="message-menu-select"
-							aria-hidden="true">
-							<p>
-								{text.system.select_intro}
-								{text.system.begin_select_alt}
-							</p>
-						</div>
-					</div>
-
-					<div
-						role="menu"
-						className="alert-buttons screen-hidden mobile-show"
-						id="menu-select"
-						tabIndex={-1}
-						aria-labelledby="message-menu-select">
-						{streams.map((streamSlug, i) => {
-							return (
-								<button
-									role="menuitem"
-									className="button"
-									data-stream={streamSlug}
-									aria-controls="menu-select"
-									key={i}>
-									{streamSlug}
-								</button>
-							)
-						})}
-					</div>
-
 				</div>
 
 
@@ -97,7 +38,7 @@ export default function Alerts({ text }) {
 				  id="alert-not-trash"
 					aria-hidden="true">
 					<div className="message" id="message-not-trash">
-						<p>{text.system.not_trash}</p>
+						<p>{text.system.select_not_trash}</p>
 					</div>
 					<div
 						role="menu"
@@ -119,7 +60,7 @@ export default function Alerts({ text }) {
 					id="alert-wrong-recycle"
 					aria-hidden="true">
 					<div className="message" id="message-wrong-recycle">
-						<p>{text.system.wrong_recycle}</p>
+						<p>{text.system.select_wrong_recycle}</p>
 					</div>
 					<div role="menu"
 						className="alert-buttons"
@@ -140,7 +81,7 @@ export default function Alerts({ text }) {
 					id="alert-not-recycle"
 					aria-hidden="true">
 					<div className="message" id="message-not-recycle">
-						<p>{text.system.not_recycle}</p>
+						<p>{text.system.select_not_recycle}</p>
 					</div>
 					<div
 						role="menu"
@@ -162,7 +103,7 @@ export default function Alerts({ text }) {
 					id="alert-correct-bin"
 					aria-hidden="true">
 					<div className="message" id="message-correct-bin">
-						<p>{text.system.correct_bin}</p>
+						<p>{text.system.select_correct_bin}</p>
 					</div>
 					<div
 						role="menu"
@@ -172,7 +113,7 @@ export default function Alerts({ text }) {
 						<button
 							className="button cancel"
 							role="menuitem">
-							Try another
+							{text.system.try_another}
 						</button>
 						<button
 							className="button okay"
@@ -205,7 +146,7 @@ export default function Alerts({ text }) {
 									</div>
 								</div>
 								<div className="col">
-									Use the progress bar or your arrow keys to move between scenes.
+									{text.system.help_progress}
 								</div>
 							</div>
 
@@ -214,7 +155,7 @@ export default function Alerts({ text }) {
 									<div className="factoid-tab"></div>
 								</div>
 								<div className="col">
-									Look out for these tabs to learn extra facts.
+									{text.system.help_factoid}
 								</div>
 							</div>
 
@@ -230,7 +171,7 @@ export default function Alerts({ text }) {
 									</div>
 								</div>
 								<div className="col">
-									Use these icons to control the sound.
+									{text.system.help_audio}
 								</div>
 							</div>
 
@@ -246,7 +187,7 @@ export default function Alerts({ text }) {
 						<button
 							className="button okay"
 							role="menuitem">
-							I'm ready
+							{text.system.im_ready}
 						</button>
 					</div>
 				</div>
@@ -263,8 +204,8 @@ export default function Alerts({ text }) {
 								<img id="selected-item" alt="" />
 							</div>
 							<div className="col">
-								<h2>Recycled!</h2>
-								One big recipient of our recycled cardboard is our City’s pizzerias. Next time you’re about to bite into some tasty pizza, remember that pizza box could have been recycled from New York’s paper.
+								<h2>{text.system.final_title}</h2>
+								{text.system.final_statement}
 								<div
 									role="menu"
 									className="alert-buttons"
@@ -281,14 +222,14 @@ export default function Alerts({ text }) {
 						<div
 							role="menu"
 							tabIndex={-1}>
-							<h3>Explore further</h3>
+							<h3>{text.system.final_prompt}</h3>
 							<a
 								className=""
 								href="https://www.sanitationfoundation.org/"
 								target="_blank"
 								rel="noreferrer"
 								role="menuitem">
-								Meet the workers
+								{text.system.final_workers}
 							</a>
 							<a
 								className=""
@@ -296,7 +237,7 @@ export default function Alerts({ text }) {
 								target="_blank"
 								rel="noreferrer"
 								role="menuitem">
-								Learning resources
+								{text.system.final_lessons}
 							</a>
 							<a
 								className=""
@@ -304,7 +245,7 @@ export default function Alerts({ text }) {
 								target="_blank"
 								rel="noreferrer"
 								role="menuitem">
-								About the project
+								{text.system.final_about}
 							</a>
 						</div>
 					</div>

@@ -37,6 +37,9 @@
 			background-color: transparent;
 		}
 	}
+	@include sm-width {
+		display: none;
+	}
 }
 .ticks-wrap {
 	height: 16px;
@@ -132,7 +135,7 @@
 	@include md-width {
 		#streams-view & {
 			width: 50vw;
-			height: 100vh;
+			height: 32.5vh;
 			position: absolute;
 			top: 0;
 			&::before {
@@ -188,6 +191,12 @@ audio {
 	background-repeat: no-repeat;
 	display: flex;
 	align-content: center;
+	@include sm-width {
+		height: unset;
+		&.show {
+			position: relative;
+		}
+	}
 	.svg-wrap {
 		width: 100%;
 		overflow: hidden;
@@ -321,6 +330,10 @@ $lighter-amt: 10%;
 	@include md-width {
 		bottom: 0;
 	}
+	@include sm-width {
+		height: 100%;
+		position: static;
+	}
 }
 .chyron-wrap {
 	width: 90%;
@@ -329,19 +342,23 @@ $lighter-amt: 10%;
 	@include md-width {
 		width: 100%;
 	}
+	@include sm-width {
+		height: 100%;
+	}
 }
 .chyron {
 	width: 100%;
 	margin: auto;
+	@include sm-width {
+		height: 100%;
+	}
 }
 .chyron-inner {
 	width: 100%;
 	min-height: 120px;
-	max-height: 190px;
 	border: 3px solid;
 	border-radius: 7px;
 	background-color: $darken;
-	// box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
 	transition: width 300ms ease-in-out, max-height 300ms ease-in-out;
 	position: relative;
 	@include md-width {
@@ -350,16 +367,17 @@ $lighter-amt: 10%;
 		border-radius: 0;
 	}
 	@include sm-width {
-		max-height: 300px;
+		height: 100%;
 	}
 	.portrait {
 		position: absolute;
+		width: 159px;
+		height: 159px;
 		left: -76px;
 		top: -24px;
 		z-index: 51;
 		img {
-			width: auto;
-			height: 159px;
+			width: 100%;
 			display: block;	
 		}
 		@include md-width {
@@ -367,22 +385,22 @@ $lighter-amt: 10%;
 			top: 0;
 		}
 		@include sm-width {
-			top: -40px;
-			img {
-				height: 80px;
-			}
+			width: 180px;
+			height: 180px;
+			position: relative;
+			margin-top: -40px;
+			
 		}
 	}
 }
 .captions {
 	height: 100%;
 	min-height: 120px;
-	max-height: 184px;
 	overflow-y: scroll;
 	-webkit-overflow-scroll: touch;
 	transition: height 300ms ease-in-out;
 	@include sm-width {
-		max-height: 194px;
+		clear: both;
 	}
 	.caption {
 		padding: 20px 60px 20px 90px;
@@ -405,7 +423,6 @@ $lighter-amt: 10%;
 			}
 			@include sm-width {
 				width: 100%;
-				text-indent: 135px;
 			}
 		}
 		.vocab.clickable {
@@ -425,9 +442,10 @@ $lighter-amt: 10%;
 	right: 15px;
 	@include sm-width {
 		width: auto;
-		height: 25px;
+		height: 100px;
 		top: 10px;
-    left: 70px;
+    left: 180px;
+    display: flex;
 	}
 }
 .audio-button {
@@ -459,7 +477,9 @@ $lighter-amt: 10%;
 		outline: none;
 	}
 	@include sm-width {
-		margin: 0 0 0 10px;
+		width: 50px;
+		height: 50px;
+		margin: auto 0 auto 10px;
 	}
 }
 ////////////////////////////////////

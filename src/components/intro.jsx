@@ -1,15 +1,15 @@
 import React from "react";
-import { withPrefix } from "gatsby";
-
-// import TitleLogo from "../images/title.svg";
 
 export default function Intro({ text }) {
   return (
-    <div id="intro-view" className="view loading">
+    <div id="intro-view" className="view loading show">
       <div id="intro-selection-wrap">
         <div id="intro-selection">
           <div id="intro-title">
-            <img src={withPrefix("images/title.svg")} alt={text.system.title} />
+            <div id="intro-title-spacer"></div>
+            <span>
+              {text.system.title}
+            </span>
           </div>
           <div id="intro-tagline">
             {text.system.tagline}

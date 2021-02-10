@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { withPrefix } from "gatsby";
 
 export default function Header({ text, lang, langObjs }) {
@@ -15,7 +15,7 @@ export default function Header({ text, lang, langObjs }) {
 	return (
 		<React.Fragment>
 			<div id="skip-to-intro">
-				<a href="#main">{text.system.skip}</a>
+				<a href="#main">{text.system.aria_skip}</a>
 			</div>
 			<header id="header">
 				<a id="logo" href="https://sanitationfoundation.org" target="_blank" rel="noreferrer">
@@ -29,7 +29,7 @@ export default function Header({ text, lang, langObjs }) {
 							title={currLangObj.long}
 							aria-hidden={true}
 							tabIndex={0}
-							onFocus={() => setLangMenu(!langMenu)}
+							// onFocus={() => setLangMenu(!langMenu)}
 							onClick={() => setLangMenu(!langMenu)}
 							onKeyPress={() => setLangMenu(!langMenu)}>
 						{currLangObj.short}
@@ -40,7 +40,7 @@ export default function Header({ text, lang, langObjs }) {
 						className="screen-hidden"
 						tabIndex={-1}
 						aria-hidden={true}>
-						{text.system.lang_switch}
+						{text.system.aria_lang_switch}
 					</div>
 
 					<div role="menu"

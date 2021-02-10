@@ -5,7 +5,7 @@
 	background-color: rgba($darken, 0.5);
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity 300ms ease-in;
+	transition: opacity 500ms ease-in-out;
 	z-index: 50;
 	.view-inner {
 		max-width: unset;
@@ -24,6 +24,7 @@
 	flex-direction: column;
   justify-content: center;
 	position: relative;
+	transition: opacity 500ms ease-in;
 	&.big {
 		width: 100%;
 		height: 100%;
@@ -36,7 +37,9 @@
 		}
 	}
 	&:not(.show) {
-		display: none;
+		@include hide;
+		opacity: 0;
+		pointer-events: none;
 	}
 	p {
 		margin: 0 0 25px 0;
@@ -137,6 +140,14 @@ button {
 	}
 }
 
+#alert-select {
+	.alert-buttons {
+		display: block;
+	}
+	.button {
+		margin: 0 auto 10px auto;
+	}
+}
 
 #alert-streams-end {
 	[role="menu"] {
