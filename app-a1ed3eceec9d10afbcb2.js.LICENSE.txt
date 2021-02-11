@@ -1,0 +1,46 @@
+/*!
+ * Draggabilly v2.3.0
+ * Make that shiz draggable
+ * https://draggabilly.desandro.com
+ * MIT license
+ */
+
+/*!
+ * Outlayer v2.1.1
+ * the brains and guts of a layout library
+ * MIT license
+ */
+
+/*!
+ * Packery v2.1.2
+ * Gapless, draggable grid layouts
+ *
+ * Licensed GPLv3 for open source use
+ * or Packery Commercial License for commercial use
+ *
+ * http://packery.metafizzy.co
+ * Copyright 2013-2018 Metafizzy
+ */
+
+/*!
+ * Unidragger v2.3.1
+ * Draggable base class
+ * MIT license
+ */
+
+/*!
+ * Unipointer v2.3.0
+ * base class for doing one thing with pointer event
+ * MIT license
+ */
+
+/*!
+ * domready (c) Dustin Diaz 2014 - License MIT
+ * ie10 fix - Mikael Kristiansson 2019
+ */
+
+/*!
+ * getSize v2.0.3
+ * measure size of elements
+ * MIT license
+ */
