@@ -102,18 +102,28 @@ header#header {
 	user-select: none;
 	pointer-events: none;
 	@include md-text;
+	@include sm-width {
+		padding: 0 5px 5px 5px;
+	}
 }
 #logo {
 	width: 190px;
 	margin-right: auto;
+	transition: opacity 300ms ease-in;
+	pointer-events: all;
 	img {
 		width: 100%;
 	}
-	.view.show & {
-		pointer-events: all;
-	}
-	body:not(#intro) & {
+	body#streams & {
 		opacity: 0;
+		pointer-events: none;
+	}
+	@include sm-width {
+		width: auto;
+		img {
+			width: auto;
+			max-height: 24px;
+		}
 	}
 }
 #lang-switch {
@@ -282,6 +292,9 @@ header#header {
 	width: 100%;
 	padding-bottom: 69%;
 	opacity: 0;
+	@include sm-width {
+		padding-bottom: 50%;
+	}
 }
 // #intro-title-image-wrap {
 // 	width: 100%;

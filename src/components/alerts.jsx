@@ -9,7 +9,7 @@ export default function Alerts({ text }) {
 				{/*******Select intro*******/}
 				<div
 					role="dialog"
-					className="alert"
+					className="alert big"
 					id="alert-select-intro"
 					aria-hidden="true">
 					<div className="message" id="message-select-intro">
@@ -126,7 +126,7 @@ export default function Alerts({ text }) {
 				{/*******Streams intro*******/}
 				<div
 					role="dialog"
-					className="alert big"
+					className="alert"
 					id="alert-streams-intro"
 					aria-hidden="true">
 					<div className="message" id="message-streams-intro">
@@ -182,8 +182,7 @@ export default function Alerts({ text }) {
 					<div
 						role="menu"
 						className="alert-buttons"
-						tabIndex={-1}
-						aria-labelledby="message-streams-intro">
+						tabIndex={-1}>
 						<button
 							className="button okay"
 							role="menuitem">
@@ -214,15 +213,19 @@ export default function Alerts({ text }) {
 									<button
 										className="button okay start"
 										role="menuitem">
-										Restart
+										{text.system.final_restart}
 									</button>
 								</div>
 							</div>
 						</div>
 						<div
 							role="menu"
-							tabIndex={-1}>
-							<h3>{text.system.final_prompt}</h3>
+							id="menu-resources"
+							tabIndex={-1}
+							aria-labelledby="message-menu-resources">
+							<h3 id="message-menu-resources">
+								{text.system.final_resources}
+							</h3>
 							<a
 								className=""
 								href="https://www.sanitationfoundation.org/"

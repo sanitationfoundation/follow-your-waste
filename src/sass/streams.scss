@@ -28,6 +28,11 @@
 	left: 10%;
 	top: 60px;
 	z-index: 50;
+	transition: opacity 300ms ease-in-out;
+	.alerts & {
+		opacity: 0;
+		pointer-events: none;
+	}
 	@include md-width {
 		#streams-view & {
 			width: 100%;
@@ -247,69 +252,7 @@ audio {
 	}
 }
 
-$light-amt: 10%;
-$lighter-amt: 10%;
 
-.stream[data-slug="metal"] {
-	.vocab {
-		color: lighten($blue, $light-amt);
-		&.clickable:hover,
-		&.clickable:focus {
-			color: lighten($blue-dark, $lighter-amt);
-		}
-	}
-	.chyron-inner {
-		border-color: $blue-dark;
-	}
-}
-.stream[data-slug="glass"] {
-	.vocab {
-		color: $yellow;
-		&.clickable:hover,
-		&.clickable:focus {
-			color: $yellow-dark;
-		}
-	}
-	.chyron-inner {
-		border-color: $yellow-dark;
-	}
-}
-.stream[data-slug="plastic"] {
-	.vocab {
-		color: lighten($red, $light-amt);
-		&.clickable:hover,
-		&.clickable:focus {
-			color: lighten($red-dark, $lighter-amt);
-		}
-	}
-	.chyron-inner {
-		border-color: $red-dark;
-	}
-}
-.stream[data-slug="paper"] {
-	.vocab {
-		color: lighten($green, $light-amt);
-		&.clickable:hover,
-		&.clickable:focus {
-			color: lighten($green-dark, $lighter-amt);
-		}
-	}
-	.chyron-inner {
-		border-color: $green-dark;
-	}
-}
-.stream[data-slug="landfill"] {
-	.vocab {
-		color: lighten($pink, $light-amt);
-		&.clickable:hover,
-		&.clickable:focus {
-			color: lighten($pink-dark, $lighter-amt);
-		}
-	}
-	.chyron-inner {
-		border-color: $pink-dark;
-	}
-}
 ////////////////////////////////////
 ///////////// CHYRONS //////////////
 ////////////////////////////////////
@@ -339,6 +282,11 @@ $lighter-amt: 10%;
 	width: 90%;
 	max-width: $md-width;
 	margin: auto;
+	transition: opacity 300ms ease-in;
+	.alerts & {
+		opacity: 0;
+		pointer-events: none;
+	}
 	@include md-width {
 		width: 100%;
 	}
@@ -425,6 +373,9 @@ $lighter-amt: 10%;
 				width: 100%;
 			}
 		}
+		.vocab {
+			border-bottom: 2px solid;
+		}
 		.vocab.clickable {
 			cursor: pointer;
 			transition: color 300ms ease-in-out;
@@ -482,6 +433,90 @@ $lighter-amt: 10%;
 		margin: auto 0 auto 10px;
 	}
 }
+
+$light-amt: 80%;
+$lighter-amt: 10%;
+
+.stream[data-slug="metal"] {
+	.vocab {
+		border-color: lighten($blue, $lighter-amt);
+		&.clickable {
+			&:hover, &:focus {
+				color: lighten($blue, $lighter-amt);
+			}
+		}
+	}
+	.factoid .vocab {
+		color: lighten($blue, $lighter-amt);
+	}
+	.chyron-inner {
+		border-color: $blue-dark;
+	}
+}
+.stream[data-slug="glass"] {
+	.vocab {
+		border-color: lighten($yellow, $lighter-amt);
+		&.clickable {
+			&:hover, &:focus {
+				color: lighten($yellow, $lighter-amt);
+			}
+		}
+	}
+	.factoid .vocab {
+		color: lighten($yellow, $lighter-amt);
+	}
+	.chyron-inner {
+		border-color: $yellow-dark;
+	}
+}
+.stream[data-slug="plastic"] {
+	.vocab {
+		border-color: lighten($red, $lighter-amt);
+		&.clickable {
+			&:hover, &:focus {
+				color: lighten($red, $lighter-amt);
+			}
+		}
+	}
+	.factoid .vocab {
+		color: lighten($red, $lighter-amt);
+	}
+	.chyron-inner {
+		border-color: $red-dark;
+	}
+}
+.stream[data-slug="paper"] {
+	.vocab {
+		border-color: lighten($green, $lighter-amt);
+		&.clickable {
+			&:hover, &:focus {
+				color: lighten($green, $lighter-amt);
+			}
+		}
+	}
+	.factoid .vocab {
+		color: lighten($green, $lighter-amt);
+	}
+	.chyron-inner {
+		border-color: $green-dark;
+	}
+}
+.stream[data-slug="landfill"] {
+	.vocab {
+		border-color: lighten($pink, $lighter-amt);
+		&.clickable {
+			&:hover, &:focus {
+				color: lighten($pink, $lighter-amt);
+			}
+		}
+	}
+	.factoid .vocab {
+		color: lighten($pink, $lighter-amt);
+	}
+	.chyron-inner {
+		border-color: $pink-dark;
+	}
+}
 ////////////////////////////////////
 ///////////// FACTOIDS /////////////
 ////////////////////////////////////
@@ -495,6 +530,11 @@ $lighter-amt: 10%;
 	flex-direction: column;
 	justify-content: center;
 	outline: none;
+	transition: opacity 300ms ease-in-out;
+	.alerts & {
+		opacity: 0;
+		pointer-events: none;
+	}
 	@include md-width {
 		display: none;
 	}
@@ -531,7 +571,6 @@ $lighter-amt: 10%;
 		top: 0;
 		border-radius: 60px 0 0 60px;
 		background-color: $darken;
-		// box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
 		overflow: hidden;
 		transition: width 300ms ease-in-out;
 	}
@@ -572,7 +611,6 @@ $lighter-amt: 10%;
 	border-radius: 0 0 0 20px;
 	position: relative;
 	user-select: text;
-	// transition: box-shadow 300ms ease-in-out;
 	.vocab {
 		text-transform: capitalize;
 		&::after {
@@ -583,8 +621,5 @@ $lighter-amt: 10%;
 	p {
 		@include lg-text;
 		margin: 5px 0 0 0;
-	}
-	.factoid.open & {
-		// box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
 	}
 }

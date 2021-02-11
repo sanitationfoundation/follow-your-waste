@@ -1,11 +1,10 @@
 import "./src/sass/style.scss";
 import lottie from "lottie-web";
 import $ from "jquery";
-import { gsap, Draggable, CSSPlugin } from "gsap/all";
+import Draggabilly from "draggabilly";
 import Packery from "packery";
 
 export const onInitialClientRender = () => {
-	gsap.registerPlugin(Draggable, CSSPlugin);
 
 	window.onload = () => {
 		const body = document.querySelector("body"),
@@ -22,9 +21,23 @@ export const onInitialClientRender = () => {
 					selectMenuBttns = document.querySelectorAll("#menu-select button"),
 					streamsView = document.querySelector("#streams-view"),
 					streamElems = document.querySelectorAll(".stream"),
+					alertsView = document.querySelector("#alerts-view"),
 					itemsArr = [],
 					scenesArr = [],
-					streamsArr = [];
+					streamsArr = [],
+					fadeInDur = {
+						voice: 50,
+						environ: 1000
+					},
+					fadeOutDur = {
+						voice: 500,
+						environ: 1000
+					},
+					volMax = {
+						voice: 1,
+						environ: .75
+					},
+					packeryDur = 300;
 
 		let itemsWrapPackery, currStreamObj, currSceneObj, streamIntrod;
 
@@ -45,12 +58,7 @@ export const onInitialClientRender = () => {
 				}
 			});
 			if(body.id === "select" && itemsWrap.classList.contains("setup")) {
-				// itemsWrap.classList.add("static");
 				itemsWrapPackery.layout();
-				setTimeout(() => {
-					// itemsWrap.classList.remove("static");
-					afterLayout();
-				}, 100);
 			}
 		};
 
@@ -118,21 +126,6 @@ export const onInitialClientRender = () => {
 			}
 		};
 
-		const fadeInDur = {
-			voice: 50,
-			environ: 1000
-		}
-
-		const fadeOutDur = {
-			voice: 500,
-			environ: 1000
-		}
-
-		const volMax = {
-			voice: 1,
-			environ: .75
-		}
-
 		const playAudio = (elem) => {
 			if(body.classList.contains("mute")) return;
 			const type = elem.dataset.type;
@@ -174,12 +167,10 @@ export const onInitialClientRender = () => {
 			});
 		};
 
-
-
-		const isMobile = () => {
-			const styles = window.getComputedStyle(body);
-			return [`"sm"`,`"md"`].includes(styles.content);
-		}
+		// const isMobile = () => {
+		// 	const styles = window.getComputedStyle(body);
+		// 	return [`"sm"`,`"md"`].includes(styles.content);
+		// }
 
 		const isIframe = (e) => {
 			try {
@@ -270,27 +261,18 @@ export const onInitialClientRender = () => {
 			if(!itemsWrap.classList.contains("setup")) {
 				itemsWrapPackery = new Packery(itemsWrap, {
 					itemSelector: ".item",
-					gutter: 20,
-					transitionDuration: 0,
+					gutter: 10,
+					transitionDuration: packeryDur,
 					initLayout: false,
-					resize: false,
+					resize: true,
+					stamp: "#stamp"
 				});
-				itemsWrapPackery.on('layoutComplete', afterLayout);
 				itemsWrapPackery.layout();
 				itemsWrap.classList.add("setup");
 			} else {
 				itemsWrapPackery.layout();
 			}
 		};
-
-		const afterLayout = () => {
-			itemElems.forEach( (itemElem) => {
-				gsap.set(itemElem, {
-					x: 0,
-					y: 0
-				});
-			});
-		}
 
 		const showView = (viewSlug) => {
 			const nextViewElem = document.querySelector(`#${viewSlug}-view`),
@@ -322,7 +304,7 @@ export const onInitialClientRender = () => {
 				okayBttnElem.onclick = (e) => {
 					closeAlert();
 					if(onOkay) {
-						onOkay(e);
+						onOkay();
 					}
 				};
 			}
@@ -335,6 +317,17 @@ export const onInitialClientRender = () => {
 					}
 				};
 			}
+
+			alertsView.onclick = (e) => {
+				if(!e.target.classList.contains("view-inner")) return;
+				closeAlert();
+				if(okayBttnElem && !cancelBttnElem && onOkay) {
+					onOkay();
+				}
+				if(cancelBttnElem && onCancel) {
+					onCancel();
+				}
+			};
 			
 			var menuElem = alertElem.querySelector(`[role="menu"]`);
 			if(menuElem) {
@@ -363,13 +356,21 @@ export const onInitialClientRender = () => {
 				this.tooltip = elem.querySelector(".tooltip");
 				this.bin = null;
 
-				this.draggable = Draggable.create(elem, {
-					bounds: window,
-					onPressInit: this.onPressInit.bind(this),
-					onDragStart: this.onDragStart.bind(this),
-					onDrag: this.onDrag.bind(this),
-					onDragEnd: this.onDragEnd.bind(this)
-				})[0];
+				this.draggie = new Draggabilly(this.elem, {
+					
+				});
+
+				this.draggie.on("dragStart", this.onDragStart.bind(this));
+				this.draggie.on("dragMove", this.onDrag.bind(this));
+				this.draggie.on("dragEnd", this.onDragEnd.bind(this));
+
+				// this.draggable = Draggable.create(elem, {
+				// 	bounds: window,
+				// 	onPressInit: this.onPressInit.bind(this),
+				// 	onDragStart: this.onDragStart.bind(this),
+				// 	onDrag: this.onDrag.bind(this),
+				// 	onDragEnd: this.onDragEnd.bind(this)
+				// })[0];
 
 				elem.onmouseover = () => {
 					elem.classList.add("hovering");
@@ -381,19 +382,19 @@ export const onInitialClientRender = () => {
 				};
 			}
 
-			onPressInit() {
-				const itemElem = this.elem,
-							currX = gsap.getProperty(itemElem, "x"),
-							currY  = gsap.getProperty(itemElem, "y"),
-							newX = currX + parseInt(itemElem.style.left),
-							newY = currY + parseInt(itemElem.style.top);
-				gsap.set(itemElem, {
-					x: newX,
-					y: newY
-				});
-				itemElem.style.left = 0;
-				itemElem.style.top = 0;
-			}
+			// onPressInit() {
+			// 	const itemElem = this.elem,
+			// 				currX = gsap.getProperty(itemElem, "x"),
+			// 				currY  = gsap.getProperty(itemElem, "y"),
+			// 				newX = currX + parseInt(itemElem.style.left),
+			// 				newY = currY + parseInt(itemElem.style.top);
+			// 	gsap.set(itemElem, {
+			// 		x: newX,
+			// 		y: newY
+			// 	});
+			// 	itemElem.style.left = 0;
+			// 	itemElem.style.top = 0;
+			// }
 
 
 			onDragStart(e) {
@@ -401,56 +402,45 @@ export const onInitialClientRender = () => {
 			}
 
 			onDrag(e) {
-				const self = this,
-							itemElem = this.elem;
+				const itemElem = this.elem,
+							itemBounds = itemElem.getBoundingClientRect();
 				this.fixTooltip();
-				binElems.forEach( (binElem) => {
-					const isOver = Draggable.hitTest(itemElem, binElem, 50);
-					if(isOver) {
-						self.hoverBin(binElem);
-					} else {
-						self.unhoverBin(binElem);
+
+				let binSlug;
+				binElems.forEach((binElem) => {
+					const binBounds = binElem.getBoundingClientRect();
+					if(this.isOver(itemBounds, binBounds)) {
+						binSlug = binElem.dataset.bin
 					}
 				});
+
+				if(binSlug) {
+					selectView.dataset.bin = binSlug;
+				} else {
+					delete selectView.dataset.bin;
+				}
+
 				this.fixTooltip();
 			}
 
 			onDragEnd(e) {
-				const self = this,
-							itemElem = this.elem;
-				this.bin = null;
-				binElems.forEach( (binElem) => {
-					const isOver = Draggable.hitTest(itemElem, binElem, 50);
-					if(isOver) {
-						self.bin = binElem.dataset.bin;
+				if(selectView.hasAttribute("data-bin")) {
+					this.bin = selectView.dataset.bin;
+					if(this.bin) {
+						this.dropInBin();
 					}
-				});
+				} 
 
-				if(this.bin) {
-					this.dropInBin();
-				}
-
-				itemElem.classList.remove("hovering");
+				this.elem.classList.remove("hovering");
 				body.classList.remove("dragging");
 				this.fixTooltip();
 			}
 
-			hoverBin(binElem) {
-				const itemElem = this.elem,
-							binSlug = binElem.dataset.bin,
-							binBackElem = body.querySelector(`#${binSlug}-back`);
-				binElem.classList.add("open");
-				binBackElem.classList.add("open");
-				itemElem.classList.add("opening");
-			}
-
-			unhoverBin(binElem) {
-				const itemElem = this.elem,
-							binSlug = binElem.dataset.bin,
-							binBackElem = body.querySelector(`#${binSlug}-back`);
-				binElem.classList.remove("open");
-				binBackElem.classList.remove("open");
-				itemElem.classList.remove("opening");
+			isOver(itemBounds, binBounds) {
+				return itemBounds.x < binBounds.x + binBounds.width &&
+							 itemBounds.x + itemBounds.width > binBounds.x &&
+							 itemBounds.y < binBounds.y + binBounds.height &&
+							 itemBounds.y + itemBounds.height > binBounds.y;
 			}
 
 			dropInBin() {
@@ -461,104 +451,91 @@ export const onInitialClientRender = () => {
 							binSlug = this.bin,
 							binElem = body.querySelector(`#${binSlug}-bin .bin-front`),
 							binBounds = binElem.getBoundingClientRect(),
-							binStreamArr = binSlug.split("-"),
-							timeline = gsap.timeline(),
 							newItemLeft =
 								binBounds.left
 								+ ( binBounds.width/2 )
 								- ( itemBounds.width/2 )
 								- itemsWrapBounds.left,
+							newItemTop = window.innerHeight,
 							itemStreamSlug = itemElem.dataset.stream;
 
-				binElem.classList.add("open");
 				itemElem.classList.add("dropping");
 				itemElem.classList.remove("opening");
-				timeline
-					.to(itemElem, {
-						x: newItemLeft,
-						duration: .25
-					})
-					.to(itemElem, {
-						y: window.innerHeight,
-						duration: .75
-					});
 
-				if(binStreamArr.includes(itemStreamSlug)) {
+				$(itemElem).animate({
+					left: `${newItemLeft}px`
+				}, 300).animate({
+					top: `${newItemTop}px`
+				}, 500);
+
+				if(binSlug === itemStreamSlug
+					|| (binSlug === "mgp"
+					&& ["metal", "glass", "plastic"].includes(itemStreamSlug))) {
 					const streamObj = streams[itemStreamSlug];
 					showAlert("correct-bin",
 						() => {
 							const itemImg = itemElem.querySelector("img");
 							selectedItem.src = itemImg.src;
 							streamObj.introStreams();
-							self.liftFromBin(timeline, true);
+							self.liftFromBin(() => {
+								self.resetItem();
+							});
 						},
 						() => {
-							self.liftFromBin(timeline, true);
+							self.liftFromBin(() => {
+								self.resetItem();
+							});
 						}
 					);
+
 				} else {
-					self.liftFromBin(timeline);
-					if(itemStreamSlug === "landfill") {
-						showAlert("not-recycle", function () {
-							timeline.call(() => {
-								self.refreshItems();
+					self.liftFromBin(() => {
+						if(itemStreamSlug === "landfill") {
+							showAlert("not-recycle", () => {
+								self.resetItem();
 							});
-						});
-					} else if(!binStreamArr.includes("landfill")) {
-						showAlert("wrong-recycle", function () {
-							timeline.call(() => {
-								self.refreshItems();
+						} else if(!binSlug !== "landfill") {
+							showAlert("wrong-recycle", () => {
+								self.resetItem();
 							});
-						});
-					} else {
-						showAlert("not-trash", function () {
-							timeline.call(() => {
-								self.refreshItems();
+						} else {
+							showAlert("not-trash", () => {
+								self.resetItem();
 							});
-						});
-					}
+						}
+					});
 				}
 			}
 
-			liftFromBin(timeline, refresh) {
-				const self = this,
-							itemElem = this.elem,
+			liftFromBin(callback) {
+				const itemElem = this.elem,
 							itemBounds = itemElem.getBoundingClientRect(),
 							binSlug = this.bin,
 							binElem = body.querySelector(`#${binSlug}-bin`),
 							binBounds = binElem.getBoundingClientRect(),
 							newItemTop =
 								window.innerHeight
-								- parseInt(itemElem.style.top)
 								- binBounds.height
 								- itemBounds.height;
 
-				itemElem.classList.remove("dropping");
-				itemElem.classList.add("returning");
-
-				timeline.to(itemElem, {
-					y: newItemTop,
-					duration: .25,
-					onComplete: () => {
-						if(refresh) {
-							self.refreshItems();
-						}
+				$(itemElem).animate({
+					top: `${newItemTop}px`,
+				}, 500, () => {
+					delete selectView.dataset.bin;
+					itemElem.classList.remove("dropping");
+					if(callback) {
+						callback();
 					}
 				});
 			}
 
-			refreshItems() {
-				const itemElem = this.elem,
-							binSlug = this.bin,
-							binElem  = body.querySelector(`#${binSlug}-bin`),
-							binBackElem = body.querySelector(`#${binSlug}-back`);
-				binBackElem.classList.remove("open");
-				binElem.classList.remove("open");
-				itemElem.classList.remove("dropping");
-				itemElem.classList.remove("returning");
+			resetItem() {
+				const itemElem = this.elem;
 
-				itemsWrap.classList.remove("static");
+				itemElem.classList.add("returning");
+
 				itemsWrapPackery.layout();
+				itemElem.classList.remove("returning");
 
 				this.bin = null;
 			}
@@ -675,9 +652,12 @@ export const onInitialClientRender = () => {
 				Promise.all(svgReqs).then((responses) => {
 					introBttn.setAttribute("aria-disabled", false);
 					introBttn.onclick = () => {
-						showView("select");
+						introView.classList.remove("show");
+						body.id = "";
 						handleSelect();
-						showAlert("select-intro");
+						showAlert("select-intro", () => {
+							showView("select");
+						});
 					};
 					introView.classList.remove("loading");
 				});
@@ -848,6 +828,7 @@ export const onInitialClientRender = () => {
 
 		class Scene {
 			constructor(sceneElem, streamObj) {
+				const self = this;
 				this.elem = sceneElem;
 				this.slug = sceneElem.dataset.scene;
 				this.stream = streamObj;
@@ -866,22 +847,34 @@ export const onInitialClientRender = () => {
 				
 				this.factoids = sceneElem.querySelectorAll(".factoid");
 
+				this.svgWrap = sceneElem.querySelector(".svg-wrap");
+
 				if(sceneElem.dataset.animated === "true") {
 					this.getAnimation();
 				} else {
 					this.getSvg();
 				}
+
+				this.svgWrap.onclick = (e) => {
+					self.factoids.forEach((factoid, i) => {
+						setTimeout(() => {
+							factoid.classList.remove("open");
+						}, i * 100);
+					});
+				};
+
 			}
 
 			getAnimation() {
 				const looped = this.elem.dataset.looped === "true";
 				const animation = lottie.loadAnimation({
-					container: this.elem.querySelector(".svg-wrap"),
+					container: this.svgWrap,
 					renderer: "svg",
 					loop: looped,
 					autoplay: false,
 					path: this.elem.dataset.src
 				});
+
 				this.animation = animation;
 				this.setUpScene();
 			}
@@ -899,9 +892,8 @@ export const onInitialClientRender = () => {
 					})
 					.then((svg) => {
 						self.elem.classList.add("setup");
-						const sceneSvgWrap = self.elem.querySelector(".svg-wrap");
-						if(!sceneSvgWrap) return;
-						sceneSvgWrap.insertAdjacentHTML("afterbegin", svg);
+						if(!self.svgWrap) return;
+						self.svgWrap.insertAdjacentHTML("afterbegin", svg);
 						self.setUpScene(self.elem);
 						return svg;
 					});

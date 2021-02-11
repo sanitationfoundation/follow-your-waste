@@ -3,16 +3,18 @@ import { withPrefix } from "gatsby";
 
 export default function Select({ text, data }) {
 	
-	const streams = ["landfill", "metal", "glass", "paper", "plastic"];
+	const streams = ["landfill", "metal", "glass", "paper", "plastic"],
+				bins = ["paper", "mgp", "landfill"];
 
 	return (
 		<div id="select-view" className="view" aria-hidden="true">
 			<div className="view-inner">
 
 				<div id="items-wrap" className="static mobile-hidden">
-					<div id="stamp">
+					<div id="message-select-persist">
 						{text.system.select_top}
 					</div>
+					<div id="stamp"></div>
 					{data.items.map((item, i) => {
 						const itemText = text.items[i];
 						return (
@@ -38,78 +40,42 @@ export default function Select({ text, data }) {
 				</div>
 
 				<div id="bins" className="bins-wrap mobile-hidden">
-					<div
-						className="bin"
-						id="paper-bin"
-						data-bin="paper"
-						data-title={text.system.paper}>
-						<img
-							className="bin-front"
-							src={withPrefix("images/bin-paper-front.png")}
-							alt="" />
-						<img
-							className="bin-lid"
-							src={withPrefix("images/bin-paper-lid.png")}
-							alt="" />
-					</div>
-					<div
-						className="bin"
-						id="metal-glass-plastic-bin"
-						data-bin="metal-glass-plastic"
-						data-title={text.system.mgp}>
-						<img
-							className="bin-front"
-							src={withPrefix("images/bin-mgp-front.png")}
-							alt="" />
-						<img
-							className="bin-lid"
-							src={withPrefix("images/bin-mgp-lid.png")}
-							alt="" />
-					</div>
-					<div
-						className="bin"
-						id="landfill-bin"
-						data-bin="landfill"
-						data-title={text.system.landfill}>
-						<img
-							className="bin-front"
-							src={withPrefix("images/bin-landfill-front.png")}
-							alt="" />
-						<img
-							className="bin-lid"
-							src={withPrefix("images/bin-landfill-lid.png")}
-							alt="" />
-					</div>
+					{bins.map((binSlug, i) => {
+						return(
+							<div
+								className={`bin ${binSlug}`}
+								id={`${binSlug}-bin`}
+								data-bin={binSlug}
+								data-title={text.system.[binSlug]}
+								key={i}>
+								<img
+									className="bin-front"
+									src={withPrefix(`images/bin-${binSlug}-front.png`)}
+									alt="" />
+								<img
+									className="bin-lid"
+									src={withPrefix(`images/bin-${binSlug}-lid.png`)}
+									alt="" />
+							</div>
+						)
+					})}
 				</div>
 
 				<div id="bin-backs" className="bins-wrap mobile-hidden">
-					<div
-						className="bin"
-						id="paper-back"
-						data-bin="paper">
-						<img
-							className="bin-back"
-							src={withPrefix("images/bin-paper-back.png")}
-							alt="" />
-					</div>
-					<div
-						className="bin"
-						id="metal-glass-plastic-back"
-						data-bin="metal-glass-plastic">
-						<img
-							className="bin-back"
-							src={withPrefix("images/bin-mgp-back.png")}
-							alt="" />
-					</div>
-					<div
-						className="bin"
-						id="landfill-back"
-						data-bin="landfill">
-						<img
-							className="bin-back"
-							src={withPrefix("images/bin-landfill-back.png")}
-							alt="" />
-					</div>
+					{bins.map((binSlug, i) => {
+						return(
+							<div
+								className={`bin ${binSlug}`}
+								id={`${binSlug}-back`}
+								data-bin={binSlug}
+								key={i}>
+								<img
+									className="bin-back"
+									src={withPrefix(`images/bin-${binSlug}-back.png`)}
+									alt="" />
+							</div>
+						)
+					})}
 				</div>
 
 				<div

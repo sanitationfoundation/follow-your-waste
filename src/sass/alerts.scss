@@ -14,7 +14,6 @@
 	}
 }
 .alert {
-	width: 600px;
 	padding: 30px 40px;
 	margin: auto;
 	background-color: $darken;
@@ -25,16 +24,16 @@
   justify-content: center;
 	position: relative;
 	transition: opacity 500ms ease-in;
+	.message, .alert-buttons {
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+	}
 	&.big {
 		width: 100%;
 		height: 100%;
 		background-color: $orange;
 		border-radius: 0;
-		.message, .alert-buttons {
-			width: 100%;
-			max-width: 900px;
-			margin: 0 auto;
-		}
 	}
 	&:not(.show) {
 		@include hide;
@@ -47,6 +46,8 @@
 	@include sm-width {
 		width: 100%;
 		height: 100%;
+		padding: 10px;
+		display: block;
 		border-radius: 0;
 		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
@@ -85,12 +86,15 @@ button {
 }
 
 #message-select-intro {
-	text-align: center;
+
 }
 
 #message-streams-intro {
 	width: 100%;
 	max-width: 700px;
+	body#streams & .alert-buttons {
+		display: none;
+	}
 }
 
 .row {
@@ -102,9 +106,10 @@ button {
 	width: 50%;
 	padding: 0 30px;
 	position: relative;
-	@include md-width {
+	@include sm-width {
 		width: 100%;
 		margin: 15px 0;
+		padding: 0;
 		text-align: center;
 	}
 }
@@ -113,12 +118,16 @@ button {
 	.col {
 		display: flex;
 	  justify-content: flex-end;
+	  @include sm-width {
+	  	justify-content: center;
+	  }
 	}
 	.progress {
 		margin: auto;
     position: relative;
     top: unset;
     left: unset;
+    opacity: 1;
 	}
 	.factoid-tab {
 		position: relative;
@@ -153,15 +162,24 @@ button {
 	[role="menu"] {
 		text-align: center;
 	}
+	h2, h3, a {
+		text-transform: lowercase;
+	}
 	a {
 		display: block;
-		text-transform: lowercase;
 		text-decoration: none;
 	}
 }
 #message-streams-end {
-	display: block;
+	max-width: 900px;
+	.col:first-child {
+		display: flex;
+	}
+	.alert-buttons {
+		display: block;
+	}
 	.button {
+		width: 260px;
 		margin: 20px 0 0 0;
 	}
 }
@@ -171,4 +189,11 @@ button {
 	max-height: 300px;
 	display: block;
 	margin: auto;
+}
+#menu-resources {
+	display: table;
+	margin: auto;
+}
+#message-menu-resources {
+	margin: 15px 0;
 }
