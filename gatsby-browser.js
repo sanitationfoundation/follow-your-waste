@@ -653,7 +653,7 @@ export const onInitialClientRender = () => {
 					introBttn.setAttribute("aria-disabled", false);
 					introBttn.onclick = () => {
 						introView.classList.remove("show");
-						body.id = "";
+						body.id = "select-intro";
 						handleSelect();
 						showAlert("select-intro", () => {
 							showView("select");

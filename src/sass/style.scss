@@ -232,7 +232,7 @@ header#header {
 	overflow-y: hidden;
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity 500ms ease-in, background 500ms ease-in;
+	transition: opacity 200ms ease-in, background 200ms ease-in;
 	&.show,
 	body.alerts &#alerts-view {
 		opacity: 1;
@@ -395,8 +395,8 @@ header#header {
 	border-radius: 5px;
 	margin: 60px auto 0 auto;
 	transition: opacity 100ms ease-in-out;
-	// opacity: 0;
-	// pointer-events: none;
+	opacity: 0;
+	pointer-events: none;
 	body.loaded & {
 		opacity: 1;
 		pointer-events: all;
