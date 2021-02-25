@@ -48,19 +48,12 @@ export default ({ pageContext }) => {
 				title={text.system.title}
 				bodyAttributes={{
 					id: "intro",
-					class: "",
+					class: "loading",
 				}}
 				meta={[
 					{
 						name: text.system.title,
 						content: text.system.tagline
-					}
-				]}
-				link={[
-					{
-						"rel": "icon", 
-						"type": "image/png", 
-						"href": "../static/images/icon.png"
 					}
 				]}>
 			</Helmet>
@@ -73,27 +66,6 @@ export default ({ pageContext }) => {
 				<Streams text={text} data={data} />
 				<Alerts text={text} />
 			</main>
-
-			<button
-				className="tool-button"
-				id="help-toggle"
-				tabIndex={0}
-				aria-pressed={false}
-				aria-hidden={true}>
-			</button>
-
-			<label
-				htmlFor="full-toggle"
-				className="screen-hidden">
-				{text.system.aria_full_screen}
-			</label>
-			<button
-				className="tool-button"
-				id="full-toggle"
-				tabIndex={0}
-				aria-pressed={false}
-				aria-hidden={true}>
-			</button>
 
 		</div>
 	);

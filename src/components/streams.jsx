@@ -1,14 +1,36 @@
 import React from "react";
 import { withPrefix } from "gatsby";
 
-const streams = ["landfill", "metal", "glass", "paper", "plastic"],
+const bins = ["landfill", "mgp", "paper"],
+			streams = ["landfill", "metal", "glass", "paper", "plastic"],
 			environs = ["traffic", "facility", "water"];
 
 export default function Streams({ text, data }) {
 	return (
 		<div id="streams-view" className="view" aria-hidden="true">
 			<div className="view-inner">
-				{streams.map((stream, i) => {
+
+				<div
+					role="menu"
+					id="return-menu"
+					className="mobile-hidden"
+					aria-label={"Select a new item"}>
+					<div
+						role="button"
+						id="return-button">
+						{ bins.map((binSlug, i) => {
+							return(
+								<div data-stream={binSlug} key={i}>
+									<img
+										src={withPrefix(`images/bin-${binSlug}-full.png`)}
+										alt="" />
+								</div>
+							)
+						}) }
+					</div>
+				 </div>
+
+				{ streams.map((stream, i) => {
 					const streamText = text[stream],
 								streamData = data[stream];
 					return (
@@ -23,12 +45,6 @@ export default function Streams({ text, data }) {
 								className="progress"
 								aria-label={text.system.aria_progress_menu}>
 								<div className="ticks-wrap">
-									<button
-										className="arrow"
-										tabIndex={0}
-										aria-label={text.system.aria_prev}
-										data-dir="prev">
-									</button>
 									{streamData.map((sceneData, j) => {
 										const sceneText = streamText[j];
 										return (
@@ -45,13 +61,6 @@ export default function Streams({ text, data }) {
 											</div>
 										);
 									})}
-
-									<button
-										className="arrow"
-										tabIndex={0}
-										aria-label={text.system.aria_next}
-										data-dir="next">
-									</button>
 								</div>
 							</div>
 							
@@ -66,9 +75,8 @@ export default function Streams({ text, data }) {
 									}
 									return (
 										<div
-											className="scene"
+											className={`scene ${sceneData.color}`}
 											data-scene={sceneData.slug}
-											data-color={sceneData.color}
 											data-animated={sceneData.animated}
 											data-looped={sceneData.looped}
 											data-environ={sceneData.environment}
@@ -112,6 +120,7 @@ export default function Streams({ text, data }) {
 								})}
 								
 							</div>
+
 							<div className="chyron-wrap-wrap">
 								<div className="chyron-wrap">
 									<div className="chyron">
@@ -153,7 +162,8 @@ export default function Streams({ text, data }) {
 												})}
 											</div>
 
-											<div role="menu"
+											<div
+												role="menu"
 												className="audio-buttons"
 												aria-label={text.system.aria_audio_menu}>
 												<button
@@ -171,14 +181,32 @@ export default function Streams({ text, data }) {
 											
 										</div>
 									</div>
+
+									<div role="menu"
+										className="arrows-menu"
+										aria-label="">
+										<button
+											className="arrow"
+											tabIndex={0}
+											aria-label={text.system.aria_prev}
+											data-dir="prev">
+										</button>
+										<button
+											className="arrow"
+											tabIndex={0}
+											aria-label={text.system.aria_next}
+											data-dir="next">
+										</button>
+									</div>
+
 								</div>
 							</div>
 						</div>
 					);
-				})}
+				}) }
 			</div>
 
-			{environs.map((environ, i) => {
+			{ environs.map((environ, i) => {
 				return (
 					<audio
 						data-type="environ"
@@ -192,7 +220,7 @@ export default function Streams({ text, data }) {
 							type="audio/wav" />
 					</audio>
 				);
-			})}
+			}) }
 
 		</div>
 	);

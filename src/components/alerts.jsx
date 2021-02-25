@@ -137,11 +137,10 @@ export default function Alerts({ text }) {
 								<div className="col">
 									<div className="progress">
 										<div className="ticks-wrap">
-											<div className="arrow" data-dir="prev"></div>
 											<div className="tick"></div>
 											<div className="tick"></div>
 											<div className="tick"></div>
-											<div className="arrow" data-dir="next"></div>
+											<div className="tick"></div>
 										</div>
 									</div>
 								</div>
@@ -161,6 +160,17 @@ export default function Alerts({ text }) {
 
 							<div className="row">
 								<div className="col">
+									<div className="arrow" data-dir="prev"></div>
+									<div className="arrow" data-dir="next"></div>
+								</div>
+								<div className="col">
+									{text.system.help_progress}
+								</div>
+							</div>
+
+
+							<div className="row">
+								<div className="col">
 									<div className="help-audio-buttons">
 										<div className="audio-button volume"></div>
 										<div className="audio-button playback"></div>
@@ -174,7 +184,6 @@ export default function Alerts({ text }) {
 									{text.system.help_audio}
 								</div>
 							</div>
-
 
 						</div>
 
@@ -203,8 +212,12 @@ export default function Alerts({ text }) {
 								<img id="selected-item" alt="" />
 							</div>
 							<div className="col">
-								<h2>{text.system.final_title}</h2>
-								{text.system.final_statement}
+								<h2>
+									{text.system.final_title}
+								</h2>
+								<p>
+									{text.system.final_statement}
+								</p>
 								<div
 									role="menu"
 									className="alert-buttons"

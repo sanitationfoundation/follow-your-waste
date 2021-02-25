@@ -6,44 +6,44 @@ $lg-width: 1020px;
 $xl-width: 1440px;
 
 @mixin sm-width {
-  @media (max-width: $sm-width) {
-    @content;
-  }
+	@media (max-width: $sm-width) {
+		@content;
+	}
 }
 
 @mixin md-width {
-  @media (max-width: $md-width) {
-    @content;
-  }
+	@media (max-width: $md-width) {
+		@content;
+	}
 }
 
 @mixin lg-width {
-  @media (max-width: $lg-width) {
-    @content;
-  }
+	@media (max-width: $lg-width) {
+		@content;
+	}
 }
 
 @mixin xl-width {
-  @media (max-width: $xl-width) {
-    @content;
-  }
+	@media (max-width: $xl-width) {
+		@content;
+	}
 }
 
 $sm-height: 710px;
 
 @mixin sm-height {
-  @media (max-height: $sm-height) {
-    @content;
-  }
+	@media (max-height: $sm-height) {
+		@content;
+	}
 }
 
 @mixin hide {
-  position: absolute !important;
-  left: -999999px !important;
+	position: absolute !important;
+	left: -999999px !important;
 }
 @mixin show {
-  position: static !important;
-  left: unset !important;
+	position: static !important;
+	left: unset !important;
 }
 
 $blue: #043fab;
@@ -67,60 +67,64 @@ $red-dark: #861c11;
 $black: #000;
 $darken: rgba(#2e2e2e, 0.9);
 
-[data-color="blue"] {
-  background-color: $blue;
+.blue {
+	background-color: $blue;
 }
-[data-color="teal"] {
-  background-color: $teal;
+.teal {
+	background-color: $teal;
 }
-[data-color="yellow"] {
-  background-color: $yellow;
+.yellow {
+	background-color: $yellow;
 }
-[data-color="orange"] {
-  background-color: $orange;
+.orange {
+	background-color: $orange;
 }
-[data-color="pink"] {
-  background-color: $pink;
+.pink {
+	background-color: $pink;
 }
-[data-color="black"] {
-  background-color: $black;
+.black {
+	background-color: $black;
 }
-[data-color="green"] {
-  background-color: $green;
+.green {
+	background-color: $green;
 }
-[data-color="lime"] {
-  background-color: $lime;
+.lime {
+	background-color: $lime;
 }
-[data-color="forest"] {
-  background-color: $forest;
+.forest {
+	background-color: $forest;
+}
+
+@mixin base-text {
+	font-size: 18px;
+	line-height: 1.3rem;
+	@include sm-width {
+		font-size: 14px;
+		line-height: 1.5rem;
+	}
 }
 
 @mixin xs-text {
-  font-size: 12.8px;
-  line-height: 16px;
+	font-size: .7rem;
+	line-height: 1em;
 }
 
 @mixin sm-text {
-  font-size: 16px;
-  line-height: 22px;
+	font-size: .85rem;
+	line-height: 1.3em;
 }
 
 @mixin md-text {
-  font-size: 20px;
-  line-height: 22px;
+	font-size: 1rem;
+	line-height: 1.2em;
 }
 
 @mixin lg-text {
-  font-size: 25px;
-  line-height: 30px;
+	font-size: 1.3rem;
+	line-height: 1.2em;
 }
 
 @mixin xl-text {
-  font-size: 50px;
-  line-height: 55px;
-}
-
-@mixin xxl-text {
-  font-size: 150px;
-  line-height: 160px;
+	font-size: 2rem;
+	line-height: 1.2em;
 }

@@ -6,7 +6,7 @@
     },
     {
       "slug": "broken-glass",
-      "stream": "glass"
+      "stream": "landfill"
     },
     {
       "slug": "cardboard",
@@ -71,7 +71,7 @@
       "color": "teal",
       "orientation": "height",
       "animated": "true",
-      "looped": "false",
+      "looped": "true",
       "environment": "traffic"
     },
     {
@@ -86,8 +86,8 @@
       "slug": "tipping-landfill",
       "color": "orange",
       "orientation": "height",
-      "animated": "false",
-      "looped": "false",
+      "animated": "true",
+      "looped": "true",
       "environment": "facility"
     },
     {
@@ -95,7 +95,7 @@
       "color": "lime",
       "orientation": "width",
       "animated": "true",
-      "looped": "false",
+      "looped": "true",
       "environment": "facility"
     },
     {
@@ -142,10 +142,10 @@
     },
     {
       "slug": "curbside-paper",
-      "color": "black",
+      "color": "teal",
       "orientation": "height",
       "animated": "true",
-      "looped": "false",
+      "looped": "true",
       "environment": "traffic"
     },
     {
@@ -168,8 +168,8 @@
       "slug": "tipping-paper",
       "color": "orange",
       "orientation": "height",
-      "animated": "false",
-      "looped": "false",
+      "animated": "true",
+      "looped": "true",
       "environment": "facility"
     },
     {
@@ -222,7 +222,7 @@
     },
     {
       "slug": "corrugator",
-      "color": "yellow",
+      "color": "lime",
       "orientation": "width",
       "animated": "false",
       "looped": "false",
@@ -371,7 +371,7 @@
     {
       "slug": "curbside-glass",
       "color": "forest",
-      "orientation": "width",
+      "orientation": "height",
       "animated": "true",
       "looped": "true",
       "environment": "traffic"
@@ -492,7 +492,7 @@
     },
     {
       "slug": "end-plastic",
-      "color": "black",
+      "color": "blue",
       "orientation": "width",
       "animated": "false",
       "looped": "false",

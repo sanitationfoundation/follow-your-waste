@@ -1,6 +1,6 @@
 {
   "name": "follow-your-waste",
-  "version": "0.5.4",
+  "version": "0.6.0",
   "description": "",
   "author": "",
   "license": "ISC",
@@ -10,10 +10,11 @@
   },
   "scripts": {
     "develop": "gatsby develop",
+    "develop-mobile": "gatsby develop -H 0.0.0.0 -p 8000",
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -b gh-pages",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve -p 9001",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },

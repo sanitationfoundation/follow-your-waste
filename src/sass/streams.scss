@@ -21,43 +21,71 @@
 		display: none;
 	}
 }
-.progress {
-	width: 80%;
-	background-color: rgba(255, 255, 255, 0.25);
+
+#return-menu {
+	width: 80px;
+	height: 70px;
 	position: absolute;
-	left: 10%;
-	top: 60px;
-	z-index: 50;
-	transition: all 300ms ease-in-out;
-	.stream & {
-		transform: translateY(-100px);	
+	left: 15px;
+	top: 30px;
+	z-index: 60;
+}
+#return-button {
+	width: 80px;
+	height: 70px;
+	cursor: pointer;
+	div {
+		position: absolute;
+		left: 15px;
+		top: 0;
+		transition: transform 300ms ease-in-out;
 	}
-	body:not(.alerts) .stream.show & {
-		transform: none;
+	img {
+		width: 50px;
+		height: auto;
+		display: block;
 	}
-	@include md-width {
-		#streams-view & {
-			width: 100%;
-			height: 100%;
-			left: 0;
-			top: 0;
-			background-color: transparent;
+	&:hover {
+		div:nth-child(1) {
+			transform: translate3d(-20px, -5px, 0) rotate(-30deg);
+		}
+		div:nth-child(2) {
+			transform: translate3d(20px, -5px, 0) rotate(30deg);
+		}
+		div:nth-child(3) {
+			transform: translateY(-5px);
 		}
 	}
-	@include sm-width {
-		display: none;
+}
+
+.progress {
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.25);
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 50;
+	transition: opacity 300ms ease-in-out,
+							transform 300ms ease-in-out;
+	body.alerts .stream &,
+	.stream:not(.show) & {
+		transform: translateY(-100px);
+		@include md-width {
+			transform: none;
+		}
 	}
 }
 .ticks-wrap {
+	width: calc(100% - 200px);
 	height: 16px;
-	// padding: 0 20px;
+	margin: auto;
 	display: flex;
 	justify-content: space-evenly;
 	@include md-width {
-		#streams-view & {
-			width: 100%;
-			height: 100%;
-		}
+		width: 100%;
+	}
+	@include sm-width {
+		height: 8px;
 	}
 }
 .tick {
@@ -80,9 +108,7 @@
 		white-space: nowrap;
 		pointer-events: none;
 		transition: opacity 300ms ease-in-out;
-	}
-	&:first-of-type {
-		margin-left: 0;
+		text-transform: lowercase;
 	}
 	&:last-of-type .label,
 	&:nth-last-of-type(1) .label {
@@ -96,81 +122,9 @@
 	&.active {
 		opacity: 1;
 	}
-	@include md-width {
-		#streams-view & {
-			display: none;
-		}
-	}
-}
-.arrow {
-	width: 36px;
-	height: 36px;
-	position: relative;
-	top: -10px;
-	opacity: 0.75;
-	&:hover, &:focus {
-		opacity: 1;
-		cursor: pointer;
-		outline: none;
-	}
-	&::before {
-		content: "";
-		width: 36px;
-		height: 36px;
-		background-image: url(../images/arrow.svg);
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: contain;
-		position: absolute;
-		top: 0;
-		left: 0;
-		transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
-	}
-	
-	&[data-dir="prev"] {
-		right: 29px;
-		&::before {
-			transform: rotate(90deg);
-		}
-	}
-	&[data-dir="next"] {
-		left: 29px;
-		&::before {
-			transform: rotate(-90deg);
-		}
-	}
-	@include md-width {
-		#streams-view & {
-			width: 50vw;
-			height: 32.5vh;
-			position: absolute;
-			top: 0;
-			&::before {
-				top: calc(50% - 18px);
-			}
-			&[data-dir="prev"] {
-				left: 0;
-				right: unset;
-				&::before {
-					left: 10px;
-					right: auto;
-				}
-				&:hover::before {
-					transform: rotate(90deg);
-				}
-			}
-			&[data-dir="next"] {
-				right: 0;
-				left: unset;
-				&::before {
-					right: 10px;
-					left: auto;
-				}
-				&:hover::before {
-					transform: rotate(-90deg);
-				}
-			}
-		}
+	@include sm-width {
+		width: 8px;
+		height: 8px;
 	}
 }
 
@@ -224,11 +178,12 @@ audio {
 			}
 		}
 		@include sm-width {
-			&.width svg, &.height svg {
-				width: 100% !important;
-				height: auto !important;
-				margin-top: 0 !important;
-				border-bottom: 5px solid white;
+			&.width, &.height {
+				height: 50vh !important;
+				svg {
+					width: 100% !important;
+					margin-top: 0 !important;
+				}
 			}
 		}
 	}
@@ -247,10 +202,31 @@ audio {
 		opacity: 1;
 		pointer-events: all;
 	}
-	.marker {
-		&:hover {
-			cursor: pointer;
-		}
+	&::before {
+		content: "";
+		width: 30px;
+		height: 30px;
+		border: 10px solid;
+		border-color: white white transparent white;
+		border-radius: 50%;
+		position: absolute;
+		left: calc(50% - 25px);
+		top: calc(50% - 25px);
+		z-index: 1;
+		animation: loading 1s linear infinite;
+		pointer-events: none;
+	}
+	&.loaded::before {
+		opacity: 0;
+	}
+}
+
+@keyframes loading {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(360deg);
 	}
 }
 
@@ -276,14 +252,16 @@ audio {
 		bottom: 0;
 	}
 	@include sm-width {
-		height: 100%;
-		position: static;
+		height: 50vh;
+		position: relative;
 	}
 }
 .chyron-wrap {
-	width: 90%;
+	width: calc(100% - 120px);
 	max-width: $md-width;
 	margin: auto;
+	padding-left: 50px;
+	position: relative;
 	transition: opacity 300ms ease-in;
 	.alerts & {
 		opacity: 0;
@@ -291,6 +269,7 @@ audio {
 	}
 	@include md-width {
 		width: 100%;
+		padding-left: 0;
 	}
 	@include sm-width {
 		height: 100%;
@@ -307,12 +286,12 @@ audio {
 	width: 100%;
 	min-height: 120px;
 	border: 3px solid;
-	border-radius: 7px;
+	border-radius: 30px 100px 100px 30px;
 	background-color: $darken;
 	transition: width 300ms ease-in-out, max-height 300ms ease-in-out;
 	position: relative;
 	@include md-width {
-		min-height: $portrait-width;
+		height: 200px;
 		border-width: 3px 0 0 0;
 		border-radius: 0;
 	}
@@ -321,50 +300,51 @@ audio {
 	}
 	.portrait {
 		position: absolute;
-		width: 159px;
-		height: 159px;
-		left: -76px;
-		top: -24px;
+		width: 100px;
+		height: 100%;
+		display: flex;
+		left: -50px;
+		top: -4px;
 		z-index: 51;
 		img {
 			width: 100%;
-			display: block;	
+			display: block;
+			margin: auto;
 		}
 		@include md-width {
 			left: 0;
 			top: 0;
 		}
 		@include sm-width {
-			width: 180px;
-			height: 180px;
-			position: relative;
-			margin-top: -40px;
-			
+			width: 100px;
+			height: 100px;
+			top: -50px;
 		}
 	}
 }
 .captions {
 	height: 100%;
 	min-height: 120px;
-	overflow-y: scroll;
-	-webkit-overflow-scroll: touch;
-	transition: height 300ms ease-in-out;
 	@include sm-width {
 		clear: both;
+		padding-top: 75px;
 	}
 	.caption {
 		padding: 20px 60px 20px 90px;
 		text-align: left;
 		overflow-y: auto;
 		font-weight: 500;
-		@include lg-text;
 		@include md-width {
 			padding-left: $portrait-width;
 		}
 		@include sm-width {
+			height: 100%;
 			padding: 8px 15px 20px 15px;
+			overflow-y: scroll;
+			-webkit-overflow-scroll: touch;
 		}
 		.text {
+			@include lg-text;
 			float: right;
 			width: 100%;
 			max-width: #{$md-width - $portrait-width};
@@ -390,15 +370,20 @@ audio {
 
 .audio-buttons {
 	width: 25px;
+	height: 100%;
 	position: absolute;
-	top: 20px;
+	top: 0;
 	right: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	@include sm-width {
 		width: auto;
-		height: 100px;
-		top: 10px;
-    left: 180px;
-    display: flex;
+		height: 60px;
+		top: 0px;
+    left: 100px;
+    flex-direction: row;
+    justify-content: flex-end;
 	}
 }
 .audio-button {
@@ -430,9 +415,100 @@ audio {
 		outline: none;
 	}
 	@include sm-width {
-		width: 50px;
-		height: 50px;
+		width: 40px;
+		height: 40px;
 		margin: auto 0 auto 10px;
+	}
+}
+
+.arrows-menu {
+
+}
+.arrow {
+	width: 36px;
+	height: 36px;
+	position: absolute;
+	top: calc(50% - 18px);
+	opacity: 0.75;
+	&:hover, &:focus {
+		opacity: 1;
+		cursor: pointer;
+		outline: none;
+	}
+	&::before {
+		content: "";
+		width: 36px;
+		height: 36px;
+		background-image: url(../images/arrow.svg);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+	}
+	
+	&[data-dir="prev"] {
+		// left: -108px;
+		left: -50px;
+		&::before {
+			transform: rotate(90deg);
+			@include md-width {
+				body.alerts .stream &,
+				.stream:not(.show) & {
+					transform: translateX(-50vw) rotate(90deg);
+				}
+			}
+		}
+	}
+	&[data-dir="next"] {
+		right: -50px;
+		&::before {
+			transform: rotate(-90deg);
+			@include md-width {
+				body.alerts .stream &,
+				.stream:not(.show) & {
+					transform: translateX(50vw) rotate(-90deg);
+				}
+			}
+		}
+	}
+	#streams-view & {
+		@include md-width {
+			width: 50vw;
+			height: calc(100vh - 200px);
+			position: absolute;
+			top: -50vh;
+			&::before {
+				top: calc(50% - 18px);
+			}
+			&[data-dir="prev"] {
+				left: 0;
+				right: unset;
+				&::before {
+					left: 10px;
+					right: auto;
+				}
+				&:hover::before {
+					transform: rotate(90deg);
+				}
+			}
+			&[data-dir="next"] {
+				right: 0;
+				left: unset;
+				&::before {
+					right: 10px;
+					left: auto;
+				}
+				&:hover::before {
+					transform: rotate(-90deg);
+				}
+			}
+		}
+		@include sm-width {
+			height: 50vh;
+		}
 	}
 }
 

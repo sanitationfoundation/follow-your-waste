@@ -1,4 +1,6 @@
 #alert-select {
+	display: table;
+	margin: auto;
 	body.alerts & {
 		display: none !important;
 	}
@@ -14,6 +16,9 @@
 	.view-inner {
 		padding: 90px 30px 100px 30px;
 		@include sm-width {
+			padding-left: 20px;
+			padding-right: 20px;
+			display: flex;
 			overflow-y: scroll;
 			-webkit-overflow-scrolling: touch;
 		}
@@ -37,7 +42,7 @@
 	flex: 1;
 	pointer-events: none;
 	transform: translateY(400px);
-	transition: transform 300ms ease-in-out;
+	transition: transform 600ms ease-in-out;
 	#select-intro & {
 		position: fixed;
 		transition-delay: 600ms;
@@ -105,9 +110,6 @@ $bins: ("paper", "mgp", "landfill");
 		}
 	}
 }
-// .bin.open .bin-lid {
-// 	transform: translateX(100px) translateY(-60px) rotate(45deg);
-// }
 
 #items-wrap {
 	width: 100%;
@@ -134,12 +136,16 @@ $bins: ("paper", "mgp", "landfill");
 	left: 0;
 	z-index: 40;
 	pointer-events: none;
+	text-align: center;
 }
 #message-select-persist {
 	position: fixed;
-	top: 15px;
+	top: 27px;
 	z-index: 40;
-	pointer-events: none; 
+	pointer-events: none;
+	@include md-width {
+		width: 300px
+	}
 }
 .item {
 	position: absolute !important;

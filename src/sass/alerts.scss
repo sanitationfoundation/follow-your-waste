@@ -46,8 +46,8 @@
 	@include sm-width {
 		width: 100%;
 		height: 100%;
-		padding: 10px;
-		display: block;
+		padding: 20px;
+		display: flex;
 		border-radius: 0;
 		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
@@ -121,19 +121,32 @@ button {
 	  @include sm-width {
 	  	justify-content: center;
 	  }
+	  &:first-child * {
+	  	cursor: default;
+	  }
 	}
 	.progress {
+		width: 100%;
 		margin: auto;
     position: relative;
     top: unset;
     left: unset;
     opacity: 1;
 	}
+	.ticks-wrap {
+		width: 100%;
+	}
 	.factoid-tab {
 		position: relative;
 		top: unset;
 		left: unset;
 		right: 7px;
+	}
+	.arrow {
+		position: relative;
+		left: unset;
+		right: unset;
+		top: unset;
 	}
 	.help-audio-buttons {
 		display: flex;
@@ -172,8 +185,14 @@ button {
 }
 #message-streams-end {
 	max-width: 900px;
+	@include sm-width {
+		max-width: 400px;
+	}
 	.col:first-child {
 		display: flex;
+	}
+	p {
+		text-align: left;
 	}
 	.alert-buttons {
 		display: block;
@@ -181,6 +200,10 @@ button {
 	.button {
 		width: 260px;
 		margin: 20px 0 0 0;
+		@include sm-width {
+			margin-right: auto;
+			margin-left: auto;
+		}
 	}
 }
 #selected-item {
