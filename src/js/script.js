@@ -128,6 +128,7 @@ const initSite = () => {
 		if(body.classList.contains("mute")) return;
 		const type = elem.dataset.type;
 		$(elem).prop("volume", 0);
+		elem.currentTime = 0;
 		elem.play();
 		$(elem).animate({
 			volume: volMax[type]
@@ -700,13 +701,10 @@ const initSite = () => {
 			const self = this,
 						returnBttnImg = returnBttn.querySelector(`[data-stream="${this.bin}"]`);
 
+			returnBttn.append(returnBttnImg);
 			selectView.classList.remove("show");
 			body.id = "";
 			self.loadAssets();
-
-			returnBttn.append(returnBttnImg);
-
-			console.log(returnBttnImg);
 
 			if(!streamIntrod) {
 				streamIntrod = true;
@@ -806,8 +804,16 @@ const initSite = () => {
 							prevSceneObj = this.scenes[prevSceneSlug];
 				this.goToScene(prevSceneObj);
 			} else {
-				const currVoiceAudioElem = currSceneObj.voiceover,
+				const currSceneElem = this.scenesWrap.querySelector(".scene.show"),
+							currCaptionElem = this.elem.querySelector(".caption.show"),
+							currVoiceAudioElem = currSceneObj.voiceover,
 							currEnvironAudioElem = currSceneObj.environ;
+				if(currSceneElem) {
+					currSceneElem.classList.remove("show");
+				}
+				if(currCaptionElem) {
+					currCaptionElem.classList.remove("show");
+				}
 				if(currVoiceAudioElem) {
 					pauseAudio(currVoiceAudioElem);
 				}
@@ -938,9 +944,11 @@ const initSite = () => {
 				path: this.elem.dataset.src
 			});
 
-			animation.addEventListener('loaded_images', (e) => {
+			animation.addEventListener("loaded_images", (e) => {
 				self.elem.classList.add("loaded");
+				animation.goToAndPlay(0);
 			});
+
 
 			this.animation = animation;
 			this.setUpScene();

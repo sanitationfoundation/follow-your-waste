@@ -17,9 +17,6 @@
 		opacity: 0;
 		pointer-events: none;
 	}
-	&.pseudo {
-		display: none;
-	}
 }
 
 #return-menu {
@@ -284,7 +281,7 @@ audio {
 }
 .chyron-inner {
 	width: 100%;
-	min-height: 120px;
+	min-height: 150px;
 	border: 3px solid;
 	border-radius: 30px 100px 100px 30px;
 	background-color: $darken;
@@ -300,10 +297,10 @@ audio {
 	}
 	.portrait {
 		position: absolute;
-		width: 100px;
+		width: 120px;
 		height: 100%;
 		display: flex;
-		left: -50px;
+		left: -60px;
 		top: -4px;
 		z-index: 51;
 		img {
@@ -450,8 +447,7 @@ audio {
 	}
 	
 	&[data-dir="prev"] {
-		// left: -108px;
-		left: -50px;
+		left: -57px;
 		&::before {
 			transform: rotate(90deg);
 			@include md-width {

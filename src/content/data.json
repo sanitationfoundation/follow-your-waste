@@ -137,7 +137,7 @@
       "color": "yellow",
       "orientation": "width",
       "animated": "true",
-      "looped": "false",
+      "looped": "true",
       "environment": "traffic"
     },
     {
@@ -266,8 +266,8 @@
       "slug": "tipping-barge-metal",
       "color": "orange",
       "orientation": "width",
-      "animated": "false",
-      "looped": "false",
+      "animated": "true",
+      "looped": "true",
       "environment": "facility"
     },
     {
@@ -282,8 +282,8 @@
       "slug": "sims",
       "color": "teal",
       "orientation": "width",
-      "animated": "false",
-      "looped": "false",
+      "animated": "true",
+      "looped": "true",
       "environment": "water"
     },
     {
@@ -338,7 +338,7 @@
       "slug": "bales-metal",
       "color": "lime",
       "orientation": "width",
-      "animated": "false",
+      "animated": "true",
       "looped": "false",
       "environment": "facility"
     },
