@@ -94,11 +94,15 @@
     },
     {
       "slug": "help_progress",
-      "text": "Use this progress bar or your keyboard arrow keys to move throughout the story."
+      "text": "Use this progress bar to track your journey. You can also click the dots to jump between scenes."
     },
     {
       "slug": "help_restart",
-      "text": "Click the bin to go back and select another item."
+      "text": "Click the bins to go back and select another item."
+    },
+    {
+      "slug": "help_arrows",
+      "text": "Click these arrows, or use your arrow keys, to navigate through the journey."
     },
     {
       "slug": "help_factoid",

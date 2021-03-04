@@ -12,7 +12,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sass`,
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,

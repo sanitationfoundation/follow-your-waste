@@ -18,79 +18,79 @@ export default function Header({ text, lang, langObjs }) {
 				<a href="#main">{text.system.aria_skip}</a>
 			</div>
 			<header id="header">
-				<a id="logo" href="https://sanitationfoundation.org" target="_blank" rel="noreferrer">
-					<img src={withPrefix("images/logo.png")} alt="Sanitation Foundation" />
+				<a
+					id="logo"
+					href="https://sanitationfoundation.org"
+					target="_blank"
+					rel="noreferrer">
+					<img
+						src={withPrefix("images/logo.png")}
+						alt="Sanitation Foundation"
+					/>
 				</a>
 
 				<div id="header-items">
 
-					<div className="header-item">
-						{/*<button
-							className="tool-button"
-							id="help-toggle"
+					<div
+						role="button"
+						className="header-item"
+						id="help-toggle"
+						tabIndex={0}
+						aria-pressed={false}>
+						Help
+					</div>
+
+					<div
+						id="lang-switch"
+						className={`header-item dropdown ${langMenu ? "open" : ""}`}>
+						<div
+							role="button"
+							className="option"
+							title={currLangObj.long}
+							aria-hidden={true}
 							tabIndex={0}
-							aria-label="Instructions"
-							aria-pressed={false}>
-						</button>*/}
-						<div role="button"
-							id="help-toggle"
-							tabIndex={0}
-							aria-pressed={false}>
-							Help
+							// onFocus={() => setLangMenu(!langMenu)}
+							onClick={() => setLangMenu(!langMenu)}
+							onKeyPress={() => setLangMenu(!langMenu)}>
+							{currLangObj.short}
+						</div>
+
+						<div
+							id="lang-switch-label"
+							className="screen-hidden"
+							tabIndex={-1}
+							aria-hidden={true}>
+							{text.system.aria_lang_switch}
+						</div>
+
+						<div role="menu"
+							aria-labelledby="lang-switch-label">
+							{langKeys.map((langKey, i) => {
+								const langObj = langObjs[langKey];
+								return (
+									<div className="option" key={i}>
+										<a
+											role="menuitem"
+											lang={langKey}
+											href={"/"+langKey}
+											title={langObj.long}
+											tabIndex={0}
+											aria-label={`Switch to ${langObj.long}`}>
+											{langObj.short}
+										</a>
+									</div>
+								);
+							})}
 						</div>
 					</div>
 
-					<div className="header-item">
-						<div id="lang-switch" className={`dropdown ${langMenu ? "open" : ""}`}>
-							<div role="button"
-									className="option"
-									title={currLangObj.long}
-									aria-hidden={true}
-									tabIndex={0}
-									// onFocus={() => setLangMenu(!langMenu)}
-									onClick={() => setLangMenu(!langMenu)}
-									onKeyPress={() => setLangMenu(!langMenu)}>
-								{currLangObj.short}
-							</div>
-
-							<div
-								id="lang-switch-label"
-								className="screen-hidden"
-								tabIndex={-1}
-								aria-hidden={true}>
-								{text.system.aria_lang_switch}
-							</div>
-
-							<div role="menu"
-								aria-labelledby="lang-switch-label">
-								{langKeys.map((langKey, i) => {
-									const langObj = langObjs[langKey];
-									return (
-										<div className="option" key={i}>
-											<a role="menuitem"
-												 lang={langKey}
-												 href={"/"+langKey}
-												 title={langObj.long}
-												 tabIndex={0}
-												 aria-label={`Switch to ${langObj.long}`}>
-												{langObj.short}
-											</a>
-										</div>
-									);
-								})}
-							</div>
-						</div>
-					</div>
-
-					<div className="header-item">
-						<button
-							className="tool-button"
-							id="full-toggle"
-							tabIndex={0}
-							aria-label={text.system.aria_full_screen}
-							aria-pressed={false}>
-						</button>
-					</div>
+					<button
+						className="header-item tool-button"
+						id="full-toggle"
+						tabIndex={0}
+						aria-label={text.system.aria_full_screen}
+						aria-pressed={false}>
+					</button>
 
 				</div>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { withPrefix } from "gatsby";
 
 export default function Alerts({ text }) {
 	return(
@@ -135,6 +136,25 @@ export default function Alerts({ text }) {
 
 							<div className="row">
 								<div className="col">
+									<div className="restart-button">
+										{ ["landfill", "mgp", "paper"].map((binSlug, i) => {
+											return(
+												<div data-stream={binSlug} key={i}>
+													<img
+														src={withPrefix(`images/bin-${binSlug}-full.png`)}
+														alt="" />
+												</div>
+											)
+										}) }
+									</div>
+								</div>
+								<div className="col">
+									{text.system.help_restart}
+								</div>
+							</div>
+
+							<div className="row">
+								<div className="col">
 									<div className="progress">
 										<div className="ticks-wrap">
 											<div className="tick"></div>
@@ -164,7 +184,7 @@ export default function Alerts({ text }) {
 									<div className="arrow" data-dir="next"></div>
 								</div>
 								<div className="col">
-									{text.system.help_progress}
+									{text.system.help_arrows}
 								</div>
 							</div>
 

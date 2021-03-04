@@ -10,7 +10,7 @@ const initSite = () => {
 				docElem = document.documentElement,
 				fullTog = document.querySelector("#full-toggle"),
 				helpTog = document.querySelector("#help-toggle"),
-				returnBttn = document.querySelector("#return-button"),
+				restartBttn = document.querySelector("#restart-button"),
 				introView = document.querySelector("#intro-view"),
 				introBttn = document.querySelector("#intro-button"),
 				selectView = document.querySelector("#select-view"),
@@ -224,13 +224,6 @@ const initSite = () => {
 		});
 	});
 
-	// window.onfocus = (e) => {
-	// 	const audioElems = document.querySelectorAll("audio");
-	// 	audioElems.forEach((audioElem) => {
-	// 		audioElem.muted = false;
-	// 	});
-	// };
-
 	if(docElem.requestFullscreen) {
 		if(fullTog) {
 			fullTog.addEventListener("click", () => {
@@ -251,8 +244,8 @@ const initSite = () => {
 		body.classList.add("no-fullscreen");
 	}
 
-	if(returnBttn) {
-		returnBttn.addEventListener("click", () => {
+	if(restartBttn) {
+		restartBttn.addEventListener("click", () => {
 			if(currStreamObj) {
 				currStreamObj.stopStreaming(false);
 			}
@@ -357,6 +350,8 @@ const initSite = () => {
 		var menuElem = alertElem.querySelector(`[role="menu"]`);
 		if(menuElem) {
 			menuElem.focus();
+			alertElem.scrollTop = 0;
+			console.log(alertElem);
 		}
 	};
 
@@ -389,14 +384,6 @@ const initSite = () => {
 			this.draggie.on("dragMove", this.onDrag.bind(this));
 			this.draggie.on("dragEnd", this.onDragEnd.bind(this));
 
-			// this.draggable = Draggable.create(elem, {
-			// 	bounds: window,
-			// 	onPressInit: this.onPressInit.bind(this),
-			// 	onDragStart: this.onDragStart.bind(this),
-			// 	onDrag: this.onDrag.bind(this),
-			// 	onDragEnd: this.onDragEnd.bind(this)
-			// })[0];
-
 			elem.onmouseover = () => {
 				elem.classList.add("hovering");
 				self.fixTooltip();
@@ -406,21 +393,6 @@ const initSite = () => {
 				elem.classList.remove("hovering");
 			};
 		}
-
-		// onPressInit() {
-		// 	const itemElem = this.elem,
-		// 				currX = gsap.getProperty(itemElem, "x"),
-		// 				currY  = gsap.getProperty(itemElem, "y"),
-		// 				newX = currX + parseInt(itemElem.style.left),
-		// 				newY = currY + parseInt(itemElem.style.top);
-		// 	gsap.set(itemElem, {
-		// 		x: newX,
-		// 		y: newY
-		// 	});
-		// 	itemElem.style.left = 0;
-		// 	itemElem.style.top = 0;
-		// }
-
 
 		onDragStart(e) {
 			body.classList.add("dragging");
@@ -665,7 +637,6 @@ const initSite = () => {
 		setUpScenes() {
 			const self = this,
 						sceneElems = this.elem.querySelectorAll(".scene:not(.setup)");
-						// svgReqs = [];
 
 			sceneElems.forEach( (sceneElem, i) => {
 				const sceneSlug = sceneElem.dataset.scene,
@@ -677,31 +648,14 @@ const initSite = () => {
 				if(i === 0) {
 					self.scene = sceneObj;
 				}
-
-				// if(sceneObj.req) {
-				// 	svgReqs.push(sceneObj.req);
-				// }
 			});
-
-			// Promise.all(svgReqs).then((responses) => {
-			// 	introBttn.setAttribute("aria-disabled", false);
-			// 	introBttn.onclick = () => {
-			// 		introView.classList.remove("show");
-			// 		body.id = "select-intro";
-			// 		handleSelect();
-			// 		openAlert("select-intro", () => {
-			// 			showView("select");
-			// 		});
-			// 	};
-			// 	introView.classList.remove("loading");
-			// });
 		}
 
 		introStreams() {
 			const self = this,
-						returnBttnImg = returnBttn.querySelector(`[data-stream="${this.bin}"]`);
+						restartBttnImg = restartBttn.querySelector(`[data-stream="${this.bin}"]`);
 
-			returnBttn.append(returnBttnImg);
+			restartBttn.append(restartBttnImg);
 			selectView.classList.remove("show");
 			body.id = "";
 			self.loadAssets();
@@ -1042,7 +996,6 @@ const initSite = () => {
 			const tickElem = this.tick,
 						captionElem = this.caption,
 						sceneElem = this.elem,
-						// sceneColor = this.color,
 						voiceAudioElem = this.voiceover;
 
 			if(voiceAudioElem) {
@@ -1055,7 +1008,6 @@ const initSite = () => {
 				tickElem.classList.add("active");
 			}
 			sceneElem.classList.add("animate");
-			// streamsView.dataset.color = sceneColor;
 		}
 
 		fixTooltip() {

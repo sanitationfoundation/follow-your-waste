@@ -12,12 +12,13 @@ export default function Streams({ text, data }) {
 
 				<div
 					role="menu"
-					id="return-menu"
+					id="restart-menu"
 					className="mobile-hidden"
 					aria-label={"Select a new item"}>
 					<div
 						role="button"
-						id="return-button">
+						id="restart-button"
+						className="restart-button">
 						{ bins.map((binSlug, i) => {
 							return(
 								<div data-stream={binSlug} key={i}>
@@ -28,7 +29,7 @@ export default function Streams({ text, data }) {
 							)
 						}) }
 					</div>
-				 </div>
+				</div>
 
 				{ streams.map((stream, i) => {
 					const streamText = text[stream],
@@ -54,9 +55,12 @@ export default function Streams({ text, data }) {
 												aria-hidden={true}
 												key={j}>
 												<div
-													className="label"
+													className="tooltip mobile-hidden"
 													aria-hidden={true}>
-													{sceneText.label}
+													<div className="tooltip-arrow"></div>
+													<div className="tooltip-inner">
+														{sceneText.label}
+													</div>
 												</div>
 											</div>
 										);

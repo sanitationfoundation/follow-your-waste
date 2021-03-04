@@ -90,6 +90,7 @@ header#header {
 	width: 100%;
 	position: absolute;
 	left: 0px;
+	top: 0;
 	z-index: 70;
 	padding: 15px;
 	display: flex;
@@ -101,7 +102,11 @@ header#header {
 	pointer-events: none;
 	@include md-text;
 	@include sm-width {
-		padding: 0 5px 5px 5px;
+		padding: 10px;
+		body.alerts &,
+		body#select & {
+			background-color: $darken;
+		}
 	}
 }
 #logo {
@@ -168,6 +173,7 @@ header#header {
 	&:not(.open) [role="menu"] {
 		opacity: 0;
 		pointer-events: none;
+		position: absolute;
 	}
 }
 .option {
@@ -245,6 +251,7 @@ header#header {
 	position: absolute;
 	left: 0;
 	top: 0;
+	overflow: hidden;
 	overflow-x: hidden;
 	overflow-y: hidden;
 	opacity: 0;
@@ -265,173 +272,50 @@ header#header {
 	overflow: visible;
 }
 
+
+
 ////////////////////////////////////
-//////////// INTRO VIEW ////////////
+///////////// TOOLTIPS /////////////
 ////////////////////////////////////
-#site-title {
-	width: 50%;
-	float: left;
-	@include lg-text;
-}
-#intro-selection-wrap {
-	width: 100%;
-	height: 100%;
+.tooltip {
 	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 30;
-	display: flex;
-	align-content: center;
-	@include lg-text;
-}
-#intro-selection {
-	width: 100%;
-	display: table;
-	margin: auto;
-}
-#intro-title {
-	width: 60%;
-	max-height: 50vh;
-	display: block;
-	margin: auto;
-	background-image: url(../images/title.svg);
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: contain;
-	span {
-		@include hide;
-	}
-	@include md-width {
-		width: calc(100% - 20px);
-	}
-}
-#intro-title-spacer {
-	width: 100%;
-	padding-bottom: 69%;
-	opacity: 0;
-	@include sm-width {
-		padding-bottom: 50%;
-	}
-}
-// #intro-title-image-wrap {
-// 	width: 100%;
-// 	height: 100%;
-// 	max-width: calc(50vh / .69);
-// 	padding-bottom: 69%;
-// 	display: block;
-// 	margin: auto;
-// 	position: relative;
-// }
-// #intro-title-image {
-// 	position: absolute;
-// 	left: 0;
-// 	top: 0;
-// 	width: 100%;
-// 	margin: auto;
-// }
-#intro-tagline {
-	margin: auto;
-	padding: 20px 20px 0 20px;
-	text-align: center;
-	@include lg-text;
-	@include md-width {
-		max-width: 420px;
-	}
-	@include sm-width {
-		max-width: 330px;
-	}
-}
-#intro-bottom {
-	position: relative;
-}
-#loading {
-	width: 300px;
-	height: 150px;
-	position: absolute;
-	left: 0px;
-	top: -50px;
-	z-index: 1;
-	transform: translateX(-300px);
-	text-align: center;
-	// pointer-events: none;
-	background-image: url(../images/loading.png);
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
-	user-select: none;
-	span {
-		position: absolute;
-		left: 100px;
-    top: 45px;
-		color: black;
-		text-transform: lowercase;
-		font-weight: bold;
-		@include lg-text;
-		animation: blinking 1s infinite;
-	}
-	body.loading & {
-		animation: driveIn 4s ease-out 1 forwards;
-	}
-	body.loaded & {
-		animation: driveOut 4s ease-in 1 forwards;
-	}
-	@include sm-width {
-
-	}
-	// .view:not(.loading) & {
-		// animation: driveOut 2s ease-in 1 forwards;
-	// 	transform: translateX(100vw);
-	// 	span {
-	// 		opacity: 0;
-	// 		animation-play-state: paused;
-	// 		transition: opacity 2000ms ease-in-out;
-	// 	}
-	// }
-}
-
-@keyframes driveIn {
-	0% {
-		transform: translateX(-300px);
-	}
-	100% {
-		transform: translateX(calc(50vw - 150px));
-	}
-}
-
-@keyframes driveOut {
-	0% {
-		transform: translateX(calc(50vw - 150px));
-	}
-	100% {
-		transform: translateX(calc(100vw + 300px));
-	}
-}
-
-@keyframes blinking {
-	0%,
-	100% {
-		opacity: 1;
-	}
-	50% {
-		opacity: .75;
-	}
-}
-
-#intro-button {
-	font-weight: bold;
-	border-radius: 5px;
-	margin: 60px auto 0 auto;
-	transition: opacity 100ms ease-in-out;
+	top: calc(100% - 1px);
 	opacity: 0;
 	pointer-events: none;
-	body.loaded & {
+	transition: opacity 100ms ease-in-out, top 100ms ease-in-out;
+	*:hover > & {
 		opacity: 1;
-		pointer-events: all;
 	}
 }
+.tooltip-inner {
+	// margin: 1em 5px;
+	background-color: $darken;
+	color: white;
+	border-radius: 20px;
+	position: relative;
+	p {
+		@include sm-text;
+		margin: 5px 0 0 0;
+	}
+}
+.tooltip-arrow {
+	width: 1em;
+	height: 1em;
+	display: table;
+	margin: auto;
+	border-radius: 0;
+	border-left: 1em solid transparent;
+	border-right: 1em solid transparent;
+	border-bottom: 1em solid $darken;
+	// position: absolute;
+	// top: 0px;
+	z-index: 21;
+}
+
 ////////////////////////////////////
 ///////////// IMPORTS //////////////
 ////////////////////////////////////
+@import "intro.scss";
 @import "select.scss";
 @import "streams.scss";
 @import "alerts.scss";

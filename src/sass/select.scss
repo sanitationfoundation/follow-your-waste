@@ -14,6 +14,7 @@
 
 #select-view {
 	.view-inner {
+		display: flex;
 		padding: 90px 30px 100px 30px;
 		@include sm-width {
 			padding-left: 20px;
@@ -180,65 +181,31 @@ $bins: ("paper", "mgp", "landfill");
 //////////// TOOLTIPS //////////////
 ////////////////////////////////////
 .tooltip {
-	width: 340px;
-	position: absolute;
-	top: calc(100% - 1px);
-	left: calc(50% - 170px);
-	opacity: 0;
-	pointer-events: none;
-	transition: opacity 100ms ease-in-out, top 100ms ease-in-out;
+	.item & {
+		width: 340px;
+		left: calc(50% - 170px);
+	}
+	.item.top & {
+		opacity: 0 !important;
+	}
 	body:not(.dragging) .item.hovering & {
 		opacity: 1;
 	}
-	.top & {
-		opacity: 0 !important;
-	}
 }
 .tooltip-inner {
-	width: 330px;
-	padding: 15px 20px 20px 20px;
-	margin: 20px 5px;
-	background-color: $darken;
-	color: white;
-	border-radius: 20px;
-	// box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.5);
-	position: relative;
-	p {
-		@include sm-text;
-		margin: 5px 0 0 0;
+	.item & {
+		width: 330px;
+		padding: 15px 20px 20px 20px;
 	}
 }
 .tooltip-arrow {
-	width: 20px;
-	height: 20px;
-	display: table;
-	margin: auto;
-	border-radius: 0;
-	border-left: 20px solid transparent;
-	border-right: 20px solid transparent;
-	border-bottom: 20px solid $darken;
-	position: absolute;
-	z-index: 21;
 	.item & {
-		left: calc(50% - 20px);
-		top: 0px;
+		font-size: 20px;
 	}
-	.scene & {
-		left: 100%;
-		top: 70px;
-	}
-	.item.top & {
+	.item.top {
 		top: unset;
 		bottom: 0;
 		transform: rotate(180deg);
-	}
-	.scene .left & {
-		left: calc(100% - 30px);
-		transform: rotate(90deg);
-	}
-	.scene .right & {
-		left: -10px;
-		transform: rotate(-90deg);
 	}
 }
 
