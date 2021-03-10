@@ -35,32 +35,24 @@
 }
 .bins-wrap {
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	left: 0;
 	bottom: 0;
 	display: flex;
 	justify-content: center;
 	flex: 1;
 	pointer-events: none;
-	transform: translateY(400px);
-	transition: transform 600ms ease-in-out;
-	#select-intro & {
-		position: fixed;
-		transition-delay: 600ms;
+	body.alerts & {
 		&#bins {
-			z-index: 60;
+			
 		}
 		&#bins-back {
-			z-index: 61;
+			
 		}
-	}
-	#select &,
-	#select-intro & {
-		transform: translateY(0px);
 	}
 }
 #bins {
-	z-index: 30;
+	z-index: 61;
 	body.intro & {
 		display: none;
 	}
@@ -72,11 +64,11 @@
 	width: 250px;
 	height: 300px;
 	margin: 0 15px 0 15px;
-	transform: translateY(30px);
 	position: relative;
 	float: left;
-	transition: transform 100ms ease-in;
+	transition: transform 800ms $ease;
 	pointer-events: none;
+	transform: translateY(400px);
 	img {
 		width: 250px;
 		height: auto;
@@ -84,9 +76,12 @@
 		left: 0;
 		transform: translate3d(0, 0, 0);
 	}
-	body.intro & {
-		transform: translateY(100%);
-		transition: all 500ms ease-in;
+	// body.intro & {
+	// 	transform: translateY(100%);
+	// 	transition: all 500ms $ease;
+	// }
+	.show-bins & {
+		transform: translateY(0px);
 	}
 }
 .bin-front {
@@ -95,7 +90,7 @@
 .bin-lid {
 	position: absolute;
 	bottom: 122px;
-	transition: transform 400ms ease;
+	transition: transform 400ms $ease;
 }
 .bin-back {
 	bottom: 45%;
@@ -103,7 +98,11 @@
 
 $bins: ("paper", "mgp", "landfill");
 
-@each $bin in $bins {
+@each $bin, $i in $bins {
+	$i: index($bins, $bin);
+	.bin.#{$bin} {
+		transition-delay: #{$i * 100ms};
+	}
 	[data-bin="#{$bin}"] .bin.#{$bin} {
 		transform: translateX(1px);
 		.bin-lid {
@@ -153,14 +152,24 @@ $bins: ("paper", "mgp", "landfill");
 	height: auto;
 	z-index: 20 !important;
 	cursor: pointer;
+	&:not(.show) {
+		transform: translateY(-100vh);
+	}
 	img {
 		width: 100%;
 		height: auto;
 	}
-	:not(.dragging) &.hovering {
-		z-index: 31 !important;
+	&.setting {
+		transition: all 1000ms $ease;
+		&.show {
+			transition-duration: 800ms;	
+		}
 	}
-	.dragging &.hovering {
+	body:not(.dragging):not(.alerts) &.hovering {
+		z-index: 70 !important;
+	}
+	.dragging &.hovering,
+	&.dropping {
 		z-index: 22 !important;
 	}
 	.dragging & .tooltip,
@@ -168,10 +177,6 @@ $bins: ("paper", "mgp", "landfill");
 	&.opening .tooltip,
 	&.returning .tooltip {
 		opacity: 0 !important;
-	}
-	&.returning, &.dropping {
-		// transition-duration: 0ms !important; 
-		// transition: left 300ms ease-in-out, top 300ms ease-in-out;
 	}
 }
 #intro .item {
@@ -221,7 +226,7 @@ $items: (
 	"glass-jar": 7,
 	"milk-carton": 8,
 	"newspaper": 13,
-	"plastic-bag": 14,
+	"plastic-bag": 12,
 	"plastic-bottle": 6,
 	"soda-can": 5,
 	"toothpaste": 10,

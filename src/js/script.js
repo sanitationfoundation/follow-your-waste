@@ -22,7 +22,7 @@ const initSite = () => {
 				streamsView = document.querySelector("#streams-view"),
 				streamElems = document.querySelectorAll(".stream"),
 				alertsView = document.querySelector("#alerts-view"),
-				itemsArr = [],
+				itemsObj = {},
 				scenesArr = [],
 				streamsArr = [],
 				streams = {
@@ -252,46 +252,6 @@ const initSite = () => {
 		});
 	}
 
-	/************************************/
-	/************STREAM SELECT***********/
-	/************************************/
-
-	const setUpSelect = () => {
-		itemElems.forEach( (itemElem) => {
-			const slug = itemElem.dataset.item,
-						itemObj = new Item(itemElem);
-			itemsArr[slug] = itemObj;
-		});
-
-		selectMenuBttns.forEach( (buttonElem) => {
-			buttonElem.onclick = (e) => {
-				const selectAlert = document.querySelector("#alert-select"),
-							streamSlug = buttonElem.dataset.stream,
-							streamObj = streams[streamSlug];
-				selectAlert.classList.remove("show");
-				body.classList.remove("alerts");
-				streamObj.introStreams();
-			};
-		});
-	};
-
-	const handleSelect = () => {
-		if(!itemsWrap.classList.contains("setup")) {
-			itemsWrapPackery = new Packery(itemsWrap, {
-				itemSelector: ".item",
-				gutter: 10,
-				transitionDuration: packeryDur,
-				initLayout: false,
-				resize: true,
-				stamp: "#stamp"
-			});
-			itemsWrapPackery.layout();
-			itemsWrap.classList.add("setup");
-		} else {
-			itemsWrapPackery.layout();
-		}
-	};
-
 	const showView = (viewSlug) => {
 		const nextViewElem = document.querySelector(`#${viewSlug}-view`),
 					currViewElem = document.querySelector(".view.show");
@@ -351,15 +311,102 @@ const initSite = () => {
 		if(menuElem) {
 			menuElem.focus();
 			alertElem.scrollTop = 0;
-			console.log(alertElem);
 		}
 	};
 
 	const closeAlert = () => {
 		const alertElem = document.querySelector(".alert.show");
 		body.classList.remove("alerts");
-		alertElem.classList.remove("show");	
+		setTimeout(() => {
+			alertElem.classList.remove("show");
+		}, 500);
 		body.setAttribute("aria-hidden", true);
+	}
+
+	/************************************/
+	/************STREAM SELECT***********/
+	/************************************/
+
+	const setUpSelect = () => {
+		itemElems.forEach( (itemElem) => {
+			const slug = itemElem.dataset.item,
+						itemObj = new Item(itemElem);
+			itemsObj[slug] = itemObj;
+		});
+
+		selectMenuBttns.forEach( (buttonElem) => {
+			buttonElem.onclick = (e) => {
+				const selectAlert = document.querySelector("#alert-select"),
+							streamSlug = buttonElem.dataset.stream,
+							streamObj = streams[streamSlug];
+				selectAlert.classList.remove("show");
+				body.classList.remove("alerts");
+				streamObj.introStreams();
+			};
+		});
+	};
+
+	const handleSelect = () => {
+		if(!itemsWrap.classList.contains("setup")) {
+			itemsWrapPackery = new Packery(itemsWrap, {
+				itemSelector: ".item",
+				gutter: 10,
+				transitionDuration: packeryDur,
+				initLayout: false,
+				resize: true,
+				stamp: "#stamp"
+			});
+			itemsWrapPackery.layout();
+			itemsWrap.classList.add("setup");
+		} else {
+			itemsWrapPackery.options.transitionDuration = 0;
+			itemsWrapPackery.layout();
+			itemsWrapPackery.options.transitionDuration = packeryDur;
+		}
+	};
+
+	const toggleSelectElems = (show, callback) => {
+		const itemsKeys = Object.keys(itemsObj);
+		for(let i = itemsKeys.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[itemsKeys[i], itemsKeys[j]] = [itemsKeys[j], itemsKeys[i]];
+    }
+
+    if(show) {
+    	handleSelect();
+    }
+
+		selectView.classList.toggle("show-bins", show);
+
+		itemsKeys.forEach((itemKey, i) => {
+			const itemObj = itemsObj[itemKey],
+						itemElem = itemObj.elem;
+
+
+			setTimeout(() => {
+				if(!itemElem.classList.contains("dropping")) {
+					itemElem.classList.add("setting");
+					itemElem.classList.toggle("show", show);
+				} 
+				
+				setTimeout(() => {
+					itemElem.classList.remove("setting");
+			  }, 1000);
+
+			  if(itemElem.classList.contains("dropping") && !show) {
+			  	setTimeout(() => {
+						itemElem.classList.remove("show", "dropping");
+					}, 10 * itemsKeys.length + 1100);
+				}
+
+			}, (show ? 50 : 10) * i);
+		});
+
+		if(callback) {
+			setTimeout(() => {
+				callback();
+			}, 500);
+		}
 	}
 
 	/************************************/
@@ -376,9 +423,7 @@ const initSite = () => {
 			this.tooltip = elem.querySelector(".tooltip");
 			this.bin = null;
 
-			this.draggie = new Draggabilly(this.elem, {
-				
-			});
+			this.draggie = new Draggabilly(this.elem);
 
 			this.draggie.on("dragStart", this.onDragStart.bind(this));
 			this.draggie.on("dragMove", this.onDrag.bind(this));
@@ -458,6 +503,7 @@ const initSite = () => {
 
 			itemElem.classList.add("dropping");
 			itemElem.classList.remove("opening");
+			itemElem.classList.remove("hovering");
 
 			$(itemElem).animate({
 				left: `${newItemLeft}px`
@@ -473,10 +519,8 @@ const initSite = () => {
 					() => {
 						const itemImg = itemElem.querySelector("img");
 						selectedItem.src = itemImg.src;
+						delete selectView.dataset.bin;
 						streamObj.introStreams();
-						self.liftFromBin(() => {
-							self.resetItem();
-						});
 					},
 					() => {
 						self.liftFromBin(() => {
@@ -528,9 +572,7 @@ const initSite = () => {
 
 		resetItem() {
 			const itemElem = this.elem;
-
 			itemElem.classList.add("returning");
-
 			itemsWrapPackery.layout();
 			itemElem.classList.remove("returning");
 
@@ -656,18 +698,20 @@ const initSite = () => {
 						restartBttnImg = restartBttn.querySelector(`[data-stream="${this.bin}"]`);
 
 			restartBttn.append(restartBttnImg);
-			selectView.classList.remove("show");
-			body.id = "";
 			self.loadAssets();
 
-			if(!streamIntrod) {
-				streamIntrod = true;
-				openAlert("streams-intro", () => {
+			toggleSelectElems(false, () => {
+				selectView.classList.remove("show");
+				if(!streamIntrod) {
+					streamIntrod = true;
+					openAlert("streams-intro", () => {
+						self.startStreaming();
+					});
+				} else {
 					self.startStreaming();
-				});
-			} else {
-				this.startStreaming();
-			}
+				}
+			});
+
 		}
 
 		loadAssets() {
@@ -687,8 +731,7 @@ const initSite = () => {
 		startStreaming() {
 			const nextStreamElem = this.elem,
 						currStreamElem = body.querySelector(".stream.show"),
-						currSceneElem = body.querySelector(".scene.show"),
-						droppingItemElem = body.querySelector(".item.dropping");
+						currSceneElem = body.querySelector(".scene.show");
 
 			currStreamObj = this;
 
@@ -699,15 +742,13 @@ const initSite = () => {
 			if(currSceneElem) {
 				currSceneElem.classList.remove("show");
 			}
-			if(droppingItemElem) {
-				droppingItemElem.classList.remove("dropping");
-			}
 
 			nextStreamElem.classList.remove("exit");
 			nextStreamElem.classList.add("show");
 			nextStreamElem.setAttribute("aria-hidden", false);
-			showView("streams");
 
+			showView("streams");
+			
 			const firstSceneObj = this.scenes[`garage-${this.slug}`];
 			this.goToScene(firstSceneObj);
 			this.progress.focus();
@@ -722,11 +763,13 @@ const initSite = () => {
 			if(withAlert) {
 				openAlert("streams-end", () => {
 					muteAudio(self.scene.environ);
+					toggleSelectElems(true);
 					showView("select");
 					currStreamObj = null;
 				});
 			} else {
 				muteAudio(this.scene.environ);
+				toggleSelectElems(true);
 				showView("select");
 				currStreamObj = null;
 			}
@@ -774,8 +817,8 @@ const initSite = () => {
 				if(currEnvironAudioElem) {
 					pauseAudio(currEnvironAudioElem);
 				}
+				toggleSelectElems(true);
 				showView("select");
-				handleSelect();
 			}
 		}
 
@@ -1034,26 +1077,34 @@ const initSite = () => {
 		}
 	}
 
-	setUpStreams();
-	setUpSelect();
-
-	setTimeout(() => {
+	const setUp = () => {
 		body.classList.replace("loading", "loaded");
 		introBttn.setAttribute("aria-disabled", false);
 		introBttn.onclick = () => {
 			introView.classList.remove("show");
 			body.id = "select-intro";
+			selectView.classList.add("show-bins");
 			handleSelect();
 			openAlert("select-intro", () => {
+				toggleSelectElems(true);
 				showView("select");
 			});
 		};
 		introView.classList.remove("loading");
-	}, 4000);
+	}
+
+	setUpStreams();
+	setUpSelect();
+
+	setTimeout(() => {
+		setUp();
+	}, 5000);
 
 	if(isIframe()) {
 		body.classList.add("full");
 	}
+
+
 };
 
 export default initSite;

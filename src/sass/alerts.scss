@@ -5,7 +5,7 @@
 	background-color: rgba($darken, 0.5);
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity 500ms ease-in-out;
+	transition: opacity 500ms $ease;
 	z-index: 50;
 	.view-inner {
 		max-width: unset;
@@ -14,6 +14,8 @@
 	}
 }
 .alert {
+	// width: 80%;
+	max-width: 900px;
 	padding: 30px 40px;
 	margin: auto;
 	background-color: $darken;
@@ -23,7 +25,7 @@
 	flex-direction: column;
   justify-content: center;
 	position: relative;
-	transition: opacity 500ms ease-in;
+	transition: opacity 500ms $ease;
 	.message, .alert-buttons {
 		max-width: 600px;
 		margin-left: auto;
@@ -34,6 +36,7 @@
 		height: 100%;
 		background-color: $orange;
 		border-radius: 0;
+		max-width: unset;
 	}
 	&:not(.show) {
 		@include hide;
@@ -42,6 +45,10 @@
 	}
 	p {
 		margin: 0 0 25px 0;
+	}
+	@include md-width {
+		width: 90%;
+		max-width: unset;
 	}
 	@include sm-width {
 		width: 100%;
@@ -127,6 +134,10 @@ button {
 	}
 	.restart-button {
 		left: 15px;
+		filter: unset;
+		@include sm-width {
+			left: unset;
+		}
 	}
 	.progress {
 		width: 100%;

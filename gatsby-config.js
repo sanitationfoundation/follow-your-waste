@@ -12,7 +12,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-sass`,
-    // `gatsby-plugin-offline`,
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -33,6 +32,8 @@ module.exports = {
         display: `standalone`,
         icon: `src/images/icon.png`
       }
-    }
+    },
+    // 'gatsby-plugin-offline'
+    'gatsby-plugin-remove-serviceworker'
   ],
 };

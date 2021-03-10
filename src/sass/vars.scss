@@ -128,3 +128,8 @@ $darken: rgba(#2e2e2e, 0.9);
 	font-size: 2rem;
 	line-height: 1.2em;
 }
+
+
+$ease: cubic-bezier(0.83, 0, 0.17, 1);
+$ease-in: cubic-bezier(0.64, 0, 0.78, 0);
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);

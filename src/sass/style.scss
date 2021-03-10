@@ -92,7 +92,7 @@ header#header {
 	left: 0px;
 	top: 0;
 	z-index: 70;
-	padding: 15px;
+	padding: 20px;
 	display: flex;
 	justify-content: flex-end;
 	font-weight: bold;
@@ -112,7 +112,7 @@ header#header {
 #logo {
 	width: 190px;
 	margin-right: auto;
-	transition: opacity 300ms ease-in;
+	transition: opacity 300ms $ease;
 	pointer-events: all;
 	img {
 		width: 100%;
@@ -144,7 +144,7 @@ header#header {
 
 #help-toggle {
 	opacity: .75;
-	transition: opacity 300ms ease-in-out;
+	transition: opacity 300ms $ease;
 // 	height: 30px;
 // 	left: 15px;
 // 	background-image: url(../images/help.svg);
@@ -180,7 +180,7 @@ header#header {
 	padding: 0 0 6px 0;
 	pointer-events: all;
 	opacity: .75;
-	transition: opacity 300ms ease-in-out;
+	transition: opacity 300ms $ease;
 	&[role="button"] {
 		cursor: pointer;
 		pointer-events: all;
@@ -224,7 +224,7 @@ header#header {
 	background-image: url(../images/full.svg);
 	background-position: top center;
 	background-size: cover;
-	transition: opacity 300ms ease-in-out;
+	transition: opacity 300ms $ease;
 	pointer-events: all;
 	&:hover, &:focus {
 		opacity: 1;
@@ -256,7 +256,7 @@ header#header {
 	overflow-y: hidden;
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity 200ms ease-in, background 200ms ease-in;
+	transition: opacity 200ms $ease, background 200ms $ease;
 	&.show,
 	body.alerts &#alerts-view {
 		opacity: 1;
@@ -282,7 +282,7 @@ header#header {
 	top: calc(100% - 1px);
 	opacity: 0;
 	pointer-events: none;
-	transition: opacity 100ms ease-in-out, top 100ms ease-in-out;
+	transition: opacity 100ms $ease, top 100ms $ease;
 	*:hover > & {
 		opacity: 1;
 	}

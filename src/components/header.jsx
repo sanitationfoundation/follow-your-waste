@@ -72,7 +72,7 @@ export default function Header({ text, lang, langObjs }) {
 										<a
 											role="menuitem"
 											lang={langKey}
-											href={"/"+langKey}
+											href={`/${langKey === "en" ? "" : langKey}`}
 											title={langObj.long}
 											tabIndex={0}
 											aria-label={`Switch to ${langObj.long}`}>

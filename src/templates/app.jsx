@@ -12,7 +12,7 @@ import Select from "../components/select.jsx";
 import Streams from "../components/streams.jsx";
 import Alerts from "../components/alerts.jsx";
 
-export default ({ pageContext }) => {
+const App = ({ pageContext }) => {
 	const { lang } = pageContext;
 
 	const langObjs = {
@@ -33,12 +33,20 @@ export default ({ pageContext }) => {
 		}
 	};
 
-	const textObjs = { en: enText, es: esText, zh: zhText };
+	const textObjs = {
+		en: enText,
+		es: esText,
+		zh: zhText
+	};
 	Object.keys(textObjs).forEach((key) => {
 		textObjs[key].system.forEach((textPair) => {
 			langObjs[key].text.system[textPair.slug] = textPair.text;
 		});
 	});
+
+	// Object.keys(langObjs).forEach((key) => {
+	// 	console.log(key, ":", langObjs[key]);
+	// });
 
 	const text = langObjs[lang].text;
 
@@ -70,3 +78,4 @@ export default ({ pageContext }) => {
 		</div>
 	);
 };
+export default App;

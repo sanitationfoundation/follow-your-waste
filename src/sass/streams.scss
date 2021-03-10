@@ -32,6 +32,7 @@
 	height: 70px;
 	cursor: pointer;
 	position: relative;
+	filter: drop-shadow(0 0px 1px rgba(255,255,255,.5));
 	img {
 		width: 50px;
 		height: auto;
@@ -41,7 +42,7 @@
 		position: absolute;
 		left: 15px;
 		top: 0;
-		transition: transform 300ms ease-in-out;
+		transition: transform 300ms $ease;
 		// &:nth-child(1) {
 		// 	transform: translateX(-10px) rotate(-10deg);
 		// }
@@ -81,8 +82,8 @@
 	left: 0;
 	top: 0;
 	z-index: 80;
-	transition: opacity 300ms ease-in-out,
-							transform 300ms ease-in-out;
+	transition: opacity 300ms $ease,
+							transform 300ms $ease;
 	body.alerts .stream &,
 	.stream:not(.show) & {
 		transform: translateY(-100px);
@@ -93,7 +94,7 @@
 }
 .ticks-wrap {
 	width: calc(100% - 200px);
-	height: 16px;
+	height: 14px;
 	margin: auto;
 	display: flex;
 	justify-content: space-evenly;
@@ -105,8 +106,8 @@
 	}
 }
 .tick {
-	width: 16px;
-	height: 16px;
+	width: 14px;
+	height: 14px;
 	margin: 0 auto;
 	background-color: white;
 	opacity: .5;
@@ -114,7 +115,7 @@
 	position: relative;
 	pointer-events: all;
 	cursor: pointer;
-	transition: opacity 300ms ease-in-out;
+	transition: opacity 300ms $ease;
 	.tooltip {
 		transform: translate(calc(-50% + 8px), 10px);
 		// position: absolute;
@@ -124,7 +125,7 @@
 		// color: white;
 		// white-space: nowrap;
 		// pointer-events: none;
-		// transition: opacity 300ms ease-in-out;
+		// transition: opacity 300ms $ease;
 		// text-transform: lowercase;
 	}
 	&:last-of-type .tooltip,
@@ -168,7 +169,7 @@ audio {
 	z-index: 40;
 	display: flex;
 	user-select: none;
-	transition: opacity 300ms ease-in, background 300ms ease-in;
+	transition: opacity 300ms $ease, background 300ms $ease;
 	opacity: 0;
 	pointer-events: none;
 	background-position: center;
@@ -267,7 +268,7 @@ audio {
 	color: white;
 	pointer-events: none;
 	transform: translateY(calc(100% + 50px));
-	transition: transform 300ms ease-in-out;
+	transition: transform 300ms $ease;
 	body#streams:not(.alerts) .stream:not(.ending).show & {
 		transform: translateY(0);
 		pointer-events: all;
@@ -286,7 +287,7 @@ audio {
 	margin: auto;
 	padding-left: 50px;
 	position: relative;
-	transition: opacity 300ms ease-in;
+	transition: opacity 300ms $ease;
 	.alerts & {
 		opacity: 0;
 		pointer-events: none;
@@ -313,7 +314,7 @@ audio {
 	border: 3px solid;
 	border-radius: 30px 100px 100px 30px;
 	background-color: $darken;
-	transition: width 300ms ease-in-out, max-height 300ms ease-in-out;
+	transition: width 300ms $ease, max-height 300ms $ease;
 	position: relative;
 	@include md-width {
 		height: 200px;
@@ -356,6 +357,7 @@ audio {
 		text-align: left;
 		overflow-y: auto;
 		font-weight: 500;
+		outline: none;
 		@include md-width {
 			height: 100%;
 			padding: 8px 15px 20px 15px;
@@ -377,7 +379,7 @@ audio {
 		}
 		.vocab.clickable {
 			cursor: pointer;
-			transition: color 300ms ease-in-out;
+			transition: color 300ms $ease;
 		}
 		&:not(.show) {
 			display: none;
@@ -412,7 +414,7 @@ audio {
 	background-position: center top;
 	background-repeat: no-repeat;
 	opacity: 0.5;
-	transition: opacity 300ms ease-in-out;
+	transition: opacity 300ms $ease;
 	&.volume {
 		background-image: url(../images/volume.svg);
 		body.mute .audio-buttons & {
@@ -460,7 +462,7 @@ audio {
 		position: absolute;
 		top: 0;
 		left: 0;
-		transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+		transition: transform 300ms $ease, opacity 300ms $ease;
 		@include md-width {
 			width: 50px;
 			height: 50px;
@@ -537,15 +539,15 @@ $lighter-amt: 10%;
 
 .stream[data-slug="metal"] {
 	.vocab {
-		border-color: lighten($blue, $lighter-amt);
+		border-color: $blue;
 		&.clickable {
 			&:hover, &:focus {
-				color: lighten($blue, $lighter-amt);
+				color: $blue;
 			}
 		}
 	}
 	.factoid .vocab {
-		color: lighten($blue, $lighter-amt);
+		color: $blue;
 	}
 	.chyron-inner {
 		border-color: $blue-dark;
@@ -553,31 +555,31 @@ $lighter-amt: 10%;
 }
 .stream[data-slug="glass"] {
 	.vocab {
-		border-color: lighten($yellow, $lighter-amt);
+		border-color: $orange;
 		&.clickable {
 			&:hover, &:focus {
-				color: lighten($yellow, $lighter-amt);
+				color: $orange;
 			}
 		}
 	}
 	.factoid .vocab {
-		color: lighten($yellow, $lighter-amt);
+		color: $orange;
 	}
 	.chyron-inner {
-		border-color: $yellow-dark;
+		border-color: $orange-dark;
 	}
 }
 .stream[data-slug="plastic"] {
 	.vocab {
-		border-color: lighten($red, $lighter-amt);
+		border-color: $red;
 		&.clickable {
 			&:hover, &:focus {
-				color: lighten($red, $lighter-amt);
+				color: $red;
 			}
 		}
 	}
 	.factoid .vocab {
-		color: lighten($red, $lighter-amt);
+		color: $red;
 	}
 	.chyron-inner {
 		border-color: $red-dark;
@@ -585,15 +587,15 @@ $lighter-amt: 10%;
 }
 .stream[data-slug="paper"] {
 	.vocab {
-		border-color: lighten($green, $lighter-amt);
+		border-color: $green;
 		&.clickable {
 			&:hover, &:focus {
-				color: lighten($green, $lighter-amt);
+				color: $green;
 			}
 		}
 	}
 	.factoid .vocab {
-		color: lighten($green, $lighter-amt);
+		color: $green;
 	}
 	.chyron-inner {
 		border-color: $green-dark;
@@ -601,15 +603,15 @@ $lighter-amt: 10%;
 }
 .stream[data-slug="landfill"] {
 	.vocab {
-		border-color: lighten($pink, $lighter-amt);
+		border-color: $pink;
 		&.clickable {
 			&:hover, &:focus {
-				color: lighten($pink, $lighter-amt);
+				color: $pink;
 			}
 		}
 	}
 	.factoid .vocab {
-		color: lighten($pink, $lighter-amt);
+		color: $pink;
 	}
 	.chyron-inner {
 		border-color: $pink-dark;
@@ -628,7 +630,7 @@ $lighter-amt: 10%;
 	flex-direction: column;
 	justify-content: center;
 	outline: none;
-	transition: opacity 300ms ease-in-out;
+	transition: opacity 300ms $ease;
 	.alerts & {
 		opacity: 0;
 		pointer-events: none;
@@ -643,7 +645,7 @@ $lighter-amt: 10%;
 	max-width: 600px;
 	margin: 0 0 15px 0;
 	transform: translateX(60px);
-	transition: transform 300ms ease-in-out;
+	transition: transform 300ms $ease;
 	position: relative;
 	body:not(.alerts) .stream.show & {
 		transform: none;
@@ -674,7 +676,7 @@ $lighter-amt: 10%;
 		border-radius: 60px 0 0 60px;
 		background-color: $darken;
 		overflow: hidden;
-		transition: width 300ms ease-in-out;
+		transition: width 300ms $ease;
 	}
 	&::after {
 		content: "";
@@ -687,7 +689,7 @@ $lighter-amt: 10%;
 		background-image: url(../images/plus.svg);
 		background-position: bottom center;
 		background-size: cover;
-		transition: all 300ms ease-in-out;
+		transition: all 300ms $ease;
 	}
 	&:hover::after {
 		opacity: 1;

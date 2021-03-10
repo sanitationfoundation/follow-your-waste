@@ -1,11 +1,11 @@
 {
   "items": [
     {
-      "slug": "aluminum-foil",
-      "stream": "metal"
+      "slug": "plastic-bag",
+      "stream": "landfill"
     },
     {
-      "slug": "broken-glass",
+      "slug": "toothpaste",
       "stream": "landfill"
     },
     {
@@ -13,8 +13,28 @@
       "stream": "paper"
     },
     {
-      "slug": "chip-bag",
-      "stream": "landfill"
+      "slug": "soda-can",
+      "stream": "metal"
+    },
+    {
+      "slug": "plastic-bottle",
+      "stream": "plastic"
+    },
+    {
+      "slug": "newspaper",
+      "stream": "paper"
+    },
+    {
+      "slug": "milk-carton",
+      "stream": "plastic"
+    },
+    {
+      "slug": "glass-jar",
+      "stream": "glass"
+    },
+    {
+      "slug": "glass-bottles",
+      "stream": "glass"
     },
     {
       "slug": "detergent-bottle",
@@ -25,36 +45,16 @@
       "stream": "metal"
     },
     {
-      "slug": "glass-bottles",
-      "stream": "glass"
-    },
-    {
-      "slug": "glass-jar",
-      "stream": "glass"
-    },
-    {
-      "slug": "milk-carton",
-      "stream": "plastic"
-    },
-    {
-      "slug": "newspaper",
-      "stream": "paper"
-    },
-    {
-      "slug": "plastic-bag",
+      "slug": "chip-bag",
       "stream": "landfill"
     },
     {
-      "slug": "plastic-bottle",
-      "stream": "plastic"
+      "slug": "broken-glass",
+      "stream": "landfill"
     },
     {
-      "slug": "soda-can",
+      "slug": "aluminum-foil",
       "stream": "metal"
-    },
-    {
-      "slug": "toothpaste",
-      "stream": "landfill"
     }
   ],
   "landfill": [

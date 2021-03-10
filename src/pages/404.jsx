@@ -1,9 +1,13 @@
-import { useEffect } from "react";
-import { navigate } from "@reach/router"
+import React from "react";
 
-export default () => {
-  useEffect(() => {
-    navigate("/");
-  }, []);
-  return null;
+const ErrorPage = ({ pageContext }) => {
+
+	return (
+		<div>
+			
+
+		</div>
+	);
 };
+
+export default ErrorPage;
