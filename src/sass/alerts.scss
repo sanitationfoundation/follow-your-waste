@@ -26,6 +26,12 @@
   justify-content: center;
 	position: relative;
 	transition: opacity 500ms $ease;
+	.message {
+		position: relative;
+		&.has-portrait {
+			padding-left: 20px;
+		}
+	}
 	.message, .alert-buttons {
 		max-width: 600px;
 		margin-left: auto;
@@ -58,6 +64,26 @@
 		border-radius: 0;
 		overflow-y: scroll;
 		-webkit-overflow-scrolling: touch;
+	}
+	.portrait {
+		width: 120px;
+		float: left;
+		img {
+			width: 100%;
+			display: block;
+			margin: auto;
+		}
+		@include md-width {
+			width: 100px;
+		}
+	}
+	&:not(.big) .portrait {
+		position: absolute;
+		height: 100%;
+		display: flex;
+		left: -60px;
+		top: -4px;
+		z-index: 51;
 	}
 }
 

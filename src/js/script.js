@@ -272,11 +272,16 @@ const initSite = () => {
 	const openAlert = (alertSlug, onOkay, onCancel) => {
 		const alertElem = document.querySelector(`#alert-${alertSlug}`),
 					okayBttnElem = alertElem.querySelector(".okay"),
-					cancelBttnElem = alertElem.querySelector(".cancel");
+					cancelBttnElem = alertElem.querySelector(".cancel"),
+					audioElem = alertElem.querySelector("audio");
 
 		alertElem.classList.add("show");
 		body.classList.add("alerts");
 		body.setAttribute("aria-hidden", false);
+
+		if(audioElem) {
+			playAudio(audioElem);
+		}
 
 		if(okayBttnElem) {
 			okayBttnElem.onclick = (e) => {
@@ -315,8 +320,11 @@ const initSite = () => {
 	};
 
 	const closeAlert = () => {
-		const alertElem = document.querySelector(".alert.show");
+		const alertElem = document.querySelector(".alert.show"),
+					audioElem = alertElem.querySelector("audio");
 		body.classList.remove("alerts");
+		pauseAudio(audioElem);
+
 		setTimeout(() => {
 			alertElem.classList.remove("show");
 		}, 500);
@@ -371,11 +379,9 @@ const initSite = () => {
 			const j = Math.floor(Math.random() * (i + 1));
 			[itemsKeys[i], itemsKeys[j]] = [itemsKeys[j], itemsKeys[i]];
     }
-
     if(show) {
     	handleSelect();
     }
-
 		selectView.classList.toggle("show-bins", show);
 
 		itemsKeys.forEach((itemKey, i) => {
@@ -422,7 +428,6 @@ const initSite = () => {
 			this.image = elem.querySelector("img");
 			this.tooltip = elem.querySelector(".tooltip");
 			this.bin = null;
-
 			this.draggie = new Draggabilly(this.elem);
 
 			this.draggie.on("dragStart", this.onDragStart.bind(this));
@@ -535,7 +540,7 @@ const initSite = () => {
 						openAlert("not-recycle", () => {
 							self.resetItem();
 						});
-					} else if(!binSlug !== "landfill") {
+					} else if(binSlug !== "landfill") {
 						openAlert("wrong-recycle", () => {
 							self.resetItem();
 						});

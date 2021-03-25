@@ -14,6 +14,11 @@ export default function Alerts({ text }) {
 					id="alert-select-intro"
 					aria-hidden="true">
 					<div className="message" id="message-select-intro">
+						<div className="portrait">
+							<img
+								src={withPrefix(`images/workers/chief.png`)}
+								alt="" />
+						</div>
 						<p>{text.system.select_intro}</p>
 						<p>{text.system.select_prompt}</p>
 					</div>
@@ -28,6 +33,19 @@ export default function Alerts({ text }) {
 							{text.system.im_ready}
 						</button>
 					</div>
+					<audio
+						data-type="voice"
+						preload="none"
+						controls={false}
+						aria-hidden={true}>
+						<source
+							src={withPrefix(`audio/misc/desc.wav`)}
+							type="audio/wav" />
+						<track
+							src=""
+							srcLang="en"
+							kind="captions" />
+					</audio>
 				</div>
 
 
@@ -38,8 +56,13 @@ export default function Alerts({ text }) {
 					className="alert"
 				  id="alert-not-trash"
 					aria-hidden="true">
-					<div className="message" id="message-not-trash">
+					<div className="message has-portrait" id="message-not-trash">
 						<p>{text.system.select_not_trash}</p>
+					</div>
+					<div className="portrait">
+						<img
+							src={withPrefix(`images/workers/chief.png`)}
+							alt="" />
 					</div>
 					<div
 						role="menu"
@@ -52,6 +75,19 @@ export default function Alerts({ text }) {
 							{text.system.try_again}
 						</button>
 					</div>
+					<audio
+						data-type="voice"
+						preload="none"
+						controls={false}
+						aria-hidden={true}>
+						<source
+							src={withPrefix(`audio/misc/not-trash.wav`)}
+							type="audio/wav" />
+						<track
+							src=""
+							srcLang="en"
+							kind="captions" />
+					</audio>
 				</div>
 
 				{/******* Wrong recycle *******/}
@@ -60,8 +96,13 @@ export default function Alerts({ text }) {
 					className="alert"
 					id="alert-wrong-recycle"
 					aria-hidden="true">
-					<div className="message" id="message-wrong-recycle">
+					<div className="message has-portrait" id="message-wrong-recycle">
 						<p>{text.system.select_wrong_recycle}</p>
+					</div>
+					<div className="portrait">
+						<img
+							src={withPrefix(`images/workers/chief.png`)}
+							alt="" />
 					</div>
 					<div role="menu"
 						className="alert-buttons"
@@ -73,6 +114,19 @@ export default function Alerts({ text }) {
 							{text.system.try_again}
 						</button>
 					</div>
+					<audio
+						data-type="voice"
+						preload="none"
+						controls={false}
+						aria-hidden={true}>
+						<source
+							src={withPrefix(`audio/misc/wrong-recycle.wav`)}
+							type="audio/wav" />
+						<track
+							src=""
+							srcLang="en"
+							kind="captions" />
+					</audio>
 				</div>
 
 				{/******* Not recycle *******/}
@@ -81,8 +135,13 @@ export default function Alerts({ text }) {
 					className="alert"
 					id="alert-not-recycle"
 					aria-hidden="true">
-					<div className="message" id="message-not-recycle">
+					<div className="message has-portrait" id="message-not-recycle">
 						<p>{text.system.select_not_recycle}</p>
+					</div>
+					<div className="portrait">
+						<img
+							src={withPrefix(`images/workers/chief.png`)}
+							alt="" />
 					</div>
 					<div
 						role="menu"
@@ -95,6 +154,19 @@ export default function Alerts({ text }) {
 							{text.system.try_again}
 						</button>
 					</div>
+					<audio
+						data-type="voice"
+						preload="none"
+						controls={false}
+						aria-hidden={true}>
+						<source
+							src={withPrefix(`audio/misc/not-recycle.wav`)}
+							type="audio/wav" />
+						<track
+							src=""
+							srcLang="en"
+							kind="captions" />
+					</audio>
 				</div>
 
 				{/******* Correct bin *******/}
@@ -103,8 +175,13 @@ export default function Alerts({ text }) {
 					className="alert"
 					id="alert-correct-bin"
 					aria-hidden="true">
-					<div className="message" id="message-correct-bin">
+					<div className="message has-portrait" id="message-correct-bin">
 						<p>{text.system.select_correct_bin}</p>
+					</div>
+					<div className="portrait">
+						<img
+							src={withPrefix(`images/workers/chief.png`)}
+							alt="" />
 					</div>
 					<div
 						role="menu"
@@ -122,6 +199,19 @@ export default function Alerts({ text }) {
 							{text.system.lets_go}
 						</button>
 					</div>
+					<audio
+						data-type="voice"
+						preload="none"
+						controls={false}
+						aria-hidden={true}>
+						<source
+							src={withPrefix(`audio/misc/correct-bin.wav`)}
+							type="audio/wav" />
+						<track
+							src=""
+							srcLang="en"
+							kind="captions" />
+					</audio>
 				</div>
 
 				{/*******Streams intro*******/}

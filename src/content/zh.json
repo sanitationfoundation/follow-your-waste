@@ -30,11 +30,11 @@
     },
     {
       "slug": "select_intro",
-      "text": "Discover what happens to your household waste after you toss it in the bin."
+      "text": "探索您把生活垃圾扔进垃圾箱后它会发生什么。"
     },
     {
       "slug": "begin_select",
-      "text": "To start, click on any item and drag it into the bin you think it belongs."
+      "text": "点击任何物品并将其拖进您认为它属于的垃圾箱。"
     },
     {
       "slug": "begin_select_alt",
@@ -119,44 +119,9 @@
   ],
   "items": [
     {
-      "slug": "newspaper",
-      "label": "报纸",
-      "tooltip": "还在通过传统的方式获取新闻吗？采用数字方式减少垃圾吧！"
-    },
-    {
       "slug": "aluminum-foil",
       "label": "铝箔",
       "tooltip": "考虑使用可以重复使用的容器代替铝箔来存储食物。"
-    },
-    {
-      "slug": "soda-can",
-      "label": "易拉罐",
-      "tooltip": "用过的铝罐可以回收，仅仅 60 天内就可以回到货架上。"
-    },
-    {
-      "slug": "food-can",
-      "label": "食品罐",
-      "tooltip": "这些是用钢或锡制成的，不是铝。"
-    },
-    {
-      "slug": "chip-bag",
-      "label": "薯片袋",
-      "tooltip": "这种类型的零食袋通常是由不同材料层制成的，因此很难回收。"
-    },
-    {
-      "slug": "plastic-bag",
-      "label": "塑料袋",
-      "tooltip": "2020 年，纽约州禁止零售商使用大多数的一次性塑料打包袋。"
-    },
-    {
-      "slug": "milk-carton",
-      "label": "牛奶盒",
-      "tooltip": "牛奶盒是最常见的放错位置的物品，因为他们包含纸和塑料层。"
-    },
-    {
-      "slug": "cardboard",
-      "label": "纸板盒",
-      "tooltip": "压平纸板盒使其容易绑好或放进袋子里—不要忘记意面盒和肥皂盒这样的小东西！"
     },
     {
       "slug": "broken-glass",
@@ -164,9 +129,24 @@
       "tooltip": "用双层袋子装碎玻璃，以帮助防止您和环卫工人受伤。"
     },
     {
-      "slug": "toothpaste",
-      "label": "牙膏",
-      "tooltip": "并非所有浴室用品都能回收 — 在扔掉之前要进行了解！"
+      "slug": "cardboard",
+      "label": "纸板盒",
+      "tooltip": "压平纸板盒使其容易绑好或放进袋子里—不要忘记意面盒和肥皂盒这样的小东西！"
+    },
+    {
+      "slug": "chip-bag",
+      "label": "薯片袋",
+      "tooltip": "这种类型的零食袋通常是由不同材料层制成的，因此很难回收。"
+    },
+    {
+      "slug": "detergent-bottle",
+      "label": "洗涤剂",
+      "tooltip": "忽略瓶子上的数字吧 — 纽约市对待所有硬质塑料的方式都是一样的。"
+    },
+    {
+      "slug": "food-can",
+      "label": "食品罐",
+      "tooltip": "这些是用钢或锡制成的，不是铝。"
     },
     {
       "slug": "glass-bottles",
@@ -174,19 +154,39 @@
       "tooltip": "玻璃较重，会增加运输重量，因此产品设计师正使用其他方案包装食品。"
     },
     {
-      "slug": "plastic-bottle",
-      "label": "水瓶",
-      "tooltip": "全世界每分钟几乎售出一万个塑料饮料瓶 — 换成可回收的吧！"
-    },
-    {
       "slug": "glass-jar",
       "label": "莎莎玻璃罐",
       "tooltip": "考虑重复使用玻璃罐存放零食、工艺品和小物件。"
     },
     {
-      "slug": "detergent-bottle",
-      "label": "洗涤剂",
-      "tooltip": "忽略瓶子上的数字吧 — 纽约市对待所有硬质塑料的方式都是一样的。"
+      "slug": "milk-carton",
+      "label": "牛奶盒",
+      "tooltip": "牛奶盒是最常见的放错位置的物品，因为他们包含纸和塑料层。"
+    },
+    {
+      "slug": "newspaper",
+      "label": "报纸",
+      "tooltip": "还在通过传统的方式获取新闻吗？采用数字方式减少垃圾吧！"
+    },
+    {
+      "slug": "plastic-bag",
+      "label": "塑料袋",
+      "tooltip": "2020 年，纽约州禁止零售商使用大多数的一次性塑料打包袋。"
+    },
+    {
+      "slug": "plastic-bottle",
+      "label": "水瓶",
+      "tooltip": "全世界每分钟几乎售出一万个塑料饮料瓶 — 换成可回收的吧！"
+    },
+    {
+      "slug": "soda-can",
+      "label": "易拉罐",
+      "tooltip": "用过的铝罐可以回收，仅仅 60 天内就可以回到货架上。"
+    },
+    {
+      "slug": "toothpaste",
+      "label": "牙膏",
+      "tooltip": "并非所有浴室用品都能回收 — 在扔掉之前要进行了解！"
     }
   ],
   "paper": [
