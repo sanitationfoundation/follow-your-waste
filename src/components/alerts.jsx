@@ -35,7 +35,7 @@ export default function Alerts({ text }) {
 					</div>
 					<audio
 						data-type="voice"
-						preload="none"
+						preload="auto"
 						controls={false}
 						aria-hidden={true}>
 						<source
@@ -77,7 +77,7 @@ export default function Alerts({ text }) {
 					</div>
 					<audio
 						data-type="voice"
-						preload="none"
+						preload="auto"
 						controls={false}
 						aria-hidden={true}>
 						<source
@@ -116,7 +116,7 @@ export default function Alerts({ text }) {
 					</div>
 					<audio
 						data-type="voice"
-						preload="none"
+						preload="auto"
 						controls={false}
 						aria-hidden={true}>
 						<source
@@ -156,7 +156,7 @@ export default function Alerts({ text }) {
 					</div>
 					<audio
 						data-type="voice"
-						preload="none"
+						preload="auto"
 						controls={false}
 						aria-hidden={true}>
 						<source
@@ -201,7 +201,7 @@ export default function Alerts({ text }) {
 					</div>
 					<audio
 						data-type="voice"
-						preload="none"
+						preload="auto"
 						controls={false}
 						aria-hidden={true}>
 						<source
