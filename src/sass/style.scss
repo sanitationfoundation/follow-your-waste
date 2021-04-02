@@ -288,11 +288,12 @@ header#header {
 	}
 }
 .tooltip-inner {
-	// margin: 1em 5px;
+	position: relative;
+	padding: 5px 15px;
 	background-color: $darken;
 	color: white;
 	border-radius: 20px;
-	position: relative;
+	white-space: nowrap;
 	p {
 		@include sm-text;
 		margin: 5px 0 0 0;
@@ -307,9 +308,10 @@ header#header {
 	border-left: 1em solid transparent;
 	border-right: 1em solid transparent;
 	border-bottom: 1em solid $darken;
-	// position: absolute;
-	// top: 0px;
 	z-index: 21;
+	&.small {
+		font-size: 8px;
+	}
 }
 
 ////////////////////////////////////

@@ -226,17 +226,7 @@ export default function Alerts({ text }) {
 
 							<div className="row">
 								<div className="col">
-									<div className="restart-button">
-										{ ["landfill", "mgp", "paper"].map((binSlug, i) => {
-											return(
-												<div data-stream={binSlug} key={i}>
-													<img
-														src={withPrefix(`images/bin-${binSlug}-full.png`)}
-														alt="" />
-												</div>
-											)
-										}) }
-									</div>
+									<div className="restart-button"></div>
 								</div>
 								<div className="col">
 									{text.system.help_restart}

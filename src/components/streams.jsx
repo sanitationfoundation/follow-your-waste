@@ -19,15 +19,12 @@ export default function Streams({ text, data }) {
 						role="button"
 						id="restart-button"
 						className="restart-button">
-						{ bins.map((binSlug, i) => {
-							return(
-								<div data-stream={binSlug} key={i}>
-									<img
-										src={withPrefix(`images/bin-${binSlug}-full.png`)}
-										alt="" />
-								</div>
-							)
-						}) }
+						<div className="tooltip">
+							{/*<div className="tooltip-arrow small"></div>*/}
+							<div className="tooltip-inner">
+								Choose a new item
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -57,7 +54,7 @@ export default function Streams({ text, data }) {
 												<div
 													className="tooltip mobile-hidden"
 													aria-hidden={true}>
-													<div className="tooltip-arrow"></div>
+													<div className="tooltip-arrow small"></div>
 													<div className="tooltip-inner">
 														{sceneText.label}
 													</div>

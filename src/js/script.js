@@ -699,10 +699,10 @@ const initSite = () => {
 		}
 
 		introStreams() {
-			const self = this,
-						restartBttnImg = restartBttn.querySelector(`[data-stream="${this.bin}"]`);
+			const self = this;
+						// restartBttnImg = restartBttn.querySelector(`[data-stream="${this.bin}"]`);
 
-			restartBttn.append(restartBttnImg);
+			// restartBttn.append(restartBttnImg);
 			self.loadAssets();
 
 			toggleSelectElems(false, () => {
